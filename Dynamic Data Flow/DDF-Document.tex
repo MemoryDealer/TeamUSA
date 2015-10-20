@@ -36,7 +36,11 @@
 		\subsubsection{Control Coupling}
 		Control coupling occurs when one module's output is used to influence or determine the execution logic of a subsequent module - for example, a boolean value or control flag is passed from one module into another that performs a different action depending on the value it receives. This type of coupling is detrimental to the software system because it implies that each of the coupled modules must know something about what is contained in the other, meaning one or both may not be a true black box, which indicates that one or both may not be separately implementable or maintainable. 
 	\subsection{Miller's Law}
+		Miller's law tells us that, on average, the largest number of tasks that can be simultaneously held in memory is $7\pm2$. Thus, we should work for a design wherein each module complies with this law and its value. Using dynamic data flow analysis, we can see how the data flows into and out of each module, and with the hierarchical model, how control is implied to flow between modules as well. A good design will show, on average, each module having 4 to 5 tasks, and not more than $7\pm2$.  
 	\subsection{Graciunas's Law}
+		Graciunas's law concerns itself with the number of control relations between modules, and predicts how this impacts the complexity of the software system. For a given set of modules, $R$, we have that $R = M(M^{2-1} + M - 1)$, where $M$ is the number of subordinate modules. Because dynamic data flow analysis shows the flow of data and the implied flow of control throughout the system, we can use this law and its equation to minimize the number of inter-module relations to the ideal minimum, represented by the equation 
+		$$I = \frac{N(N - 1)}{2}$$
+		where $I$ is the number of interactions between modules and $N$ is the number of modules in the system. 
 	\subsection{Factoring}
 	\subsection{Scope of Control}
 	\subsection{Black Boxes}
