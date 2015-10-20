@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[includeheadfoot,margin=1.0in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Metrics: Dynamic Data Flow Analysis}
+\author{Vincent Sanchez \\ Software Engineering \\ Sam Houston State University}
+
+\pagestyle{fancy}
+\fancyhead[LE,RO]{OpenSSL}
+\fancyhead[RE,LO]{\leftmark}
+\fancyfoot[RE,LO]{}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
+\begin{document}
+% Generate Title
+\maketitle
+\newpage
+
+% Generate Table of Contents
+\tableofcontents
+\newpage
+
+%Begin Section 1
+\section{General Considerations}
+	Dynamic data flow analysis is a design methodology used to demonstrate the flow of data through a software system. A good software design, when analyzed with the dynamic data flow method will show a well defined input, or afferent, branch where data is collected and acted upon by related input processing functions (such as opening a file or reading the file contents to an array for use by another module). Data processed by the afferent branch should then be passed to a well defined central transform branch where the core operations of the software are performed on the data, and output data is generated and returned. Finally, this output data is sent a well defined output, or efferent, branch, where it is processed into its final output format, such as a report. Two data flow diagrams are used when plotting the path of data from input to output in a software system. The first is a flow diagram, which shows data coming into the system, how it moves through the system's various modules, and eventually is output in a useful way. The second diagram is a hierarchical diagram that shows the modules that make up the system, and how they are related. This diagram shows the flow of data, but also implies the control structure of each module as it relates to the others and to the system as a whole. Data couples and control couples are indicated here as well. Further, because this type of analysis focuses on the flow of data, with an implied control structure and without any concern for the contents of the actual function bubbles present in the diagram, it is not able to determine or show the cohesiveness of any particular module. This is detrimental because it potentially allows modules that are merely coincidentally cohesive to exist until the implementation phase, when the problems associated with that form of cohesion will likely begin to appear. 
+\section{Analysis Metrics}
+	\subsection{Coupling}
+		Dynamic data flow analysis focuses on two types of coupling: data and control. 
+		\subsubsection{Data Coupling}
+		Data coupling occurs when one module depends on the output of another, and the data they exchange is composed of discreet, elementary units, providing exactly what each module needs and nothing more or less. This is the lowest form of coupling with the least dependency between coupled modules. 
+		\subsubsection{Control Coupling}
+		Control coupling occurs when one module's output is used to influence or determine the execution logic of a subsequent module - for example, a boolean value or control flag is passed from one module into another that performs a different action depending on the value it receives. This type of coupling is detrimental to the software system because it implies that each of the coupled modules must know something about what is contained in the other, meaning one or both may not be a true black box, which indicates that one or both may not be separately implementable or maintainable. 
+	\subsection{Miller's Law}
+	\subsection{Graciunas's Law}
+	\subsection{Factoring}
+	\subsection{Scope of Control}
+	\subsection{Black Boxes}
+	\subsection{Fan In/Out}
+\section{Analysis}
+	\subsection{Coupling}
+	\subsection{Miller's Law}
+	\subsection{Graciunas's Law}
+	\subsection{Factoring}
+	\subsection{Scope of Control}
+	\subsection{Black Boxes}
+	\subsection{Fan In/Out}
+\section{Conclusion}	
+
+\end{document}
