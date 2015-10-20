@@ -45,10 +45,41 @@
 		Factoring of a system occurs when the system is divided into an upper level of control modules, controlling a lower level of operations modules. Systems that are highly factored have few upper level modules and more lower level modules, and take on a hierarchical form. 
 	\subsection{Scope of Control}
 	\subsection{Black Boxes}
-	\subsection{Fan In/Out}
+		A module is defined as a true black box whenever the module can be fully utilized with no regard for its construction, and when it performs the same action or function for every invocation, without regard to its inputs or outputs. Dynamic data flow can show the existence of black boxes in a design by showing how the inputs to a module relate to its outputs. 
+	\subsection{Fan-In/Out}
+		Fan-in and fan-out occur when a module is a target for multiple, higher level modules, or when a module outputs to multiple, lower level modules. Fan-in is desirable because for multiple modules needing the same function, that function can be coded, debugged, and maintained once, no matter how many modules it services. However, to insure reduced complexity and cost, the module that is the target of fan-in should be a terminal module, and should be a true black box - it should perform the exact same function for every module it services. Fan-out is less desirable, because it implies a linkage between a servicing module and the serviced modules. A change in the servicing function may require changes in the modules being serviced. Further, modules with are both targets of fan-in \emph{and} fan-out are the least desirable, as there is an implied linkage between the servicing module and the serviced modules, and because the target module becomes subject to Graciunas's Law, causing complexity to rapidly increase. 
 \section{Analysis}
+	The software system in question is that of a point-and-click, two dimensional game. We will draw conclusions from our analysis using both the data flow diagram and the hierarchical diagram from the previous dynamic data flow analysis of the software system. 
 	\subsection{Coupling}
+		The design exhibits high levels of data coupling between modules, and a low level of control coupling between modules. Data coupling, while potentially undesirable, is the least detrimental form of coupling, and is likely present in every software design to some degree. In general, our design is data coupled at interfaces between higher level modules and lower level modules, and the data is being passed down the hierarchy for efferent modules and up the hierarchy for afferent modules, as expected. Control coupling occurs in the design at interfaces between controller-type modules and the modules they control. Because the system is a game, it relies on certain modules to control the overall execution of the other, subordinate data processing modules. These control modules then are necessarily coupled to their subordinate processing modules. While this is undesirable from a design standpoint, it is unavoidable. 
 	\subsection{Miller's Law}
+		The design does not exhibit any modules that exceed $7\pm2$ interactions. Of concern is the \texttt{Engine State} module, which has 7 links to other modules in the system. Any further requirements on this module will therefore likely result in rapid increases in implementation, debugging, and maintenance \& modification difficulties. However, we know that it is desirable to maintain an average of 3 to 4 interactions between modules throughout the system as a whole, and we can perform basic math to determine where our system stands, based on the data flow diagrams we have obtained through our analysis. Thus, we can derive a table showing each module and the number of interactions it has with other modules:
+		\begin{center}
+			\begin{tabular}{| l || c |}
+				\hline
+				Get Mouse State 					& 3 \\ \hline
+				Get Save Slot 						& 3 \\ \hline
+				Parse Save File 					& 2 \\ \hline
+				Load Level							& 2 \\ \hline
+				Engine								& 2 \\ \hline
+				State Manager 						& 2 \\ \hline
+				Engine State						& 7 \\ \hline
+				Update Player						& 6 \\ \hline
+				Compare Player \& Actor Positions	& 2 \\ \hline
+				Process Hover Event					& 2 \\ \hline
+				Process Click Event					& 2	\\ \hline
+				Update Actor						& 2 \\ \hline
+				Respond to Event					& 4 \\ \hline
+				Display Actors						& 2 \\ \hline
+				Play Audio							& 2 \\ \hline
+				Render Player						& 2 \\ \hline
+				\textbf{Total:}						& 45 \\
+				\hline
+			\end{tabular}
+		\end{center}
+		So we can calulate the $A$, the average number of interactions between modules with regard to Miller's Law by dividing 45 by the number of modules $N$, where $N = 16$: 
+		$$A = 45 \div N = 45 \div 16 = 2.8125$$
+		Therefore, while two of the design's modules approach the limits of Miller's Law, the overall average number of interactions between modules with regard to Miller's law is well within the expected range of values, at $2.8125$. 
 	\subsection{Graciunas's Law}
 	\subsection{Factoring}
 	\subsection{Scope of Control}
