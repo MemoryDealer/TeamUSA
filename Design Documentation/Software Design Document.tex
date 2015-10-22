@@ -51,7 +51,7 @@
 		\subsubsection{Miller's Law}
 			Miller's law tells us that, on average, the largest number of tasks that can be simultaneously held in memory is $7\pm2$. Thus, we should work for a design wherein each module complies with this law and its value. Using dynamic data flow analysis, we can see how the data flows into and out of each module, and with the hierarchical model, how control is implied to flow between modules as well. A good design will show, on average, each module having 4 to 5 tasks, and not more than $7\pm2$.  
 		\subsubsection{Graciunas's Law}
-			Graciunas's law concerns itself with the number of control relations between modules, and predicts how this impacts the complexity of the software system. For a given set of modules, $R$, we have that $R = M(M^{2-1} + M - 1)$, where $M$ is the number of subordinate modules. Because dynamic data flow analysis shows the flow of data and the implied flow of control throughout the system, we can use this law and its equation to minimize the number of inter-module relations to the ideal minimum, represented by the equation 
+			Graciunas's law concerns itself with the number of control relations between modules, and predicts how this impacts the complexity of the software system. For a given set of modules, $R$, we have that $R = M(2^{M-1} + M - 1)$, where $M$ is the number of subordinate modules. Because dynamic data flow analysis shows the flow of data and the implied flow of control throughout the system, we can use this law and its equation to minimize the number of inter-module relations to the ideal minimum, represented by the equation 
 			$$I = \frac{N(N - 1)}{2}$$
 			where $I$ is the number of interactions between modules and $N$ is the number of modules in the system. 
 		\subsubsection{Factoring}
@@ -66,34 +66,41 @@
 		\subsubsection{Coupling}
 			The design exhibits high levels of data coupling between modules, and a low level of control coupling between modules. Data coupling, while potentially undesirable, is the least detrimental form of coupling, and is likely present in every software design to some degree. In general, our design is data coupled at interfaces between higher level modules and lower level modules, and the data is being passed down the hierarchy for efferent modules and up the hierarchy for afferent modules, as expected. Control coupling occurs in the design at interfaces between controller-type modules and the modules they control. Because the system is a game, it relies on certain modules to control the overall execution of the other, subordinate data processing modules. These control modules then are necessarily coupled to their subordinate processing modules. While this is undesirable from a design standpoint, it is unavoidable. 
 		\subsubsection{Miller's Law}
-			The design does not exhibit any modules that exceed $7\pm2$ interactions. Of concern is the \texttt{Engine State} module, which has 7 links to other modules in the system. Any further requirements on this module will therefore likely result in rapid increases in implementation, debugging, and maintenance \& modification difficulties. However, we know that it is desirable to maintain an average of 3 to 4 interactions between modules throughout the system as a whole, and we can perform basic math to determine where our system stands, based on the data flow diagrams we have obtained through our analysis. Thus, we can derive a table showing each module and the number of interactions it has with other modules:
+			The design does not exhibit any modules that exceed $7\pm2$ interactions. Of concern is the \texttt{Engine} module, which has 8 links to other modules in the system. The links are asynchronous, however, as the \texttt{Play Video Request} and \texttt{Play Audio Request} controls are not necessarily sent to the video and audio manager functions at the same time as the file paths. Thus, though the engine has 8 links to other modules, it may have between 4 and 8 actually active in a single given frame. Still, it is important to keep in mind that any further requirements on this module will therefore likely result in rapid increases in implementation, debugging, and maintenance \& modification difficulties. 
+			
+			Regarding the system as a whole, we know that it is desirable to maintain an average of 3 to 4 interactions between modules throughout the system as a whole, and we can perform basic math to determine where our system stands, based on the data flow diagrams we have obtained through our analysis. Thus, we can derive a table showing each module and the number of interactions it has with other modules:
 			\begin{center}
 				\begin{tabular}{| l || c |}
 					\hline
 					Get Mouse State 					& 3 \\ \hline
-					Get Save Slot 						& 3 \\ \hline
-					Parse Save File 					& 2 \\ \hline
-					Load Level							& 2 \\ \hline
-					Engine								& 2 \\ \hline
-					State Manager 						& 2 \\ \hline
-					Engine State						& 7 \\ \hline
+					Create Save File					& 3 \\ \hline
+					Parse Save File 					& 3 \\ \hline
+					Load Level							& 3 \\ \hline
+					Engine								& 8 \\ \hline
 					Update Player						& 6 \\ \hline
 					Compare Player \& Actor Positions	& 2 \\ \hline
-					Process Hover Event					& 2 \\ \hline
-					Process Click Event					& 2	\\ \hline
-					Update Actor						& 2 \\ \hline
-					Respond to Event					& 4 \\ \hline
-					Display Actors						& 2 \\ \hline
+					Video Manager						& 3 \\ \hline
+					Render Video						& 2 \\ \hline
+					Audio Manager						& 3 \\ \hline
 					Play Audio							& 2 \\ \hline
-					Render Player						& 2 \\ \hline
-					\textbf{Total:}						& 45 \\
+					\textbf{Total:}						& 38 \\
 					\hline
 				\end{tabular}
 			\end{center}
-			So we can calulate the $A$, the average number of interactions between modules with regard to Miller's Law by dividing 45 by the number of modules $N$, where $N = 16$: 
-			$$A = 45 \div N = 45 \div 16 = 2.8125$$
-			Therefore, while two of the design's modules approach the limits of Miller's Law, the overall average number of interactions between modules with regard to Miller's law is well within the expected range of values, at $2.8125$. 
+			So we can calulate $A$, the average number of interactions between modules with regard to Miller's Law by dividing 38 by the number of modules $N$, where $N = 11$: 
+			$$A = 45 \div N = 38 \div 11 = 3.4545$$
+			Therefore, while two of the design's modules approach the limits of Miller's Law, the overall average number of interactions between modules with regard to Miller's law is within the expected range of values, at $3.4545$. 
 		\subsubsection{Graciunas's Law}
+			Because the design makes use of a highly factored, modular design, the majority of data is passed from one module to another, using a one-way connection where each module only communicates with its direct superior, controlling module. This insures that each pair of modules only has one path of communication between them, and thus only 1 relationship. The \texttt{engine} module, however, interacts with 6 modules, with two relationships between two of its subordinate modules. Thus, its number of interactions are defined by the equation $$I = \frac{N(N - 1)}{2}$$
+			where $I$ is the number of interactions between modules and $N$ is the number of modules in the system:
+			$$I = \frac{6(5)}{2} = 15$$
+			And so \texttt{Engine} has 15 possible interactions in the system, and the system as a whole has 
+			$$I = \frac{11(10)}{2} = 55$$
+			Limiting data and control this way substantially reduces complexity. Not implementing this type of design results in the number of relations being defined by $R = M(2^{M-1} + M - 1)$, where $M$ is the number of subordinate modules. If we calculate that value, we have that
+			$$R = 11(2^{11-1} + 11 - 1)$$
+			$$R = 11(1024 + 11 - 1)$$
+			$$R = 11(1034) = 11374$$
+			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor $206$. 
 		\subsubsection{Factoring}
 		\subsubsection{Scope of Control}
 		\subsubsection{Black Boxes}
