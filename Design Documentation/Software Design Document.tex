@@ -55,8 +55,9 @@
 			$$I = \frac{N(N - 1)}{2}$$
 			where $I$ is the number of interactions between modules and $N$ is the number of modules in the system. 
 		\subsubsection{Factoring}
-			Factoring of a system occurs when the system is divided into an upper level of control modules, controlling a lower level of operations modules. Systems that are highly factored have few upper level modules and more lower level modules, and take on a hierarchical form. 
+			Factoring of a system occurs when the system is divided into an upper level of control modules, controlling a lower level of operations modules. Systems that are highly factored have few upper level modules and more lower level modules, and take on a hierarchical form. Further, highly factored systems should ideally be organized such that a set of input modules collect and organize input to pass to a central transform branch, which processes the data taken from the input, or afferent, modules, and sends it to a collection of output, or efferent, modules for final formatting and output back to the user. 
 		\subsubsection{Scope of Control}
+			Scope of control in an organized, factored system is a measurement of the control of superordinate modules against subordinate modules. Ideally, the scope of control should be such that decisions made by a superordinate module \emph{only} effect its direct subordinates, and no other modules in the system. This insures that during maintenance and modification, debugging, and testing, problems or errors caused by one module will not have a ripple effect on other, unrelated modules in the system. This simplifies debugging and maintenance and modification, thus reducing complexity, cost, and time devoted to fixing errors.  
 		\subsubsection{Black Boxes}
 			A module is defined as a true black box whenever the module can be fully utilized with no regard for its construction, and when it performs the same action or function for every invocation, without regard to its inputs or outputs. Dynamic data flow can show the existence of black boxes in a design by showing how the inputs to a module relate to its outputs. 
 		\subsubsection{Fan-In/Out}
@@ -102,14 +103,19 @@
 			$$R = 11(1034) = 11374$$
 			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor $206$. 
 		\subsubsection{Factoring}
+			Our design is highly factored, in that we have a central module, \texttt{Engine} that delegates to another, lower level of modules, and those modules delegate to yet another level of modules. Further, we can organize the modules into afferent modules and efferent modules, all sending data to or receiving data from a central transform branch, headed by \texttt{Engine}. By having a highly factored, branched design, we can insure that each module complies with Miller's law, Graciunas's law, and that the scope of control (discussed in the next section) and scope of effect are all within the ideal parameters. Additionally, by not sending control flags back and forth between superordinate modules and subordinate modules, we have reduced control coupling to acceptable levels.  
 		\subsubsection{Scope of Control}
+			If we examine the factored design diagram, we can see how the data is being moved between modules. Each module in the design is only able to request information from the module(s) directly subordinate to it, with regard to the afferent branch. The central transform branch, consisting of the \texttt{engine} module and its two subordinate modules, only allows control decisions to be made by \texttt{Engine}, with regard to its subordinate modules. However, one issue with this design is that one of \texttt{Engine}'s subordinate modules passes back an actor event, and the type of event \texttt{Engine} receives directly determines how it proceeds in its execution with regard to that event. Thus, control in this case is moving from a subordinate module to a superordinate module, which is typically considered detrimental to the system. However, as this is the only place in the design where this occurs, and because the design is that of a game, this behavior is expected, and has been taken into account. 
 		\subsubsection{Black Boxes}
+			If we examine the data flow diagram, we can see that our analysis shows extensive use of black boxes. Each module sends, receives, and processes data completely independently of other modules. Therefore, any change made in one module will not affect the data processing of any other modules, which reduces complexity. This insures that a minimum of time will be spent debugging errors and maintaining the software throughout its life. One exception here is, as discussed in the subsection covering scope of control, is \texttt{Engine}. Because it is control coupled with a subordinate module, a change in \texttt{Engine} or a change in the types of actor events it receives from its subordinate modules is subject to additional errors in whichever module was not modified. Although this behavior is expected and accounted for, it must be paid special attention during debugging and modification, to insure that the system continues to function properly. While this behavior is considered negative, it is necessary for the full functionality of the game itself, and cannot be avoided.  
 		\subsubsection{Fan In/Out}
-	\subsection{Conclusion}	
+			Fan in and fan out are two features of software design that can be indicative of a design's quality. Our design makes extensive use of both. Looking at the factored diagram, we can see that the engine module is a target of fan out, indicating a factored design that delegates processing to lower level modules and control to superordinate modules. This is an ideal state for our system to be in. If we examine other modules, terminating modules, or those at the lowest levels of the system, are consistently targets for fan in, which is, again, an ideal state. For the system in question, we have an average fan out value of 6. Ideally, this value would be between 3 and 4, but it still complies with Miller's Law, which recommends not exceeding a value of $7\pm2$. 
+	\subsection{Conclusion}
+		While dynamic data flow analysis is a very beneficial design methodology, which clearly shows the flow of data through a system, data coupling, control coupling, and allows a designer to develop a highly factored system, it cannot measure or demonstrate the amount, level, or type of cohesion within each module. Thus, for our application of game development, it provides useful metrics, but is not ideally suited for what our design seeks to achieve. It does indicate, however, that we have developed a quality design, with high factoring, black boxes, low control coupling, moderate data coupling, and highly differentiated and well defined afferent, efferent, and central control branches. 
 %
 % End Section 2, begin Section 3 - Static Data Flow Analysis
 %
-\section{Design \#1: Top Down Iterative Refinement}
+\section{Design \#3: Static Data Flow Analysis}
 	\subsection{General Considerations}
 	\subsection{Metrics}
 	\subsection{Analysis}
@@ -117,7 +123,7 @@
 %
 % End Section 3, begin Section 4 - Object Oriented Design
 %
-\section{Design \#1: Top Down Iterative Refinement}
+\section{Design \#4: Object Oriented Design (UML)}
 	\subsection{General Considerations}
 	\subsection{Metrics}
 	\subsection{Analysis}
