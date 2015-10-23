@@ -101,7 +101,7 @@
 			$$R = 11(2^{11-1} + 11 - 1)$$
 			$$R = 11(1024 + 11 - 1)$$
 			$$R = 11(1034) = 11374$$
-			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor $206$. 
+			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor of $206$. 
 		\subsubsection{Factoring}
 			Our design is highly factored, in that we have a central module, \texttt{Engine} that delegates to another, lower level of modules, and those modules delegate to yet another level of modules. Further, we can organize the modules into afferent modules and efferent modules, all sending data to or receiving data from a central transform branch, headed by \texttt{Engine}. By having a highly factored, branched design, we can insure that each module complies with Miller's law, Graciunas's law, and that the scope of control (discussed in the next section) and scope of effect are all within the ideal parameters. Additionally, by not sending control flags back and forth between superordinate modules and subordinate modules, we have reduced control coupling to acceptable levels.\footnote{See Appendix A, Section 5.2, Subsection 5.2.2 for the appropriate diagram.}  
 		\subsubsection{Scope of Control}
