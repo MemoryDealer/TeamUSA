@@ -37,7 +37,14 @@ The system has been developed using the design techniques in the following secti
 % Design Specifics
 %
 \section{Design Features \& Specifics}
-	\subsection{Three-Tier Design}
+	\subsection{Three-Tier}
+		The software system itself utilizes a three-tier design, in which there is a separate presentation element for the user to interact with, a separate data processing element, and a file storage element that will be implemented for persistence between user sessions. 
+		\subsubsection{Presentation Element}
+			The presentation element for the system consists of the application window, which renders the video and audio content passed to it from the video and audio managers, which receive and handle audio and video requests and display controls from the engine module. The application window itself is a standard window as defined and rendered by the host computer's operating system. 
+		\subsubsection{Data Processing Element}
+			The data processing element for the system consists of the engine module and its subordinate transform modules. The engine receives user input and relevant data from the level file, which contains the necessary resource identifiers. The engine can then execute the main loop of the system, which tracks player position versus actor position, items the player has collected, and the player's progression through the game itself. It directs the video and audio manager modules to display the correct and relevant audio and video content to the player via the application window, which comprises the display element. 
+		\subsubsection{File Storage Element}
+			 The system makes use of a simple file storage element, which stores two types of files: save and level files. Save files consist of the player's inventory and the level file ID for the level to resume from. The level file referenced by the level file ID in the save file contains all of the necessary resources for the level to function correctly. The serializer module uses its load function to pull in a level file and load the resources indicated specified inside of it. These resources are compiled as ``level data'', and passed on to the engine, which is the head of the data processing element. The file storage element generates save files when the user moves from one level to the next, and does not allow saving and resuming from an arbitrary point in a given level. 
 	\subsection{N-Tier}
 	\subsection{Deadlocks \& Race Conditions}
 	\subsection{Final Product Testing}
@@ -178,7 +185,7 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			\end{center}
 		\subsubsection{Actor Inheritance Sub-diagram}
 			\begin{center}
-				\includegraphics[scale=0.35]{Actors}
+				\includegraphics[scale=0.3]{Actors}
 			\end{center}
 \section{Appendix B: Story \& Level Progression}
 	\subsection{Story}
