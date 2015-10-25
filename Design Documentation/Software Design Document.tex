@@ -39,7 +39,7 @@
 \section{Software System Description \& General Introduction}
 The software system subject to design and analysis, and referenced throughout this document as ``the system'', or variations thereof, is a two dimensional, point-and-click adventure game. The user takes on the role of a computer science major at Sam Houston State University as they attempt to submit their final lab for Dr. David Burris's Data Structures \& Algorithms course, before the looming deadline. The user will attempt to navigate through various obstacles to complete this objective, while avoiding various traps, hostile entities, and the darkness itself. The game environment consists of 3 levels, occurring on the various floors of Academic Building 1, and in certain other areas on the SHSU campus. Each level consists of individual scenes, containing various entities, collectible items, and textures. The player will navigate through theses scenes as they progress through the game. 
 
-The system has been developed using the design techniques in the following sections, and each technique has been evaluated based on the applicable metrics. The chosen design methodology for the implementation of the system is object oriented design, using the unified modeling language, or UML. Appendix A contains all of the applicable design diagrams, while Appendix B contains all of the applicable storyboard and level progression diagrams. A full sized level progression diagram can be found as a supplement to the scaled diagram inside this SDD. 
+The system has been developed using the design techniques in the following sections, and each technique has been evaluated based on the applicable metrics. The chosen design methodology for the implementation of the system is object oriented design, using the unified modeling language, or UML. Appendix A contains all of the applicable design diagrams, while Appendix B contains all of the applicable storyboard and level progression diagrams. A full sized level progression diagram can be found attached as a supplement to the scaled diagram inside this SDD. 
 %
 % Design Specifics
 %
@@ -56,6 +56,10 @@ The system has been developed using the design techniques in the following secti
 	\subsection{Deadlocks \& Race Conditions}
 	\subsection{Final Product Testing}
 	\subsection{Acceptance Criteria}
+		The acceptance criteria for the system define metrics which must be met for the system to be acceptable for general use. They are:
+		\begin{itemize}
+			\item Game textures that consume less than 512MB of video memory.
+		\end{itemize}
 	\subsection{Optimization}
 		\subsubsection{Optimizing for Time}
 		\subsubsection{Optimizing for Space}
