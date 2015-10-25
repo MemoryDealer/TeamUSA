@@ -39,7 +39,7 @@
 \section{Software System Description \& General Introduction}
 The software system subject to design and analysis, and referenced throughout this document as ``the system'', or variations thereof, is a two dimensional, point-and-click adventure game. The user takes on the role of a computer science major at Sam Houston State University as they attempt to submit their final lab for Dr. David Burris's Data Structures \& Algorithms course, before the looming deadline. The user will attempt to navigate through various obstacles to complete this objective, while avoiding various traps, hostile entities, and the darkness itself. The game environment consists of 3 levels, occurring on the various floors of Academic Building 1, and in certain other areas on the SHSU campus. Each level consists of individual scenes, containing various entities, collectible items, and textures. The player will navigate through theses scenes as they progress through the game. 
 
-The system has been developed using the design techniques in the following sections, and each technique has been evaluated based on the applicable metrics. The chosen design methodology for the implementation of the system is object oriented design, using the unified modeling language, or UML. Appendix A contains all of the applicable design diagrams, while Appendix B contains all of the applicable storyboard and level progression diagrams. A full sized level progression diagram can be found attached as a supplement to the scaled diagram inside this SDD. 
+The system has been developed using the design techniques in the following sections, and each technique has been evaluated based on the applicable metrics. \textbf{The chosen design methodology for the implementation of the system is object oriented design, using the unified modeling language, or UML.} Appendix A contains all of the applicable design diagrams, while Appendix B contains all of the applicable storyboard and level progression diagrams. A full sized level progression diagram can be found attached as a supplement to the scaled diagram inside this SDD. 
 %
 % Design Specifics
 %
@@ -53,18 +53,23 @@ The system has been developed using the design techniques in the following secti
 		\subsubsection{File Storage Element}
 			 The system makes use of a simple file storage element, which stores two types of files: save and level files. Save files consist of the player's inventory and the level file ID for the level to resume from. The level file referenced by the level file ID in the save file contains all of the necessary resources for the level to function correctly. The serializer module uses its load function to pull in a level file and load the resources indicated specified inside of it. These resources are compiled as ``level data'', and passed on to the engine, which is the head of the data processing element. The file storage element generates save files when the user moves from one level to the next, and does not allow saving and resuming from an arbitrary point in a given level. 
 	\subsection{N-Tier}
-	\subsection{Deadlocks \& Race Conditions}
+	\subsection{Deadlocks}
+	\subsection{Race Conditions}
+	\subsection{Optimization}
+		\subsubsection{Optimizing for Time}
+		\subsubsection{Optimizing for Space}
+	\subsection{Module Re-use}
+		In order to save on development time for future projects, ideally a system should have re-usable modules. Regarding this system, the audio and video modules are re-usable. They are black boxes that accept .WAV and .PNG files and perform a specific action on those inputs. For the video module, it accepts .PNG files and displays them, while the audio module accepts .WAV files and plays them as sound from attached speakers. 
+	\subsection{Implementation Plan}
 	\subsection{Final Product Testing}
 	\subsection{Acceptance Criteria}
 		The acceptance criteria for the system define metrics which must be met for the system to be acceptable for general use. They are:
 		\begin{itemize}
 			\item Game textures that consume less than 512MB of video memory.
+			\item Persistence, implemented through the file system. 
+			\item A fully usable application interface, in the form of a window that accepts mouse input in the form of cursor movements and button actuations
 		\end{itemize}
-	\subsection{Optimization}
-		\subsubsection{Optimizing for Time}
-		\subsubsection{Optimizing for Space}
-	\subsection{Module Re-use}
-	\subsection{Implementation Plan}
+
 %
 % Begin Section 1 - Top Down Iterative Refinement
 %
@@ -114,34 +119,35 @@ The system has been developed using the design techniques in the following secti
 				\begin{tabular}{| l || c |}
 					\hline
 					Get Mouse State 					& 3 \\ \hline
-					Create Save File					& 3 \\ \hline
+					Create Save File					& 2 \\ \hline
 					Parse Save File 					& 3 \\ \hline
 					Load Level							& 3 \\ \hline
 					Engine								& 8 \\ \hline
-					Update Player						& 6 \\ \hline
+					Update Player						& 1 \\ \hline
 					Compare Player \& Actor Positions	& 2 \\ \hline
-					Video Manager						& 3 \\ \hline
+					Video Manager						& 2 \\ \hline
 					Render Video						& 2 \\ \hline
-					Audio Manager						& 3 \\ \hline
+					Audio Manager						& 2 \\ \hline
 					Play Audio							& 2 \\ \hline
-					\textbf{Total:}						& 38 \\
+					Save Game							& 2 \\ \hline
+					\textbf{Total:}						& 32 \\
 					\hline
 				\end{tabular}
 			\end{center}
-			So we can calulate $A$, the average number of interactions between modules with regard to Miller's Law by dividing 38 by the number of modules $N$, where $N = 11$: 
-			$$A = 45 \div N = 38 \div 11 = 3.4545$$
-			Therefore, while two of the design's modules approach the limits of Miller's Law, the overall average number of interactions between modules with regard to Miller's law is within the expected range of values, at $3.4545$. 
+			So we can calulate $A$, the average number of interactions between modules with regard to Miller's Law by dividing 32 by the number of modules $N$, where $N = 12$: 
+			$$A = 32 \div N = 32 \div 12 = 2.667$$
+			Therefore, while one of the design's modules approach the limits of Miller's Law, the overall average number of interactions between modules with regard to Miller's law is within the expected range of values, at $2.667$. 
 		\subsubsection{Graciunas's Law}
 			Because the design makes use of a highly factored, modular design, the majority of data is passed from one module to another, using a one-way connection where each module only communicates with its direct superior, controlling module. This insures that each pair of modules only has one path of communication between them, and thus only 1 relationship. The \texttt{Engine} module,\footnote{See Appendix A, Section 7.2, Subsection 7.2.2 for the appropriate diagram.} however, interacts with 6 modules, with two relationships between two of its subordinate modules. Thus, its number of interactions are defined by the equation $$I = \frac{N(N - 1)}{2}$$
 			where $I$ is the number of interactions between modules and $N$ is the number of modules in the system:
-			$$I = \frac{6(5)}{2} = 15$$
-			And so \texttt{Engine} has 15 possible interactions in the system, and the system as a whole has 
-			$$I = \frac{11(10)}{2} = 55$$
+			$$I = \frac{7(6)}{2} = 21$$
+			And so \texttt{Engine} has 21 possible interactions in the system, and the system as a whole has 
+			$$I = \frac{12(11)}{2} = 66$$
 			Limiting data and control this way substantially reduces complexity. Not implementing this type of design results in the number of relations being defined by $R = M(2^{M-1} + M - 1)$, where $M$ is the number of subordinate modules. If we calculate that value, we have that
-			$$R = 11(2^{11-1} + 11 - 1)$$
-			$$R = 11(1024 + 11 - 1)$$
-			$$R = 11(1034) = 11374$$
-			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor of $206$. 
+			$$R = 12(2^{12-1} + 12 - 1)$$
+			$$R = 12(2048 + 12 - 1)$$
+			$$R = 12(2059) = 24708$$
+			And so we can clearly see that by limiting the number of data and control relations between modules to the absolute minimum, we have reduced the number of relations by an approximate factor of $375$. 
 		\subsubsection{Factoring}
 			Our design is highly factored, in that we have a central module, \texttt{Engine} that delegates to another, lower level of modules, and those modules delegate to yet another level of modules. Further, we can organize the modules into afferent modules and efferent modules, all sending data to or receiving data from a central transform branch, headed by \texttt{Engine}. By having a highly factored, branched design, we can insure that each module complies with Miller's law, Graciunas's law, and that the scope of control (discussed in the next section) and scope of effect are all within the ideal parameters. Additionally, by not sending control flags back and forth between superordinate modules and subordinate modules, we have reduced control coupling to acceptable levels.\footnote{See Appendix A, Section 7.2, Subsection 7.2.2 for the appropriate diagram.}  
 		\subsubsection{Scope of Control}
@@ -149,7 +155,7 @@ The system has been developed using the design techniques in the following secti
 		\subsubsection{Black Boxes}
 			If we examine the data flow diagram\footnote{See Appendix A, Section 7.2, Subsection 7.2.1, for the appropriate diagram.}, we can see that our analysis shows extensive use of black boxes. Each module sends, receives, and processes data completely independently of other modules. Therefore, any change made in one module will not affect the data processing of any other modules, which reduces complexity. This insures that a minimum of time will be spent debugging errors and maintaining the software throughout its life. One exception here is, as discussed in the subsection covering scope of control, is \texttt{Engine}. Because it is control coupled with a subordinate module, a change in \texttt{Engine} or a change in the types of actor events it receives from its subordinate modules is subject to additional errors in whichever module was not modified. Although this behavior is expected and accounted for, it must be paid special attention during debugging and modification, to insure that the system continues to function properly. While this behavior is considered negative, it is necessary for the full functionality of the game itself, and cannot be avoided.  
 		\subsubsection{Fan In/Out}
-			Fan in and fan out are two features of software design that can be indicative of a design's quality. Our design makes extensive use of both. Looking at the factored diagram, we can see that the engine module is a target of fan out, indicating a factored design that delegates processing to lower level modules and control to superordinate modules. This is an ideal state for our system to be in. If we examine other modules, terminating modules, or those at the lowest levels of the system, are consistently targets for fan in, which is, again, an ideal state. For the system in question, we have an average fan out value of 6. Ideally, this value would be between 3 and 4, but it still complies with Miller's Law, which recommends not exceeding a value of $7\pm2$. 
+			Fan in and fan out are two features of software design that can be indicative of a design's quality. Our design makes extensive use of both. Looking at the factored diagram, we can see that the engine module is a target of fan out, indicating a factored design that delegates processing to lower level modules and control to superordinate modules. This is an ideal state for our system to be in. If we examine other modules, terminating modules, or those at the lowest levels of the system, are consistently targets for fan in, which is, again, an ideal state. For the system in question, we have an average fan out value of 5. Ideally, this value would be between 3 and 4, but it still complies with Miller's Law, which recommends not exceeding a value of $7\pm2$. 
 	\subsection{Conclusion}
 		While dynamic data flow analysis is a very beneficial design methodology, which clearly shows the flow of data through a system, data coupling, control coupling, and allows a designer to develop a highly factored system, it cannot measure or demonstrate the amount, level, or type of cohesion within each module. Thus, for our application of game development, it provides useful metrics, but is not ideally suited for what our design seeks to achieve. It does indicate, however, that we have developed a quality design, with high factoring, black boxes, low control coupling, moderate
 data coupling, and highly differentiated and well defined afferent, efferent, and central control branches. 
