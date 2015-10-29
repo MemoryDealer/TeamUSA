@@ -174,7 +174,7 @@ The system has been developed using the design techniques in the following secti
 		The acceptance criteria for the system defined metrics which must be met for the system to be acceptable for general use. They are:
 		\begin{itemize}
 			\item Game textures that consume less than 512MB of video memory.
-      \item A consistent 60 frames per second on reasonably new graphics cards.
+      		\item A consistent 60 frames per second on reasonably new graphics cards.
 			\item Persistence, implemented through the file system. 
 			\item A fully usable application interface, in the form of a window that accepts mouse input consisting of cursor movements and button actuations.
 		\end{itemize}
@@ -203,9 +203,9 @@ The system has been developed using the design techniques in the following secti
 			\paragraph{Control Coupling}
 				Control coupling occurs when one module's output is used to influence or determine the execution logic of a subsequent module - for example, a boolean value or control flag is passed from one module into another that performs a different action depending on the value it receives. This type of coupling is detrimental to the software system because it implies that each of the coupled modules must know something about what is contained in the other, meaning one or both may not be a true black box, which indicates that one or both may not be separately implementable or maintainable. 
 		\subsubsection{Miller's Law}
-			Miller's law tells us that, on average, the largest number of tasks that can be simultaneously held in memory is $7\pm2$. Thus, we should work for a design wherein each module complies with this law and its value. Using dynamic data flow analysis, we can see how the data flows into and out of each module, and with the hierarchical model, how control is implied to flow between modules as well. A good design will show, on average, each module having 4 to 5 tasks, and not more than $7\pm2$.\footnote{See softEng1.docx, page 36, by David Burris for more information on Miller's Law.}  
+			Miller's law tells us that, on average, the largest number of tasks that can be simultaneously held in memory is $7\pm2$. Thus, we should work for a design wherein each module complies with this law and its value. A good design will show, on average, each module having 4 to 5 tasks, and not more than $7\pm2$.\footnote{See softEng1.docx, page 36, by David Burris for more information on Miller's Law.}  
 		\subsubsection{Graciunas's Law}
-			Graciunas's law concerns itself with the number of control relations between modules, and predicts how this impacts the complexity of the software system. For a given set of modules, $R$, we have that $R = M(2^{M-1} + M - 1)$, where $M$ is the number of subordinate modules. Because dynamic data flow analysis shows the flow of data and the implied flow of control throughout the system, we can use this law and its equation to minimize the number of inter-module relations to the ideal minimum, represented by the equation 
+			Graciunas's law concerns itself with the number of control relations between modules, and predicts how this impacts the complexity of the software system. For a given set of modules, $R$, we have that $R = M(2^{M-1} + M - 1)$, where $M$ is the number of subordinate modules. We can use this law and its equation to minimize the number of inter-module relations to the ideal minimum, represented by the equation 
 			$$I = \frac{N(N - 1)}{2}$$
 			where $I$ is the number of interactions between modules and $N$ is the number of modules in the system. \footnote{See softeng1.docx, page 40, by David Burris for more information on Graciunas's Law.}
 		\subsubsection{Factoring}
@@ -291,7 +291,7 @@ The system has been developed using the design techniques in the following secti
 			\begin{itemize}
 				\item \texttt{Get Mouse State} is functionally cohesive. This module collects mouse movement and button actuation during each frame. 
 				\item \texttt{Engine} is procedurally cohesive. This module iterates through a specific set of processes that control overall execution of the program, and those processes are always executed in the same order in the same way. 
-				\item \texttt{Update Player} is functionally cohesive. this module updates the player with new cursor coordinates. 
+				\item \texttt{Update Player} is functionally cohesive. This module updates the player with new cursor coordinates. 
 				\item \texttt{Create Save File} is functionally cohesive. This module performs the single task of creating a save file, if the user chooses to create a new game. 
 				\item \texttt{Parse Save File} is sequentially cohesive. This module accepts a save file, reads the data it contains, and generates the necessary output. 
 				\item \texttt{Load Level} is sequentially cohesive. This module accepts a level file, reads through it, and loads the data that the file contains. This pulls the necessary resources for the \texttt{Engine} module. 
@@ -384,7 +384,7 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			\item Scope of Control/Effect
 		\end{itemize}
 	\subsection{Analysis}
-		\subsection{Cohesion}
+		\subsubsection{Cohesion}
 			Due to the way Jackson's Technique constructs the modules and their names, it is better for readability to simply refer to the module names with a letter. Consult the program structure diagram in Appendix A for the modules' specific names. 
 			\begin{itemize}
 				\item \texttt{A}; Sequentially cohesive. This module accepts, reads, and processes a save file. 
@@ -403,7 +403,7 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			$$C = (9 + 9 + 10 + 5 + 10 + 9 + 7 + 10 + 10)/9$$
 			$$C = (18 + 25 + 26)/12$$
 			$$C = 69/9 = 7.667$$
-			From which we can infer that using this design, our system would moderately high cohesion, but less cohesion than the design developed with dynamic data flow analysis. 
+			From which we can infer that using this design, our system would have moderately high cohesion, but less cohesion than the design developed with dynamic data flow analysis. 
 		\subsubsection{Coupling}
 			When examining the design produced by Jackson's technique, we can see that there is little coupling between modules. Each module can be implemented separately and maintained on its own, without regard to how the other modules are implemented. 
 		\subsubsection{Miller's Law}
