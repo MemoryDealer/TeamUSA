@@ -314,6 +314,90 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 % Design selection & why
 %
 \section{Design Selection \& Rationale}
+The object oriented design had many advantages over other designs, with the strongest advantage being explicit definitions of data types, functions/methods, and classes that will be utilized in the system; these definitions will allow for a quicker implementation phase, because the interfaces can be directly translated into code. Further, each member of the team will have a clearer understanding of the functionality provided by each module, as a majority of the necessary details are provided up-front instead of during the implementation phase. Another side effect of having these details provided is that the division of labor to each team member can be performed rapidly, allocating the more difficult modules to experienced developers. Finally, the flexibility of object oriented design allowed for an easier design phase when compared to static dataflow analysis or top-down iterative refinement, both of which did not seem to be an appropriate design technique for a video game.
+
+  \subsection{Module Rationale}
+    \subsubsection{Main}
+      The entry-point of the program. As the highest-level module, it will be responsible for capturing any exceptions/errors thrown during the execution of the system and logging them to a file. Since it is at the top of the program hierarchy, it will be simple to debug if there is an issue in the logging capability itself.
+
+    \subsubsection{Engine}
+      The engine will poll for user input, control the interactions between the player and actors, and produce the system's audio and video outputs. This module should receive requests from actors and decide whether or not the request should be performed and how to handle it. The engine will act as a buffer between the audio/video engines and the rest of the actors in the system, preventing them from being accessed directly by the actors themselves. All game logic not pertaining to an actor will occur in this module.
+
+    \subsubsection{GameSaveSerializer}
+      This module is responsible for saving/loading the player's inventory, the current level, and the current scene to a file in a binary format. The save should occur in a separate thread to prevent gameplay from being interrupted, while the loading should not be done in a multithreaded context. A mutex should be utilized to prevent the save file from being accessed while it is being written to. File system locks should also be utilized to ensure that the file is not written to simultaneously by multiple threads.
+
+    \subsubsection{Player}
+      The player module will keep track of the player's current position in the game, the player's current display image, and what items the player is holding. It should expose a method that allows its current display image to be changed.
+
+    \subsubsection{Level}
+      Provides a way to keep track of scenes through the use of unique IDs. Parses the given level file during its construction phase, loading the necessary assets and creating actors required for the level.
+
+    \subsubsection{AudioEngine}
+      Handles requests to load and display audio and forwards them to the AudioPlayer module. This module will hold any system specific audio information, such as the various resource groups, to allow the AudioPlayer module to be reused for different projects with no modification. The use of this module as a buffer will prevent the AudioPlayer from having unnecessary modifications.
+
+    \subsubsection{AudioPlayer}
+      This module will be responsible for loading various audio assets and playing them when requested. It should have no information specific to the system itself, and it should be treated only as a library that can be accessed. It should be assumed that this module will be used in future projects.
+
+    \subsubsection{VideoEngine}
+      Used to store the various system-specific video information, such as resource groups, text box status, and the rendering layers. This module will also forward video loading and display requests to the video context module. The use of this module as a buffer will prevent the VideoContext from having unnecessary modifications.
+
+    \subsubsection{VideoContext}
+      Responsible for loading and rendering the various video resources by contacting the graphics card. It should not contain any system specific data, and it should be treated as a separate library. This module can be packaged with the VideoDisplay module and reused in future projects with no modifications.
+
+    \subsubsection{VideoDisplay}
+      Controls the window that will be used to display the rendered images on screen. It should not contain any system specific data. It should be treated as a separate library that can be coupled with the VideoContext module in future applications.
+
+    \subsubsection{BaseActor}
+    Abstract class that all actors inherit from. This class should provide onClick, onHover, and step procedures that perform no action by default.
+
+
+    \subsubsection{VideoActor}
+    An actor that will only display a texture at a given region. This actor will have no interation with the player.
+
+
+    \subsubsection{DelayedVideoActor}
+    Will increment a counter every time the step method is called. After a specified number of steps have occurred, this actor will change its TextureID to a valid value and will be displayed. When the number of steps is equal to the disappearing step, the TextureID will be set to an ignored value, causing the actor to disappear.
+
+
+    \subsubsection{VideoEventActor}
+    Will display a texture and perform no action until clicked. The onClick method will return the ActorEventType and value given this actor during construction time. Can be used to cause LoadGame and SaveGame events. The TextureID can be set to an invalid value during construction if no image needs to be displayed. The onHover method will set the player's cursor style to cursor select mode.
+
+
+    \subsubsection{ResponsiveVideoActor}
+    Will display the default TextureID. When onHover is called, it will display the hover TextureID. When onClick is called, the onClick texture will be set permanently. Can disappear or appear by utilizing an invalid TextureID.
+
+
+    \subsubsection{MovingActor}
+    Will transition from one region to the next by calculating the distance to move each frame for a set number of frames. This allows for movement across the X and Y axis as well as scaling of the size of textures. If moveOnSpawn is set, then the step method will advance the actor immediately. Otherwise, the actor will move after it is clicked on.
+
+
+    \subsubsection{InventoryItemActor}
+    Will display a texture by default. When onClick is called, the actor will add an item to the player's inventory, set its TextureID to an invalid value, and set its pickedUp status to true.
+
+
+    \subsubsection{LevelLink}
+    Will emit a LoadLevel event with the value of the level to load when onClick is called if the player has the specified item in its inventory. If the item id is invalid, then the check is not enforced.
+
+
+    \subsubsection{SceneLink}
+    Will emit a ChangeScene event when the onClick method is called if the player has the specified item in its inventory. If the item id is invalid, then the check is not enforced.
+
+
+    \subsubsection{TextboxSpawnActor}
+    Will emit a DisplayText event when the onClick method is called. The actor can then have its text accessed by the engine for display through a call to the getText method.
+
+
+    \subsubsection{AudioStreamActor}
+    If this actor is not activated, it will emit a StreamAudio event and set its status to activated when the step method is called. The engine can then retrieve the path to the audio file by a call to this actor's getPath method.
+
+
+    \subsubsection{DelayedAudioActor}
+    A call to step Will emit a PlayAudio event with the value set to the AudioID to play if delaySteps is equal to currentStep. It will also increment the value of currentStep for each step.
+
+
+    \subsubsection{ResponsiveAudioActor}
+    Will increment the value of stepCount until it is equal to durationSteps for each call to the step method. A call to onClick or onHover will set the value of stepCount to zero and emit an AudioID and value if stepCount is equal to durationSteps. The hoverAudioID or clickAudioID can be set to an invalid AudioID value to prevent sound from being played.
+
 %
 % Appendix A - Associated Diagrams & Figures
 %
