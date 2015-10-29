@@ -481,7 +481,18 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 				\item Level's map of BaseActor arrays are coupled to the Engine, in order to perform required operations on each actor.
 			\end{itemize}
 		\subsubsection{Miller's Law}
+			The design does not exhibit any modules that exceed the limit for Miller's Law, which is $7\pm2$ interactions. The largest number of relations is in Engine, which has 5 compositions. The system has 24 modules, 12 of which are inherited directly from BaseActor and have no subordinates.
 			
+			\paragraph{Subordinate relations per module}			
+			\begin{itemize}
+				\item Engine: 5
+				\item BaseActor: 2
+				\item All 22 others: 1
+			\end{itemize}
+			
+			Hence the average $A$ is calculated,
+			$$A = (5 + 2 + 22)/22 = 1.32$$
+			Which is to say, on average, each module has 1.32 subordinates.
 	\subsection{Conclusion}
 %
 % Design selection & why
