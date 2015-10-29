@@ -269,7 +269,7 @@ The system has been developed using the design techniques in the following secti
 %
 \section{Design \#2: Dynamic Data Flow Analysis}
 	\subsection{General Considerations}
-		Dynamic data flow analysis is a design methodology used to demonstrate the flow of data through a software system. A good software design, when analyzed with the dynamic data flow method will show a well defined input, or afferent, branch where data is collected and acted upon by related input processing functions (such as opening a file or reading the file contents to an array for use by another module). Data processed by the afferent branch should then be passed to a well defined central transform branch where the core operations of the software are performed on the data, and output data is generated and returned. Finally, this output data is sent to a well defined output, or efferent, branch, where it is processed into its final output format, such as a report. 
+		Dynamic data flow analysis is a design methodology used to demonstrate the flow of data through a software system. A good software design, when analyzed with the dynamic data flow method, will show a well defined input, or afferent, branch where data is collected and acted upon by related input processing functions (such as opening a file or reading the file contents to an array for use by another module). Data processed by the afferent branch should then be passed to a well defined central transform branch where the core operations of the software are performed on the data, and output data is generated and returned. Finally, this output data is sent to a well defined output, or efferent, branch, where it is processed into its final output format, such as a report. 
 	
 		Two data flow diagrams are used when plotting the path of data from input to output in a software system. The first is a flow diagram, which shows data coming into the system, how it moves through the system's various modules, and eventually is output in a useful way. The second diagram is a hierarchical diagram that shows the modules that make up the system, and how they are related. This diagram shows the flow of data, but also implies the control structure of each module as it relates to the others and to the system as a whole. Data couples and control couples are indicated here as well. Further, because this type of analysis focuses on the flow of data, with an implied control structure and without any concern for the contents of the actual function bubbles present in the diagram, it is not able to determine or show the cohesiveness of any particular module. This is detrimental because it potentially allows modules that are merely coincidentally cohesive to exist until the implementation phase, when the problems associated with that form of cohesion will likely begin to appear. 
 	\subsection{Analysis Metrics}
@@ -364,7 +364,7 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 %
 \section{Design \#3: Static Data Flow Analysis}
 	\subsection{General Considerations}
-		Static data flow analysis is a design methodology using Jackson's technique. this focuses on processing the data, thus generating a program structure that reflects the data that it processes. There are four steps in Jackson's technique, used for static data flow analysis:
+		Static data flow analysis is a design methodology using Jackson's technique. This focuses on processing the data, thus generating a program structure that reflects the data that it processes. There are four steps in Jackson's technique, used for static data flow analysis:
 		\begin{enumerate}
 			\item Evaluate the problem environment and define the structures for data to be processed. 
 			\item Develop a program structure based on the data structures. 
@@ -433,14 +433,30 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 %
 \section{Design \#4: Object Oriented Design (UML)}
 	\subsection{General Considerations}
+		Using an object-oriented design methodology, the architecture of the system is built around the collection of objects, rather than data or algorithmic abstraction. Using UML (Unified Modeling Language), each object in the system is described, along with their relationship(s) to other objects, and their attributes and operations. 
+		
+		The quality of an object-oriented design is contingent on the analysis phase (e.g., the specification) of a project. If the problem is not fully understood and addressed during specification, the object-oriented design will fail to produce a quality system. Object-oriented design is advantageous in that it provides explicit and clear definitions of each part of the system. If each step from specification to design is carried out properly, the developers will be provided with efficient instructions on how to implement the system.
+		
+		It is important to consider that one view of an object is frequently insufficient to grasp its totality. Hence it is necessary to have additional descriptions such as timing diagrams and functional diagrams to fully grasp the system. 
 	\subsection{Metrics}
+		The analysis metrics used for object-oriented design are:
+		\begin{itemize}
+			\item Cohesion
+			\item Coupling (data)
+			\item Miller's Law
+			\item Graciunas's Law
+			\item Factoring
+			\item Scope of Control/Effect
+			\item Black Boxes
+			\item Fan In/Out
+		\end{itemize}
 	\subsection{Analysis}
 		\subsubsection{Cohesion}
 			Cohesion can be inferred from the ideas that each module generated during Object Oriented Design contains. Thus, we will proceed by examining the cohesiveness of each module individually. A module's cohesive strength will be considered equal to the cohesion value of its weakest function/method/constructor during this design evaluation.
 			\begin{itemize}
 				\item \texttt{Main} Functionally cohesive. It is responsible for starting the program and logging errors.
         \item \texttt{Engine} Procedurally cohesive. It provides functionality for passing data between multiple modules, as well as multiple algorithms for handling the various events that actors can generate. There are multiple ideas in this module, causing it to have fairly weak cohesion. This is necessary and unavoidable, however, as there must eventually be a connection between input, output, and actors in the game.
-        \item \texttt{GameSaveSerializer} Functionally cohesive. This module only recieves the data necessary to save the user's progress, and it only outputs data necessary to restore progress. It does not delegate behavior to subordinate modules.
+        \item \texttt{GameSaveSerializer} Functionally cohesive. This module only receives the data necessary to save the user's progress, and it only outputs data necessary to restore progress. It does not delegate behavior to subordinate modules.
         \item \texttt{Player} Functionally cohesive. This module is a black box that only handles information pertaining to the player. It does not have any subordinate modules used for computation or data storage.
         \item \texttt{Level} Sequentially cohesive. Reads a level file for scene/actor information and constructs actors with that corresponding information. Since input from the level module is passed to the input of the actors, it is considered to be sequentially cohesive.
         \item \texttt{BaseActor and subordinate children} Functionally cohesive. Each one of these actors is a black box that performs an action and returns an actor event request depending on the player input provided. No actor has a reference to anything that is not necessary for its function. No actor has a subordinate module to pass data to.
@@ -456,6 +472,16 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			$$C = (10 + 5 + 10 + 10 + 9 + 10 + 9 + 10 + 9 + 9 + 10)/11$$
 			$$C = 101/11 = 9.1818$$
 			From which we can infer that using this design, our system would demonstrate reasonably high cohesion, considering the ideal cohesion value of 10.
+			
+		\subsubsection{Coupling}
+			There exists some data coupling between modules, which is acceptable and necessary.
+			\begin{itemize}
+				\item The Player object is coupled between Engine and BaseActor's methods, since each actor requires access to the player's inventory. 
+				\item The BaseActor's Region and TextureID are coupled to the VideoEngine's render method, as well as AudioID to the AudioEngine's playSound method.
+				\item Level's map of BaseActor arrays are coupled to the Engine, in order to perform required operations on each actor.
+			\end{itemize}
+		\subsubsection{Miller's Law}
+			
 	\subsection{Conclusion}
 %
 % Design selection & why
