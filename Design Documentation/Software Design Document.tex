@@ -185,6 +185,15 @@ The system has been developed using the design techniques in the following secti
 	\subsection{Introduction}
 		The following analysis metrics are the criteria that are used to evaluate the quality and effectiveness of a given design paradigm. Each design may use some or all of the presented metrics, and some metrics may apply to only one or two design methodologies. Thus, each design will clearly indicate the metrics used for analysis of that particular methodology at the beginning of the applicable section. 
 	\subsection{Metric Definitions}
+		\subsubsection{Cohesion}
+			Cohesion is a measure of how well the parts of a module work and belong together. High cohesion is indicative of good design and low coupling. Conversely, low cohesion likely indicates a poor design and is associated with high levels of coupling. There are 7 types of cohesion, from least cohesive to most cohesive:
+			\paragraph{Coincidental} Coincidentally cohesive modules are those containing parts that have been arbitrarily grouped. They exist together in a module merely because they were placed there. 
+			\paragraph{Logical} Logically cohesive modules are those that contain parts that exist in the same related class. That is, they perform similar functions such as a set of edit-all processing elements. 
+			\paragraph{Temporal} Temporally cohesive modules contain processing elements that are related by when they are executed, such as a module executing a real-time function. 
+			\paragraph{Procedural} Procedurally cohesive modules are composed of processing elements that follow a specific path of execution. For example, a module may iterate through a specific sequence of data processing elements. 
+			\paragraph{Communicative} Communicatively cohesive modules contain elements that operate on the same input data and produce the same output data, such as a module taking in pay records outputting the required output calculations. 
+			\paragraph{Sequential} Sequential cohesion occurs when a module contains elements that process data like an assembly line - the output of one element is the input for another element. For example, a module that takes in a file, reads it, processes the data it contains. 
+			\paragraph{Functional} Functionally cohesive modules contain elements that all operate together to produce the desired output. Further, the module contains only the elements required to perform its function, and no additional processing elements. 
 		\subsubsection{Coupling}
 			\paragraph{Data Coupling}
 				Data coupling occurs when one module depends on the output of another, and the data they exchange is composed of discrete, elementary units, providing exactly what each module needs and nothing more or less. This is the lowest form of coupling with the least dependency between coupled modules. 
@@ -263,6 +272,7 @@ The system has been developed using the design techniques in the following secti
 	\subsection{Analysis Metrics}
 		The analysis metrics used for dynamic data flow are:
 		\begin{itemize}
+			\item Cohesion
 			\item Coupling (data \& control)
 			\item Miller's Law
 			\item Graciunas's Law
@@ -273,6 +283,29 @@ The system has been developed using the design techniques in the following secti
 		\end{itemize}
 	\subsection{Analysis}
 		The software system in question is that of a point-and-click, two dimensional game. We will draw conclusions from our analysis using both the data flow diagram and the hierarchical diagram from the previous dynamic data flow analysis of the software system. 
+		\subsubsection{Cohesion}
+			Cohesion can be inferred from the ideas that each module generated during dynamic data flow analysis contains. Thus, we will proceed by examining the cohesiveness of each module individually.\footnote{See the appropriate diagram in Appendix A}
+			\begin{itemize}
+				\item \texttt{Get Mouse State} is functionally cohesive. This module collects mouse movement and button actuation during each frame. 
+				\item \texttt{Engine} is procedurally cohesive. This module iterates through a specific set of processes that control overall execution of the program, and those processes are always executed in the same order in the same way. 
+				\item \texttt{Update Player} is functionally cohesive. this module updates the player with new cursor coordinates. 
+				\item \texttt{Create Save File} is functionally cohesive. This module performs the single task of creating a save file, if the user chooses to create a new game. 
+				\item \texttt{Parse Save File} is sequentially cohesive. This module accepts a save file, reads the data it contains, and generates the necessary output. 
+				\item \texttt{Load Level} is sequentially cohesive. This module accepts a level file, reads through it, and loads the data that the file contains. This pulls the necessary resources for the \texttt{Engine} module. 
+				\item \texttt{Compare Player to Actor} is sequentially cohesive. This module uses player data, uses it while iterating over the level actors, and uses output from those comparisons to generate the necessary actor events. 
+				\item \texttt{Video Manager} is sequentially cohesive. This module reads a supplied file path, retrieves the resource, and prepares it for display. 
+				\item \texttt{Display Video} is functionally cohesive. This module sends texture data to the graphics card for display. 
+				\item \texttt{Audio Manager} is sequentially cohesive. Like \texttt{Video Manager}, it takes in a file path, retrieves the associate resource, and prepares it for playback. 
+				\item \texttt{Play Audio} is functionally cohesive. It plays the loaded audio data through the output device (internal/external speakers). 
+				\item \texttt{Save Game} is sequentially cohesive. This module gathers player data from \texttt{Engine} and writes it to a file for persistence between game sessions. 
+			\end{itemize}
+			If we assign a value to each type of cohesion, as in the document \emph{softeng2.docx} by David Burris, then we have that coincidental cohesion has a value of 0, procedural cohesion has a value of 5, sequential cohesion has a value of 9, and functional cohesion has a value of 10. If we sum the cohesion values for each module listed above, we can determine the average level of cohesion for the system, where 1 is complete coincidental cohesion, and 10 is complete functional cohesion:
+			$$C = \Bigg[\sum_{i=1}^{n}v\Bigg] /n$$
+			where $C$ is the average cohesion, $v$ is the value of cohesion, and $n$ is the number of modules in the system. So we have that
+			$$C = (10 + 5 + 10 + 10 + 9 + 9 + 9 + 9 + 10 + 9 + 10)/12$$
+			$$C = (10 + 25 + 45 + 20)/12$$
+			$$C = 100/12 = 8.3333$$
+			From which we can infer that using this design, our system would demonstrate high cohesion. 
 		\subsubsection{Coupling}
 			The design exhibits high levels of data coupling between modules, and a low level of control coupling between modules. Data coupling, while potentially undesirable, is the least detrimental form of coupling, and is likely present in every software design to some degree. In general, our design is data coupled at interfaces between higher level modules and lower level modules, and the data is being passed down the hierarchy for efferent modules and up the hierarchy for afferent modules, as expected. Control coupling occurs in the design at interfaces between controller-type modules and the modules they control. Because the system is a game, it relies on certain modules to control the overall execution of the other, subordinate data processing modules. These control modules then are necessarily coupled to their subordinate processing modules. While this is undesirable from a design standpoint, it is unavoidable. 
 		\subsubsection{Miller's Law}
