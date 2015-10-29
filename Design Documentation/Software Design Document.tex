@@ -101,7 +101,7 @@ The system has been developed using the design techniques in the following secti
     The levels, art assets, and story of the system will all be defined by the level files. This allows the engine to be reused for other point-and-click games with no modification to the existing codebase; the only modified resource will be ASCII text-files.
 
 	\subsection{Implementation Plan}
-    The implementation for this project will be written in the C++ programming language, specifically the 2011 version. The video, audio, and mouse input library utilized to provide basic access to system functions will be SDL2, which is an industry-standard library written and maintained by Valve Corporation. It has been proven and tested thoroughly and is actively used in game development at the time of writing this document. The library will likely be supported and maintained over the course of the next decade by the various companies that utilize it in their applications.
+    The implementation for this project will be written in the C++ programming language, specifically the 2011 standard. The video, audio, and mouse input library utilized to provide basic access to system functions will be SDL2, which is an industry-standard library written and maintained by Valve Corporation. It has been proven and tested thoroughly and is actively used in game development at the time of writing this document. The library will likely be supported and maintained over the course of the next decade by the various companies that utilize it in their applications.
     \subsubsection{Work Distribution}
       All task names are assumed to be modules. Non-module tasks that are distributed will be italicized. Note that some tasks are significantly more complex than others, so these have been distributed out to the developers with more experience in C++. It is expected that each team member will provide assistance to other teammates as necessary if all assigned tasks have been completed. \emph{Note: the following list is two columns for the sake of readability.}
       \begin{multicols}{2}
@@ -127,7 +127,7 @@ The system has been developed using the design techniques in the following secti
         \item McGowen, Andrew 
         	\begin{itemize}
 				\item Level 
-				\item \emph{Sample tests for level file parsing} 
+				\item \emph{Cross-platform migration} 
 				\item \emph{Level files}
 			\end{itemize}
         \item Menteer, Derek 
@@ -165,6 +165,11 @@ The system has been developed using the design techniques in the following secti
       \end{multicols}
       
 	\subsection{Final Product Testing}
+    Each group of similar modules should have a set of test cases that can be performed to verify their integrity. Testing the modules in isolation will allow developers to ensure their code is correct before attempting to integrate it with other modules. Further, the set of test cases can be utilized to ensure that no new errors have been introduced during maintenance and modification. When compiling code, usage of the \textit{pedantic, force strict standards, and warn on all} flags should be provided to the compiler to ensure that non-standard compliant code is treated as an error; without these flags, the code will not be guaranteed to be cross-platform.
+
+    Team members are encouraged to use the Catch Framework \footnote{See https://github.com/philsquared/Catch for more documentation on the Catch Framework} to write and test for errors in their C++ code, but it is not required. Some modules, such as audio and video, that cannot be completely tested without human interaction will need a custom test file supplied.
+
+    The product should perform smoothly with no errors during the final testing. All possible scenarios in the game should be thoroughly examined multiple times. Use of memory inspection tools, like Valgrind \footnote{See http://valgrind.org/ for more documentation on Valgrind}, should be utilized to ensure that memory leaks do not occur during runtime of the system. Any memory leaks will be considered an error/failure and will need to be resolved before the program is considered acceptable for distribution.
 	\subsection{Acceptance Criteria}
 		The acceptance criteria for the system defined metrics which must be met for the system to be acceptable for general use. They are:
 		\begin{itemize}
