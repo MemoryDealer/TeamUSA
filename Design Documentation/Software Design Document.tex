@@ -186,14 +186,17 @@ The system has been developed using the design techniques in the following secti
 		The following analysis metrics are the criteria that are used to evaluate the quality and effectiveness of a given design paradigm. Each design may use some or all of the presented metrics, and some metrics may apply to only one or two design methodologies. Thus, each design will clearly indicate the metrics used for analysis of that particular methodology at the beginning of the applicable section. 
 	\subsection{Metric Definitions}
 		\subsubsection{Cohesion}
-			Cohesion is a measure of how well the parts of a module work and belong together. High cohesion is indicative of good design and low coupling. Conversely, low cohesion likely indicates a poor design and is associated with high levels of coupling. There are 7 types of cohesion, from least cohesive to most cohesive:
-			\paragraph{Coincidental} Coincidentally cohesive modules are those containing parts that have been arbitrarily grouped. They exist together in a module merely because they were placed there. 
-			\paragraph{Logical} Logically cohesive modules are those that contain parts that exist in the same related class. That is, they perform similar functions such as a set of edit-all processing elements. 
-			\paragraph{Temporal} Temporally cohesive modules contain processing elements that are related by when they are executed, such as a module executing a real-time function. 
-			\paragraph{Procedural} Procedurally cohesive modules are composed of processing elements that follow a specific path of execution. For example, a module may iterate through a specific sequence of data processing elements. 
-			\paragraph{Communicative} Communicatively cohesive modules contain elements that operate on the same input data and produce the same output data, such as a module taking in pay records outputting the required output calculations. 
-			\paragraph{Sequential} Sequential cohesion occurs when a module contains elements that process data like an assembly line - the output of one element is the input for another element. For example, a module that takes in a file, reads it, processes the data it contains. 
-			\paragraph{Functional} Functionally cohesive modules contain elements that all operate together to produce the desired output. Further, the module contains only the elements required to perform its function, and no additional processing elements. 
+			Cohesion is a measure of how well the parts of a module work and belong together. High cohesion is indicative of good design and low coupling. Conversely, low cohesion likely indicates a poor design and is associated with high levels of coupling. Further, each type of cohesion has a ``quality value'', $v$. This value can be used to determine the level of cohesion for the entire system, $C$, by summing the cohesion quality value per module and then calculating the average:
+			$$C = \Bigg[\sum_{i=1}^{n}v\Bigg] /n$$ 
+			For a system with perfect functional cohesion, $C$ would equal 10, whereas for a system with purely coincidental cohesion, $C$ would equal 0.\footnote{Quality values are taken from \emph{softeng2.docx} by David Burris} There are 7 types of cohesion, from least cohesive to most cohesive:
+			\paragraph{Coincidental [$v=0$]} Coincidentally cohesive modules are those containing parts that have been arbitrarily grouped. They exist together in a module merely because they were placed there. 
+			\paragraph{Logical [$v=1$]} Logically cohesive modules are those that contain parts that exist in the same related class. That is, they perform similar functions such as a set of edit-all processing elements. 
+			\paragraph{Temporal [$v=3$]} Temporally cohesive modules contain processing elements that are related by when they are executed, such as a module executing a real-time function. 
+			\paragraph{Procedural [$v=5$]} Procedurally cohesive modules are composed of processing elements that follow a specific path of execution. For example, a module may iterate through a specific sequence of data processing elements. 
+			\paragraph{Communicative [$v=7$]} Communicatively cohesive modules contain elements that operate on the same input data and produce the same output data, such as a module taking in pay records outputting the required output calculations. 
+			\paragraph{Sequential [$v=9$]} Sequential cohesion occurs when a module contains elements that process data like an assembly line - the output of one element is the input for another element. For example, a module that takes in a file, reads it, processes the data it contains. 
+			\paragraph{Functional [$v=10$]} Functionally cohesive modules contain elements that all operate together to produce the desired output. Further, the module contains only the elements required to perform its function, and no additional processing elements.
+			
 		\subsubsection{Coupling}
 			\paragraph{Data Coupling}
 				Data coupling occurs when one module depends on the output of another, and the data they exchange is composed of discrete, elementary units, providing exactly what each module needs and nothing more or less. This is the lowest form of coupling with the least dependency between coupled modules. 
@@ -372,6 +375,7 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 	\subsection{Metrics}
 		Metrics used for analysis of the design produced by Jackson's technique are as follows:
 		\begin{itemize}
+			\item Cohesion
 			\item Coupling
 			\item Miller's Law
 			\item Graciunas's Law
@@ -380,6 +384,26 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			\item Scope of Control/Effect
 		\end{itemize}
 	\subsection{Analysis}
+		\subsection{Cohesion}
+			Due to the way Jackson's Technique constructs the modules and their names, it is better for readability to simply refer to the module names with a letter. Consult the program structure diagram in Appendix A for the modules' specific names. 
+			\begin{itemize}
+				\item \texttt{A}; Sequentially cohesive. This module accepts, reads, and processes a save file. 
+				\item \texttt{B}; Sequentially cohesive. This module accepts, reads, and processes a level file. 
+				\item \texttt{C}; Functionally cohesive. This module is responsible for loading the initial scene presented to the player. Since it performs only this single function, it is functionally cohesive. 
+				\item \texttt{D}; Procedurally cohesive. This module is responsible for iterating over a specific set of instructions, and executing those instructions in a specific way. 
+				\item \texttt{E}; Functionally cohesive. This module updates the cursor position with new coordinates. 
+				\item \texttt{F}; Sequentially cohesive. This module is responsible for processing the output events based on the input actors. 
+				\item \texttt{G}; Communicatively cohesive. This module accepts input resources and generates output resources. 
+				\item \texttt{H}; Functionally cohesive. This module is responsible for updating the application window with the newest data. It performs only this function. 
+				\item \texttt{I}; Functionally cohesive. This module advances from the current scene to the subsequent one. 
+			\end{itemize}
+			If we assign a value to each type of cohesion, as in the document \emph{softeng2.docx} by David Burris, then we have that coincidental cohesion has a value of 0, procedural cohesion has a value of 5, communicative cohesion has a value of 7, sequential cohesion has a value of 9, and functional cohesion has a value of 10. If we sum the cohesion values for each module listed above, we can determine the average level of cohesion for the system, where 1 is complete coincidental cohesion, and 10 is complete functional cohesion:
+			$$C = \Bigg[\sum_{i=1}^{n}v\Bigg] /n$$
+			where $C$ is the average cohesion, $v$ is the value of cohesion, and $n$ is the number of modules in the system. So we have that
+			$$C = (9 + 9 + 10 + 5 + 10 + 9 + 7 + 10 + 10)/9$$
+			$$C = (18 + 25 + 26)/12$$
+			$$C = 69/9 = 7.667$$
+			From which we can infer that using this design, our system would moderately high cohesion, but less cohesion than the design developed with dynamic data flow analysis. 
 		\subsubsection{Coupling}
 			When examining the design produced by Jackson's technique, we can see that there is little coupling between modules. Each module can be implemented separately and maintained on its own, without regard to how the other modules are implemented. 
 		\subsubsection{Miller's Law}
@@ -539,7 +563,7 @@ The object oriented design had many advantages over other designs, with the stro
 			\end{center}
 		\subsubsection{Program Structure Diagram}
 			\begin{center}
-				\includegraphics[scale=0.26,angle=90]{Jackson2.png}
+				\includegraphics[scale=0.5,angle=90]{Jackson2.png}
 			\end{center}
 		\subsubsection{Nonprocedural Program Tasks \& Task Allocation}
 			\begin{center}
