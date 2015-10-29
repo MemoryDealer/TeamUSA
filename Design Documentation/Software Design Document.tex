@@ -100,6 +100,19 @@ The system has been developed using the design techniques in the following secti
     The levels, art assets, and story of the system will all be defined by the level files. This allows the engine to be reused for other point-and-click games with no modification to the existing codebase; the only modified resource will be ASCII text-files.
 
 	\subsection{Implementation Plan}
+    The implementation for this project will be written in the C++ programming language, specifically the 2011 version. The video, audio, and mouse input library utilized to provide basic access to system functions will be SDL2, which is an industry-standard library written and maintained by Valve Corporation. It has been proven and tested thoroughly and is actively used in game development at the time of writing this document. The library will likely be supported and maintained over the course of the next decade by the various companies that utilize it in their applications.
+    \subsubsection{Work Distribution}
+      All task names are assumed to be modules. Non-module tasks that are distributed will be italicized. Note that some tasks are significantly more complex than others, so these have been distributed out to the developers with more experience in C++. It is expected that each team member will provide assistance to other team mates as necessary if all assigned tasks have been completed.
+      \begin{description}
+        \item[Bhandari, Parameshor] Main, ResponsiveAudioActor, DelayedAudioActor, AudioStreamActor, VideoActor, \textit{level files}
+        \item[Carmona, Juan] MovingActor, ResponsiveVideoActor, VideoEventActor, DelayedVideoActor, TextboxSpawnActor, \textit{level files}
+        \item[McGowen, Andrew] Level, \textit{Sample tests for level file parsing}, \textit{level files}
+        \item[Menteer, Derek] AudioEngine, AudioPlayer, VideoEngine, VideoContext, VideoDisplay, \textit{level files}
+        \item[Sanchez, Vincent] GameSaveSerializer, \textit{Photography}, \textit{level files}
+        \item[Sparks, Jordan] Engine, \textit{C++ best practices and guidance}, \textit{Project quality assurance}
+        \item[Zhang, John] Player, BaseActor, InventoryItemActor, SceneLink, LevelLink, \textit{level files}
+      \end{description}
+      
 	\subsection{Final Product Testing}
 	\subsection{Acceptance Criteria}
 		The acceptance criteria for the system defined metrics which must be met for the system to be acceptable for general use. They are:
