@@ -437,6 +437,8 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 		
 		The quality of an object-oriented design is contingent on the analysis phase (e.g., the specification) of a project. If the problem is not fully understood and addressed during specification, the object-oriented design will fail to produce a quality system. Object-oriented design is advantageous in that it provides explicit and clear definitions of each part of the system. If each step from specification to design is carried out properly, the developers will be provided with efficient instructions on how to implement the system.
 		
+		Regarding inheritance, multiple inheritance was intentionally ruled out to avoid the "diamond problem". This will substantially improve implementation time and debugging. Additionally, polymorphism is utilized in the BaseActor class, to provide individual behavioral patterns within the game for certain objects.
+		
 		It is important to consider that one view of an object is frequently insufficient to grasp its totality. Hence it is necessary to have additional descriptions such as timing diagrams and functional diagrams to fully grasp the system. 
 	\subsection{Metrics}
 		The analysis metrics used for object-oriented design are:
@@ -448,7 +450,6 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			\item Factoring
 			\item Scope of Control/Effect
 			\item Black Boxes
-			\item Fan In/Out
 		\end{itemize}
 	\subsection{Analysis}
 		\subsubsection{Cohesion}
@@ -509,8 +510,6 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 			With high levels of factoring exhibited in the UML diagram, the scope of control and effect can be seen for each module. It is clear that each module only operates on its direct subordinates, and essential control is processed from higher-level modules.
 		\subsubsection{Black Boxes}
 			Looking at the UML diagram, it is apparent that each module is a black box. The calling module in case does not need to know how the callee functions, it simply passes data and uses any return values to make decisions. This is ideal for multiple programmers working on the project.
-		\subsubsection{Fan In/Out}
-			As can be seen in the UML diagram, there is heavy use of fan out and not a single instance of fan in. Multiple inheritance was intentionally ruled out to avoid the "diamond problem". This will substantially improve implementation time and debugging. Additionally, polymorphism is utilized in the BaseActor class, to provide individual behavior patterns within the game for certain objects.
 	\subsection{Conclusion}
 		The object-oriented design provides a clear and explicit view of the entire system, along with intuition on control and data flow in the UML diagram. More details on control flow are provided in the timing diagrams. This is an ideal design choice for a project of this size. With multiple programmers working on separate modules, there is little confusion when each module and its relations are clearly defined.
 %
