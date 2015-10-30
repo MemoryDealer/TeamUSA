@@ -1,0 +1,64 @@
+BaseActor
+
+Abstract class that all actors inherit from. This class should provide onClick, onHover, and step procedures that perform no action by default.
+
+
+VideoActor
+
+An actor that will only display a texture at a given region. This actor will have no interation with the player.
+
+
+DelayedVideoActor
+
+Will increment a counter every time the step method is called. After a specified number of steps have occurred, this actor will change its TextureID to a valid value and will be displayed. When the number of steps is equal to the disappearing step, the TextureID will be set to an ignored value, causing the actor to disappear.
+
+
+VideoEventActor
+
+Will display a texture and perform no action until clicked. The onClick method will return the ActorEventType and value given this actor during construction time. Can be used to cause LoadGame and SaveGame events. The TextureID can be set to an invalid value during construction if no image needs to be displayed. The onHover method will set the player's cursor style to CURSOR_SELECT.
+
+
+ResponsiveVideoActor
+
+Will display the default TextureID. When onHover is called, it will display the hover TextureID. When onClick is called, the onClick texture will be set permanently. Can disappear or appear by utilizing an invalid TextureID.
+
+
+MovingActor
+
+Will transition from one region to the next by calculating the distance to move each frame for a set number of frames. This allows for movement across the X and Y axis as well as scaling of the size of textures. If moveOnSpawn is set, then the step method will advance the actor immediately. Otherwise, the actor will move after it is clicked on.
+
+
+InventoryItemActor
+
+Will display a texture by default. When onClick is called, the actor will add an item to the player's inventory, set its TextureID to an invalid value, and set its pickedUp status to true.
+
+
+LevelLink
+
+Will emit a LoadLevel event with the value of the level to load when onClick is called if the player has the specified item in its inventory. If the item id is invalid, then the check is not enforced.
+
+
+SceneLink
+
+Will emit a ChangeScene event when the onClick method is called if the player has the specified item in its inventory. If the item id is invalid, then the check is not enforced.
+
+
+TextboxSpawnActor
+
+Will emit a DisplayText event when the onClick method is called. The actor can then have its text accessed by the engine for display through a call to the getText method.
+
+
+AudioStreamActor
+
+If this actor is not activated, it will emit a StreamAudio event and set its status to activated when the step method is called. The engine can then retrieve the path to the audio file by a call to this actor's getPath method.
+
+
+DelayedAudioActor
+
+A call to step Will emit a PlayAudio event with the value set to the AudioID to play if delaySteps is equal to currentStep. It will also increment the value of currentStep for each step.
+
+
+ResponsiveAudioActor
+
+Will increment the value of stepCount until it is equal to durationSteps for each call to the step method. A call to onClick or onHover will set the value of stepCount to zero and emit an AudioID and value if stepCount is equal to durationSteps. The hoverAudioID or clickAudioID can be set to an invalid AudioID value to prevent sound from being played.
+
