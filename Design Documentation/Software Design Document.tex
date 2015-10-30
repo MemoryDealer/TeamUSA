@@ -481,19 +481,38 @@ data coupling, and highly differentiated and well defined afferent, efferent, an
 				\item Level's map of BaseActor arrays are coupled to the Engine, in order to perform required operations on each actor.
 			\end{itemize}
 		\subsubsection{Miller's Law}
-			The design does not exhibit any modules that exceed the limit for Miller's Law, which is $7\pm2$ interactions. The largest number of relations is in Engine, which has 5 compositions. The system has 24 modules, 12 of which are inherited directly from BaseActor and have no subordinates.
+			The design does not exhibit any modules that exceed the limit for Miller's Law, which is $7\pm2$ interactions. The largest number of relations is in Engine, which has 5 compositions, and is created and used from the entry point. The system has 24 modules, 12 of which are inherited directly from BaseActor and have no subordinates.
 			
-			\paragraph{Subordinate relations per module}			
+			\paragraph{Relations per module}
 			\begin{itemize}
-				\item Engine: 5
-				\item BaseActor: 2
-				\item All 22 others: 1
+				\item Engine: 6
+				\item Level: 2
+				\item BaseActor: 3
+				\item AudioEngine: 2
+				\item VideoEngine: 2
+				\item VideoContext: 2
+				\item All 18 others: 1
 			\end{itemize}
 			
 			Hence the average $A$ is calculated,
-			$$A = (5 + 2 + 22)/22 = 1.32$$
-			Which is to say, on average, each module has 1.32 subordinates.
+			$$A = (6 + 2 + 3 + 2 + 2 + 2 + 18)/24 = 1.5$$
+			On average, each module has 1.5 relations.
+		\subsubsection{Graciunas's Law}
+			Considering the \texttt{Engine} module, with 6 interactions, we have,
+			$$I = 6(5)/2 = 30/2 = 15$$
+			Considering the system as a whole, we have 24 modules,
+			$$I = 24(23)/2 = 552/2 = 276$$
+			Hence for the entire system, there are 276 possible interactions, although most of these are forbidden through the object-oriented design.
+		\subsubsection{Factoring}
+			UML, if mapped out accordingly, shows a highly factored design inherent in the system. Beginning with an upper level control from the entry point, to the Engine, to each component of the Engine, one can gain intuition on the control and data flow.
+		\subsubsection{Scope of Control/Effect}
+			With high levels of factoring exhibited in the UML diagram, the scope of control and effect can be seen for each module. It is clear that each module only operates on its direct subordinates, and essential control is processed from higher-level modules.
+		\subsubsection{Black Boxes}
+			Looking at the UML diagram, it is apparent that each module is a black box. The calling module in case does not need to know how the callee functions, it simply passes data and uses any return values to make decisions. This is ideal for multiple programmers working on the project.
+		\subsubsection{Fan In/Out}
+			As can be seen in the UML diagram, there is heavy use of fan out and not a single instance of fan in. Multiple inheritance was intentionally ruled out to avoid the "diamond problem". This will substantially improve implementation time and debugging. Additionally, polymorphism is utilized in the BaseActor class, to provide individual behavior patterns within the game for certain objects.
 	\subsection{Conclusion}
+		The object-oriented design provides a clear and explicit view of the entire system, along with intuition on control and data flow in the UML diagram. More details on control flow are provided in the timing diagrams. This is an ideal design choice for a project of this size. With multiple programmers working on separate modules, there is little confusion when each module and its relations are clearly defined.
 %
 % Design selection & why
 %
