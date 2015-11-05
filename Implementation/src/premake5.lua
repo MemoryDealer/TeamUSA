@@ -29,7 +29,8 @@ project "Game"
     kind "ConsoleApp"
     language "C++"
     files {
-    "main.cpp",
+    "*.h", "*.cpp",
+    "Actor/**.h", "Actor/**.cpp",
     "Engine/**.h", "Engine/**.cpp"
     }
 

@@ -44,6 +44,7 @@ Thumbs.db
 *.tdo
 
 # Visual Studio generated files
+########################
 *.sln
 *.suo
 *.vcxproj
@@ -51,7 +52,9 @@ Thumbs.db
 *.vcxproj.user
 *.sdf
 *.obj
+*.opensdf
 
 # Ignore entire binary directory, not necessary for repo
+########################
 Implementation/bin
 
