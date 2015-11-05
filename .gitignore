@@ -42,3 +42,16 @@ Thumbs.db
 *.vrb
 *.xdy
 *.tdo
+
+# Visual Studio generated files
+*.sln
+*.suo
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sdf
+*.obj
+
+# Ignore entire binary directory, not necessary for repo
+Implementation/bin
+
