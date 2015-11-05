@@ -17,7 +17,7 @@
 namespace USA {
     
     typedef int Player; // Temporary typedef until we have player, ignore.
-    typedef int Point; // Same as above.
+    struct Point;
 
     ///
     /// \class BaseActor

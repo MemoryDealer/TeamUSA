@@ -2,22 +2,26 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file Headers.h
-/// \brief Easy way to include all headers needed.
+/// \file Point.h
+/// \brief Declares Point struct.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-// C++ STL.
-#include <exception>
-#include <fstream>
-#include <functional>
-#include <string>
-#include <vector>
-
-// C Runtime.
 #include <stdint.h>
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+namespace USA {
+
+    struct Point {
+        int32_t x, y;
+
+        Point( void ) : x( 0 ), y( 0 ) { }
+    };
+
+}
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
