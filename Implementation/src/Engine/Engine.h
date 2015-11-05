@@ -76,6 +76,10 @@ namespace USA {
 
     private:
 
+        //AudioEngine mAudioEngine;
+        //VideoEngine mVideoEngine;
+        //Level mCurrentLevel;
+        //Player mPlayer;
         bool mIsRunning;
 
         // Each index is an ActorEventType, associated with a handler function.

@@ -1,5 +1,5 @@
 @echo off
 
-call clean-win.bat
+call win-clean.bat
 
 premake5 vs2015
