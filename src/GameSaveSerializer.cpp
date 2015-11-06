@@ -16,18 +16,34 @@
 
 namespace USA {
 	
-	void GameSaveSerializer::load(int &levelID, int &sceneID, std::vector<int> &inventory){
+	void GameSaveSerializer::load(int &levelID, int &sceneID, std::vector<int> &inventory)
+	{
+		int invSize;
 		// Retrieve appropriate file
-		ifstream inputFile;
+		std::ifstream inputFile;
 		inputFile.open("save.bin", ios::binary | ios::in);
 		// Read appropriate file contents
+		// Read the level ID
+		inputFile.read(levelID, sizeof(int));
+		
+		// Read the scene ID
+		inputFile.read(sceneID, sizeof(int));
+		
+		// Read the inventory size
+		inputFile.read(invSize, sizeof(int));
+		
+		// Read the inventory contents
+		
+		// close file
+		inputFile.close();
 	}
 	
-	void GameSaveSerializer::save(int &levelID, int &sceneID, std::vector<int> &inventory){
+	void GameSaveSerializer::save(int &levelID, int &sceneID, std::vector<int> &inventory)
+	{
 		// create a new thread
 		std::mutex threadLock;
-		
-		if(threadLock.try_lock()){
+		if(threadLock.try_lock())
+		{
 			std::thread saveThread(saveInThread, this, levelID, SceneID, inventory);
 		}
 		
@@ -35,17 +51,29 @@ namespace USA {
 		saveThread.detatch();
 	}
 	
-	void GameSaveSerializer:saveInThread(int levelID, int sceneID, vector<int> inventory){
+	void GameSaveSerializer::saveInThread(int levelID, int sceneID, std::vector<int> inventory)
+	{
 		//Open the approriate data stream
-		ofstream outputFile
+		std::ofstream outputFile
 		outputFile.open("save.bin", ios::binary | ios::out);
 		// Write data to appropriate file
+		// Write the level ID
 		outputFile.write(&levelID, sizeof(int));
+		
+		// Write the scene ID
 		outputFile.write(&sceneID, sizeof(int));
+		
+		// Write the inventory size
 		outputFile.write(inventory.size(), sizeof(int));
-		outputFile.write(inventory, sizeof(inventory));
+		
+		// Write each inventory item (as an integer representation) to the file
+		for(auto iter = inventory.begin(); iter != inventory.end(); ++iter)
+		{
+			outputFile.write(iter*, sizeof(int));
+		}
+		
 		// close file
 		outputFile.close();
 	}
 		
-	}
+}
