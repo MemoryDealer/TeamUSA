@@ -28,6 +28,10 @@ namespace USA {
 				
 			///
 			/// \brief Saves a file
-			void save()
+			void save();
+				
+			///
+			/// \brief Saves a file in a separate thread. 
+			void saveInThread();
 	}
 }
