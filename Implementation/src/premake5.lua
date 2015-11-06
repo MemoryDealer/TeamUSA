@@ -38,4 +38,4 @@ project "Game"
 	"Video/**.hpp", "Video/**.cpp"
     }
 	links { "SDL2.lib", "SDL2main.lib", "SDL2_image.lib", "SDL2_ttf.lib", "SDL2_mixer.lib" }	
-
+	postbuildcommands { "xcopy ..\\lib\\SDL\\x86\\*.dll ..\\bin\\%{cfg.buildcfg}\\Run\\ /Y" }
