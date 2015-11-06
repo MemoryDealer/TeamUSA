@@ -21,7 +21,7 @@ namespace USA {
 		int invSize;
 		// Retrieve appropriate file
 		std::ifstream inputFile;
-		inputFile.open("save.bin", ios::binary | ios::in);
+		inputFile.open("save.bin", std::ios::binary | std::ios::in);
 		// Read appropriate file contents
 		// Read the level ID
 		inputFile.read(levelID, sizeof(int));
@@ -33,7 +33,10 @@ namespace USA {
 		inputFile.read(invSize, sizeof(int));
 		
 		// Read the inventory contents
-		
+		while (!inputFile.eof())
+		{
+			inputFile.read(inventory.push_back(), sizeof(int));
+		}
 		// close file
 		inputFile.close();
 	}
@@ -55,7 +58,7 @@ namespace USA {
 	{
 		//Open the approriate data stream
 		std::ofstream outputFile
-		outputFile.open("save.bin", ios::binary | ios::out);
+		outputFile.open("save.bin", std::ios::binary | std::ios::out);
 		// Write data to appropriate file
 		// Write the level ID
 		outputFile.write(&levelID, sizeof(int));
