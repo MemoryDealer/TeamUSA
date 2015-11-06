@@ -7,6 +7,9 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once
+#include <vector>
+#include <iostream>
+#include <thread>
 
 //--------
 
@@ -17,21 +20,18 @@ namespace USA {
     /// \brief Provides multithreaded save, single-thread load of save files.
 	class GameSaveSerializer {
 		private:
-			int levelID;
-			int sceneID;
-			vector<int> inventory;
-			
+			std::mutex fileLock;
 		public:
 			///
 			/// \brief Loads a save file
-			void load();
+			void load(int &levelID, int &sceneID, std::vector<int> &inventory);
 				
 			///
 			/// \brief Saves a file
-			void save();
+			void save(int &levelID, int &sceneID, std::vector<int> &inventory);
 				
 			///
 			/// \brief Saves a file in a separate thread. 
-			void saveInThread();
+			void saveInThread(int levelID, int sceneID, std::vector<int> inventory);
 	}
 }
