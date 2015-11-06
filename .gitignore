@@ -1,3 +1,6 @@
+# C++ Objects
+*.o
+
 # OS X generated files o
 ########################
 .DS_Store
