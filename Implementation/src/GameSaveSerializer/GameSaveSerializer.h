@@ -8,7 +8,8 @@
 
 #pragma once
 #include <vector>
-#include <iostream>
+#include <fstream>
+#include <mutex>
 #include <thread>
 
 //--------
@@ -22,6 +23,11 @@ namespace USA {
 		private:
 			std::mutex fileLock;
 		public:
+
+            GameSaveSerializer(void);
+
+            ~GameSaveSerializer(void);
+
 			///
 			/// \brief Loads a save file
 			void load(int &levelID, int &sceneID, std::vector<int> &inventory);
