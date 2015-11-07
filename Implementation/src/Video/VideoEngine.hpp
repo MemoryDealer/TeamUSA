@@ -34,7 +34,7 @@ namespace teamusa {
        * @param height
        *  The height of the window in pixels.
        */
-      VideoEngine(std::string &title, unsigned int width, unsigned int height);
+      VideoEngine(const std::string &title, unsigned int width, unsigned int height);
       
       /**
        * Destroys the video engine after freeing all associated textures.

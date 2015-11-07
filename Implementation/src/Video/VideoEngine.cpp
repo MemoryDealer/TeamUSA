@@ -2,7 +2,7 @@
 
 using namespace teamusa;
 
-VideoEngine::VideoEngine(std::string &title, unsigned int width, unsigned int height){
+VideoEngine::VideoEngine(const std::string &title, unsigned int width, unsigned int height){
   this->videoContext = new VideoContext(title, width, height);
   this->videoContext->load_font("res/font.ttf", 8);
   this->textboxActive = false;

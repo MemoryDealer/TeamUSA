@@ -7,7 +7,10 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "Engine.h"
+
 #include "Actor/ExampleActor.h"
+#include "Engine/Assert.h"
+#include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -20,7 +23,8 @@ using namespace USA;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 Engine::Engine( void )
-: mIsRunning( false )
+: mVideoEngine( nullptr )
+, mIsRunning( false )
 , mActorEventHandlers( )
 {
     // Register actor event handlers.
@@ -32,6 +36,10 @@ Engine::Engine( void )
     mActorEventHandlers.push_back( BIND( &Engine::onDisplayText ) );
     mActorEventHandlers.push_back( BIND( &Engine::onExitGame ) );
     mActorEventHandlers.push_back( BIND( &Engine::onStreamAudio ) );
+
+    mVideoEngine.reset( new VideoEngine( "LEGEND OF THE GREAT UNWASHED", 
+                                         720, 
+                                         480 ) );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -73,6 +81,7 @@ const int32_t Engine::getMouseClickState( void ) const
 void Engine::handleEvent( BaseActor& actor, const ActorEvent& e )
 {
     // Call the actor event handler.
+    Assert( static_cast<size_t>( e.type ) < mActorEventHandlers.size() );
     mActorEventHandlers[e.type] ( actor, e.value );
 }
 

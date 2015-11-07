@@ -16,6 +16,11 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+namespace teamusa {
+    class VideoEngine;
+}
+using namespace teamusa;
+
 namespace USA {
 
     // Forward declarations:
@@ -77,7 +82,7 @@ namespace USA {
     private:
 
         //AudioEngine mAudioEngine;
-        //VideoEngine mVideoEngine;
+        std::shared_ptr<VideoEngine> mVideoEngine;
         //Level mCurrentLevel;
         //Player mPlayer;
         bool mIsRunning;
