@@ -1,4 +1,13 @@
+# Vim backup files
+########################
+*.swp
+
+# Executable names
+########################
+mediatest
+
 # C++ Objects
+########################
 *.o
 
 # OS X generated files o
