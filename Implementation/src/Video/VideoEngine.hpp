@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "VideoContext.hpp"
-#include "ResourceGroup.hpp"
+#include "../ResourceGroup.hpp"
 #ifndef VIDEOENGINE_H
 #define VIDEOENGINE_H
 
@@ -14,15 +14,23 @@ namespace teamusa {
 
   class VideoEngine{
     private:
-      static const unsigned int NUM_LAYERS = 8;
-      static const unsigned int TEXT_LAYER = 8;
+      static const unsigned int NUM_LAYERS = 7;
       static const unsigned int SHADOW_LAYER = 4;
+      static const TextureID TEXT_LAYER = 8;
+      static const TextureID MAX_RESERVED_ID = 1000;
       bool textboxActive;
       TextureID layers[NUM_LAYERS];
       std::vector<TextureID> coreResources;
       std::vector<TextureID> levelResources;
       VideoContext *videoContext;
+      Region textboxPadding;
       Region textboxRegion;
+
+      /**
+       * Clears all layers with the default clear color. Does not modify the
+       * textbox layer.
+       */
+      void clearLayers();
     public:
 
       /**
@@ -34,7 +42,8 @@ namespace teamusa {
        * @param height
        *  The height of the window in pixels.
        */
-      VideoEngine(std::string &title, unsigned int width, unsigned int height);
+      VideoEngine(
+       const std::string &title, unsigned int width, unsigned int height);
       
       /**
        * Destroys the video engine after freeing all associated textures.
@@ -111,6 +120,11 @@ namespace teamusa {
        *  The group of textures to delete from video memory.
        */
       void deleteResourceGroup(ResourceGroup resourceGroup);
+      
+      /**
+       * Displays all rendered textures on screen.
+       */
+      void display();
   };
 }
 #endif /*VIDEOENGINE_H*/

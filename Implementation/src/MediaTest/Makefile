@@ -2,9 +2,9 @@ CC=g++
 CXXFLAGS=-pedantic -Wall -std=c++11
 LDFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
-SOURCES=$(wildcard ../**/*.cpp) $(wildcard *.cpp)
+SOURCES=$(wildcard ../Video/*.cpp) $(wildcard *.cpp)
 OBJECTS=$(patsubst %.cpp, %.o, $(SOURCES))
-EXECUTABLE=mediawrap
+EXECUTABLE=mediatest
 
 all: $(EXECUTABLE)
 	@echo "Created: $(EXECUTABLE)"
