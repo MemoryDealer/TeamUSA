@@ -33,5 +33,5 @@ namespace USA {
 			///
 			/// \brief Saves a file in a separate thread. 
 			void saveInThread(int levelID, int sceneID, std::vector<int> inventory);
-	}
-};
+	};
+}
