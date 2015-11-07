@@ -7,7 +7,7 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once
-#include GameSaveSerializer.h
+#include "GameSaveSerializer.h"
 #include <vector>
 #include <iostream>
 #include <thread>
@@ -16,12 +16,23 @@
 
 namespace USA {
 	
+	GameSaveSerializer::GameSaveSerializer(void)
+	{
+		
+	}
+	
+	GameSaveSerializer::~GameSaveSerializer(void)
+	{
+		
+	}
+	
 	void GameSaveSerializer::load(int &levelID, int &sceneID, std::vector<int> &inventory)
 	{
-		int invSize;
+		
 		// Retrieve appropriate file
 		std::ifstream inputFile;
 		inputFile.open("save.bin", std::ios::binary | std::ios::in);
+		
 		// Read appropriate file contents
 		// Read the level ID
 		inputFile.read(levelID, sizeof(int));
@@ -30,7 +41,7 @@ namespace USA {
 		inputFile.read(sceneID, sizeof(int));
 		
 		// Read the inventory size
-		inputFile.read(invSize, sizeof(int));
+		inputFile.read(inventory.push_back(), sizeof(int));
 		
 		// Read the inventory contents
 		while (!inputFile.eof())
@@ -43,22 +54,20 @@ namespace USA {
 	
 	void GameSaveSerializer::save(int &levelID, int &sceneID, std::vector<int> &inventory)
 	{
-		// create a new thread
-		std::mutex threadLock;
-		if(threadLock.try_lock())
-		{
-			std::thread saveThread(saveInThread, this, levelID, SceneID, inventory);
-		}
-		
-		// merge back into main thread
+		// Launch the new thread and intiaite save
+		std::thread saveThread(saveInThread, this, levelID, SceneID, inventory);
 		saveThread.detatch();
 	}
 	
 	void GameSaveSerializer::saveInThread(int levelID, int sceneID, std::vector<int> inventory)
 	{
+		// Lock the thread
+		GameSaveSerializer::fileLock.lock();
+		
 		//Open the approriate data stream
-		std::ofstream outputFile
+		std::ofstream outputFile;
 		outputFile.open("save.bin", std::ios::binary | std::ios::out);
+		
 		// Write data to appropriate file
 		// Write the level ID
 		outputFile.write(&levelID, sizeof(int));
@@ -77,6 +86,9 @@ namespace USA {
 		
 		// close file
 		outputFile.close();
+		
+		// Unlock
+		GameSaveSerializer::fileLock.unlock();
 	}
 		
 }
