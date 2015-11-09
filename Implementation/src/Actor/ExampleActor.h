@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file ExampleActor.h
 /// \brief Declares ExampleActor class.
@@ -16,7 +16,7 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 // We define our stuff inside a namespace.
-namespace USA {
+namespace teamusa {
 
     // Create new Actor and derive from BaseActor.
     // Provide documentation, do so by starting with "///"

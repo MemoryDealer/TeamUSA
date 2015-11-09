@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file Engine.h
 /// \brief Declares Engine class.
@@ -17,16 +17,12 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
-    class VideoEngine;
-}
-using namespace teamusa;
-
-namespace USA {
 
     // Forward declarations:
 
     struct ActorEvent;
     class BaseActor;
+    class VideoEngine;
 
     // Function pointer type for handling actor events.
     typedef std::function< void( BaseActor& actor, const int32_t value ) > ActorEventHandler;
