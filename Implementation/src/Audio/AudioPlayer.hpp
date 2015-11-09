@@ -14,7 +14,7 @@ namespace mediawrap {
       /**
        * Used to uniquely identify each audio sample.
        */
-      typedef unsigned int AudioSampleID;
+      typedef unsigned int AudioID;
 
       /**
        * Constructs a new audio player.
@@ -57,21 +57,21 @@ namespace mediawrap {
        * @param file_path
        *   The path of the audio file to load into memory.
        */
-      void load_sample(AudioSampleID id, const std::string& file_path);
+      void load_sample(AudioID id, const std::string& file_path);
 
       /**
        * Plays the given audio sample in the first available channel.
        * @param id
        *   The id of the audio sample to play.
        */
-      void play_sample(AudioSampleID id);
+      void play_sample(AudioID id);
 
       /**
        * Deletes the sample created by a call to load_sample().
        * @param id
        *   The id of the sample to delete.
        */
-      void delete_sample(AudioSampleID id);
+      void delete_sample(AudioID id);
 
       /**
        * Deletes all samples created by a call to load_sample().
@@ -83,7 +83,7 @@ namespace mediawrap {
       static const int audio_channels = 1;
       static const int audio_buffer = 4096;
       static const Uint16 audio_format = AUDIO_S16;
-      std::unordered_map<AudioSampleID, Mix_Chunk*> *audio_samples;
+      std::unordered_map<AudioID, Mix_Chunk*> *audio_samples;
       Mix_Music* audio_stream;
   };
 }

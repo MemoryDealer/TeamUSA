@@ -2,7 +2,7 @@
 
 mediawrap::AudioPlayer::AudioPlayer(){
   this->audio_stream = NULL;
-  this->audio_samples = new std::unordered_map<AudioSampleID, Mix_Chunk*>();
+  this->audio_samples = new std::unordered_map<AudioID, Mix_Chunk*>();
   if(SDL_InitSubSystem(SDL_INIT_AUDIO) != 0){
     throw std::runtime_error(
      "Unable to initialize audio: " + std::string(SDL_GetError()));
@@ -45,8 +45,8 @@ void mediawrap::AudioPlayer::stream_audio(int loops){
 }
 
 void mediawrap::AudioPlayer::load_sample(
-AudioSampleID id, const std::string& file_path){
-  std::unordered_map<AudioSampleID, Mix_Chunk*>::iterator iter;
+AudioID id, const std::string& file_path){
+  std::unordered_map<AudioID, Mix_Chunk*>::iterator iter;
   Mix_Chunk* sample;
   // Check if key exists and free old chunk
   iter = this->audio_samples->find(id);
@@ -59,8 +59,8 @@ AudioSampleID id, const std::string& file_path){
     this->audio_samples->insert(std::make_pair(id, sample));
 }
 
-void mediawrap::AudioPlayer::play_sample(AudioSampleID id){
-  std::unordered_map<AudioSampleID, Mix_Chunk*>::iterator iter;
+void mediawrap::AudioPlayer::play_sample(AudioID id){
+  std::unordered_map<AudioID, Mix_Chunk*>::iterator iter;
   iter = this->audio_samples->find(id);
   if(iter == this->audio_samples->end() ||
    Mix_PlayChannel(-1, iter->second, 0) == -1){
@@ -69,8 +69,8 @@ void mediawrap::AudioPlayer::play_sample(AudioSampleID id){
 }
 
 
-void mediawrap::AudioPlayer::delete_sample(AudioSampleID id){
-  std::unordered_map<AudioSampleID, Mix_Chunk*>::iterator iter;
+void mediawrap::AudioPlayer::delete_sample(AudioID id){
+  std::unordered_map<AudioID, Mix_Chunk*>::iterator iter;
   iter = this->audio_samples->find(id);
   if(iter != this->audio_samples->end())
     Mix_FreeChunk(iter->second);
@@ -78,7 +78,7 @@ void mediawrap::AudioPlayer::delete_sample(AudioSampleID id){
 }
 
 void mediawrap::AudioPlayer::clear_samples(){
-  std::unordered_map<AudioSampleID, Mix_Chunk*>::iterator iter, temp;
+  std::unordered_map<AudioID, Mix_Chunk*>::iterator iter, temp;
   iter = this->audio_samples->begin();
   while(iter != this->audio_samples->end()){
     temp = iter;

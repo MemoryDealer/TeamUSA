@@ -80,10 +80,24 @@ void VideoEngine::hideTextbox(){
 }
 
 void VideoEngine::deleteTexture(TextureID id){
+  std::vector<TextureID>::iterator iter;
   if(id < MAX_RESERVED_ID)
     throw std::runtime_error(
      "VideoEngine::deleteTexture: Unable to use reserved texture id");
   this->videoContext->delete_texture(id);
+
+  // Clear id from core resources
+  iter = this->coreResources.begin();
+  while(iter != this->coreResources.end()){
+    if(*iter == id) iter = this->coreResources.erase(iter);
+    else ++iter;
+  }
+  // Clear id from level resources
+  iter = this->levelResources.begin();
+  while(iter != this->levelResources.end()){
+    if(*iter == id) iter = this->levelResources.erase(iter);
+    else ++iter;
+  }
 }
 
 void VideoEngine::deleteResourceGroup(ResourceGroup resourceGroup){

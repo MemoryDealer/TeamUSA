@@ -2,11 +2,11 @@
 #include "SDL2/SDL.h"
 #include "../ResourceGroup.hpp"
 #include "../Video/VideoEngine.hpp"
-#include "../Video/VideoContext.hpp"
+#include "../Audio/AudioEngine.hpp"
 
 using namespace teamusa;
 
-void test_video_engine(){
+void begin_test(){
   const int NUM_LAYERS = 7;
   const int WIDTH = 1280;
   const int HEIGHT = 720;
@@ -15,6 +15,11 @@ void test_video_engine(){
   TextureID textures[NUM_TEXTURES];
   Region regions[NUM_TEXTURES];
   VideoEngine vid("MyGameLongName", WIDTH, HEIGHT);
+  AudioEngine audio;
+
+  // Load audio
+  audio.playStream("res/ambient.wav");
+  audio.loadSound("res/key.wav", 1000, CORE_RESOURCE);
 
   // Init regions
   // background region is full screen.
@@ -65,6 +70,7 @@ void test_video_engine(){
           vid.hideTextbox();
         else
           vid.showTextbox(spookyText);
+        audio.playSound(1000);
       }
     }
     // Set light destination to the mouse coordinates.
@@ -77,10 +83,12 @@ void test_video_engine(){
     // Sleep 16.67ms ~60fps
     SDL_Delay(16.67);
   }
+  vid.deleteResourceGroup(LEVEL_RESOURCE);
+  vid.deleteResourceGroup(CORE_RESOURCE);
 }
 
 int main(void){
-  test_video_engine();
+  begin_test();
   SDL_Quit();
   return 0;
 }
