@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file GameSaveSerializer.h
 /// \brief Declares save file serializer class.
@@ -8,12 +8,13 @@
 
 #pragma once
 #include <vector>
-#include <iostream>
+#include <fstream>
+#include <mutex>
 #include <thread>
 
 //--------
 
-namespace USA {
+namespace teamusa {
 	
 	///
     /// \class GameSaveSerializer
@@ -22,6 +23,11 @@ namespace USA {
 		private:
 			std::mutex fileLock;
 		public:
+
+            GameSaveSerializer(void);
+
+            ~GameSaveSerializer(void);
+
 			///
 			/// \brief Loads a save file
 			void load(int &levelID, int &sceneID, std::vector<int> &inventory);
