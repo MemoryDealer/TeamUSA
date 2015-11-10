@@ -35,7 +35,7 @@ namespace teamusa {
         int32_t value;
         ActorEventType type;
 
-        ActorEvent( void ) : value( -1 ), type( ActorEventType::Nil ) { }
+        ActorEvent( void ) : value( -1 ), type( Nil ) { }
     };
 
 }
