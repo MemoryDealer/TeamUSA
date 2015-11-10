@@ -33,7 +33,7 @@ IMAGE 1024 res/images/Elevator-7.png
 # AUDIO 1002 res/sounds/robot.wav
 
 # Use 1001 as the starting scene
-START_SCENE 1001
+START_SCENE 101
 
 END RESOURCES
 
@@ -126,7 +126,7 @@ END SCENE
 
 # PLAYER approaches elevator alcove.  
 SCENE 117 1015
-SceneLink 118 506 63 406 788 101 Elevator_Key	# Requires key to elevator alcove.
+SceneLink 118 506 63 406 788 101 ELEVATOR_KEY	# Requires key to elevator alcove.
 END SCENE
 
 ################ Transistion to elevator alcove ###################
