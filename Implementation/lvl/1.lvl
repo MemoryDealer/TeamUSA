@@ -66,7 +66,7 @@ SceneLink 106 1061 254 220 418
 SceneLink 108 39 177 257 671
 END SCENE
 
-# Fork to restroom alcove
+# Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
 SceneLink 107 530 375 214 267 -1 -1 # Forward to restroom alcove
 SceneLink 105 0 797 1275 80 -1 -1 	# Return to SCENE 105
@@ -85,7 +85,7 @@ SCENE 109 1008
 SceneLink 110 399 240 468 558 -1 -1
 END SCENE
 
-# There is a fork in SCENE 110 to SCENE 111 or 113
+# There is a fork in SCENE 110 to SCENE 111 or skip ahead to SCENE 113
 SCENE 110 1010
 SceneLink 111 0 0 310 853 -1 -1
 SceneLink 113 543 302 216 243 -1 -1
@@ -102,11 +102,12 @@ SceneLink 111 0 797 1275 80 -1 -1	# Dead end. Return to SCENE 111.
 END SCENE
 
 # Continue ahead, ignore doors to left. 
+# [!] Collect elevator alcove key from under vending machine. 
 SCENE 113 1011
 SceneLink 114 458 252 394 455 -1 -1
 END SCENE
 
-# There is a fork in SCENE 114 to SCENE 115, 116, or 117. 
+# There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
 SCENE 114 1013
 SceneLink 115 1065 5 204 841 -1 -1
 SceneLink 116 5 2 193 849 -1 -1
