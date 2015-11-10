@@ -1,0 +1,105 @@
+RESOURCES
+
+# Begin loading images
+# <type> <id> <path to resource>
+IMAGE 1050 res/images/Stairs-1.png
+IMAGE 1051 res/images/Stairs-2.png
+IMAGE 1052 res/images/Stairs-3.png
+IMAGE 1053 res/images/Stairs-4.png
+IMAGE 1054 res/images/Stairs-5.png
+IMAGE 1055 res/images/Floor2-1.png
+IMAGE 1056 res/images/Floor2-2a.png
+IMAGE 1057 res/images/Floor2-2b.png
+IMAGE 1058 res/images/Floor2-3a.png
+IMAGE 1059 res/images/Floor2-3b.png
+IMAGE 1060 res/images/Floor2-4a.png
+IMAGE 1061 res/images/Floor2-4b.png
+IMAGE 1062 res/images/Floor2-4d.png
+IMAGE 1063 res/images/Floor2-5.png
+IMAGE 1064 res/images/Floor2-6.png
+IMAGE 1065 res/images/Floor2-7.png
+IMAGE 1066 res/images/Floor2-8.png
+IMAGE 1067 res/images/Floor2-9.png
+IMAGE 1068 res/images/Floor2-10.png
+IMAGE 1069 res/images/Floor2-11.png
+IMAGE 1070 res/images/Floor2-12.png
+IMAGE 1070 res/images/Floor2-13.png
+IMAGE 1071 res/images/Floor2-14.png
+IMAGE 1072 res/images/Floor2-15.png
+IMAGE 1073 res/images/Floor2-16.png
+IMAGE 1074 res/images/Floor2-17.png
+IMAGE 1075 res/images/Floor2-18.png
+IMAGE 1076 res/images/Floor2-19.png
+IMAGE 1077 res/images/Floor2-20.png
+IMAGE 1078 res/images/Floor2-21a.png
+IMAGE 1079 res/images/Floor2-21b.png
+IMAGE 1080 res/images/Floor2-22a.png
+IMAGE 1081 res/images/Floor2-22b.png
+IMAGE 1082 res/images/Floor2-23b.png
+IMAGE 1083 res/images/Floor2-24b.png
+IMAGE 1084 res/images/Floor2-25.png
+IMAGE 1085 res/images/215-1.png
+IMAGE 1086 res/images/215-2a.png
+IMAGE 1087 res/images/215-2b.png
+IMAGE 1088 res/images/215-3a.png
+IMAGE 1089 res/images/215-3b.png
+IMAGE 1090 res/images/215-3d.png
+IMAGE 1091 res/images/215-4a.png
+IMAGE 1092 res/images/215-4b.png
+IMAGE 1093 res/images/215-4c.png
+IMAGE 1094 res/images/215-5a.png
+IMAGE 1095 res/images/215-5b.png
+IMAGE 1096 res/images/215-5c.png
+IMAGE 1097 res/images/215-6a.png
+IMAGE 1098 res/images/215-6c.png
+IMAGE 1099 res/images/215-7.png
+
+# Use 1001 as the starting scene
+START_SCENE 150
+
+END RESOURCES
+
+SCENE 150 1050
+SceneLink 151
+END SCENE
+
+SCENE 151 1051
+SceneLink 152
+END SCENE
+
+SCENE 152 1052
+SceneLink 153
+END SCENE
+
+SCENE 153 1053
+SceneLink 154
+END SCENE
+
+SCENE 154 1054
+SceneLink 155
+END SCENE
+
+#PLAYER is now on FLOOR 2. 
+#PLAYER can fork to SCENE 156 (right turn), or skip to SCENE 160 (to offices)
+SCENE 155 1055
+SceneLink 156
+SceneLink 160
+
+SCENE 156 1057
+SceneLink 157
+END SCENE
+
+SCENE 157 1059
+SceneLink 158
+END SCENE
+
+SCENE 158 1061
+SceneLink 159
+END SCENE
+
+# PLAYER dies at this point, and will respawn in the SH BUILDING, at SCENE 1104. 
+SCENE 159 1062
+SceneLink 1104
+
+# PLAYER continues ahead to offices. 
+

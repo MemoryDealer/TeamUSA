@@ -26,6 +26,8 @@ IMAGE 1044 res/images/Floor3-14.png
 # Use 1001 as the starting scene
 START_SCENE 125
 
+END RESOURCES
+
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
