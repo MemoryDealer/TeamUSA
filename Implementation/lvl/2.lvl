@@ -69,247 +69,247 @@ SceneLink 152 300 727 716 426 -1 -1
 END SCENE
 
 SCENE 152 1052
-SceneLink 153 
+SceneLink 153 26 45 340 785 -1 -1
 END SCENE
 
 SCENE 153 1053
-SceneLink 154
+SceneLink 154 296 139 708 561 -1 -1
 END SCENE
 
 SCENE 154 1054
-SceneLink 155
+SceneLink 155 315 444 837 404 -1 -1
 END SCENE
 
 #PLAYER is now on FLOOR 2. 
 #PLAYER can fork to SCENE 156 (right turn), or skip to SCENE 160 (to offices)
 SCENE 155 1055
-SceneLink 156
-SceneLink 160
+SceneLink 156 984 189 113 614 -1 -1
+SceneLink 160 654 210 222 515 -1 -1
 
 SCENE 156 1057
-SceneLink 157
+SceneLink 157 350 232 514 450 -1 -1
 END SCENE
 
 SCENE 157 1059
-SceneLink 158
+SceneLink 158 305 287 606 339 -1 -1
 END SCENE
 
 SCENE 158 1061
-SceneLink 159
+SceneLink 159 722 111 397 599 -1 -1
 END SCENE
 
 # PLAYER dies at this point, and will respawn in the SH BUILDING, at SCENE 1104. 
 SCENE 159 1062
-SceneLink 1104
+SceneLink 1104 8 5 1266 841 -1 -1
 END SCENE
 
 # PLAYER continues ahead to offices. 
 SCENE 160 1056 
-SceneLink 161
+SceneLink 161 98 128 1089 597 -1 -1
 END SCENE
 
 SCENE 161 1058
-SceneLink 162
+SceneLink 162 534 84 390 716 -1 -1
 END SCENE
 
 SCENE 162 1060
-SceneLink 164
+SceneLink 164 518 27 337 786 -1 -1
 END SCENE
 
 SCENE 164 1063
-SceneLink 165
+SceneLink 165 357 500 374 156 -1 -1
 END SCENE
 
 # [!] PLAYER should collect RED_PEN
 SCENE 165 1064
-SceneLink 166
+SceneLink 166 31 740 1228 96 -1 -1
 END SCENE
 
 SCENE 166 1065
-SceneLink 167
+SceneLink 167 31 740 1228 96 -1 -1
 END SCENE
 
 SCENE 167 1066
-SceneLink 168
+SceneLink 168 378 239 409 415 -1 -1
 END SCENE
 
 SCENE 168 1067
-SceneLink 169
+SceneLink 169 284 264 661 432 -1 -1
 END SCENE
 
 SCENE 169 1068
-SceneLink 170
+SceneLink 170 41 204 291 552 -1 -1
 END SCENE
 
 # PLAYER may enter ROOM 215 and fork to SCENE 171 or continue ahead to SCENE 186. 
 SCENE 170 1069
-SceneLink 171
-SceneLink 186
+SceneLink 171 83 164 147 661 -1 -1
+SceneLink 186 449 299 342 363 -1 -1
 END SCENE
 
 # PLAYER enters ROOM 215
 # PLAYER can fork to SCENE 172 or SCENE 180
 SCENE 171 1085
-SceneLink 172
-SceneLink 180
+SceneLink 172 399 146 431 577 -1 -1
+SceneLink 180 1080 161 159 594 -1 -1
 END SCENE
 
 # PLAYER can fork to SCENE 173, toward the cabinet, 
 # SCENE 179 toward black shape on wall, or SCENE 181 to lockers. 
 SCENE 172 1086
-SceneLink 173
-SceneLink 179
-SceneLink 181
+SceneLink 173 1115 56 126 745 -1 -1
+SceneLink 179 26 45 87 767 -1 -1
+SceneLink 181 425 249 393 390 -1 -1
 END SCENE
 
 # PLAYER can return to SCENE 172, move to SCENE 176 to examine the whiteboard,
 # or SCENE 174 to examine the cabinet. 
 SCENE 173 1089
-SceneLink 172
-SceneLink 174
-SceneLink 176
+SceneLink 172 23 752 1236 87 -1 -1
+SceneLink 174 624 468 288 246 -1 -1
+SceneLink 176 8 195 202 395 -1 -1
 END SCENE
 
 SCENE 174 1092
-SceneLink 173
-SceneLink 175
+SceneLink 173 23 752 1236 87 -1 -1
+SceneLink 175 677 431 195 148 -1 -1
 END SCENE
 
 SCENE 175 1095
-SceneLink 174
+SceneLink 174 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER moves to whiteboard
 SCENE 176 1093
-SceneLink 173
-SceneLink 177
+SceneLink 173 23 752 1236 87 -1 -1
+SceneLink 177 824 320 231 184 -1 -1
 END SCENE
 
 SCENE 177 1096
-SceneLink 176
-SceneLink 178
+SceneLink 176 23 752 1236 87 -1 -1 
+SceneLink 178 374 285 384 237 -1 -1
 END SCENE
 
 SCENE 178 1098
-SceneLink 177
+SceneLink 177 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER looks left at dark shape. 
 SCENE 179 1090
-SceneLink 172
+SceneLink 172 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER looks right. 
 SCENE 180 1087
-SceneLink 171
+SceneLink 171 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER moves to lockers. 
 # PLAYER can examine the lockers or ignore them. 
 SCENE 181 1088
-SceneLink 182
-SceneLink 185
+SceneLink 182 243 68 186 622 -1 -1
+SceneLink 185 443 45 186 440 -1 -1
 END SCENE
 
 SCENE 182 1091
-SceneLink 183
+SceneLink 183 651 159 477 441 -1 -1
 END SCENE
 
 SCENE 183 1094
-SceneLink 184
+SceneLink 184 419 314 342 333 -1 -1
 END SCENE
 
 # [!] PLAYER collects ADA_BOOK
 SCENE 184 1097
-SceneLink 185
+SceneLink 185 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER will loop back to SCENE 167, and can now safely proceed to through to SCENE 186. 
 SCENE 185 1099
-SceneLink 167
+SceneLink 167 264 18 368 812 -1 -1
 END SCENE
 
-SCENE 186 1070
-SceneLink 187
+SCENE 186 1070 
+SceneLink 187 422 333 424 357 -1 -1
 END SCENE
 
 SCENE 187 1100
-SceneLink 188
+SceneLink 188 299 293 654 460 -1 -1
 END SCENE
 
 SCENE 188 1071
-SceneLink 189
+SceneLink 189 263 224 483 523 -1 -1
 END SCENE
 
 # PLAYER must give ADA_BOOK to CART. 
 # Else, PLAYER can attempt to go back, but will die and move to SCENE 59. 
 SCENE 189 1072
-SceneLink 190
-SceneLink 159
+SceneLink 190 291 186 677 371 104 ADA_BOOK
+SceneLink 159 23 752 1236 87 -1 -1
 END SCENE
 
 SCENE 190 1073
-SceneLink 191
+SceneLink 191 23 752 1236 87 -1 -1
 END SCENE
 
 SCENE 191 1074
-SceneLink 192
+SceneLink 192 165 123 566 705 -1 -1
 END SCENE
 
 SCENE 192 1075
-SceneLink 193 
+SceneLink 193 386 98 498 588 -1 -1
 END SCENE
 
 SCENE 193 1076
-SceneLink 194
+SceneLink 194 401 42 607 669 -1 -1
 END SCENE
 
 # PLAYER can now visit ANDY'S OFFICE (SCENE 195) for EASTER EGGS
 # or DR. BURRIS'S OFFICE (SCENE 199) for GAME COMPLETION. 
 SCENE 194 1077
-SceneLink 195
-SceneLink 199
+SceneLink 195 140 18 477 800 -1 -1
+SceneLink 199 848 129 193 713 -1 -1
 END SCENE
 
 SCENE 195 1079
-SceneLink 194
-SceneLink 196
+SceneLink 194 23 752 1236 87 -1 -1
+SceneLink 196 554 254 498 451 -1 -1
 END SCENE
 
 SCENE 196 1081
-SceneLink 195
-SceneLink 197
+SceneLink 195 23 752 1236 87 -1 -1
+SceneLink 197 51 42 252 621 -1 -1
 END SCENE
 
 SCENE 197 1082
-SceneLink 196
-SceneLink 198
+SceneLink 196 23 752 1236 87 -1 -1
+SceneLink 198 1143 155 114 538 -1 -1
 END SCENE
 
 SCENE 198 1083
-SceneLink 197
+SceneLink 197 23 752 1236 87 -1 -1
 END SCENE
 
 # PLAYER continues to DR. BURRIS'S OFFICE. 
-SCENE 199 1078
-SceneLink 1100
-END SCENE
-
 # PLAYER must use RED_PEN on DOOR. 
 # Else, PLAYER can attempt to go back, but will die and move to SCENE 59. 
+SCENE 199 1078
+SceneLink 1100 545 180 280 465 103 RED_PEN
+SceneLink 159 23 752 1236 87 -1 -1
+END SCENE
+
 SCENE 1100 1080
-SceneLink 1101
-SceneLink 159
+SceneLink 1101 125 682 1054 121 -1 -1
 END SCENE
 
 SCENE 1101 1101
-SceneLink 1102
+SceneLink 1102 140 90 1021 668 -1 -1
 END SCENE
 
 SCENE 1102 1080
-SceneLink 1103
+SceneLink 1103 699 123 263 380 -1 -1
 END SCENE
 
 SCENE 1103 1084
-# Player wins? 
+# Player wins? 542 47 541 357 -1 -1
 END SCENE
