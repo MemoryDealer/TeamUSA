@@ -13,11 +13,11 @@
 namespace teamusa {
   namespace AssertNS {
 
-  #if defined ( WIN32 )
     static const bool CustomAssert( const bool exp,
                                 const int line,
                                 const char* file )
     {
+#if defined ( WIN32 )
         if ( !exp ) {
             bool ret = false;
             std::string msg = "\r\nFILE: " + std::string( file ) +
@@ -31,11 +31,12 @@ namespace teamusa {
 
             return ret;
         }
-
+#elif defined ( LINUX )
+        // Handle linux...
+#endif
         return false;
 
-    }
-  #endif
+    }  
 } // namespace AssertNS
 using namespace AssertNS;
 
