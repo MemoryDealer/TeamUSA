@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "VideoContext.hpp"
-#include "../ResourceGroup.hpp"
+#include "Engine/ResourceGroup.hpp"
 #ifndef VIDEOENGINE_H
 #define VIDEOENGINE_H
 

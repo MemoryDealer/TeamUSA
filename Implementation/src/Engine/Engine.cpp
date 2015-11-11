@@ -9,6 +9,7 @@
 #include "Engine.h"
 
 #include "Actor/ExampleActor.h"
+#include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
 #include "Video/VideoEngine.hpp"
 
@@ -24,7 +25,8 @@ using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 Engine::Engine( void )
-: mVideoEngine( nullptr )
+: mAudioEngine( nullptr )
+, mVideoEngine( nullptr )
 , mIsRunning( false )
 , mActorEventHandlers( )
 {
@@ -39,8 +41,9 @@ Engine::Engine( void )
     mActorEventHandlers.push_back( BIND( &Engine::onStreamAudio ) );
 
     mVideoEngine.reset( new VideoEngine( "LEGEND OF THE GREAT UNWASHED", 
-                                         720, 
-                                         480 ) );
+                                         1280, 
+                                         720 ) );
+    mAudioEngine.reset( new AudioEngine() );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
