@@ -71,6 +71,21 @@ namespace teamusa {
         /// \param region The Region to set.
         virtual void setRegion( const Region& region );
 
+        ///
+        /// \brief Gets the actor's Region.
+        /// \return The actor's Region struct.
+        virtual const Region getRegion( void ) const;
+
+        ///
+        /// \brief Gets the layer the actor should be rendered on.
+        /// \return An integer containing the layer.
+        virtual const int32_t getLayer( void ) const;
+
+        ///
+        /// \brief Gets the texture ID of the actor.
+        /// \return The integer containing the texture ID.
+        virtual const int32_t getTextureID( void ) const;
+
     protected:
 
         Region mRegion;

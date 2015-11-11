@@ -66,3 +66,24 @@ void BaseActor::setRegion( const Region& region )
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const Region BaseActor::getRegion( void ) const
+{
+    return mRegion;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const int32_t BaseActor::getLayer( void ) const
+{
+    return mVideo.layer;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const int32_t BaseActor::getTextureID( void ) const
+{
+    return mVideo.textureID;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

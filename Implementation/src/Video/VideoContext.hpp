@@ -144,7 +144,7 @@ namespace mediawrap {
        *   The region to copy the source texture from.
        */
       void render_onto(TextureID dest_id, TextureID src_id,
-       Region* dest_region, Region* src_region);
+       const Region* dest_region, Region* src_region);
 
       /**
        * Draws the given source texture onto the destination texture after

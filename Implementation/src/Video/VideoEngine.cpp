@@ -53,7 +53,7 @@ void VideoEngine::loadTexture(
     this->levelResources.push_back(id);
 }
 
-void VideoEngine::render(Region &region, unsigned int layer, TextureID id){
+void VideoEngine::render(const Region &region, const unsigned int layer, const TextureID id){
   this->videoContext->render_onto(this->layers[layer], id, &region, NULL);
 }
 

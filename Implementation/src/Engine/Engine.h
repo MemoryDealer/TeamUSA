@@ -28,6 +28,8 @@ namespace teamusa {
     // Function pointer type for handling actor events.
     typedef std::function< void( BaseActor& actor, const int32_t value ) > ActorEventHandler;
 
+    typedef std::vector<BaseActor> ActorList;
+
     ///
     /// \class Engine
     /// \brief Processes all components of the game each frame.
@@ -63,7 +65,7 @@ namespace teamusa {
 
         ///
         /// \brief Renders all actors in the scene.
-        void render( void );
+        void render( const ActorList& actors );
 
         // All actor event handlers:
 

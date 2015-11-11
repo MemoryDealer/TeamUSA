@@ -69,7 +69,7 @@ void Engine::run( void )
         // TODO: Add frame rate independence (requires Timer).
 
         // Iterate over all actors in current scene.
-        std::vector<BaseActor> actors; // = mLevel.getActiveScene().getShit();
+        ActorList actors; // = mLevel.getActiveScene().getShit();
         for ( auto& actor : actors ) {
             ActorEvent e;
 
@@ -90,6 +90,9 @@ void Engine::run( void )
             handleEvent( actor, e );
         }
 
+        // Update player.
+        mPlayer.setPosition( getMouseCoordinates() );
+
         // Update SDL.
         SDL_Event e;
         while ( SDL_PollEvent( &e ) ) {
@@ -104,7 +107,7 @@ void Engine::run( void )
         }
         
         // Render the current scene.
-        render();
+        render( actors );
     }
 }
 
@@ -140,8 +143,14 @@ void Engine::handleEvent( BaseActor& actor, const ActorEvent& e )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::render( void )
+void Engine::render( const ActorList& actors )
 {
+    for ( auto& actor : actors ) {
+        mVideoEngine->render( actor.getRegion(), 
+                              actor.getLayer(), 
+                              actor.getTextureID() );
+    }
+
     mVideoEngine->display();
 
     SDL_Delay( 17 );

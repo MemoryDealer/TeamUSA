@@ -55,6 +55,11 @@ namespace teamusa {
         void setPosition( const int32_t x, const int32_t y );
 
         ///
+        /// \brief Sets the position of the player's cursor.
+        /// \param position A Point struct containing the cursor position.
+        void setPosition( const Point& position );
+
+        ///
         /// \brief Gets the player's cursor position.
         /// \return A Point struct containing the cursor position.
         const Point getPosition( void ) const;

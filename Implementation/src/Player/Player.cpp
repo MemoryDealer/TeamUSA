@@ -69,6 +69,13 @@ void Player::setPosition( const int32_t x, const int32_t y )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+void Player::setPosition( const Point& position )
+{
+    mPosition = position;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 const Point Player::getPosition( void ) const
 {
     return mPosition;

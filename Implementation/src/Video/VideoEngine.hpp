@@ -71,7 +71,7 @@ namespace teamusa {
        * @param id
        *  The id of the texture to draw.
        */
-      void render(Region &region, unsigned int layer, TextureID id);
+      void render(const Region &region, const unsigned int layer, const TextureID id);
 
       /**
        * Renders the texture onto the given layer in the given region with the
