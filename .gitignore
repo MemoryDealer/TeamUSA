@@ -67,6 +67,10 @@ Thumbs.db
 *.obj
 *.opensdf
 
+# Windows files
+########################
+*.lnk
+
 # Ignore entire binary directory, not necessary for repo
 ########################
 Implementation/bin
