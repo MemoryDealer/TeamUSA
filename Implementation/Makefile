@@ -1,4 +1,4 @@
-DIRS={Actor,Audio,Engine,GameSaveSerializer,Video}
+DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
 INC=-Isrc/ -Isrc/**/
 
 CC=g++
