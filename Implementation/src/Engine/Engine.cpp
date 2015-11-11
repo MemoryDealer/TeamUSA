@@ -11,11 +11,12 @@
 #include "Actor/ExampleActor.h"
 #include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
+#include "Engine/ResourceGroup.hpp"
 #include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-
+// Creates function pointer with two parameters.
 #define BIND( function ) ( std::bind( function, this, std::placeholders::_1, std::placeholders::_2 ) )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -44,6 +45,9 @@ Engine::Engine( void )
                                          1280, 
                                          720 ) );
     mAudioEngine.reset( new AudioEngine() );
+
+    // Load main menu level...
+    // ...
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -60,6 +64,12 @@ void Engine::run( void )
 
     while ( mIsRunning ) {
 
+        // Iterate over all actors in current scene.
+        // ...
+
+            // Step actor, handle actor event.
+            // ...
+
     }
 }
 
@@ -68,7 +78,10 @@ void Engine::run( void )
 
 const Point Engine::getMouseCoordinates( void ) const
 {
-    Point point(0,0);
+    Point point( 0, 0 );
+
+    SDL_GetMouseState( &point.x, &point.y );
+
     return point;
 }
 

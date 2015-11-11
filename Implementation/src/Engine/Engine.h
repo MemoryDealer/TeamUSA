@@ -12,7 +12,7 @@
 
 #include "Headers.h"
 
-#include "Point.hpp"
+#include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -81,7 +81,7 @@ namespace teamusa {
         std::shared_ptr<AudioEngine> mAudioEngine;
         std::shared_ptr<VideoEngine> mVideoEngine;
         //Level mCurrentLevel;
-        //Player mPlayer;
+        Player mPlayer;
         bool mIsRunning;
 
         // Each index is an ActorEventType, associated with a handler function.

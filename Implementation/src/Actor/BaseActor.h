@@ -16,7 +16,7 @@
 
 namespace teamusa {
     
-    typedef int Player; // Temporary typedef until we have player, ignore.
+    class Player;
     struct Point;
 
     ///
