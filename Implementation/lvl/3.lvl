@@ -50,7 +50,7 @@ END SCENE
 
 SCENE 128 1029
 SceneLink 127 11 786 1251 51 -1 -1 	# Return to scene 127
-SceneLink 150 660 548 443 211 102 STAIRWELL_KEY # Transitions player to stairs & 2nd floor. 
+LevelLink 2 660 548 443 211 150 102 STAIRWELL_KEY  
 END SCENE
 
 # PLAYER continues ahead. 
@@ -144,7 +144,6 @@ END SCENE
 #     solve the puzzle. 
 SCENE 147 1044
 SceneLink 127 23 752 1236 87 -1 -1
-LevelLink 2 447 236 432 463 -1 -1
 END SCENE
 
 ################## End level file 3. Proceed to 2.lvl ######################
