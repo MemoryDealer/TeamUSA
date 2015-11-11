@@ -36,6 +36,7 @@ project "Game"
 	"Audio/**.hpp", "Audio/**.cpp",
     "Engine/**.h", "Engine/**.cpp",
     "GameSaveSerializer/**.h", "GameSaveSerializer/**.cpp",
+    "Player/*.h", "Player/*.cpp",
 	"Video/**.hpp", "Video/**.cpp"
     }
 	links { "SDL2.lib", "SDL2main.lib", "SDL2_image.lib", "SDL2_ttf.lib", "SDL2_mixer.lib" }	
