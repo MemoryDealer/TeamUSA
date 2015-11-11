@@ -2,13 +2,13 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file BaseActor.h
-/// \brief Implements BaseActor class.
+/// \file Player.cpp
+/// \brief Implements Player class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "BaseActor.h"
+#include "Player.h"
 
-#include "Engine/Point.h"
+#include "Engine/Assert.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -16,53 +16,62 @@ using namespace teamusa;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-BaseActor::BaseActor( void )
+Player::Player( void )
 : mRegion( )
-, mVideo( )
-, mAudioID( -1 )
+, mLayer( 0 )
+, mTextureID( 0 )
+, mPosition( )
+, mInventory( )
+, mCursorStyle( CursorStyle::CURSOR_NONE )
 {
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-BaseActor::~BaseActor( void )
+Player::~Player( void )
 {
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent BaseActor::onClick( Player& player )
+const bool Player::hasItem( const int32_t itemType ) const
 {
-    return ActorEvent();
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent BaseActor::onHover( Player& player )
-{
-    return ActorEvent();
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const bool BaseActor::isInBounds( const Point& point )
-{
-    // Test horizontal.
-    if ( point.x >= mRegion.x && point.x <= ( mRegion.x + mRegion.w ) ) {
-        // Test vertical.
-        if ( point.y >= mRegion.y && point.y <= ( mRegion.y + mRegion.h ) ) {
+    for ( auto& i : mInventory ) {
+        if ( i == itemType ) {
             return true;
         }
     }
-
+    
     return false;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void BaseActor::setRegion( const Region& region )
+void Player::addItem( const int32_t itemType )
 {
-    mRegion = region;
+    mInventory.push_back( itemType );
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void Player::setCursor( const CursorStyle style )
+{
+    mCursorStyle = style;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void Player::setPosition( const int32_t x, const int32_t y )
+{
+    mPosition.x = x;
+    mPosition.y = y;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const Point Player::getPosition( void ) const
+{
+    return mPosition;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

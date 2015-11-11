@@ -12,7 +12,7 @@
 
 #include "Headers.h"
 
-#include "Point.hpp"
+#include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -21,6 +21,7 @@ namespace teamusa {
     // Forward declarations:
 
     struct ActorEvent;
+    class AudioEngine;
     class BaseActor;
     class VideoEngine;
 
@@ -77,10 +78,10 @@ namespace teamusa {
 
     private:
 
-        //AudioEngine mAudioEngine;
+        std::shared_ptr<AudioEngine> mAudioEngine;
         std::shared_ptr<VideoEngine> mVideoEngine;
         //Level mCurrentLevel;
-        //Player mPlayer;
+        Player mPlayer;
         bool mIsRunning;
 
         // Each index is an ActorEventType, associated with a handler function.

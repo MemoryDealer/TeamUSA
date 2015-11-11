@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "VideoContext.hpp"
-#include "../ResourceGroup.hpp"
+#include "Engine/ResourceGroup.hpp"
 #ifndef VIDEOENGINE_H
 #define VIDEOENGINE_H
 
@@ -100,7 +100,7 @@ namespace teamusa {
        * @param text
        *  The text to display on screen.
        */
-      void showTextbox(std::string &text);
+      void showTextbox(const std::string &text);
 
       /**
        * Clears the current textbox so it does not appear.

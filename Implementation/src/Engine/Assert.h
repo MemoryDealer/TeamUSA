@@ -3,7 +3,7 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file Assert.h
-/// \brief Declares Assert macro class.
+/// \brief Declares custom Assert macro.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once
@@ -11,6 +11,8 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
+
+#if defined ( _DEBUG )
   namespace AssertNS {
 
     static const bool CustomAssert( const bool exp,
@@ -41,7 +43,6 @@ namespace teamusa {
 using namespace AssertNS;
 
 // Trigger debugger break if debug build, insert nop if release.
-#if defined ( _DEBUG )
 #define Assert( exp )\
 if( CustomAssert( static_cast<const bool>( exp ), __LINE__, __FILE__ ) )\
 { _asm { int 3 } }

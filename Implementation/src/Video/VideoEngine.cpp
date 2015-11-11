@@ -67,7 +67,7 @@ bool VideoEngine::isShowingTextbox(){
   return this->textboxActive;
 }
 
-void VideoEngine::showTextbox(std::string &text){
+void VideoEngine::showTextbox(const std::string &text){
   this->videoContext->fill_texture(TEXT_LAYER, 80, 80, 120, 200);
   this->videoContext->render_text(
    TEXT_LAYER, &(this->textboxPadding), text, 255, 255, 255, 255);

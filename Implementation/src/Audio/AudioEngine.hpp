@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include "AudioPlayer.hpp"
-#include "../ResourceGroup.hpp"
+#include "Engine/ResourceGroup.hpp"
 
 #ifndef AUDIOENGINE_H
 #define AUDIOENGINE_H
