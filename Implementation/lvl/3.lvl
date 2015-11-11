@@ -143,7 +143,8 @@ END SCENE
 # [*] If PLAYER failed to collect STAIRWELL_KEY, they will proceed in an infinite loop until they
 #     solve the puzzle. 
 SCENE 147 1044
-SceneLink 127 447 236 432 463
+SceneLink 127 23 752 1236 87 -1 -1
+LevelLink 2 447 236 432 463 -1 -1
 END SCENE
 
 ################## End level file 3. Proceed to 2.lvl ######################

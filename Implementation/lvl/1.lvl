@@ -1,5 +1,3 @@
-RESOURCES
-
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1001 res/images/Outside_1.png
@@ -35,8 +33,6 @@ IMAGE 1024 res/images/Elevator-7.png
 # Use 1001 as the starting scene
 START_SCENE 101
 
-END RESOURCES
-
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
@@ -45,118 +41,118 @@ END RESOURCES
 # Initial spawn, OUTSIDE
 SCENE 101 1001
 SceneLink 102 476 338 529 291 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 102 1002
 SceneLink 103 645 327 420 386 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 104 1004
 SceneLink 105 215 57 852 777 -1 -1
-END SCENE
+ENDSCENE
 
 # The PLAYER is now inside the FIRST FLOOR of AB1. 
 # There is a fork in SCENE 105 to SCENE 106 or 108
 SCENE 105 1005 
 SceneLink 106 1061 254 220 418
 SceneLink 108 39 177 257 671
-END SCENE
+ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
 SceneLink 107 530 375 214 267 -1 -1 # Forward to restroom alcove
 SceneLink 105 0 797 1275 80 -1 -1 	# Return to SCENE 105
-END SCENE
+ENDSCENE
 
 SCENE 107 1009
 SceneLink 106 0 797 1275 80 -1 -1 	# Dead End. Return to SCENE 106
-END SCENE
+ENDSCENE
 
 # Continue ahead, ignore restroom alcove. 
 SCENE 108 1006
 SceneLink 109 489 291 297 365 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 109 1008
 SceneLink 110 399 240 468 558 -1 -1
-END SCENE
+ENDSCENE
 
 # There is a fork in SCENE 110 to SCENE 111 or skip ahead to SCENE 113
 SCENE 110 1010
 SceneLink 111 0 0 310 853 -1 -1
 SceneLink 113 543 302 216 243 -1 -1
-END SCENE
+ENDSCENE
 
 # For left to locked double doors
 SCENE 111 1012
 SceneLink 112 555 396 159 201 -1 -1	# Peer into keyholes of locked doors. 
 SceneLink 110 0 797 1275 80 -1 -1 	# Return to SCENE 110
-END SCENE
+ENDSCENE
 
 SCENE 112 1014
 SceneLink 111 0 797 1275 80 -1 -1	# Dead end. Return to SCENE 111. 
-END SCENE
+ENDSCENE
 
 # Continue ahead, ignore doors to left. 
 # [!] Collect elevator alcove key from under vending machine. 
 SCENE 113 1011
 SceneLink 114 458 252 394 455 -1 -1
-END SCENE
+ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
 SCENE 114 1013
 SceneLink 115 1065 5 204 841 -1 -1
 SceneLink 116 5 2 193 849 -1 -1
 SceneLink 117 285 245 116 378 -1 -1
-END SCENE
+ENDSCENE
 
 # PLAYER examines stairs to the right. 
 SCENE 115 1016
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
-END SCENE
+ENDSCENE
 
 # PLAYER examines camera to left. 
 SCENE 116 1017
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
-END SCENE
+ENDSCENE
 
 # PLAYER approaches elevator alcove.  
 SCENE 117 1015
 SceneLink 118 506 63 406 788 101 ELEVATOR_KEY	# Requires key to elevator alcove.
-END SCENE
+ENDSCENE
 
 ################ Transistion to elevator alcove ###################
 
 SCENE 118 1018
 SceneLink 119 660 110 62 738 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 119 1019
 SceneLink 120 725 237 141 398 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 120 1020
 SceneLink 121 725 237 141 398 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 121 1021
 SceneLink 122 118 11 967 826 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 122 1022
 SceneLink 123 444 312 236 102 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 123 1023
 SceneLink 124 444 312 236 102 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 124 1024
-SceneLink 125 411 20 431 827
+LevelLink 3 411 20 431 827 125 -1 -1
 
 ################## End level file 1. Proceed to 3.lvl ######################
 
