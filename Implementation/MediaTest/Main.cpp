@@ -1,8 +1,8 @@
 #include <string>
 #include "SDL2/SDL.h"
-#include "../ResourceGroup.hpp"
-#include "../Video/VideoEngine.hpp"
-#include "../Audio/AudioEngine.hpp"
+#include "ResourceGroup.hpp"
+#include "Video/VideoEngine.hpp"
+#include "Audio/AudioEngine.hpp"
 
 using namespace teamusa;
 

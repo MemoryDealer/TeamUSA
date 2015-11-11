@@ -14,11 +14,12 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace teamusa;
+
+#define BIND( function ) ( std::bind( function, this, std::placeholders::_1, std::placeholders::_2 ) )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#define BIND( function ) ( std::bind( function, this, std::placeholders::_1, std::placeholders::_2 ) )
+using namespace teamusa;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -64,8 +65,8 @@ void Engine::run( void )
 
 const Point Engine::getMouseCoordinates( void ) const
 {
-
-    return Point();
+    Point point(0,0);
+    return point;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

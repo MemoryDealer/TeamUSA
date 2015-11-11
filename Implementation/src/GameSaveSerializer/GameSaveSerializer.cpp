@@ -6,7 +6,6 @@
 /// \brief Declares save file serializer class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#pragma once
 #include "GameSaveSerializer.h"
 
 //--------

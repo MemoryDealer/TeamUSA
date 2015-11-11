@@ -10,15 +10,16 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-namespace teamusa { namespace AssertNS {
+namespace teamusa {
+  namespace AssertNS {
 
     static const bool CustomAssert( const bool exp,
                                 const int line,
                                 const char* file )
     {
+#if defined ( WIN32 )
         if ( !exp ) {
             bool ret = false;
-#if defined ( WIN32 )
             std::string msg = "\r\nFILE: " + std::string( file ) +
                 "\r\nLINE: " + "\r\nDo you wish to break?";
             if ( static_cast<int>( MessageBox( GetForegroundWindow(),
@@ -29,12 +30,13 @@ namespace teamusa { namespace AssertNS {
             }
 
             return ret;
-#endif
         }
-
+#elif defined ( LINUX )
+        // Handle linux...
+#endif
         return false;
 
-    }
+    }  
 } // namespace AssertNS
 using namespace AssertNS;
 
