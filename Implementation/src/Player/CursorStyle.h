@@ -12,14 +12,16 @@
 
 namespace teamusa {
 
+    /// 
+    /// The possible styles for the mouse cursor.
     enum class CursorStyle {
 
-        CURSOR_NONE,
-        CURSOR_SELECT,
-        CURSOR_LEFT,
-        CURSOR_RIGHT,
-        CURSOR_UP,
-        CURSOR_DOWN
+        CURSOR_NONE, ///< No cursor.
+        CURSOR_SELECT, ///< Offers the ability to select an object.
+        CURSOR_LEFT, ///< Points left.
+        CURSOR_RIGHT, ///< Points right.
+        CURSOR_UP, ///< Points up.
+        CURSOR_DOWN ///< Points down.
 
     };
 
