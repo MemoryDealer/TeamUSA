@@ -8,6 +8,8 @@
 
 #include "BaseActor.h"
 
+#include "Engine/Point.h"
+
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 using namespace teamusa;
@@ -15,6 +17,9 @@ using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 BaseActor::BaseActor( void )
+: mRegion( )
+, mVideo( )
+, mAudioID( -1 )
 {
 }
 
@@ -42,10 +47,22 @@ const ActorEvent BaseActor::onHover( Player& player )
 
 const bool BaseActor::isInBounds( const Point& point )
 {
-    // Test region...
-    // ...
+    // Test horizontal.
+    if ( point.x >= mRegion.x && point.x <= ( mRegion.x + mRegion.w ) ) {
+        // Test vertical.
+        if ( point.y >= mRegion.y && point.y <= ( mRegion.y + mRegion.h ) ) {
+            return true;
+        }
+    }
 
     return false;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void BaseActor::setRegion( const Region& region )
+{
+    mRegion = region;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

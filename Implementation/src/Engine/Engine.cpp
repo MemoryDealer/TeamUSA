@@ -62,14 +62,49 @@ void Engine::run( void )
 {
     mIsRunning = true;
 
+    mVideoEngine->showTextbox( "LEGEND OF THE GREAT UNWASHED" );
+
     while ( mIsRunning ) {
 
+        // TODO: Add frame rate independence (requires Timer).
+
         // Iterate over all actors in current scene.
-        // ...
+        std::vector<BaseActor> actors; // = mLevel.getActiveScene().getShit();
+        for ( auto& actor : actors ) {
+            ActorEvent e;
 
-            // Step actor, handle actor event.
-            // ...
+            // Test mouse hover.
+            if ( actor.isInBounds( mPlayer.getPosition() ) ) {
+                e = actor.onHover( mPlayer );
+                handleEvent( actor, e );
 
+                // Test mouse click.
+                if ( getMouseClickState() ) {
+                    e = actor.onClick( mPlayer );
+                    handleEvent( actor, e );
+                }
+            }
+
+            // Update the actor.
+            e = actor.step( mPlayer );
+            handleEvent( actor, e );
+        }
+
+        // Update SDL.
+        SDL_Event e;
+        while ( SDL_PollEvent( &e ) ) {
+            switch ( e.type ) {
+            default:
+                break;
+
+            case SDL_QUIT:
+                mIsRunning = false;
+                break;
+            }
+        }
+        
+        // Render the current scene.
+        render();
     }
 }
 
@@ -89,8 +124,9 @@ const Point Engine::getMouseCoordinates( void ) const
 
 const int32_t Engine::getMouseClickState( void ) const
 {
-
-    return 0;
+    // Return true on left button down.
+    return ( 
+        SDL_GetMouseState( nullptr, nullptr ) & SDL_BUTTON( SDL_BUTTON_LEFT ) );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -106,7 +142,9 @@ void Engine::handleEvent( BaseActor& actor, const ActorEvent& e )
 
 void Engine::render( void )
 {
+    mVideoEngine->display();
 
+    SDL_Delay( 17 );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -124,7 +162,9 @@ void Engine::onChangeScene( BaseActor& actor, const int32_t value )
 
 void Engine::onLoadLevel( BaseActor& actor, const int32_t value )
 {
-
+    mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
+    
+    // Load the level...
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -159,14 +199,14 @@ void Engine::onDisplayText( BaseActor& actor, const int32_t value )
 
 void Engine::onExitGame( BaseActor& actor, const int32_t value )
 {
-
+    mIsRunning = false;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void Engine::onStreamAudio( BaseActor& actor, const int32_t value )
 {
-
+    
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

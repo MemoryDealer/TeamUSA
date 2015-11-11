@@ -23,7 +23,7 @@ const std::string& title, unsigned int width, unsigned int height){
   }
   // Create Window
   this->window = SDL_CreateWindow(
-   title.c_str(), 0, 0, width, height, SDL_WINDOW_SHOWN);
+   title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
   if(!this->window){
     TTF_Quit();
     IMG_Quit();

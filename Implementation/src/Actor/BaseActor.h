@@ -11,11 +11,22 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "ActorEvent.h"
+#include "Audio/AudioEngine.hpp"
+#include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
-    
+
+    struct ActorVideo {
+        int32_t layer;
+        int32_t textureID;
+
+        ActorVideo( void ) : layer( -1 ), textureID( -1 ) { }
+    };
+
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+        
     class Player;
     struct Point;
 
@@ -55,11 +66,16 @@ namespace teamusa {
         /// \return True if point is within actor's region.
         virtual const bool isInBounds( const Point& point );
 
-    private:
+        ///
+        /// \brief Sets the actor's region (can be used by Level when loading).
+        /// \param region The Region to set.
+        virtual void setRegion( const Region& region );
 
-        //region
-        //video
-        //audioID
+    protected:
+
+        Region mRegion;
+        ActorVideo mVideo;
+        AudioID mAudioID;
 
     };
 
