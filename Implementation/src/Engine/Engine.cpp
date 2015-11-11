@@ -12,12 +12,17 @@
 #include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
 #include "Engine/ResourceGroup.hpp"
+#include "Engine/Timer.h"
 #include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 // Creates function pointer with two parameters.
 #define BIND( function ) ( std::bind( function, this, std::placeholders::_1, std::placeholders::_2 ) )
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const static double FRAME_TIME = 16.67;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -54,6 +59,8 @@ Engine::Engine( void )
 
 Engine::~Engine( void )
 {
+    mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
+    mVideoEngine->deleteResourceGroup( CORE_RESOURCE );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -64,34 +71,53 @@ void Engine::run( void )
 
     mVideoEngine->showTextbox( "LEGEND OF THE GREAT UNWASHED" );
 
+    Timer timer;
+    timer.start();    
+    double prev = timer.getTicks();
+    double lag = 0.0;
+
     while ( mIsRunning ) {
+       
+        // Calculate elapsed time since last frame.
+        double current = timer.getTicks();
+        double elapsed = current - prev;
+        prev = current;
+        lag += elapsed;
 
-        // TODO: Add frame rate independence (requires Timer).
-
-        // Iterate over all actors in current scene.
+        // Get all actors in current scene.
         ActorList actors; // = mLevel.getActiveScene().getShit();
-        for ( auto& actor : actors ) {
-            ActorEvent e;
 
-            // Test mouse hover.
-            if ( actor.isInBounds( mPlayer.getPosition() ) ) {
-                e = actor.onHover( mPlayer );
-                handleEvent( actor, e );
+        // Update game logic. May be updated multiple times per frame if there
+        // is a hitch in the system, for instance. This will produce frame rate
+        // independent animations.
+        while ( lag >= FRAME_TIME ) {
+            // Iterate over all actors in current scene.            
+            for ( auto& actor : actors ) {
+                ActorEvent e;
 
-                // Test mouse click.
-                if ( getMouseClickState() ) {
-                    e = actor.onClick( mPlayer );
+                // Test mouse hover.
+                if ( actor.isInBounds( mPlayer.getPosition() ) ) {
+                    e = actor.onHover( mPlayer );
                     handleEvent( actor, e );
+
+                    // Test mouse click.
+                    if ( getMouseClickState() ) {
+                        e = actor.onClick( mPlayer );
+                        handleEvent( actor, e );
+                    }
                 }
+
+                // Update the actor.
+                e = actor.step( mPlayer );
+                handleEvent( actor, e );
             }
 
-            // Update the actor.
-            e = actor.step( mPlayer );
-            handleEvent( actor, e );
-        }
+            // Update player.
+            mPlayer.setPosition( getMouseCoordinates() );
 
-        // Update player.
-        mPlayer.setPosition( getMouseCoordinates() );
+            // Decrement the ms left for this frame time.
+            lag -= FRAME_TIME;
+        }
 
         // Update SDL.
         SDL_Event e;
@@ -153,7 +179,7 @@ void Engine::render( const ActorList& actors )
 
     mVideoEngine->display();
 
-    SDL_Delay( 17 );
+    SDL_Delay( static_cast<uint32_t>( FRAME_TIME ) );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
