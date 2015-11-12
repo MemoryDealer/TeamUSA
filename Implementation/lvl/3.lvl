@@ -1,5 +1,3 @@
-RESOURCES
-
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1025 res/images/Floor3-1.png
@@ -26,8 +24,6 @@ IMAGE 1044 res/images/Floor3-14.png
 # Use 1001 as the starting scene
 START_SCENE 125
 
-END RESOURCES
-
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
@@ -36,76 +32,77 @@ END RESOURCES
 # Initial spawn, ELEVATOR ALCOVE, 3RD FLOOR
 SCENE 125 1025
 SceneLink 126 230 24 756 789 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 126 1026
 SceneLink 127 12 11 96 831 -1 -1
-END SCENE
+ENDSCENE
 
 # Fork to SCENE 128 or skip to SCENE 129
 SCENE 127 1027
 SceneLink 128 875 164 142 615 -1 -1	# PLAYER examines STAIRS to right
 SceneLink 129 419 221 405 484 -1 -1	# PLAYER ignores STAIRS and continues ahead
-END SCENE
+ENDSCENE
 
+# This scene links to floor 2 via LEVELLINK
 SCENE 128 1029
 SceneLink 127 11 786 1251 51 -1 -1 	# Return to scene 127
 LevelLink 2 660 548 443 211 150 102 STAIRWELL_KEY  
-END SCENE
+ENDSCENE
 
 # PLAYER continues ahead. 
 SCENE 129 1028
 SceneLink 130 821 251 331 535 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 130 1030
 SceneLink 131 663 239 419 541 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 131 1031
 SceneLink 132 479 281 336 315 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 132 1032
 SceneLink 133 485 273 340 371 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 133 1033
 SceneLink 134 1020 138 236 635 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 134 1030 
 SceneLink 135 663 239 419 541 -1 -1
-END SCENE
+ENDSCENE
 
 # Fork to SCENE 136 or skip to SCENE 137
 SCENE 135 1034
 SceneLink 136 953 195 189 614 -1 -1
 SceneLink 137 489 267 330 347 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 136 1036
 SceneLink 135 24 753 1230 83 -1 -1	# dead end. Return to Scene 135
-END SCENE
+ENDSCENE
 
 # PLAYER continues ahead. 
 SCENE 137 1035
 SceneLink 138 758 162 285 549 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 138 1030
 SceneLink 139 663 239 419 541 -1 -1
-END SCENE
+ENDSCENE
 
 # Fork to SCENE 140 or skip to SCENE 141
 SCENE 139 1037 
 SceneLink 140 26 111 301 638 -1 -1
 SceneLink 141 471 255 366 405 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 140 1039
 SceneLink 139 74 740 1128 87 -1 -1	# Dead end. Return to scene 139.
-END SCENE
+ENDSCENE
 
 # PLAYER continues ahead. 
 # Fork to SCENE 142 (examine painting), SCENE 144 (examine map), or SCENE 145 (skip ahead).
@@ -113,30 +110,30 @@ SCENE 141 1038
 SceneLink 142 80 98 255 642 -1 -1
 SceneLink 144 1166 339 105 141 -1 -1
 SceneLink 145 506 259 320 309 -1 -1
-END SCENE
+ENDSCENE
 
 # PLAYER examines painting. Can return to SCENE 141 or access SCENE 143. 
 SCENE 142 1041
 SceneLink 143 444 188 396 505 -1 -1 
 SceneLink 141 36 759 1203 74 -1 -1
-END SCENE
+ENDSCENE
 
 # [!] Player must collect stairwell key. 
 SCENE 143 1042
 SceneLink 141 444 188 396 505 102 STAIRWELL_KEY
-END SCENE
+ENDSCENE
 
 SCENE 144 1043
 SceneLink 141 42 740 1200 84 -1 -1 # return to SCENE 141. 
-END SCENE
+ENDSCENE
 
 SCENE 145 1040
 SceneLink 146 815 173 261 652 -1 -1
-END SCENE
+ENDSCENE
 
 SCENE 146 1030
 SceneLink 147 663 239 419 541 -1 -1
-END SCENE
+ENDSCENE
 
 # [*] PLAYER loops back to SCENE 127, from SCENE 147. 
 # [*] They should be able to proceed to SCENE 128, and advance to SCENE 150. 
@@ -144,6 +141,6 @@ END SCENE
 #     solve the puzzle. 
 SCENE 147 1044
 SceneLink 127 23 752 1236 87 -1 -1
-END SCENE
+ENDSCENE
 
 ################## End level file 3. Proceed to 2.lvl ######################
