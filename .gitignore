@@ -1,3 +1,16 @@
+# Vim backup files
+########################
+*.swp
+
+# Executable names
+########################
+mediatest
+convenienced
+
+# C++ Objects
+########################
+*.o
+
 # OS X generated files o
 ########################
 .DS_Store
@@ -42,3 +55,19 @@ Thumbs.db
 *.vrb
 *.xdy
 *.tdo
+
+# Visual Studio generated files
+########################
+*.sln
+*.suo
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sdf
+*.obj
+*.opensdf
+
+# Ignore entire binary directory, not necessary for repo
+########################
+Implementation/bin
+

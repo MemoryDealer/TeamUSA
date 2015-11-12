@@ -1,22 +1,19 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file GameSaveSerializer.h
 /// \brief Declares save file serializer class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#pragma once
 #include "GameSaveSerializer.h"
-#include <vector>
-#include <iostream>
-#include <thread>
 
 //--------
 
-namespace USA {
+namespace teamusa {
 	
 	GameSaveSerializer::GameSaveSerializer(void)
+    : fileLock()
 	{
 		
 	}
@@ -35,15 +32,17 @@ namespace USA {
 		
 		// Read appropriate file contents
 		// Read the level ID
-		inputFile.read(levelID, sizeof(int));
+		inputFile.read(reinterpret_cast<char*>(levelID), sizeof(int));
 		
 		// Read the scene ID
-		inputFile.read(sceneID, sizeof(int));
+		inputFile.read(reinterpret_cast<char*>(sceneID), sizeof(int));
 		
 		// Read the inventory contents
 		while (!inputFile.eof())
 		{
-			inputFile.read(inventory.push_back(), sizeof(int));
+            int item = 0;
+			inputFile.read(reinterpret_cast<char*>(item), sizeof(int));
+            inventory.push_back( item );
 		}
 		// close file
 		inputFile.close();
@@ -52,8 +51,8 @@ namespace USA {
 	void GameSaveSerializer::save(int &levelID, int &sceneID, std::vector<int> &inventory)
 	{
 		// Launch the new thread and intiaite save
-		std::thread saveThread(saveInThread, this, levelID, SceneID, inventory);
-		saveThread.detatch();
+		std::thread saveThread(&GameSaveSerializer::saveInThread, this, levelID, sceneID, inventory);
+		saveThread.detach();
 	}
 	
 	void GameSaveSerializer::saveInThread(int levelID, int sceneID, std::vector<int> inventory)
@@ -67,15 +66,15 @@ namespace USA {
 		
 		// Write data to appropriate file
 		// Write the level ID
-		outputFile.write(levelID, sizeof(int));
+		outputFile.write(reinterpret_cast<const char*>(levelID), sizeof(int));
 		
 		// Write the scene ID
-		outputFile.write(sceneID, sizeof(int));
+		outputFile.write(reinterpret_cast<const char*>(sceneID), sizeof(int));
 		
 		// Write each inventory item (as an integer representation) to the file
 		for(auto iter = inventory.begin(); iter != inventory.end(); ++iter)
 		{
-			outputFile.write(*iter, sizeof(int));
+			outputFile.write(reinterpret_cast<const char*>(*iter), sizeof(int));
 		}
 		
 		// close file
