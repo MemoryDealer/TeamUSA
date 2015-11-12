@@ -1,29 +1,29 @@
 # Begin loading images
 # <type> <id> <path to resource>
-IMAGE 1001 res/images/Outside_1.png
-IMAGE 1002 res/images/Outside_2.png
-IMAGE 1003 res/images/Outside_3.png
-IMAGE 1004 res/images/Outside_4.png
-IMAGE 1005 res/images/Floor1-1.png
-IMAGE 1006 res/images/Floor1-2a.png
-IMAGE 1007 res/images/Floor1-2b.png
-IMAGE 1008 res/images/Floor1-3a.png
-IMAGE 1009 res/images/Floor1-3b.png
-IMAGE 1010 res/images/Floor1-4.png
-IMAGE 1011 res/images/Floor1-5a.png
-IMAGE 1012 res/images/Floor1-5b.png
-IMAGE 1013 res/images/Floor1-6a.png
-IMAGE 1014 res/images/Floor1-6b.png
-IMAGE 1015 res/images/Floor1-7a.png
-IMAGE 1016 res/images/Floor1-7b.png
-IMAGE 1017 res/images/Floor1-7c.png
-IMAGE 1018 res/images/Elevator-1.png
-IMAGE 1019 res/images/Elevator-2.png
-IMAGE 1020 res/images/Elevator-3.png
-IMAGE 1021 res/images/Elevator-4.png
-IMAGE 1022 res/images/Elevator-5.png
-IMAGE 1023 res/images/Elevator-6.png
-IMAGE 1024 res/images/Elevator-7.png
+IMAGE 1001 res/images/AB1_Outside/Outside_1.png
+IMAGE 1002 res/images/AB1_Outside/Outside_2.png
+IMAGE 1003 res/images/AB1_Outside/Outside_3.png
+IMAGE 1004 res/images/AB1_Outside/Outside_4.png
+IMAGE 1005 res/images/AB1_Floor1/Floor1-1.png
+IMAGE 1006 res/images/AB1_Floor1/Floor1-2a.png
+IMAGE 1007 res/images/AB1_Floor1/Floor1-2b.png
+IMAGE 1008 res/images/AB1_Floor1/Floor1-3a.png
+IMAGE 1009 res/images/AB1_Floor1/Floor1-3b.png
+IMAGE 1010 res/images/AB1_Floor1/Floor1-4.png
+IMAGE 1011 res/images/AB1_Floor1/Floor1-5a.png
+IMAGE 1012 res/images/AB1_Floor1/Floor1-5b.png
+IMAGE 1013 res/images/AB1_Floor1/Floor1-6a.png
+IMAGE 1014 res/images/AB1_Floor1/Floor1-6b.png
+IMAGE 1015 res/images/AB1_Floor1/Floor1-7a.png
+IMAGE 1016 res/images/AB1_Floor1/Floor1-7b.png
+IMAGE 1017 res/images/AB1_Floor1/Floor1-7c.png
+IMAGE 1018 res/images/AB1_Elevator1/Elevator-1.png
+IMAGE 1019 res/images/AB1_Elevator1/Elevator-2.png
+IMAGE 1020 res/images/AB1_Elevator1/Elevator-3.png
+IMAGE 1021 res/images/AB1_Elevator1/Elevator-4.png
+IMAGE 1022 res/images/AB1_Elevator1/Elevator-5.png
+IMAGE 1023 res/images/AB1_Elevator1/Elevator-6.png
+IMAGE 1024 res/images/AB1_Elevator1/Elevator-7.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
