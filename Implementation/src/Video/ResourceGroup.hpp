@@ -1,4 +1,0 @@
-#ifndef RESOURCEGROUP_H
-#define RESOURCEGROUP_H
-enum ResourceGroup { CORE_RESOURCE, LEVEL_RESOURCE };
-#endif /*RESOURCEGROUP_H*/

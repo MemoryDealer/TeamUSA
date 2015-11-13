@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file Point.h
 /// \brief Declares Point struct.
@@ -14,12 +14,13 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-namespace USA {
+namespace teamusa {
 
     struct Point {
         int32_t x, y;
 
         Point( void ) : x( 0 ), y( 0 ) { }
+        Point( int32_t x, const int32_t y ) : x( x ), y( y ) { }
     };
 
 }

@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file BaseActor.h
 /// \brief Declares BaseActor class.
@@ -11,12 +11,23 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "ActorEvent.h"
+#include "Audio/AudioEngine.hpp"
+#include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-namespace USA {
-    
-    typedef int Player; // Temporary typedef until we have player, ignore.
+namespace teamusa {
+
+    struct ActorVideo {
+        int32_t layer;
+        int32_t textureID;
+
+        ActorVideo( void ) : layer( -1 ), textureID( -1 ) { }
+    };
+
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+        
+    class Player;
     struct Point;
 
     ///
@@ -55,11 +66,31 @@ namespace USA {
         /// \return True if point is within actor's region.
         virtual const bool isInBounds( const Point& point );
 
-    private:
+        ///
+        /// \brief Sets the actor's region (can be used by Level when loading).
+        /// \param region The Region to set.
+        virtual void setRegion( const Region& region );
 
-        //region
-        //video
-        //audioID
+        ///
+        /// \brief Gets the actor's Region.
+        /// \return The actor's Region struct.
+        virtual const Region getRegion( void ) const;
+
+        ///
+        /// \brief Gets the layer the actor should be rendered on.
+        /// \return An integer containing the layer.
+        virtual const int32_t getLayer( void ) const;
+
+        ///
+        /// \brief Gets the texture ID of the actor.
+        /// \return The integer containing the texture ID.
+        virtual const int32_t getTextureID( void ) const;
+
+    protected:
+
+        Region mRegion;
+        ActorVideo mVideo;
+        AudioID mAudioID;
 
     };
 

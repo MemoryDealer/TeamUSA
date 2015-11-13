@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file BaseActor.h
 /// \brief Implements BaseActor class.
@@ -8,13 +8,18 @@
 
 #include "BaseActor.h"
 
+#include "Engine/Point.h"
+
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace USA;
+using namespace teamusa;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 BaseActor::BaseActor( void )
+: mRegion( )
+, mVideo( )
+, mAudioID( -1 )
 {
 }
 
@@ -42,10 +47,43 @@ const ActorEvent BaseActor::onHover( Player& player )
 
 const bool BaseActor::isInBounds( const Point& point )
 {
-    // Test region...
-    // ...
+    // Test horizontal.
+    if ( point.x >= mRegion.x && point.x <= ( mRegion.x + mRegion.w ) ) {
+        // Test vertical.
+        if ( point.y >= mRegion.y && point.y <= ( mRegion.y + mRegion.h ) ) {
+            return true;
+        }
+    }
 
     return false;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void BaseActor::setRegion( const Region& region )
+{
+    mRegion = region;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const Region BaseActor::getRegion( void ) const
+{
+    return mRegion;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const int32_t BaseActor::getLayer( void ) const
+{
+    return mVideo.layer;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const int32_t BaseActor::getTextureID( void ) const
+{
+    return mVideo.textureID;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

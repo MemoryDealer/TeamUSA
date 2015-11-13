@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// Legend of the Great Unwashed (Working Title).
+// LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file Engine.h
 /// \brief Declares Engine class.
@@ -12,24 +12,23 @@
 
 #include "Headers.h"
 
-#include "Point.h"
+#include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
-    class VideoEngine;
-}
-using namespace teamusa;
-
-namespace USA {
 
     // Forward declarations:
 
     struct ActorEvent;
+    class AudioEngine;
     class BaseActor;
+    class VideoEngine;
 
     // Function pointer type for handling actor events.
     typedef std::function< void( BaseActor& actor, const int32_t value ) > ActorEventHandler;
+
+    typedef std::vector<BaseActor> ActorList;
 
     ///
     /// \class Engine
@@ -66,7 +65,7 @@ namespace USA {
 
         ///
         /// \brief Renders all actors in the scene.
-        void render( void );
+        void render( const ActorList& actors );
 
         // All actor event handlers:
 
@@ -81,10 +80,10 @@ namespace USA {
 
     private:
 
-        //AudioEngine mAudioEngine;
+        std::shared_ptr<AudioEngine> mAudioEngine;
         std::shared_ptr<VideoEngine> mVideoEngine;
         //Level mCurrentLevel;
-        //Player mPlayer;
+        Player mPlayer;
         bool mIsRunning;
 
         // Each index is an ActorEventType, associated with a handler function.

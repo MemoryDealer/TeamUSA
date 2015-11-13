@@ -89,7 +89,7 @@ void VideoContext::render(TextureID id, Region* dest, Region* src){
 }
 
 void VideoContext::render_onto(TextureID dest_id, TextureID src_id,
-Region* dest_region, Region* src_region){
+const Region* dest_region, Region* src_region){
   VideoContext::texture_iter dest_iter = this->textures->find(dest_id);
   VideoContext::texture_iter src_iter = this->textures->find(src_id);
   if(dest_iter == this->textures->end())
