@@ -1,10 +1,17 @@
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+// Team USA - Software Engineering Project (Fall 2015).
+// LEGEND OF THE GREAT UNWASHED
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+/// \file Level.cpp
+/// \brief Implements Level class.
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "Assert.h"
 #include "Level.h"
 
+#include "Actor/ActorEvent.h"
 #include "Audio/AudioEngine.hpp"
 #include "Video/VideoEngine.hpp"
-// TODO: more fuckin includes
 
 using namespace teamusa;
 
@@ -131,41 +138,41 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
     }
 }
 
-BaseActor Level::parseAudioStreamActor(std::fstream &fs)
+BaseActorPtr Level::parseAudioStreamActor(std::fstream &fs)
 {
     std::string path;
 
     fs >> path;
-    return AudioStreamActor(path);
+    return BaseActorPtr( AudioStreamActor( path ) );
 }
 
-BaseActor Level::parseDelayedAudioActor(std::fstream &fs)
+BaseActorPtr Level::parseDelayedAudioActor(std::fstream &fs)
 {
     int audioID, delaySteps;
 
     fs >> audioID >> delaySteps;
-    return DelayedAudioActor(audioID, delaySteps);
+    return BaseActorPtr( DelayedAudioActor( audioID, delaySteps ) );
 }
 
-BaseActor Level::parseDelayedVideoActor(std::fstream &fs)
+BaseActorPtr Level::parseDelayedVideoActor(std::fstream &fs)
 {
     Region region;
     int textureID, delaySteps, disappearStep, layer;
 
     fs >> region >> textureID >> delaySteps >> disappearStep >> layer;
-    return DelayedVideoActor(region, textureID, delaySteps, disappearStep, layer);
+    return BaseActorPtr( DelayedVideoActor( region, textureID, delaySteps, disappearStep, layer ) );
 }
 
-BaseActor Level::parseInventoryItemActor(std::fstream &fs)
+BaseActorPtr Level::parseInventoryItemActor(std::fstream &fs)
 {
     Region region;
     int itemID, textureID, layer;
 
     fs >> region >> itemID >> textureID >> layer;
-    return InventoryItemActor(region, itemID, textureID, layer);
+    return BaseActorPtr( InventoryItemActor( region, itemID, textureID, layer ) );
 }
 
-BaseActor Level::parseLevelLink(std::fstream &fs)
+BaseActorPtr Level::parseLevelLink(std::fstream &fs)
 {
     int levelID;
     Region region;
@@ -174,73 +181,73 @@ BaseActor Level::parseLevelLink(std::fstream &fs)
 
     fs >> levelID >> region >> sceneID >> itemID;
     std::getline(fs, itemRequiredText);
-    return LevelLink(levelID, region, sceneID, itemID, itemRequiredText);
+    return BaseActorPtr( LevelLink( levelID, region, sceneID, itemID, itemRequiredText ) );
 }
 
-BaseActor Level::parseMovingActor(std::fstream &fs)
+BaseActorPtr Level::parseMovingActor(std::fstream &fs)
 {
     Region startRegion, endRegion;
     int textureID, layer, transitionSteps;
     bool moveOnSpawn;
 
     fs >> startRegion >> endRegion >> textureID >> layer >> transitionSteps >> moveOnSpawn;
-    return MovingActor(startRegion, endRegion, textureID, layer, transitionSteps, moveOnSpawn);
+    return BaseActorPtr( MovingActor( startRegion, endRegion, textureID, layer, transitionSteps, moveOnSpawn ) );
 }
 
-BaseActor Level::parseResponsiveAudioActor(std::fstream &fs)
+BaseActorPtr Level::parseResponsiveAudioActor(std::fstream &fs)
 {
     Region region;
     int hoverAudioID, durationSteps, clickAudioID;
 
     fs >> region >> hoverAudioID >> durationSteps >> clickAudioID;
-    return ResponsiveAudioActor(region, hoverAudioID, durationSteps, clickAudioID);
+    return BaseActorPtr( ResponsiveAudioActor( region, hoverAudioID, durationSteps, clickAudioID ) );
 }
 
-BaseActor Level::parseResponsiveVideoActor(std::fstream &fs)
+BaseActorPtr Level::parseResponsiveVideoActor(std::fstream &fs)
 {
     Region region;
     int hoverTextureID, clickTextureID, defaultTextureID, layer;
 
     fs >> region >> hoverTextureID >> clickTextureID >> defaultTextureID >> layer;
-    return ResponsiveAudioActor(region, hoverTextureID, clickTextureID, defaultTextureID, layer);
+    return BaseActorPtr( ResponsiveAudioActor( region, hoverTextureID, clickTextureID, defaultTextureID, layer ) );
 }
 
-BaseActor Level::parseSceneLink(std::fstream &fs)
+BaseActorPtr Level::parseSceneLink(std::fstream &fs)
 {
     int sceneID, requiredItemID;
     std::string itemRequiredText;
 
     fs >> sceneID, requiredItemID;
     std::getline(fs, itemRequiredText);
-    return SceneLink(sceneID, requiredItemID, itemRequiredText);
+    return BaseActorPtr( SceneLink( sceneID, requiredItemID, itemRequiredText ) );
 }
 
-BaseActor Level::parseTextboxSpawnActor(std::fstream &fs)
+BaseActorPtr Level::parseTextboxSpawnActor(std::fstream &fs)
 {
     Region region;
     std::string text;
 
     fs >> region;
     std::getline(fs, text);
-    return TextboxSpawnActor(text);
+    return BaseActorPtr( TextboxSpawnActor( text ) );
 }
 
-BaseActor Level::parseVideoActor(std::fstream &fs)
+BaseActorPtr Level::parseVideoActor(std::fstream &fs)
 {
     Region region;
     int textureID, layer;
 
     fs >> region >> textureID >> layer;
-    return VideoActor(region, textureID, layer);
+    return BaseActorPtr( VideoActor( region, textureID, layer ) );
 }
 
-BaseActor Level::parseVideoEventActor(std::fstream &fs)
+BaseActorPtr Level::parseVideoEventActor(std::fstream &fs)
 {
     Region region;
     int textureID;
     ActorEventType eventType;
     int eventValue, layer;
 
-    fs >> region >> textureID >> eventTYpe >> eventValue >> layer;
-    return VideoEventActor(region, textureID, eventType, eventValue, layer);
+    fs >> region >> textureID >> eventType >> eventValue >> layer;
+    return BaseActorPtr( VideoEventActor( region, textureID, eventType, eventValue, layer ) );
 }

@@ -1,3 +1,10 @@
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+// Team USA - Software Engineering Project (Fall 2015).
+// LEGEND OF THE GREAT UNWASHED
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+/// \file Level.h
+/// \brief Declares Level class.
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once
 
@@ -9,12 +16,14 @@ namespace teamusa
     class AudioEngine;
     class VideoEngine;
 
+    typedef std::shared_ptr<BaseActor> BaseActorPtr;
+
     class Level
     {
     private:
         struct Scene
         {
-            std::vector<BaseActor> actors;
+            std::vector<BaseActorPtr> actors;
             int bgImageID;
         };
 
@@ -26,17 +35,17 @@ namespace teamusa
         Level(int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine);
     private:
         void loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine);
-        BaseActor parseAudioStreamActor(std::fstream &fs);
-        BaseActor parseDelayedAudioActor(std::fstream &fs);
-        BaseActor parseDelayedVideoActor(std::fstream &fs);
-        BaseActor parseInventoryItemActor(std::fstream &fs);
-        BaseActor parseLevelLink(std::fstream &fs);
-        BaseActor parseMovingActor(std::fstream &fs);
-        BaseActor parseResponsiveAudioActor(std::fstream &fs);
-        BaseActor parseResponsiveVideoActor(std::fstream &fs);
-        BaseActor parseSceneLink(std::fstream &fs);
-        BaseActor parseTextboxSpawnActor(std::fstream &fs);
-        BaseActor parseVideoActor(std::fstream &fs);
-        BaseActor parseVideoEventActor(std::fstream &fs);
+        BaseActorPtr parseAudioStreamActor(std::fstream &fs);
+        BaseActorPtr parseDelayedAudioActor(std::fstream &fs);
+        BaseActorPtr parseDelayedVideoActor(std::fstream &fs);
+        BaseActorPtr parseInventoryItemActor(std::fstream &fs);
+        BaseActorPtr parseLevelLink(std::fstream &fs);
+        BaseActorPtr parseMovingActor(std::fstream &fs);
+        BaseActorPtr parseResponsiveAudioActor(std::fstream &fs);
+        BaseActorPtr parseResponsiveVideoActor(std::fstream &fs);
+        BaseActorPtr parseSceneLink(std::fstream &fs);
+        BaseActorPtr parseTextboxSpawnActor(std::fstream &fs);
+        BaseActorPtr parseVideoActor(std::fstream &fs);
+        BaseActorPtr parseVideoEventActor(std::fstream &fs);
     };
 }
