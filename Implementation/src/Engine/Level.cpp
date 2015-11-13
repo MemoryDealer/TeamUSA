@@ -91,7 +91,7 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
             else if (cmd == "AUDIO")
             {
                 fs >> resID >> resPath;
-                audioEngine.loadSample(resID, resPath);
+                audioEngine.loadSound(resPath, resID, ResourceGroup::LEVEL_RESOURCE);
             }
             else if (cmd == "START_SCENE")
                 fs >> startScene;
