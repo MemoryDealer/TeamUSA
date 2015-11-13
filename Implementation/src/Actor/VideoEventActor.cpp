@@ -49,20 +49,10 @@ const ActorEvent VideoEventActor::onHover( Player& player )
 
     // Assign data...
 
+	//how to do this?
     //player.setCursor(CURSOR_SELECT);
+
     return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent VideoEventActor::step( Player& player )
-{
-    // Handle per-frame updates...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-

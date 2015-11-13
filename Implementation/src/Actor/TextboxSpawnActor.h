@@ -22,37 +22,34 @@ namespace teamusa{
    // Create new Actor and derive from BaseActor.
    // Provide documentation, do so by starting with "///"
    ///
-   /// \class ExampleActor
-   /// \brief <Give brief description here>
-class TextboxSpawnActor{
-	private:
-	std::string text;
+   /// \class TextboxSpawnActor
+   /// \brief Will emit a DisplayText event when the onClick method is called. 
+   /// The actor can then have its text accessed by the engine for display through a call to the getText method.
 
-	public:
-	// Declare constructor and destructor...
+	class TextboxSpawnActor
+	{
+		private:
+		std::string text;
 
-	// Constructor.
-	explicit TextboxSpawnActor(Region region, std::string text);
+		public:
+		// Declare constructor and destructor...
 
-	// Destructor.
-	virtual ~TextboxSpawnActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
+		// Constructor.
+		explicit TextboxSpawnActor(Region region, std::string text);
 
-	// Override onClick, onHover, and step, provide documentation.
+		// Destructor.
+		virtual ~TextboxSpawnActor( void );
 
-	///
-	/// \brief <Give description of what actor does on click>
-	virtual const ActorEvent onClick( Player& player ) override;
+		// Override onClick, onHover, and step, provide documentation.
 
-	///
-	/// \brief <Give description of what actor does on hover>
-	virtual const ActorEvent onHover( Player& player ) override;
+		///
+		/// \brief return a display text actor event
+		virtual const ActorEvent onClick( Player& player );
 
-	///
-	/// \brief <Give description of what happens each frame to this actor>
-	virtual const ActorEvent step( Player& player ) override;
-
-	// Declare additional functions here as specified in UML diagram.
-
-	std::string getText(void);
+		// Declare additional functions here as specified in UML diagram.
+		///
+		/// \brief Retrurn the text when called.
+		std::string getText(void);
 	};
 };
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

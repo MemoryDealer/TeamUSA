@@ -33,7 +33,7 @@ namespace teamusa{
 		 // Destructor.
 		 virtual ~ResponsiveVideoActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
-		 // Override onClick, onHover, and step, provide documentation.
+		 // Override onClick and onHover, provide documentation.
 
 		 ///
 		 /// \brief When onClick is called, the onClick texture will be set permanently. Can disappear or appear by utilizing an invalid TextureID.
@@ -42,10 +42,6 @@ namespace teamusa{
 		 ///
 		 /// \brief When onHover is called, it will display the hover TextureID.
 		 virtual const ActorEvent onHover( Player& player ) override;
-
-		 ///
-		 /// \brief <Give description of what happens each frame to this actor>
-		 virtual const ActorEvent step( Player& player ) override;
 
 		 // Declare additional functions here as specified in UML diagram.
 		 void setTextureId(int TextureId);

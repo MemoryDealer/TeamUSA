@@ -67,17 +67,6 @@ const ActorEvent ResponsiveVideoActor::onHover( Player& player )
     return e;
 }
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent ResponsiveVideoActor::step( Player& player )
-{
-    // Handle per-frame updates...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
 void ResponsiveVideoActor::setTextureId(int TextureId){
 	defaultTextureId=TextureId;
 }

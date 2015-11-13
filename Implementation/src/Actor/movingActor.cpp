@@ -20,9 +20,13 @@ movingActor::movingActor( Region startRegion,Region endregion, int textureId,int
 	endRegion=endregion;
 	transitionSteps = transitionsteps;
 	currentStep = 0;
-	xSpeed = 0;
-	ySpeed = 0;
+	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
+	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
 	isActive = moveOnSpawn;
+
+	if (isActive) {
+		step();//player?
+	}
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -40,28 +44,43 @@ const ActorEvent movingActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
+	int x = mRegion.x;
+	int y = mRegion.y;
+	for (int i = 0; i < transitionSteps; i++) {
+		x = x + xSpeed;
+		y = y + ySpeed;
+
+		mRegion.x = x;
+		mRegion.y = y;
+
+		setRegion(mRegion);
+	}
+
+
     return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent movingActor::onHover( Player& player )
-{
-    // Handle hovering logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent movingActor::step( Player& player )
+const ActorEvent movingActor::step()
 {
     // Handle per-frame updates...
 
     ActorEvent e;
     // Assign data...
+
+	int x = mRegion.x;
+	int y = mRegion.y;
+	for (int i = 0; i < transitionSteps; i++) {
+		x = x + xSpeed;
+		y = y + ySpeed;
+
+		mRegion.x = x;
+		mRegion.y = y;
+
+		setRegion(mRegion);
+	}
+
     return e;
 }
 

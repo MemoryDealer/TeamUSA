@@ -23,8 +23,7 @@ namespace teamusa{
    /// \class movingActor
    /// \brief Will transition from one region to the next by calculating the distance to move each frame for a set number of frames.
    ///This allows for movement across the X and Y axis as well as scaling of the size of textures.
-   ///If moveOnSpawn is set, then the step method will advance the actor immediately.
-   ///Otherwise, the actor will move after it is clicked on.
+
 	class movingActor : public  BaseActor {
 		private:
 		Region endRegion;
@@ -43,20 +42,14 @@ namespace teamusa{
 		// Destructor.
 		virtual ~movingActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
-		// Override onClick, onHover, and step, provide documentation.
+		// Override onClick and step, provide documentation.
 
 		///
-		/// \brief <Give description of what actor does on click>
+		/// \brief If move on spwan is not set then step will ove the actor
 		virtual const ActorEvent onClick( Player& player ) override;
 
 		///
-		/// \brief <Give description of what actor does on hover>
-		virtual const ActorEvent onHover( Player& player ) override;
-
-		///
-		/// \brief <Give description of what happens each frame to this actor>
-		virtual const ActorEvent step( Player& player ) override;
-
-		// Declare additional functions here as specified in UML diagram.
+		/// \brief If moveOnSpawn is set, then the step method will advance the actor immediately.
+		virtual const ActorEvent step();
 	};
 };

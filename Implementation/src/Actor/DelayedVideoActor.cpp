@@ -21,27 +21,6 @@ using namespace teamusa;
 		//....
 	}
 
-	const ActorEvent DelayedVideoActor::onClick( Player& player )
-	{
-	    // Handle clicking logic...
-
-	    ActorEvent e;
-	    // Assign data...
-	    return e;
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-	const ActorEvent DelayedVideoActor::onHover( Player& player )
-	{
-	    // Handle hovering logic...
-
-	    ActorEvent e;
-	    // Assign data...
-	    return e;
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 	const ActorEvent DelayedVideoActor::step( Player& player )
 	{

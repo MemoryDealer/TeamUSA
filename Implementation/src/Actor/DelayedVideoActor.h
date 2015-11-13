@@ -44,15 +44,7 @@ public:
 	// Destructor.
 	virtual ~DelayedVideoActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
-	// Override onClick, onHover, and step, provide documentation.
-
-	///
-	/// \brief <Give description of what actor does on click>
-	virtual const ActorEvent onClick( Player& player ) override;
-
-	///
-	/// \brief <Give description of what actor does on hover>
-	virtual const ActorEvent onHover( Player& player ) override;
+	// Override step, provide documentation.
 
 	///
 	/// \brief increment a step counter

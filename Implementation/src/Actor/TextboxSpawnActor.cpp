@@ -8,64 +8,40 @@
 
 #include "TextboxSpawnActor.h"
 
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace std;
+using namespace teamusa;
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-namespace teamusa{
-	std::string text="";
-
-
-	TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text){
-		// ...
-		text=Text;
-	}
-
-	TextboxSpawnActor::~TextboxSpawnActor( void )
-	{
-	    // ...
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-	const ActorEvent TextboxSpawnActor::onClick( Player& player )
-	{
-	    // Handle clicking logic...
-
-	    ActorEvent e;
-	    // Assign data...
-	    e.type=DisplayText;
-	    return e;
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-	const ActorEvent TextboxSpawnActor::onHover( Player& player )
-	{
-	    // Handle hovering logic...
-
-	    ActorEvent e;
-	    // Assign data...
-	    return e;
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-	const ActorEvent TextboxSpawnActor::step( Player& player )
-	{
-	    // Handle per-frame updates...
-
-	    ActorEvent e;
-	    // Assign data...
-	    return e;
-	}
-
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-	std::string TextboxSpawnActor::getText(void){
-		return text;
-	}
-
+TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text){
+	// ...
+	text=Text;
 }
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+TextboxSpawnActor::~TextboxSpawnActor( void )
+{
+	// ...
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const ActorEvent TextboxSpawnActor::onClick( Player& player )
+{
+	// Handle clicking logic...
+	ActorEvent e;
+	// Assign data...
+	e.type=DisplayText;
+	return e;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+std::string TextboxSpawnActor::getText(void){
+	return text;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 
 
