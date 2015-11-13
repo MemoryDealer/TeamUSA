@@ -16,12 +16,13 @@
 using namespace teamusa;
 
 
-static inline std::fstream &operator >>(std::fstream &fs, Region &dst)
+static inline std::istream &operator >>(std::istream &fs, Region &dst)
 {
-    return fs >> dst.x >> dst.y >> dst.w >> dst.h;
+    fs >> dst.x >> dst.y >> dst.w >> dst.h;
+    return fs;
 }
 
-static inline std::fstream &operator >>(std::fstream &fs, ActorEventType &dst)
+static inline std::istream &operator >>(std::istream &fs, ActorEventType &dst)
 {
     std::string sType;
 
@@ -84,7 +85,7 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
             if (curScene < 0)
                 loadError("unexpected ENDSCENE");
             // move scene actors into scene map
-            scenes.insert(curScene, std::move(scene.actors));
+            scenes.insert(std::pair<int,Scene>(curScene, std::move(scene)));
             scene.actors.clear();
             curScene = -1;
         }
