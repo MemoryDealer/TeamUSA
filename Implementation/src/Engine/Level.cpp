@@ -1,0 +1,246 @@
+
+#include "Assert.h"
+#include "Level.h"
+
+#include "Audio/AudioEngine.hpp"
+#include "Video/VideoEngine.hpp"
+// TODO: more fuckin includes
+
+using namespace teamusa;
+
+
+static inline std::fstream &operator >>(std::fstream &fs, Region &dst)
+{
+    return fs >> dst.x >> dst.y >> dst.w >> dst.h;
+}
+
+static inline std::fstream &operator >>(std::fstream &fs, ActorEventType &dst)
+{
+    std::string sType;
+
+    if (fs >> sType)
+    {
+        if (sType == "ChangeScene")
+            dst = ActorEventType::ChangeScene;
+        else if (sType == "LoadLevel")
+            dst = ActorEventType::LoadLevel;
+        else if (sType == "PlayAudio")
+            dst = ActorEventType::PlayAudio;
+        else if (sType == "NewGame")
+            dst = ActorEventType::NewGame;
+        else if (sType == "LoadGame")
+            dst = ActorEventType::LoadGame;
+        else if (sType == "DisplayText")
+            dst = ActorEventType::DisplayText;
+        else if (sType == "ExitGame")
+            dst = ActorEventType::ExitGame;
+        else if (sType == "StreamAudio")
+            dst = ActorEventType::StreamAudio;
+        else
+            dst = ActorEventType::Nil;
+    }
+    return fs;
+}
+
+
+static void loadError(const std::string &msg)
+{
+    std::cerr << msg << std::endl;
+    Assert(false);
+}
+
+void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine)
+{
+    std::string cmd;
+    std::fstream fs(path.c_str(), std::ios_base::in);
+    int curScene = -1;
+    Scene scene;
+    int resID;
+    std::string resPath;
+
+    fs >> std::boolalpha;
+    while (fs >> cmd)
+    {
+        if (cmd == "#")
+            std::getline(fs, cmd);
+        else if (cmd == "SCENE")
+        {
+            if (curScene >= 0)
+                loadError("unexpected SCENE (scenes cannot be nested)");
+            fs >> curScene;
+            if (scenes.find(curScene) != scenes.cend())
+                loadError("scene with ID already exists");
+            fs >> scene.bgImageID;
+        }
+        else if (cmd == "ENDSCENE")
+        {
+            if (curScene < 0)
+                loadError("unexpected ENDSCENE");
+            // move scene actors into scene map
+            scenes.insert(curScene, std::move(scene.actors));
+            scene.actors.clear();
+            curScene = -1;
+        }
+        else if (curScene < 0)
+        {
+            if (cmd == "IMAGE")
+            {
+                fs >> resID >> resPath;
+                videoEngine.loadTexture(resPath, resID, ResourceGroup::LEVEL_RESOURCE);
+            }
+            else if (cmd == "AUDIO")
+            {
+                fs >> resID >> resPath;
+                audioEngine.loadSample(resID, resPath);
+            }
+            else if (cmd == "START_SCENE")
+                fs >> startScene;
+            else
+                loadError(cmd + " is an unknown resource type");
+        }
+        else
+        {
+            // actors
+            if (cmd == "AudioStreamActor")
+                scene.actors.push_back(parseAudioStreamActor(fs));
+            else if (cmd == "DelayedAudioActor")
+                scene.actors.push_back(parseDelayedAudioActor(fs));
+            else if (cmd == "DelayedVideoActor")
+                scene.actors.push_back(parseDelayedVideoActor(fs));
+            else if (cmd == "InventoryItemActor")
+                scene.actors.push_back(parseInventoryItemActor(fs));
+            else if (cmd == "LevelLink")
+                scene.actors.push_back(parseLevelLink(fs));
+            else if (cmd == "MovingActor")
+                scene.actors.push_back(parseMovingActor(fs));
+            else if (cmd == "ResponsiveAudioActor")
+                scene.actors.push_back(parseResponsiveAudioActor(fs));
+            else if (cmd == "ResponsiveVideoActor")
+                scene.actors.push_back(parseResponsiveVideoActor(fs));
+            else if (cmd == "SceneLink")
+                scene.actors.push_back(parseSceneLink(fs));
+            else if (cmd == "TextboxSpawnActor")
+                scene.actors.push_back(parseTextboxSpawnActor(fs));
+            else if (cmd == "VideoActor")
+                scene.actors.push_back(parseVideoActor(fs));
+            else if (cmd == "VideoEventActor")
+                scene.actors.push_back(parseVideoEventActor(fs));
+            else
+                loadError(cmd + " is an unknown actor type");
+        }
+    }
+}
+
+BaseActor Level::parseAudioStreamActor(std::fstream &fs)
+{
+    std::string path;
+
+    fs >> path;
+    return AudioStreamActor(path);
+}
+
+BaseActor Level::parseDelayedAudioActor(std::fstream &fs)
+{
+    int audioID, delaySteps;
+
+    fs >> audioID >> delaySteps;
+    return DelayedAudioActor(audioID, delaySteps);
+}
+
+BaseActor Level::parseDelayedVideoActor(std::fstream &fs)
+{
+    Region region;
+    int textureID, delaySteps, disappearStep, layer;
+
+    fs >> region >> textureID >> delaySteps >> disappearStep >> layer;
+    return DelayedVideoActor(region, textureID, delaySteps, disappearStep, layer);
+}
+
+BaseActor Level::parseInventoryItemActor(std::fstream &fs)
+{
+    Region region;
+    int itemID, textureID, layer;
+
+    fs >> region >> itemID >> textureID >> layer;
+    return InventoryItemActor(region, itemID, textureID, layer);
+}
+
+BaseActor Level::parseLevelLink(std::fstream &fs)
+{
+    int levelID;
+    Region region;
+    int sceneID, itemID;
+    std::string itemRequiredText;
+
+    fs >> levelID >> region >> sceneID >> itemID;
+    std::getline(fs, itemRequiredText);
+    return LevelLink(levelID, region, sceneID, itemID, itemRequiredText);
+}
+
+BaseActor Level::parseMovingActor(std::fstream &fs)
+{
+    Region startRegion, endRegion;
+    int textureID, layer, transitionSteps;
+    bool moveOnSpawn;
+
+    fs >> startRegion >> endRegion >> textureID >> layer >> transitionSteps >> moveOnSpawn;
+    return MovingActor(startRegion, endRegion, textureID, layer, transitionSteps, moveOnSpawn);
+}
+
+BaseActor Level::parseResponsiveAudioActor(std::fstream &fs)
+{
+    Region region;
+    int hoverAudioID, durationSteps, clickAudioID;
+
+    fs >> region >> hoverAudioID >> durationSteps >> clickAudioID;
+    return ResponsiveAudioActor(region, hoverAudioID, durationSteps, clickAudioID);
+}
+
+BaseActor Level::parseResponsiveVideoActor(std::fstream &fs)
+{
+    Region region;
+    int hoverTextureID, clickTextureID, defaultTextureID, layer;
+
+    fs >> region >> hoverTextureID >> clickTextureID >> defaultTextureID >> layer;
+    return ResponsiveAudioActor(region, hoverTextureID, clickTextureID, defaultTextureID, layer);
+}
+
+BaseActor Level::parseSceneLink(std::fstream &fs)
+{
+    int sceneID, requiredItemID;
+    std::string itemRequiredText;
+
+    fs >> sceneID, requiredItemID;
+    std::getline(fs, itemRequiredText);
+    return SceneLink(sceneID, requiredItemID, itemRequiredText);
+}
+
+BaseActor Level::parseTextboxSpawnActor(std::fstream &fs)
+{
+    Region region;
+    std::string text;
+
+    fs >> region;
+    std::getline(fs, text);
+    return TextboxSpawnActor(text);
+}
+
+BaseActor Level::parseVideoActor(std::fstream &fs)
+{
+    Region region;
+    int textureID, layer;
+
+    fs >> region >> textureID >> layer;
+    return VideoActor(region, textureID, layer);
+}
+
+BaseActor Level::parseVideoEventActor(std::fstream &fs)
+{
+    Region region;
+    int textureID;
+    ActorEventType eventType;
+    int eventValue, layer;
+
+    fs >> region >> textureID >> eventTYpe >> eventValue >> layer;
+    return VideoEventActor(region, textureID, eventType, eventValue, layer);
+}
