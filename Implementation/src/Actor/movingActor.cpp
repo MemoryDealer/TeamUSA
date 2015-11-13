@@ -25,7 +25,7 @@ movingActor::movingActor( Region startRegion,Region endregion, int textureId,int
 	isActive = moveOnSpawn;
 
 	if (isActive) {
-		step();//player?
+		step();
 	}
 }
 
