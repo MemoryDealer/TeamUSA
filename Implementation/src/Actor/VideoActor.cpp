@@ -17,46 +17,16 @@ using namespace USA; // We want to use our namespace across this whole file.
 VideoActor::VideoActor( Region region, int textureId  = -1, int layer = 1 )
 {
     // ...
+    m_region = region;
+    m_textureId = textureId;
+    m_layer = layer;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-VideoActor::~VideoActor( void )
+VideoActor::~VideoActor( void)
 {
     // ...
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent VideoActor::onClick( Player& player )
-{
-    // Handle clicking logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent VideoActor::onHover( Player& player )
-{
-    // Handle hovering logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent VideoActor::step( Player& player )
-{
-    // Handle per-frame updates...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

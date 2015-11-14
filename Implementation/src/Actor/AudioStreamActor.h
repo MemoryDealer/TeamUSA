@@ -59,7 +59,7 @@ namespace USA {
 
     private:
       std::string path;
-      bool activated = false;
+      bool activated;
     };
 
 }

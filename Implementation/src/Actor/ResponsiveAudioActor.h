@@ -22,11 +22,11 @@ namespace USA {
     // Provide documentation, do so by starting with "///"
     ///
     /// \class ResponsiveAudioActor
-    /// \ Will increment the value of stepCount until it is equal to durationSteps
-    ///   for each call to the step method. A call to onClick or onHover will set the
-    ///   value of stepCount to zero and emit an AudioID and value if stepCount is equal
-    ///   to durationSteps. The hoverAudioID or clickAudioID can be set to an invalid AudioID
-    ///   value to prevent sound from being played.
+    /// \ Brief: Will increment the value of stepCount until it is equal to durationSteps
+    ///         for each call to the step method. A call to onClick or onHover will set the
+    ///         value of stepCount to zero and emit an AudioID and value if stepCount is equal
+    ///         to durationSteps. The hoverAudioID or clickAudioID can be set to an invalid AudioID
+    ///         value to prevent sound from being played.
     class ResponsiveAudioActor : public BaseActor
     {
 
@@ -35,7 +35,7 @@ namespace USA {
         // Declare constructor and destructor...
 
         // Constructor.
-        explicit ResponsiveAudioActor( void );
+        explicit ResponsiveAudioActor( Region region, int hoverAudioId, int durationSteps, int clickAudioId);
 
         // Destructor.
         virtual ~ResponsiveAudioActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
@@ -57,10 +57,10 @@ namespace USA {
         // Declare additional functions here as specified in UML diagram.
 
     private:
-        int hoverAudioId = -1;
-        int clickAudioId = -1;
-        int durationSteps = 120;
-        int stepCount = 0;
+        int hoverAudioId;
+        int clickAudioId;
+        int durationSteps ;
+        int stepCount;
     };
 
 }

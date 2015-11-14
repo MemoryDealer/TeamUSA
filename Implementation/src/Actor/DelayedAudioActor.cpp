@@ -17,35 +17,16 @@ using namespace USA; // We want to use our namespace across this whole file.
 DelayedAudioActor::DelayedAudioActor(int audioID, int delaySteps = 0 )
 {
     // ...
+    m_audioId = audioId;
+    m_delaySteps = delaySteps;
+    currentStep = 0;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-DelayedAudioActor::~DelayedAudioActor( void )
+DelayedAudioActor::~DelayedAudioActor(void)
 {
     // ...
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent DelayedAudioActor::onClick( Player& player )
-{
-    // Handle clicking logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent DelayedAudioActor::onHover( Player& player )
-{
-    // Handle hovering logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -56,6 +37,12 @@ const ActorEvent DelayedAudioActor::step( Player& player )
 
     ActorEvent e;
     // Assign data...
+    currentStep++;
+    if(currentStep == m_delaySteps)
+    {
+      e.value = m_audioId;
+      e.type = PlayAudio;
+    }
     return e;
 }
 

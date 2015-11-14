@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// LEGEND OF THE GREAT UNWASHED
+// Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file ExampleActor.h
 /// \brief Declares ExampleActor class.
@@ -16,7 +16,7 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 // We define our stuff inside a namespace.
-namespace teamusa {
+namespace USA {
 
     // Create new Actor and derive from BaseActor.
     // Provide documentation, do so by starting with "///"
@@ -36,7 +36,7 @@ namespace teamusa {
         // Destructor.
         virtual ~ExampleActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
-        // Override onClick, onHover, and step, provide documentation.  
+        // Override onClick, onHover, and step, provide documentation.
 
         ///
         /// \brief <Give description of what actor does on click>
