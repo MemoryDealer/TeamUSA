@@ -22,20 +22,7 @@ MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int
 	currentStep = 0;
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
 	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
-	isActive = moveOnSpawn;
-
-	if (isActive) {
-		int x = mRegion.x;
-		int y = mRegion.y;
-		for (int i = 0; i < transitionSteps; i++) {
-			x = x + xSpeed;
-			y = y + ySpeed;
-
-			mRegion.x = x;
-			mRegion.y = y;
-
-		}
-	}
+	isActive = moveOnSpawn;	
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -70,13 +57,15 @@ const ActorEvent MovingActor::step()
 
 	int x = mRegion.x;
 	int y = mRegion.y;
-	for (int i = 0; i < transitionSteps; i++) {
-		x = x + xSpeed;
-		y = y + ySpeed;
+    if ( isActive ) {
+        for ( int i = 0; i < transitionSteps; i++ ) {
+            x = x + xSpeed;
+            y = y + ySpeed;
 
-		mRegion.x = x;
-		mRegion.y = y;
-	}
+            mRegion.x = x;
+            mRegion.y = y;
+        }
+    }
 
     return e;
 }
