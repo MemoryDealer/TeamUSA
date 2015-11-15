@@ -48,7 +48,7 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
-    defaultTextureId=clickTexture;
+	mVideo.textureID =clickTexture;
     return e;
 }
 
@@ -60,15 +60,25 @@ const ActorEvent ResponsiveVideoActor::onHover( Player& player )
 
     ActorEvent e;
     // Assign data...
-
-    e.type=DisplayText;
-    e.value=hoverTexture;
+	mVideo.textureID = hoverTexture;
+	
 
     return e;
 }
 
+const ActorEvent ResponsiveVideoActor::step()
+{
+	// Handle per-frame updates...
+
+	ActorEvent e;
+	// Assign data...
+
+	return e;
+}
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 void ResponsiveVideoActor::setTextureId(int TextureId){
-	defaultTextureId=TextureId;
+	mVideo.textureID=TextureId;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

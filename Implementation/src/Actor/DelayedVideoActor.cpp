@@ -9,12 +9,12 @@
 
 using namespace teamusa;
 
-	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep,int layer ){
+	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep ){
 		//....
 		delaySteps=disappearStep - delaysteps;
 		textureId=textureID;
 		currentStep =0;
-		disappear = -1;
+		disappear = disappearStep;
 	}
 
 	DelayedVideoActor::~DelayedVideoActor( void ){
@@ -31,12 +31,11 @@ using namespace teamusa;
 	    currentStep++;
 
 	    if(currentStep==delaySteps){
-	    	e.value=textureId;
-	    	e.type= Nil;
+			mVideo.textureID = textureId;
 	    }
-	    else{
-	    	e.value=-1;
-	    }
+		else if (currentStep == disappear){
+			mVideo.textureID = -1;
+		}
 
 	    return e;
 	}

@@ -6,7 +6,7 @@
 /// \brief Declares movingActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "movingActor.h"
+#include "MovingActor.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -14,7 +14,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-movingActor::movingActor( Region startRegion,Region endregion, int textureId,int layer, int transitionsteps, bool moveOnSpawn )
+MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int layer, int transitionsteps, bool moveOnSpawn )
 {
     // ...
 	endRegion=endregion;
@@ -25,36 +25,35 @@ movingActor::movingActor( Region startRegion,Region endregion, int textureId,int
 	isActive = moveOnSpawn;
 
 	if (isActive) {
-		step();
+		int x = mRegion.x;
+		int y = mRegion.y;
+		for (int i = 0; i < transitionSteps; i++) {
+			x = x + xSpeed;
+			y = y + ySpeed;
+
+			mRegion.x = x;
+			mRegion.y = y;
+
+		}
 	}
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-movingActor::~movingActor( void )
+MovingActor::~MovingActor( void )
 {
     // ...
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent movingActor::onClick( Player& player )
+const ActorEvent MovingActor::onClick( Player& player )
 {
     // Handle clicking logic...
 
     ActorEvent e;
     // Assign data...
-	int x = mRegion.x;
-	int y = mRegion.y;
-	for (int i = 0; i < transitionSteps; i++) {
-		x = x + xSpeed;
-		y = y + ySpeed;
-
-		mRegion.x = x;
-		mRegion.y = y;
-
-		setRegion(mRegion);
-	}
+	isActive = true;
 
 
     return e;
@@ -62,7 +61,7 @@ const ActorEvent movingActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent movingActor::step()
+const ActorEvent MovingActor::step()
 {
     // Handle per-frame updates...
 
@@ -77,8 +76,6 @@ const ActorEvent movingActor::step()
 
 		mRegion.x = x;
 		mRegion.y = y;
-
-		setRegion(mRegion);
 	}
 
     return e;

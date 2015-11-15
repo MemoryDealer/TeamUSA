@@ -41,6 +41,17 @@ const ActorEvent VideoEventActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+const ActorEvent VideoEventActor::step()
+{
+	// Handle per-frame updates...
+
+	ActorEvent e;
+	// Assign data...
+
+	return e;
+}
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 const ActorEvent VideoEventActor::onHover( Player& player )
 {
     // Handle hovering logic...
