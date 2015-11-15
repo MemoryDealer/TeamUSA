@@ -24,6 +24,16 @@ IMAGE 1021 res/images/AB1_Elevator1/Elevator-4.png
 IMAGE 1022 res/images/AB1_Elevator1/Elevator-5.png
 IMAGE 1023 res/images/AB1_Elevator1/Elevator-6.png
 IMAGE 1024 res/images/AB1_Elevator1/Elevator-7.png
+IMAGE 1025 res/images/Bathroom-1.png
+IMAGE 1026 res/images/Bathroom-2.png
+IMAGE 1027 res/images/Bathroom-3.png
+IMAGE 1028 res/images/Bathroom-4.png
+IMAGE 1029 res/images/Bathroom-5.png
+IMAGE 1030 res/images/Bathroom-6.png
+IMAGE 1031 res/images/AB1_Floor1/Floor1-5a1.png
+IMAGE 1032 res/images/AB1_Floor1/Floor1-5a2.png
+IMAGE 1033 res/images/AB1_Floor1/Floor1-5a3.png
+IMAGE 1034 res/images/AB1_Floor1/Floor1-5a4.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
@@ -31,7 +41,7 @@ IMAGE 1024 res/images/AB1_Elevator1/Elevator-7.png
 # AUDIO 1002 res/sounds/robot.wav
 
 # Use 1001 as the starting scene
-START_SCENE 101
+START_SCENE 103
 
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
@@ -57,6 +67,7 @@ ENDSCENE
 
 # The PLAYER is now inside the FIRST FLOOR of AB1. 
 # There is a fork in SCENE 105 to SCENE 106 or 108
+# [!] Collect CHANGE from beneath bench. 
 SCENE 105 1005 
 SceneLink 106 1061 254 220 418
 SceneLink 108 39 177 257 671
@@ -69,20 +80,47 @@ SceneLink 105 0 797 1275 80 -1 -1 	# Return to SCENE 105
 ENDSCENE
 
 SCENE 107 1009
-SceneLink 106 0 797 1275 80 -1 -1 	# Dead End. Return to SCENE 106
+SceneLink 106 0 797 1275 80 -1 -1 
+ENDSCENE
+
+SCENE 1113 1025
+SceneLink 1114 209 14 627 826 -1 -1
+ENDSCENE
+
+SCENE 1114 1026
+SceneLink 1115 833 336 345 489 -1 -1
+ENDSCENE
+
+SCENE 1115 1027
+SceneLink 1116 471 339 378 497 -1 -1
+ENDSCENE
+
+SCENE 1116 1028
+SceneLink 1117 0 797 1275 80 -1 -1
+ENDSCENE
+
+SCENE 1117 1029
+SceneLink 1118 1152 38 90 772 -1 -1
+ENDSCENE
+
+SCENE 1118 1030
+SceneLink 106 569 294 184 456 -1 -1
 ENDSCENE
 
 # Continue ahead, ignore restroom alcove. 
 SCENE 108 1006
+SceneLink 105 0 797 1275 80 -1 -1
 SceneLink 109 489 291 297 365 -1 -1
 ENDSCENE
 
 SCENE 109 1008
+SceneLink 108 0 797 1275 80 -1 -1
 SceneLink 110 399 240 468 558 -1 -1
 ENDSCENE
 
 # There is a fork in SCENE 110 to SCENE 111 or skip ahead to SCENE 113
 SCENE 110 1010
+SceneLink 109 0 797 1275 80 -1 -1
 SceneLink 111 0 0 310 853 -1 -1
 SceneLink 113 543 302 216 243 -1 -1
 ENDSCENE
@@ -98,9 +136,31 @@ SceneLink 111 0 797 1275 80 -1 -1	# Dead end. Return to SCENE 111.
 ENDSCENE
 
 # Continue ahead, ignore doors to left. 
-# [!] Collect elevator alcove key from under vending machine. 
+# [!] Collect elevator alcove key from vending machine scenes. 
 SCENE 113 1011
 SceneLink 114 458 252 394 455 -1 -1
+SceneLink 1119 903 260 279 502 -1 -1
+SceneLink 110 0 797 1275 80 -1 -1
+ENDSCENE
+
+# [!] Use CHANGE to activate vending machine and retrieve ELEVATOR_KEY, in SCENE 1122
+# Else, PLAYER can only go to SCENE 1120, and will see a closed dispenser. 
+SCENE 1119 1031
+SceneLink 1120 764 497 106 96 -1 -1
+SceneLink 1121 773 413 91 76 106 CHANGE
+ENDSCENE
+
+SCENE 1120 1032
+SceneLink 1119 0 797 1275 80 -1 -1
+ENDSCENE
+
+SCENE 1121 1033
+SceneLink 1122 691 491 99 99 -1 -1
+ENDSCENE
+
+# [!] Collect ELEVATOR_KEY from vending machine dispenser. 
+SCENE 1122 1034
+SceneLink 113 494 513 258 297 -1 -1
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
@@ -108,6 +168,7 @@ SCENE 114 1013
 SceneLink 115 1065 5 204 841 -1 -1
 SceneLink 116 5 2 193 849 -1 -1
 SceneLink 117 285 245 116 378 -1 -1
+SceneLink 113 0 797 1275 80 -1 -1
 ENDSCENE
 
 # PLAYER examines stairs to the right. 
@@ -123,6 +184,7 @@ ENDSCENE
 # PLAYER approaches elevator alcove.  
 SCENE 117 1015
 SceneLink 118 506 63 406 788 101 ELEVATOR_KEY	# Requires key to elevator alcove.
+SceneLink 114 0 797 1275 80 -1 -1
 ENDSCENE
 
 ################ Transistion to elevator alcove ###################
