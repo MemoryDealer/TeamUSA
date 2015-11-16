@@ -24,18 +24,20 @@ IMAGE 1021 res/images/AB1_Elevator1/Elevator-4.png
 IMAGE 1022 res/images/AB1_Elevator1/Elevator-5.png
 IMAGE 1023 res/images/AB1_Elevator1/Elevator-6.png
 IMAGE 1024 res/images/AB1_Elevator1/Elevator-7.png
-IMAGE 1025 res/images/Bathroom-1.png
-IMAGE 1026 res/images/Bathroom-2.png
-IMAGE 1027 res/images/Bathroom-3.png
-IMAGE 1028 res/images/Bathroom-4.png
-IMAGE 1029 res/images/Bathroom-5.png
-IMAGE 1030 res/images/Bathroom-6.png
+IMAGE 1025 res/images/AB1_Bath/Bathroom-1.png
+IMAGE 1026 res/images/AB1_Bath/Bathroom-2.png
+IMAGE 1027 res/images/AB1_Bath/Bathroom-3.png
+IMAGE 1028 res/images/AB1_Bath/Bathroom-4.png
+IMAGE 1029 res/images/AB1_Bath/Bathroom-5.png
+IMAGE 1030 res/images/AB1_Bath/Bathroom-6.png
 IMAGE 1031 res/images/AB1_Floor1/Floor1-5a1.png
 IMAGE 1032 res/images/AB1_Floor1/Floor1-5a2.png
 IMAGE 1033 res/images/AB1_Floor1/Floor1-5a3.png
 IMAGE 1034 res/images/AB1_Floor1/Floor1-5a4.png
 IMAGE 2001 res/images/AB1_Floor1/coin.png
 IMAGE 2002 res/images/AB1_Floor1/key.png
+IMAGE 2003 res/images/AB1_Bath/Peek1.png
+IMAGE 2004 res/images/AB1_Bath/Peek2.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
@@ -101,6 +103,7 @@ ENDSCENE
 
 SCENE 1116 1028
 SceneLink 1117 0 797 1275 80 -1 -1
+ResponsiveVideoActor 450 477 143 186 2004 -1 2003 3
 ENDSCENE
 
 SCENE 1117 1029
