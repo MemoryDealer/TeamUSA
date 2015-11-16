@@ -44,13 +44,8 @@ namespace teamusa{
 		 virtual const ActorEvent onHover( Player& player ) override;
 
 		 ///
-<<<<<<< HEAD
 		 /// \brief does nothing.
 		 virtual const ActorEvent step(Player& player) override;
-=======
-		 /// \brief Override.
-		 virtual const ActorEvent step();
->>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 
 		 // Declare additional functions here as specified in UML diagram.
 		 void setTextureId(int TextureId);

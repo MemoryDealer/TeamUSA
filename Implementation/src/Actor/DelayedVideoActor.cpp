@@ -35,20 +35,11 @@ using namespace teamusa;
 		// Assign data...
 		currentStep++;
 
-<<<<<<< HEAD
 		if (currentStep == delaySteps) {
 			mVideo->textureID = textureId;
 		}
 		else if (currentStep == disappear) {
 			mVideo->textureID = -1;
-=======
-	    if(currentStep==delaySteps){
-			mVideo.textureID = textureId;
-	    }
-		else if (currentStep == disappear){
-			mVideo.textureID = -1;
->>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
-		}
 
 		return e;
 	}

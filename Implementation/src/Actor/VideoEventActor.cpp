@@ -65,7 +65,6 @@ const ActorEvent VideoEventActor::onHover( Player& player )
 
     // Assign data...
 
-	//how to do this?
     player.setCursor(CursorStyle::CURSOR_SELECT);
 
     return e;
