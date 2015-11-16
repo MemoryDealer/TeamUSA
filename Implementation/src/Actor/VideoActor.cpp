@@ -2,50 +2,37 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file BaseActor.h
-/// \brief Implements BaseActor class.
+/// \file VideoActor.cpp
+/// \brief Implements VideoActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "BaseActor.h"
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-using namespace USA;
+#include "VideoActor.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-BaseActor::BaseActor( void )
+using namespace teamusa; // We want to use our namespace across this whole file.
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+VideoActor::VideoActor( Region region, int textureId  = -1, int layer = 1 )
 {
+    this->mVideo = new ActorVideo;
+    this->mVideo->textureId = textureId;
+    this->mVideo->layer = layer;
+    this->region = region;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-BaseActor::~BaseActor( void )
+VideoActor::~VideoActor( void)
 {
+    delete this->mVideo;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent BaseActor::onClick( Player& player )
+const ActorEvent VideoActor::step( Player& player )
 {
-    return ActorEvent();
+    ActorEvent e;
+    return e;
 }
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent BaseActor::onHover( Player& player )
-{
-    return ActorEvent();
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const bool BaseActor::isInBounds( const Point& point )
-{
-    // Test region...
-    // ...
-
-    return false;
-}
-
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

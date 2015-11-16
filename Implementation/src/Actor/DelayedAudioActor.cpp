@@ -2,60 +2,47 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file ExampleActor.cpp
-/// \brief Implements ExampleActor class.
+/// \file DelayedAudioActor.cpp
+/// \brief Implements DelayedAudioActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "ExampleActor.h"
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-using namespace USA; // We want to use our namespace across this whole file.
+#include "DelayedAudioActor.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-ExampleActor::ExampleActor( void )
+using namespace teamusa; // We want to use our namespace across this whole file.
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+DelayedAudioActor::DelayedAudioActor(int audioID, int delaySteps = 0 )
+{
+    // ...
+    this->audioId = audioId;
+    this->delaySteps = delaySteps;
+    this->currentStep = 0;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+DelayedAudioActor::~DelayedAudioActor(void)
 {
     // ...
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-ExampleActor::~ExampleActor( void )
-{
-    // ...
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent ExampleActor::onClick( Player& player )
-{
-    // Handle clicking logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent ExampleActor::onHover( Player& player )
-{
-    // Handle hovering logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent ExampleActor::step( Player& player )
+const ActorEvent DelayedAudioActor::step( Player& player )
 {
     // Handle per-frame updates...
 
     ActorEvent e;
     // Assign data...
+    this->currentStep++;
+    if(this->currentStep == this->delaySteps)
+    {
+      e.value = this->audioId;
+      e.type = PlayAudio;
+    }
     return e;
 }
 

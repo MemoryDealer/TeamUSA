@@ -2,8 +2,8 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file ExampleActor.h
-/// \brief Declares ExampleActor class.
+/// \file DelayedAudioActor.h
+/// \brief Declares DelayedAudioActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once // Includes this file only once in compilation; speeds up building.
@@ -21,9 +21,13 @@ namespace USA {
     // Create new Actor and derive from BaseActor.
     // Provide documentation, do so by starting with "///"
     ///
-    /// \class ExampleActor
-    /// \brief <Give brief description here>
-    class ExampleActor : public BaseActor
+    /// \class DelayedAudioActor
+    /// \brief :Will increment a counter every time the step method is called.
+    ///        After a speciﬁed number of steps have occurred, this actor will change its TextureID
+    ///        to a valid value and will be displayed. When the number of steps is equal
+    ///        to the disappearing step, the TextureID will be set to an ignored value,
+    ///        causing the actor to disappear.
+    class DelayedAudioActor : public BaseActor
     {
 
     public:
@@ -31,10 +35,10 @@ namespace USA {
         // Declare constructor and destructor...
 
         // Constructor.
-        explicit ExampleActor( void );
+        explicit DelayedAudioActor( int audioID, int delaySteps);
 
         // Destructor.
-        virtual ~ExampleActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
+        virtual ~DelayedAudioActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
         // Override onClick, onHover, and step, provide documentation.
 
@@ -54,10 +58,12 @@ namespace USA {
 
     private:
 
-        // Declare any data members here as specified in UML diagram.
-
+        int audioId;
+        int delaySteps;
+        int currentStep;
     };
 
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+

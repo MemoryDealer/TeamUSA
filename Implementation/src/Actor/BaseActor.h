@@ -1,6 +1,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
-// LEGEND OF THE GREAT UNWASHED
+// Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file BaseActor.h
 /// \brief Declares BaseActor class.
@@ -11,28 +11,17 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "ActorEvent.h"
-#include "Audio/AudioEngine.hpp"
-#include "Video/VideoEngine.hpp"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-namespace teamusa {
+namespace USA {
 
-    struct ActorVideo {
-        int32_t layer;
-        int32_t textureID;
-
-        ActorVideo( void ) : layer( -1 ), textureID( -1 ) { }
-    };
-
-    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-        
-    class Player;
+    typedef int Player; // Temporary typedef until we have player, ignore.
     struct Point;
 
     ///
     /// \class BaseActor
-    /// \brief Abstract class which all actors must derive from.    
+    /// \brief Abstract class which all actors must derive from.
     class BaseActor
     {
 
@@ -66,19 +55,13 @@ namespace teamusa {
         /// \return True if point is within actor's region.
         virtual const bool isInBounds( const Point& point );
 
-        ///
-        /// \brief Sets the actor's region (can be used by Level when loading).
-        /// \param region The Region to set.
-        virtual void setRegion( const Region& region );
+    private:
 
-    protected:
-
-        Region mRegion;
-        ActorVideo mVideo;
-        AudioID mAudioID;
+        //region
+        //video
+        //audioID
 
     };
 
 }
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
