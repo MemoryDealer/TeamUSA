@@ -66,7 +66,7 @@ const ActorEvent ResponsiveVideoActor::onHover( Player& player )
     return e;
 }
 
-const ActorEvent ResponsiveVideoActor::step()
+const ActorEvent ResponsiveVideoActor::step( Player& player )
 {
 	// Handle per-frame updates...
 

@@ -9,12 +9,13 @@
 
 using namespace teamusa;
 
-	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep ){
+	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep, int layer ){
 		//....
 		delaySteps=disappearStep - delaysteps;
 		textureId=textureID;
 		currentStep =0;
 		disappear = disappearStep;
+        mVideo.layer = layer;
 	}
 
 	DelayedVideoActor::~DelayedVideoActor( void ){

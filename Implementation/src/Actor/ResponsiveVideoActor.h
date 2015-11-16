@@ -45,7 +45,7 @@ namespace teamusa{
 
 		 ///
 		 /// \brief Override.
-		 virtual const ActorEvent step();
+		 virtual const ActorEvent step( Player& player );
 
 		 // Declare additional functions here as specified in UML diagram.
 		 void setTextureId(int TextureId);

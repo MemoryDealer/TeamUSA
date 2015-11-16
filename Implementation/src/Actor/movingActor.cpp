@@ -48,7 +48,7 @@ const ActorEvent MovingActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent MovingActor::step()
+const ActorEvent MovingActor::step( Player& player )
 {
     // Handle per-frame updates...
 

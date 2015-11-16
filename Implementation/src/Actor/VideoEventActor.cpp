@@ -14,7 +14,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType eventType, int eventValue,int defaultTextureID, int layer )
+VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType eventType, int eventValue, int layer )
 {
     // ...
 	actorEvent.type= eventType;
@@ -41,7 +41,7 @@ const ActorEvent VideoEventActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent VideoEventActor::step()
+const ActorEvent VideoEventActor::step( Player& player )
 {
 	// Handle per-frame updates...
 
