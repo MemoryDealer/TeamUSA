@@ -95,6 +95,10 @@ void Engine::run( void )
             for ( auto& actor : actors ) {
                 ActorEvent e;
 
+                // Update the actor.
+                e = actor.step( mPlayer );
+                handleEvent( actor, e );
+
                 // Test mouse hover.
                 if ( actor.isInBounds( mPlayer.getPosition() ) ) {
                     e = actor.onHover( mPlayer );
@@ -106,10 +110,6 @@ void Engine::run( void )
                         handleEvent( actor, e );
                     }
                 }
-
-                // Update the actor.
-                e = actor.step( mPlayer );
-                handleEvent( actor, e );
             }
 
             // Update player.

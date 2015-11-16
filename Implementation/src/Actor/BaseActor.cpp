@@ -8,6 +8,7 @@
 
 #include "BaseActor.h"
 
+#include "Engine/Assert.h"
 #include "Engine/Point.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -18,7 +19,7 @@ using namespace teamusa;
 
 BaseActor::BaseActor( void )
 : mRegion( )
-, mVideo( )
+, mVideo( nullptr )
 , mAudioID( -1 )
 {
 }
@@ -76,14 +77,16 @@ const Region BaseActor::getRegion( void ) const
 
 const int32_t BaseActor::getLayer( void ) const
 {
-    return mVideo.layer;
+    Assert( mVideo );
+    return mVideo->layer;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 const int32_t BaseActor::getTextureID( void ) const
 {
-    return mVideo.textureID;
+    Assert( mVideo );
+    return mVideo->textureID;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -63,8 +63,16 @@ static void loadError(const std::string &msg)
 }
 
 Level::Level( int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine )
+: scenes( )
+, startScene( -1 )
+, activeScene( 0 )
 {
 
+}
+
+const ActorList& Level::getActors( void ) const
+{
+    return scenes.at(activeScene).actors;
 }
 
 void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine)

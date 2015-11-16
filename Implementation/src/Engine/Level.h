@@ -17,22 +17,25 @@ namespace teamusa
     class VideoEngine;
 
     typedef std::shared_ptr<BaseActor> BaseActorPtr;
+    typedef std::vector<BaseActorPtr> ActorList;
 
     class Level
     {
     private:
         struct Scene
         {
-            std::vector<BaseActorPtr> actors;
+            ActorList actors;
             int bgImageID;
         };
 
     private:
         std::map<int, Scene> scenes;
         int startScene;
+        int activeScene;
 
     public:
         Level(int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine);
+        const ActorList& getActors( void ) const;
     private:
         void loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine);
         BaseActorPtr parseAudioStreamActor(std::fstream &fs);

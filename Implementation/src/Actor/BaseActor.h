@@ -89,7 +89,7 @@ namespace teamusa {
     protected:
 
         Region mRegion;
-        ActorVideo mVideo;
+        ActorVideo* mVideo;
         AudioID mAudioID;
 
     };
