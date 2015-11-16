@@ -20,7 +20,7 @@ namespace teamusa{
    // Create new Actor and derive from BaseActor.
    // Provide documentation, do so by starting with "///"
    ///
-   /// \class movingActor
+   /// \class MovingActor
    /// \brief Will transition from one region to the next by calculating the distance to move each frame for a set number of frames.
    ///This allows for movement across the X and Y axis as well as scaling of the size of textures.
 
@@ -31,7 +31,10 @@ namespace teamusa{
 		int currentStep = 0;
 		int xSpeed = 0;
 		int ySpeed = 0;
+		int hGrowth = 0;
+		int wGrowth = 0;
 		bool isActive = false;
+		
 
 		public:
 		// Declare constructor and destructor...

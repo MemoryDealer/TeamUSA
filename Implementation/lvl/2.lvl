@@ -52,6 +52,8 @@ IMAGE 1096 res/images/AB1_215/215-5c.png
 IMAGE 1097 res/images/AB1_215/215-6a.png
 IMAGE 1098 res/images/AB1_215/215-6c.png
 IMAGE 1099 res/images/AB1_215/215-7.png
+IMAGE 2001 res/images/AB1_Floor2/Pen.png
+IMAGE 2002 res/images/AB1_Floor2/Spider.png
 
 # Use 1001 as the starting scene
 START_SCENE 150
@@ -119,6 +121,7 @@ ENDSCENE
 # [!] PLAYER should collect RED_PEN
 SCENE 165 1064
 SceneLink 166 31 740 1228 96 -1 -1
+InventoryItemActor 636 368 156 51 103 2001 3
 ENDSCENE
 
 SCENE 166 1065
@@ -217,7 +220,8 @@ ENDSCENE
 
 # [!] PLAYER collects ADA_BOOK
 SCENE 184 1097
-SceneLink 185 23 752 1236 87 -1 -1
+SceneLink 185 278 407 550 213 -1 -1
+InventoryItemActor 278 407 550 213 104 2002 3
 ENDSCENE
 
 # PLAYER will loop back to SCENE 167, and can now safely proceed to through to SCENE 186. 
@@ -270,6 +274,7 @@ ENDSCENE
 SCENE 195 1079
 SceneLink 194 23 752 1236 87 -1 -1
 SceneLink 196 554 254 498 451 -1 -1
+MovingActor 584 401 144 166 150 5 144 168 2002 3 90 FALSE
 ENDSCENE
 
 SCENE 196 1081

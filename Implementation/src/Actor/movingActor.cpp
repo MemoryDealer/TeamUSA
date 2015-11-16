@@ -17,12 +17,21 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int layer, int transitionsteps, bool moveOnSpawn )
 {
     // ...
+	mVideo = new ActorVideo;
+	mVideo->textureID = textureId;
+	mVideo->layer = layer;
+
 	endRegion=endregion;
+	mRegion = startRegion;
+
+	hGrowth = (endRegion.h - startRegion.h) / transitionSteps;;
+	wGrowth = (endRegion.w - startRegion.w) / transitionSteps;;
 	transitionSteps = transitionsteps;
 	currentStep = 0;
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
 	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
-	isActive = moveOnSpawn;	
+	isActive = moveOnSpawn;
+	
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -30,6 +39,7 @@ MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int
 MovingActor::~MovingActor( void )
 {
     // ...
+	delete mVideo;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -41,8 +51,6 @@ const ActorEvent MovingActor::onClick( Player& player )
     ActorEvent e;
     // Assign data...
 	isActive = true;
-
-
     return e;
 }
 
@@ -50,24 +58,22 @@ const ActorEvent MovingActor::onClick( Player& player )
 
 const ActorEvent MovingActor::step( Player& player )
 {
-    // Handle per-frame updates...
+	// Handle per-frame updates...
 
-    ActorEvent e;
-    // Assign data...
+	ActorEvent e;
+	// Assign data...
 
-	int x = mRegion.x;
-	int y = mRegion.y;
-    if ( isActive ) {
-        for ( int i = 0; i < transitionSteps; i++ ) {
-            x = x + xSpeed;
-            y = y + ySpeed;
+	if (isActive) {
+		if( currentStep < transitionSteps) {
+			mRegion.x += xSpeed;
+			mRegion.y += ySpeed;
+			mRegion.h += hGrowth;
+			mRegion.w += wGrowth;
 
-            mRegion.x = x;
-            mRegion.y = y;
-        }
-    }
-
-    return e;
+			currentStep++;
+		}
+	}
+	return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
