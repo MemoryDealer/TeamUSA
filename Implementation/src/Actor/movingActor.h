@@ -34,6 +34,7 @@ namespace teamusa{
 		int hGrowth = 0;
 		int wGrowth = 0;
 		bool isActive = false;
+		
 
 		public:
 		// Declare constructor and destructor...

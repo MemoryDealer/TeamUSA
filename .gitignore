@@ -71,3 +71,5 @@ Thumbs.db
 ########################
 Implementation/bin
 
+Implementation/Run-Debug.lnk
+*.lnk

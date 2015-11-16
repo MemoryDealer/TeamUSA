@@ -31,6 +31,7 @@ MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
 	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
 	isActive = moveOnSpawn;
+	
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
