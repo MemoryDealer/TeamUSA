@@ -53,7 +53,11 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
+<<<<<<< HEAD
 	mVideo->textureID = clickTexture;
+=======
+	mVideo.textureID =clickTexture;
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
     return e;
 }
 
@@ -63,33 +67,51 @@ const ActorEvent ResponsiveVideoActor::onHover(Player& player)
 {
 	// Handle hovering logic...
 
+<<<<<<< HEAD
 	ActorEvent e;
 	// Assign data...
 
 	if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = hoverTexture;
 	}
+=======
+    ActorEvent e;
+    // Assign data...
+	mVideo.textureID = hoverTexture;
+	
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 
 
 	return e;
 }
 
+<<<<<<< HEAD
 const ActorEvent ResponsiveVideoActor::step(Player& player)
+=======
+const ActorEvent ResponsiveVideoActor::step()
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 {
 	// Handle per-frame updates...
 
 	ActorEvent e;
 	// Assign data...
+<<<<<<< HEAD
 	if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = defaultTextureId;
 	}
+=======
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 
 	return e;
 }
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void ResponsiveVideoActor::setTextureId(int TextureId){
+<<<<<<< HEAD
 	mVideo->textureID = TextureId;
+=======
+	mVideo.textureID=TextureId;
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

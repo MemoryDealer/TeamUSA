@@ -46,10 +46,16 @@ namespace teamusa{
 		/// \brief return a display text actor event
 		virtual const ActorEvent onClick( Player& player );
 
+		///
+		/// \brief Override.
+		virtual const ActorEvent step();
+	
+
 		// Declare additional functions here as specified in UML diagram.
 		///
 		/// \brief Retrurn the text when called.
 		std::string getText(void);
-	};
+
+	};	
 };
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -30,7 +30,11 @@ MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int
 	currentStep = 0;
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
 	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
+<<<<<<< HEAD
 	isActive = moveOnSpawn;
+=======
+	isActive = moveOnSpawn;	
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -50,7 +54,12 @@ const ActorEvent MovingActor::onClick( Player& player )
     ActorEvent e;
     // Assign data...
 	isActive = true;
+<<<<<<< HEAD
 	
+=======
+
+
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
     return e;
 }
 
@@ -58,6 +67,7 @@ const ActorEvent MovingActor::onClick( Player& player )
 
 const ActorEvent MovingActor::step()
 {
+<<<<<<< HEAD
 	// Handle per-frame updates...
 
 	ActorEvent e;
@@ -73,6 +83,24 @@ const ActorEvent MovingActor::step()
 			currentStep++;
 		}
 	}
+=======
+    // Handle per-frame updates...
+
+    ActorEvent e;
+    // Assign data...
+
+	int x = mRegion.x;
+	int y = mRegion.y;
+    if ( isActive ) {
+        for ( int i = 0; i < transitionSteps; i++ ) {
+            x = x + xSpeed;
+            y = y + ySpeed;
+
+            mRegion.x = x;
+            mRegion.y = y;
+        }
+    }
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 
 	return e;
 }

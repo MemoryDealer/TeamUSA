@@ -49,6 +49,10 @@ namespace teamusa
 		///
 		/// \brief The onHover method will set the player's cursor style to CURSOR_SELECT.
 		virtual const ActorEvent onHover( Player& player ) override;
+
+		///
+		/// \brief Override.
+		virtual const ActorEvent step();
 	};
 
 };

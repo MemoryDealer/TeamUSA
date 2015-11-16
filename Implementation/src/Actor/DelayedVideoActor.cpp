@@ -9,7 +9,7 @@
 
 using namespace teamusa;
 
-	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep,int layer ){
+	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep ){
 		//....
 		mVideo = new ActorVideo;
 		mVideo->textureID = textureID;
@@ -18,7 +18,7 @@ using namespace teamusa;
 		delaySteps=disappearStep - delaysteps;
 		textureId=textureID;
 		currentStep =0;
-		disappear = -1;
+		disappear = disappearStep;
 	}
 
 	DelayedVideoActor::~DelayedVideoActor( void ){
@@ -35,11 +35,19 @@ using namespace teamusa;
 		// Assign data...
 		currentStep++;
 
+<<<<<<< HEAD
 		if (currentStep == delaySteps) {
 			mVideo->textureID = textureId;
 		}
 		else if (currentStep == disappear) {
 			mVideo->textureID = -1;
+=======
+	    if(currentStep==delaySteps){
+			mVideo.textureID = textureId;
+	    }
+		else if (currentStep == disappear){
+			mVideo.textureID = -1;
+>>>>>>> e2ea63cbc3779777808a7eae2ee791b7d7112f9d
 		}
 
 		return e;

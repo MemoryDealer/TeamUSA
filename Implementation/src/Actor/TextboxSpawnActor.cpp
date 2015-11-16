@@ -37,6 +37,17 @@ const ActorEvent TextboxSpawnActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+const ActorEvent TextboxSpawnActor::step()
+{
+	// Handle per-frame updates...
+
+	ActorEvent e;
+	// Assign data...
+
+	return e;
+}
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 std::string TextboxSpawnActor::getText(void){
 	return text;
 }

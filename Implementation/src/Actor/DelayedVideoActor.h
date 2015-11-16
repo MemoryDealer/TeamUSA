@@ -39,7 +39,7 @@ public:
 	// Declare constructor and destructor...
 
 	// Constructor.
-	explicit DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep,int layer );
+	explicit DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep );
 
 	// Destructor.
 	virtual ~DelayedVideoActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
