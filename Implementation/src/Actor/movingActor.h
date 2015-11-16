@@ -50,6 +50,6 @@ namespace teamusa{
 
 		///
 		/// \brief If moveOnSpawn is set, then the step method will advance the actor immediately.
-		virtual const ActorEvent step();
+		virtual const ActorEvent step( Player& player );
 	};
 };
