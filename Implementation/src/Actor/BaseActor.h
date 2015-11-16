@@ -74,9 +74,8 @@ namespace teamusa {
     protected:
 
         Region mRegion;
-        ActorVideo mVideo;
         AudioID mAudioID;
-
+		ActorVideo *mVideo = NULL;
     };
 
 }

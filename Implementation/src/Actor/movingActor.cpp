@@ -6,7 +6,7 @@
 /// \brief Declares movingActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "movingActor.h"
+#include "MovingActor.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -14,74 +14,67 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-movingActor::movingActor( Region startRegion,Region endregion, int textureId,int layer, int transitionsteps, bool moveOnSpawn )
+MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int layer, int transitionsteps, bool moveOnSpawn )
 {
     // ...
+	mVideo = new ActorVideo;
+	mVideo->textureID = textureId;
+	mVideo->layer = layer;
+
 	endRegion=endregion;
+	mRegion = startRegion;
+
+	hGrowth = (endRegion.h - startRegion.h) / transitionSteps;;
+	wGrowth = (endRegion.w - startRegion.w) / transitionSteps;;
 	transitionSteps = transitionsteps;
 	currentStep = 0;
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;
 	ySpeed = (endRegion.y - startRegion.y) / transitionSteps;
 	isActive = moveOnSpawn;
-
-	if (isActive) {
-		step();
-	}
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-movingActor::~movingActor( void )
+MovingActor::~MovingActor( void )
 {
     // ...
+	delete mVideo;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent movingActor::onClick( Player& player )
+const ActorEvent MovingActor::onClick( Player& player )
 {
     // Handle clicking logic...
 
     ActorEvent e;
     // Assign data...
-	int x = mRegion.x;
-	int y = mRegion.y;
-	for (int i = 0; i < transitionSteps; i++) {
-		x = x + xSpeed;
-		y = y + ySpeed;
-
-		mRegion.x = x;
-		mRegion.y = y;
-
-		setRegion(mRegion);
-	}
-
-
+	isActive = true;
+	
     return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent movingActor::step()
+const ActorEvent MovingActor::step()
 {
-    // Handle per-frame updates...
+	// Handle per-frame updates...
 
-    ActorEvent e;
-    // Assign data...
+	ActorEvent e;
+	// Assign data...
 
-	int x = mRegion.x;
-	int y = mRegion.y;
-	for (int i = 0; i < transitionSteps; i++) {
-		x = x + xSpeed;
-		y = y + ySpeed;
+	if (isActive) {
+		if( currentStep < transitionSteps) {
+			mRegion.x += xSpeed;
+			mRegion.y += ySpeed;
+			mRegion.h += hGrowth;
+			mRegion.w += wGrowth;
 
-		mRegion.x = x;
-		mRegion.y = y;
-
-		setRegion(mRegion);
+			currentStep++;
+		}
 	}
 
-    return e;
+	return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

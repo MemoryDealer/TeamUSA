@@ -18,7 +18,6 @@ using namespace teamusa;
 
 BaseActor::BaseActor( void )
 : mRegion( )
-, mVideo( )
 , mAudioID( -1 )
 {
 }
