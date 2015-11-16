@@ -10,10 +10,14 @@
 #include "Level.h"
 
 #include "Actor/ActorEvent.h"
+#include "Actor/AudioStreamActor.h"
+#include "Actor/DelayedAudioActor.h"
 #include "Actor/DelayedVideoActor.h"
 #include "Actor/MovingActor.h"
+#include "Actor/ResponsiveAudioActor.h"
 #include "Actor/ResponsiveVideoActor.h"
 #include "Actor/TextboxSpawnActor.h"
+#include "Actor/VideoActor.h"
 #include "Actor/VideoEventActor.h"
 #include "Audio/AudioEngine.hpp"
 #include "Video/VideoEngine.hpp"
@@ -188,7 +192,6 @@ BaseActorPtr Level::parseInventoryItemActor(std::fstream &fs)
     int itemID, textureID, layer;
 
     fs >> region >> itemID >> textureID >> layer;
-    return BaseActorPtr( new InventoryItemActor( region, itemID, textureID, layer ) );
 }
 
 BaseActorPtr Level::parseLevelLink(std::fstream &fs)

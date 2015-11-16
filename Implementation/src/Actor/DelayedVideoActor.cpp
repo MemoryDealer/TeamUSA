@@ -15,11 +15,13 @@ using namespace teamusa;
 		textureId=textureID;
 		currentStep =0;
 		disappear = disappearStep;
-        mVideo.layer = layer;
+        mVideo = new ActorVideo();
+        mVideo->layer = layer;
 	}
 
 	DelayedVideoActor::~DelayedVideoActor( void ){
-		//....
+        delete mVideo;
+        mVideo = nullptr;
 	}
 
 
@@ -32,10 +34,10 @@ using namespace teamusa;
 	    currentStep++;
 
 	    if(currentStep==delaySteps){
-			mVideo.textureID = textureId;
+			mVideo->textureID = textureId;
 	    }
 		else if (currentStep == disappear){
-			mVideo.textureID = -1;
+			mVideo->textureID = -1;
 		}
 
 	    return e;

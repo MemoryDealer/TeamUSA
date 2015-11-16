@@ -48,7 +48,7 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
-	mVideo.textureID =clickTexture;
+	mVideo->textureID =clickTexture;
     return e;
 }
 
@@ -60,7 +60,7 @@ const ActorEvent ResponsiveVideoActor::onHover( Player& player )
 
     ActorEvent e;
     // Assign data...
-	mVideo.textureID = hoverTexture;
+	mVideo->textureID = hoverTexture;
 	
 
     return e;
@@ -78,7 +78,7 @@ const ActorEvent ResponsiveVideoActor::step( Player& player )
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void ResponsiveVideoActor::setTextureId(int TextureId){
-	mVideo.textureID=TextureId;
+	mVideo->textureID=TextureId;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
