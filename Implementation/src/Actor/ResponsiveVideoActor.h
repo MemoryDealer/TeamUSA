@@ -43,9 +43,8 @@ namespace teamusa{
 		 /// \brief When onHover is called, it will display the hover TextureID.
 		 virtual const ActorEvent onHover( Player& player ) override;
 
-		 ///
-		 /// \brief Override.
-		 virtual const ActorEvent step( Player& player );
+		 /// \brief does nothing.
+		 virtual const ActorEvent step(Player& player) override;
 
 		 // Declare additional functions here as specified in UML diagram.
 		 void setTextureId(int TextureId);
