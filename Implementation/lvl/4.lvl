@@ -10,6 +10,7 @@ IMAGE 1110 res/images/Smith_Hudson/SH-7.png
 IMAGE 1111 res/images/Smith_Hudson/SH-8a.png
 IMAGE 1112 res/images/Smith_Hudson/SH-8b.png
 IMAGE 1113 res/images/Smith_Hudson/SH-9.png
+IMAGE 2001 res/images/Smith_Hudson/Dregs.png
 
 # Use 1001 as the starting scene
 START_SCENE 1104
@@ -50,15 +51,16 @@ SceneLink 1112 513 260 257 301 -1 -1
 SceneLink 1111 1142 179 103 565 -1 -1 
 ENDSCENE
 
+# Continue ahead. 
 SCENE 1111 1111
-SceneLink 1110 44 50 88 750 -1 -1 
+SceneLink 1113 44 50 88 750 -1 -1 
 ENDSCENE
 
 SCENE 1112 1112
-SceneLink 1112 72 123 351 668 -1 -1
+SceneLink 1110 72 123 351 668 -1 -1
+DelayedVideoActor 132 122 1028 630 2001 120 -1 3
 ENDSCENE
 
-# Continue ahead. 
 SCENE 1113 1113
 LevelLink 1 107 159 1108 584 101 -1 -1
 ENDSCENE
