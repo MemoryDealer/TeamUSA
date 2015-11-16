@@ -10,16 +10,16 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace USA; // We want to use our namespace across this whole file.
+using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 DelayedAudioActor::DelayedAudioActor(int audioID, int delaySteps = 0 )
 {
     // ...
-    m_audioId = audioId;
-    m_delaySteps = delaySteps;
-    currentStep = 0;
+    this->audioId = audioId;
+    this->delaySteps = delaySteps;
+    this->currentStep = 0;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -37,10 +37,10 @@ const ActorEvent DelayedAudioActor::step( Player& player )
 
     ActorEvent e;
     // Assign data...
-    currentStep++;
-    if(currentStep == m_delaySteps)
+    this->currentStep++;
+    if(this->currentStep == this->delaySteps)
     {
-      e.value = m_audioId;
+      e.value = this->audioId;
       e.type = PlayAudio;
     }
     return e;

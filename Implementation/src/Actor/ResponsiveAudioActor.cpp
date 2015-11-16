@@ -10,18 +10,18 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace USA; // We want to use our namespace across this whole file.
+using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 ResponsiveAudioActor::ResponsiveAudioActor(Region region, int hoverAudioId = -1, int durationSteps = 120, int clickAudioId = -1 )
 
 {
-    m_region = region;
-    m_hoverAudioId = hoverAudioId;
-    m_durationSteps = durationSteps;
-    m_clickAudioId = clickAudioId;
-    stepCount = 0;
+    this->region = region;
+    this->hoverAudioId = hoverAudioId;
+    this->durationSteps = durationSteps;
+    this->clickAudioId = clickAudioId;
+    this->stepCount = 0;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -37,9 +37,9 @@ const ActorEvent ResponsiveAudioActor::onClick( Player& player )
 {
     // Handle clicking logic...
     ActorEvent e;
-    if(stepCount == m_durationSteps){
-       stepCount = 0;
-       e.value = m_clickAudioId;
+    if(this->stepCount == this->durationSteps){
+       this->stepCount = 0;
+       e.value = this->clickAudioId;
        e.type = PlayAudio;
 
     }
@@ -52,10 +52,10 @@ const ActorEvent ResponsiveAudioActor::onHover( Player& player )
 {
     // Handle hovering logic...
     ActorEvent e;
-    if(stepCount == m_durationSteps)
+    if(this->stepCount == this->durationSteps)
     {
-        stepCount = 0;
-        e.value = m_hoverAudioId;
+        this->stepCount = 0;
+        e.value = this->hoverAudioId;
         e.eventType = PlayAudio;
     }
     return e;
@@ -67,8 +67,8 @@ const ActorEvent ResponsiveAudioActor::step( Player& player )
 {
     // Handle per-frame updates...
     ActorEvent e;
-    while(stepCount != m_durationSteps){
-        stepCount++;
+    if(this->stepCount != this->durationSteps){
+        this->stepCount++;
     }
     return e;
 }

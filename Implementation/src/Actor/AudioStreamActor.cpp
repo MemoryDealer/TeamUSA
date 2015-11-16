@@ -10,15 +10,15 @@
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-using namespace USA; // We want to use our namespace across this whole file.
+using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-AudioStreamActor::AudioStreamActor(string path )
+AudioStreamActor::AudioStreamActor(std::string path )
 {
     // ...
-    m_path = path;
-    activated = false;
+    this->path = path;
+    this->activated = false;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -37,14 +37,15 @@ const ActorEvent AudioStreamActor::step( Player& player )
 
     ActorEvent e;
     // Assign data...
-
-    activated = true;
-    e.type = StreamAudio;
+    if(!this->activated){
+        this->activated = true;
+        e.type = StreamAudio;
+    }
     return e;
 }
 
 std::string AudioStreamActor ::getPath(){
-    return m_path;
+    return this->path;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
