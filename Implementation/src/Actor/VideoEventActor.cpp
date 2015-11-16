@@ -7,7 +7,6 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "VideoEventActor.h"
-#include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -15,12 +14,9 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType eventType, int eventValue, int layer )
+VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType eventType, int eventValue,int defaultTextureID, int layer )
 {
-	mVideo = new ActorVideo;
-	mVideo->textureID = textureID;
-	mVideo->layer = layer;
-
+    // ...
 	actorEvent.type= eventType;
 	actorEvent.value= eventValue;
 
@@ -30,7 +26,7 @@ VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType ev
 
 VideoEventActor::~VideoEventActor( void )
 {
-	delete mVideo;
+    // ...
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -50,12 +46,11 @@ const ActorEvent VideoEventActor::onHover( Player& player )
     // Handle hovering logic...
 
     ActorEvent e;
-	e.type = ActorEventType::Nil;
 
     // Assign data...
 
 	//how to do this?
-    player.setCursor(CursorStyle::CURSOR_SELECT);
+    //player.setCursor(CURSOR_SELECT);
 
     return e;
 }

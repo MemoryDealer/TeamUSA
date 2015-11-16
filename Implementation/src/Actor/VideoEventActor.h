@@ -34,7 +34,7 @@ namespace teamusa
 		// Declare constructor and destructor...
 
 		// Constructor.
-		explicit VideoEventActor( Region region, int textureID, ActorEventType eventType, int eventValue, int layer );
+		explicit VideoEventActor( Region region, int textureID, ActorEventType eventType, int eventValue, int defaultTextureID, int layer );
 
 		// Destructor.
 		virtual ~VideoEventActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).

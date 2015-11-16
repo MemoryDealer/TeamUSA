@@ -29,11 +29,7 @@ ResponsiveVideoActor::ResponsiveVideoActor( Region region, int hoverTextureId, i
     // ...
 	hoverTexture = hoverTextureId;
 	clickTexture = clickTextureID;
-	
-	mVideo = new ActorVideo;
-	mVideo->textureID = defaulTextureID;
-	mVideo->layer = layer;
-
+	defaultTextureId = defaulTextureID;
 
 }
 
@@ -42,7 +38,6 @@ ResponsiveVideoActor::ResponsiveVideoActor( Region region, int hoverTextureId, i
 ResponsiveVideoActor::~ResponsiveVideoActor( void )
 {
     // ...
-	delete mVideo;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -53,43 +48,27 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
-	mVideo->textureID = clickTexture;
+    defaultTextureId=clickTexture;
     return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent ResponsiveVideoActor::onHover(Player& player)
+const ActorEvent ResponsiveVideoActor::onHover( Player& player )
 {
-	// Handle hovering logic...
+    // Handle hovering logic...
 
-	ActorEvent e;
-	// Assign data...
+    ActorEvent e;
+    // Assign data...
 
-	if (mVideo->textureID != clickTexture) {
-		mVideo->textureID = hoverTexture;
-	}
+    e.type=DisplayText;
+    e.value=hoverTexture;
 
-
-	return e;
+    return e;
 }
-
-const ActorEvent ResponsiveVideoActor::step(Player& player)
-{
-	// Handle per-frame updates...
-
-	ActorEvent e;
-	// Assign data...
-	if (mVideo->textureID != clickTexture) {
-		mVideo->textureID = defaultTextureId;
-	}
-
-	return e;
-}
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void ResponsiveVideoActor::setTextureId(int TextureId){
-	mVideo->textureID = TextureId;
+	defaultTextureId=TextureId;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
