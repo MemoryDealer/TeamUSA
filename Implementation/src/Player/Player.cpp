@@ -17,6 +17,12 @@ using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 const int Player::FLASHLIGHT_ID = 1666;
+const int Player::CURSOR_DEFAULT_ID = 1667;
+const int Player::CURSOR_SELECT_ID = 1668;
+const int Player::CURSOR_UP_ID = 1669;
+const int Player::CURSOR_DOWN_ID = 1670;
+const int Player::CURSOR_LEFT_ID = 1671;
+const int Player::CURSOR_RIGHT_ID = 1672;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -26,7 +32,7 @@ Player::Player( void )
 , mTextureID( 0 )
 , mPosition( )
 , mInventory( )
-, mCursorStyle( CursorStyle::CURSOR_NONE )
+, mCursorStyle( CursorStyle::CURSOR_DEFAULT )
 {
     mRegion = { 0, 0, 512, 512 };
 }
@@ -62,6 +68,31 @@ void Player::addItem( const int32_t itemType )
 void Player::setCursor( const CursorStyle style )
 {
     mCursorStyle = style;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const int Player::getCursorTextureID( void ) const
+{
+    switch ( mCursorStyle ) {
+    default: case CursorStyle::CURSOR_DEFAULT: 
+        return CURSOR_DEFAULT_ID;
+
+    case CursorStyle::CURSOR_SELECT:
+        return CURSOR_SELECT_ID;
+
+    case CursorStyle::CURSOR_UP:
+        return CURSOR_UP_ID;
+
+    case CursorStyle::CURSOR_DOWN:
+        return CURSOR_DOWN_ID;
+
+    case CursorStyle::CURSOR_LEFT:
+        return CURSOR_LEFT_ID;
+
+    case CursorStyle::CURSOR_RIGHT:
+        return CURSOR_RIGHT_ID;
+    }
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

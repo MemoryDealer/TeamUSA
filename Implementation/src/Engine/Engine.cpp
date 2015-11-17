@@ -59,10 +59,33 @@ Engine::Engine( void )
     mVideoEngine->loadTexture( "res/images/Cursor/Light.png", 
                                Player::FLASHLIGHT_ID,
                                CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Default.png",
+                               Player::CURSOR_DEFAULT_ID,
+                               CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Select.png",
+                               Player::CURSOR_SELECT_ID,
+                               CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Up.png",
+                               Player::CURSOR_UP_ID,
+                               CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Down.png",
+                               Player::CURSOR_DOWN_ID,
+                               CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Left.png",
+                               Player::CURSOR_LEFT_ID,
+                               CORE_RESOURCE );
+    mVideoEngine->loadTexture( "res/images/Cursor/Right.png",
+                               Player::CURSOR_RIGHT_ID,
+                               CORE_RESOURCE );
+    SDL_ShowCursor( false );
 
     // Load main menu level...
     //...
-    mLevel.loadLevel( "res/lvl/2.lvl", *mAudioEngine, *mVideoEngine );
+    int activeScene = mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
+
+#ifdef _DEBUG
+    mDebugData.scenes.push( activeScene );
+#endif
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -87,6 +110,8 @@ void Engine::run( void )
     double lag = 0.0;
 
     while ( mIsRunning ) {
+
+        mPlayer.setCursor( CursorStyle::CURSOR_DEFAULT );
        
         // Calculate elapsed time since last frame.
         double current = timer.getTicks();
@@ -147,8 +172,12 @@ void Engine::run( void )
                         break;
 
                     case SDLK_BACKSPACE:
-                        mDebugData.scenes.pop();
-                        mLevel.changeScene( mDebugData.scenes.top() );
+                        if ( mDebugData.scenes.size() > 1 ) {
+                            mDebugData.scenes.pop();
+                            if ( !mDebugData.scenes.empty() ) {
+                                mLevel.changeScene( mDebugData.scenes.top() );
+                            }
+                        }
                         break;
                     }
                     break;
@@ -223,23 +252,30 @@ void Engine::render( const ActorList& actors )
     mVideoEngine->render( bg, 0, mLevel.getBGImageID() );    
 #endif
 
-    // Render player flashlight.
     Point p = getMouseCoordinates();
+    // Render player cursor.
+    Region cursor { p.x, p.y, 16, 16 };
+    mVideoEngine->render( cursor, 6, mPlayer.getCursorTextureID() );
+    
+
+    // Render player flashlight.
     Region f { p.x - 256, p.y - 256, 512, 512 };
     mVideoEngine->render( f, 4, Player::FLASHLIGHT_ID );
 
     for ( auto& actor : actors ) {
         if ( actor->hasVideo() ) {
-            mVideoEngine->render( actor->getRegion(),
-                                  actor->getLayer(),
-                                  actor->getTextureID() );
+            if ( actor->getTextureID() != -1 ) {
+                mVideoEngine->render( actor->getRegion(),
+                                      actor->getLayer(),
+                                      actor->getTextureID() );
+            }
         }
 
 #ifdef _DEBUG
         if ( mDebugData.drawDebugBoxes ) {
-            if ( typeid( *actor ) == typeid( SceneLink ) ) {
+            //if ( typeid( *actor ) == typeid( SceneLink ) ) {
                 mVideoEngine->renderDebugBox( actor->getRegion() );
-            }
+            //}
         }
 #endif
     }
@@ -270,7 +306,16 @@ void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 {
     mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
     
-    // Load the level...
+    int activeScene = mLevel.loadLevel( "res/lvl/" + std::to_string( value ) + ".lvl",
+                      *mAudioEngine,
+                      *mVideoEngine );
+
+#ifdef _DEBUG
+    while ( !mDebugData.scenes.empty() ) {
+        mDebugData.scenes.pop();
+    }
+    mDebugData.scenes.push( activeScene );
+#endif
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

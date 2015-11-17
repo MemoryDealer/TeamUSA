@@ -97,7 +97,7 @@ const int Level::getBGImageID( void ) const
     return scenes.at( activeScene ).bgImageID;
 }
 
-void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine)
+const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine)
 {
     std::string cmd;
     std::fstream fs(path.c_str(), std::ios_base::in);
@@ -179,6 +179,7 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
     }
 
     activeScene = startScene;
+    return activeScene;
 }
 
 void Level::changeScene( const int sceneID )

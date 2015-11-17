@@ -27,7 +27,7 @@ namespace teamusa{
 	class MovingActor : public  BaseActor {
 		private:
 		Region endRegion;
-		int transitionSteps = 0;
+		int transitionSteps = 1;
 		int currentStep = 0;
 		int xSpeed = 0;
 		int ySpeed = 0;

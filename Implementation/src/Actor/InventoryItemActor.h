@@ -36,6 +36,8 @@ namespace teamusa {
         // Destructor.
         virtual ~InventoryItemActor(void) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
+        virtual const ActorEvent onHover( Player& player ) override;
+
         ///
         /// \brief <Give description of what actor does on click>
         virtual const ActorEvent onClick( Player& player ) override;

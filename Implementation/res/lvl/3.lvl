@@ -1,25 +1,25 @@
 # Begin loading images
 # <type> <id> <path to resource>
-IMAGE 1025 res/images/Floor3-1.png
-IMAGE 1026 res/images/Floor3-2.png
-IMAGE 1027 res/images/Floor3-3.png
-IMAGE 1028 res/images/Floor3-4a.png
-IMAGE 1029 res/images/Floor3-4b.png
-IMAGE 1030 res/images/Floor3-5.png
-IMAGE 1031 res/images/Floor3-6.png
-IMAGE 1032 res/images/Floor3-7.png
-IMAGE 1033 res/images/Floor3-8.png
-IMAGE 1034 res/images/Floor3-9.png
-IMAGE 1035 res/images/Floor3-10a.png
-IMAGE 1036 res/images/Floor3-10b.png
-IMAGE 1037 res/images/Floor3-11.png
-IMAGE 1038 res/images/Floor3-12a.png
-IMAGE 1039 res/images/Floor3-12b.png
-IMAGE 1040 res/images/Floor3-13a.png
-IMAGE 1041 res/images/Floor3-13b.png
-IMAGE 1042 res/images/Floor3-13ba.png
-IMAGE 1043 res/images/Floor3-13c.png
-IMAGE 1044 res/images/Floor3-14.png
+IMAGE 1025 res/images/AB1_Floor3/Floor3-1.png
+IMAGE 1026 res/images/AB1_Floor3/Floor3-2.png
+IMAGE 1027 res/images/AB1_Floor3/Floor3-3.png
+IMAGE 1028 res/images/AB1_Floor3/Floor3-4a.png
+IMAGE 1029 res/images/AB1_Floor3/Floor3-4b.png
+IMAGE 1030 res/images/AB1_Floor3/Floor3-5.png
+IMAGE 1031 res/images/AB1_Floor3/Floor3-6.png
+IMAGE 1032 res/images/AB1_Floor3/Floor3-7.png
+IMAGE 1033 res/images/AB1_Floor3/Floor3-8.png
+IMAGE 1034 res/images/AB1_Floor3/Floor3-9.png
+IMAGE 1035 res/images/AB1_Floor3/Floor3-10a.png
+IMAGE 1036 res/images/AB1_Floor3/Floor3-10b.png
+IMAGE 1037 res/images/AB1_Floor3/Floor3-11.png
+IMAGE 1038 res/images/AB1_Floor3/Floor3-12a.png
+IMAGE 1039 res/images/AB1_Floor3/Floor3-12b.png
+IMAGE 1040 res/images/AB1_Floor3/Floor3-13a.png
+IMAGE 1041 res/images/AB1_Floor3/Floor3-13b.png
+IMAGE 1042 res/images/AB1_Floor3/Floor3-13ba.png
+IMAGE 1043 res/images/AB1_Floor3/Floor3-13c.png
+IMAGE 1044 res/images/AB1_Floor3/Floor3-14.png
 
 # Use 1001 as the starting scene
 START_SCENE 125

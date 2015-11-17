@@ -49,6 +49,11 @@ namespace teamusa {
         void setCursor( const CursorStyle style );
 
         ///
+        /// \brief Returns the current cursor texture ID associated with the 
+        ///     cursor style.
+        const int getCursorTextureID( void ) const;
+
+        ///
         /// \brief Sets the position of the player's cursor.
         /// \param x The x-coordinate of the cursor.
         /// \param y The y-coordinate of the cursor.
@@ -65,6 +70,12 @@ namespace teamusa {
         const Point getPosition( void ) const;
 
         static const int FLASHLIGHT_ID;
+        static const int CURSOR_DEFAULT_ID;
+        static const int CURSOR_SELECT_ID;
+        static const int CURSOR_UP_ID;
+        static const int CURSOR_DOWN_ID;
+        static const int CURSOR_LEFT_ID;
+        static const int CURSOR_RIGHT_ID;
 
     private:
 
