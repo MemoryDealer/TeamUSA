@@ -57,6 +57,12 @@ void VideoEngine::render(const Region &region, const unsigned int layer, const T
   this->videoContext->render_onto(this->layers[layer], id, &region, NULL);
 }
 
+void VideoEngine::renderDebugBox( const Region& region, 
+                                  const VideoContext::DebugColor color )
+{
+    this->videoContext->renderDebugBox( region, color, 6 );
+}
+
 void VideoEngine::renderRotate(
  Region &region, unsigned int layer, TextureID id, float angle){
   this->videoContext->render_rotate(

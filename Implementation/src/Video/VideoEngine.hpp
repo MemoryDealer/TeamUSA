@@ -73,6 +73,10 @@ namespace teamusa {
        */
       void render(const Region &region, const unsigned int layer, const TextureID id);
 
+      
+      void renderDebugBox( const Region& region, 
+                           const VideoContext::DebugColor = VideoContext::DebugColor::BLUE );
+
       /**
        * Renders the texture onto the given layer in the given region with the
        * given rotation angle.

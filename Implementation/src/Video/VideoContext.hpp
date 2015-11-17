@@ -51,6 +51,12 @@ namespace mediawrap {
         BLENDMODE_MOD = SDL_BLENDMODE_MOD
       };
 
+      enum DebugColor {
+          RED = 0,
+          GREEN,
+          BLUE
+      };
+
       /**
        * Constructs a new rendering context that includes a window and the
        * renderer associated with it. Provides utilities for loading textures
@@ -131,6 +137,10 @@ namespace mediawrap {
        *   The source region to copy from when drawing.
        */
       void render(TextureID id, Region* dest, Region* src);
+
+      void renderDebugBox( const Region& region, 
+                           const DebugColor color,
+                           const TextureID layer );
 
       /**
        * Draws the given source texture onto the destination texture.

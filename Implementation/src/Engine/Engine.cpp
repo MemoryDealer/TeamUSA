@@ -8,7 +8,7 @@
 
 #include "Engine.h"
 
-#include "Actor/ExampleActor.h"
+#include "Actor/SceneLink.h"
 #include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
 #include "Engine/ResourceGroup.hpp"
@@ -36,6 +36,9 @@ Engine::Engine( void )
 , mLevel()
 , mIsRunning( false )
 , mActorEventHandlers( )
+#ifdef _DEBUG
+, mDebugData()
+#endif
 {
     // Register actor event handlers.
     mActorEventHandlers.push_back( BIND( &Engine::onChangeScene ) );
@@ -59,7 +62,7 @@ Engine::Engine( void )
 
     // Load main menu level...
     //...
-    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
+    mLevel.loadLevel( "res/lvl/2.lvl", *mAudioEngine, *mVideoEngine );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -122,10 +125,34 @@ void Engine::run( void )
 
                 case SDL_MOUSEBUTTONDOWN:
                     for ( auto& actor : actors ) {
-                        ActorEvent e = actor->onClick( mPlayer );
-                        handleEvent( actor, e );
+                        if ( actor->isInBounds( mPlayer.getPosition() ) ) {
+                            ActorEvent e = actor->onClick( mPlayer );
+                            handleEvent( actor, e );
+                        }
                     }
                     break;
+
+#ifdef _DEBUG
+                case SDL_KEYDOWN:
+                    switch ( e.key.keysym.sym ) {
+                    default:
+                        break;
+
+                    case SDLK_d:
+                        mDebugData.drawDebugBoxes = !mDebugData.drawDebugBoxes;
+                        break;
+
+                    case SDLK_l:
+                        mDebugData.disableLighting = !mDebugData.disableLighting;
+                        break;
+
+                    case SDLK_BACKSPACE:
+                        mDebugData.scenes.pop();
+                        mLevel.changeScene( mDebugData.scenes.top() );
+                        break;
+                    }
+                    break;
+#endif
 
                 case SDL_QUIT:
                     mIsRunning = false;
@@ -185,7 +212,16 @@ void Engine::render( const ActorList& actors )
 {
     // Render background image first.
     Region bg { 0, 0, 1280, 720 };
-    mVideoEngine->render( bg, 0, mLevel.getBGImageID() );
+#ifdef _DEBUG
+    if ( mDebugData.disableLighting ) {
+        mVideoEngine->render( bg, 6, mLevel.getBGImageID() );
+    }
+    else {
+        mVideoEngine->render( bg, 0, mLevel.getBGImageID() );
+    }
+#else
+    mVideoEngine->render( bg, 0, mLevel.getBGImageID() );    
+#endif
 
     // Render player flashlight.
     Point p = getMouseCoordinates();
@@ -198,6 +234,14 @@ void Engine::render( const ActorList& actors )
                                   actor->getLayer(),
                                   actor->getTextureID() );
         }
+
+#ifdef _DEBUG
+        if ( mDebugData.drawDebugBoxes ) {
+            if ( typeid( *actor ) == typeid( SceneLink ) ) {
+                mVideoEngine->renderDebugBox( actor->getRegion() );
+            }
+        }
+#endif
     }
 
     mVideoEngine->display();
@@ -214,6 +258,10 @@ void Engine::render( const ActorList& actors )
 void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 {
     mLevel.changeScene( value );
+
+#ifdef _DEBUG
+    mDebugData.scenes.push( value );
+#endif
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

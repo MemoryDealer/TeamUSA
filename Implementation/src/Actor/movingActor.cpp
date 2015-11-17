@@ -24,8 +24,8 @@ MovingActor::MovingActor( Region startRegion,Region endregion, int textureId,int
 	endRegion=endregion;
 	mRegion = startRegion;
 
-	hGrowth = (endRegion.h - startRegion.h) / transitionSteps;;
-	wGrowth = (endRegion.w - startRegion.w) / transitionSteps;;
+	hGrowth = (endRegion.h - startRegion.h) / transitionSteps;
+	wGrowth = (endRegion.w - startRegion.w) / transitionSteps;
 	transitionSteps = transitionsteps;
 	currentStep = 0;
 	xSpeed = (endRegion.x - startRegion.x) / transitionSteps;

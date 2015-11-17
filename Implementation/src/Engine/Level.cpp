@@ -87,11 +87,13 @@ Level::Level( int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine )
 
 const ActorList& Level::getActors( void ) const
 {
+    Assert( scenes.find( activeScene ) != scenes.end() );
     return scenes.at(activeScene).actors;
 }
 
 const int Level::getBGImageID( void ) const
 {
+    Assert( scenes.find( activeScene ) != scenes.end() );
     return scenes.at( activeScene ).bgImageID;
 }
 

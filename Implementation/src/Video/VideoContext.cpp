@@ -88,6 +88,32 @@ void VideoContext::render(TextureID id, Region* dest, Region* src){
   SDL_RenderCopy(this->renderer, iter->second, src, dest);
 }
 
+void VideoContext::renderDebugBox( const Region& region,
+                                   const DebugColor color,
+                                   const TextureID layer )
+{
+    Uint8 colors[3][3] = 
+    { { 255, 0, 0 }, 
+    { 0, 255, 0 }, 
+    { 0, 0, 255} };
+
+    SDL_SetRenderTarget( this->renderer, this->textures->at( layer ) );
+    SDL_SetRenderDrawBlendMode( this->renderer, SDL_BLENDMODE_BLEND );
+    SDL_SetRenderDrawColor( this->renderer,
+                            colors[color][0],
+                            colors[color][1],
+                            colors[color][2],
+                            50 );
+    SDL_RenderFillRect( this->renderer, &region );
+
+    SDL_SetRenderDrawColor( this->renderer,
+                            colors[color][0],
+                            colors[color][1],
+                            colors[color][2], 
+                            255 );
+    SDL_RenderDrawRect( this->renderer, &region );
+}
+
 void VideoContext::render_onto(TextureID dest_id, TextureID src_id,
 const Region* dest_region, Region* src_region){
   VideoContext::texture_iter dest_iter = this->textures->find(dest_id);
