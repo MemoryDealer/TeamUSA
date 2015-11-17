@@ -110,12 +110,26 @@ void Engine::run( void )
                 if ( actor->isInBounds( mPlayer.getPosition() ) ) {
                     e = actor->onHover( mPlayer );
                     handleEvent( actor, e );
+                }
+            }
 
-                    // Test mouse click.
-                    if ( getMouseClickState() ) {
-                        e = actor->onClick( mPlayer );
+            // Update SDL.
+            SDL_Event e;
+            while ( SDL_PollEvent( &e ) ) {
+                switch ( e.type ) {
+                default:
+                    break;
+
+                case SDL_MOUSEBUTTONDOWN:
+                    for ( auto& actor : actors ) {
+                        ActorEvent e = actor->onClick( mPlayer );
                         handleEvent( actor, e );
                     }
+                    break;
+
+                case SDL_QUIT:
+                    mIsRunning = false;
+                    break;
                 }
             }
 
@@ -124,20 +138,7 @@ void Engine::run( void )
 
             // Decrement the ms left for this frame time.
             lag -= FRAME_TIME;
-        }
-
-        // Update SDL.
-        SDL_Event e;
-        while ( SDL_PollEvent( &e ) ) {
-            switch ( e.type ) {
-            default:
-                break;
-
-            case SDL_QUIT:
-                mIsRunning = false;
-                break;
-            }
-        }
+        }        
         
         // Render the current scene.
         render( actors );

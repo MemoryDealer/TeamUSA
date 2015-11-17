@@ -21,7 +21,7 @@ InventoryItemActor::InventoryItemActor(Region region, const int item_ID, const i
 {
     mVideo = new ActorVideo();
     mVideo -> layer = layer_s;
-    mVideo -> textureID = -1;
+    mVideo -> textureID = texture_ID;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

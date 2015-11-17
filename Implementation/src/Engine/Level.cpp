@@ -107,7 +107,7 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
     fs >> std::boolalpha;
     while (fs >> cmd)
     {
-        if (cmd == "#")
+        if ( cmd.find_first_of('#') == 0 ) // handle comments with multiple hashtags
             std::getline(fs, cmd);
         else if (cmd == "SCENE")
         {
@@ -183,6 +183,12 @@ void Level::changeScene( const int sceneID )
 {
     Assert( scenes.find( sceneID ) != scenes.end() );
     activeScene = sceneID;
+
+#if defined ( DEBUG ) || defined ( _DEBUG )
+    std::cout << "DEBUG INFO - Scene changed:\n\tID: " << sceneID <<
+        "\n\tNum Actors: " << scenes.at( activeScene ).actors.size() <<
+        "\n\n";
+#endif
 }
 
 BaseActorPtr Level::parseAudioStreamActor(std::fstream &fs)

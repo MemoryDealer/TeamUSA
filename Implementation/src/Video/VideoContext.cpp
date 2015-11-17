@@ -94,8 +94,11 @@ const Region* dest_region, Region* src_region){
   VideoContext::texture_iter src_iter = this->textures->find(src_id);
   if(dest_iter == this->textures->end())
     throw std::runtime_error("Unable to render_onto. Invalid dest id.");
-  if(src_iter == this->textures->end())
-    throw std::runtime_error("Unable to render_onto. Invalid src id.");
+  if ( src_iter == this->textures->end() ) {
+      std::string err = std::string( "Unable to render_onto. Invalid src id (" );
+      err += std::to_string( src_id ) + ")" + "(dst_id = " + std::to_string( dest_id) + ")";
+      throw std::runtime_error( err );
+  }
   SDL_SetRenderTarget(this->renderer, dest_iter->second);
   SDL_RenderCopy(this->renderer, src_iter->second, src_region, dest_region);
   SDL_SetRenderTarget(this->renderer, NULL);
