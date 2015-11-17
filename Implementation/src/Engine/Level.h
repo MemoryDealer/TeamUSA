@@ -34,10 +34,13 @@ namespace teamusa
         int activeScene;
 
     public:
+        Level( void );
         Level(int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine);
         const ActorList& getActors( void ) const;
+        void loadLevel( const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine );
+
     private:
-        void loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine);
+        
         BaseActorPtr parseAudioStreamActor(std::fstream &fs);
         BaseActorPtr parseDelayedAudioActor(std::fstream &fs);
         BaseActorPtr parseDelayedVideoActor(std::fstream &fs);

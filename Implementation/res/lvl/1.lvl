@@ -1,9 +1,9 @@
 # Begin loading images
 # <type> <id> <path to resource>
-IMAGE 1001 res/images/AB1_Outside/Outside_1.png
-IMAGE 1002 res/images/AB1_Outside/Outside_2.png
-IMAGE 1003 res/images/AB1_Outside/Outside_3.png
-IMAGE 1004 res/images/AB1_Outside/Outside_4.png
+IMAGE 1001 res/images/AB1_Outside/Outside-1.png
+IMAGE 1002 res/images/AB1_Outside/Outside-2.png
+IMAGE 1003 res/images/AB1_Outside/Outside-3.png
+IMAGE 1004 res/images/AB1_Outside/Outside-4.png
 IMAGE 1005 res/images/AB1_Floor1/Floor1-1.png
 IMAGE 1006 res/images/AB1_Floor1/Floor1-2a.png
 IMAGE 1007 res/images/AB1_Floor1/Floor1-2b.png

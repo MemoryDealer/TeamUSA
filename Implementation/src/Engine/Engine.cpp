@@ -33,6 +33,7 @@ using namespace teamusa;
 Engine::Engine( void )
 : mAudioEngine( nullptr )
 , mVideoEngine( nullptr )
+, mLevel()
 , mIsRunning( false )
 , mActorEventHandlers( )
 {
@@ -52,7 +53,7 @@ Engine::Engine( void )
     mAudioEngine.reset( new AudioEngine() );
 
     // Load main menu level...
-    // ...
+    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -69,7 +70,7 @@ void Engine::run( void )
 {
     mIsRunning = true;
 
-    mVideoEngine->showTextbox( "LEGEND OF THE GREAT UNWASHED" );
+    //mVideoEngine->showTextbox( "LEGEND OF THE GREAT UNWASHED" );
 
     Timer timer;
     timer.start();    
@@ -85,7 +86,7 @@ void Engine::run( void )
         lag += elapsed;
 
         // Get all actors in current scene.
-        ActorList actors; // = mLevel.getActiveScene().getShit();
+        ActorList actors = mLevel.getActors();
 
         // Update game logic. May be updated multiple times per frame if there
         // is a hitch in the system, for instance. This will produce frame rate
@@ -96,17 +97,17 @@ void Engine::run( void )
                 ActorEvent e;
 
                 // Update the actor.
-                e = actor.step( mPlayer );
+                e = actor->step( mPlayer );
                 handleEvent( actor, e );
 
                 // Test mouse hover.
-                if ( actor.isInBounds( mPlayer.getPosition() ) ) {
-                    e = actor.onHover( mPlayer );
+                if ( actor->isInBounds( mPlayer.getPosition() ) ) {
+                    e = actor->onHover( mPlayer );
                     handleEvent( actor, e );
 
                     // Test mouse click.
                     if ( getMouseClickState() ) {
-                        e = actor.onClick( mPlayer );
+                        e = actor->onClick( mPlayer );
                         handleEvent( actor, e );
                     }
                 }
@@ -160,7 +161,7 @@ const int32_t Engine::getMouseClickState( void ) const
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::handleEvent( BaseActor& actor, const ActorEvent& e )
+void Engine::handleEvent( BaseActorPtr actor, const ActorEvent& e )
 {
     // Call the actor event handler.
     Assert( static_cast<size_t>( e.type ) < mActorEventHandlers.size() );
@@ -172,9 +173,9 @@ void Engine::handleEvent( BaseActor& actor, const ActorEvent& e )
 void Engine::render( const ActorList& actors )
 {
     for ( auto& actor : actors ) {
-        mVideoEngine->render( actor.getRegion(), 
-                              actor.getLayer(), 
-                              actor.getTextureID() );
+        mVideoEngine->render( actor->getRegion(),
+                              actor->getLayer(),
+                              actor->getTextureID() );
     }
 
     mVideoEngine->display();
@@ -188,14 +189,14 @@ void Engine::render( const ActorList& actors )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onChangeScene( BaseActor& actor, const int32_t value )
+void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 {
     
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onLoadLevel( BaseActor& actor, const int32_t value )
+void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 {
     mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
     
@@ -204,42 +205,42 @@ void Engine::onLoadLevel( BaseActor& actor, const int32_t value )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onPlayAudio( BaseActor& actor, const int32_t value )
+void Engine::onPlayAudio( BaseActorPtr actor, const int32_t value )
 {
 
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onNewGame( BaseActor& actor, const int32_t value )
+void Engine::onNewGame( BaseActorPtr actor, const int32_t value )
 {
 
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onLoadGame( BaseActor& actor, const int32_t value )
+void Engine::onLoadGame( BaseActorPtr actor, const int32_t value )
 {
 
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onDisplayText( BaseActor& actor, const int32_t value )
+void Engine::onDisplayText( BaseActorPtr actor, const int32_t value )
 {
 
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onExitGame( BaseActor& actor, const int32_t value )
+void Engine::onExitGame( BaseActorPtr actor, const int32_t value )
 {
     mIsRunning = false;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-void Engine::onStreamAudio( BaseActor& actor, const int32_t value )
+void Engine::onStreamAudio( BaseActorPtr actor, const int32_t value )
 {
     
 }

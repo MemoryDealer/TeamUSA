@@ -69,6 +69,14 @@ static void loadError(const std::string &msg)
     Assert(false);
 }
 
+Level::Level( void )
+: scenes()
+, startScene( -1 )
+, activeScene( 0 )
+{
+
+}
+
 Level::Level( int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine )
 : scenes( )
 , startScene( -1 )

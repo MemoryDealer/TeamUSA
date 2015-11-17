@@ -12,6 +12,7 @@
 
 #include "Headers.h"
 
+#include "Engine/Level.h"
 #include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -23,12 +24,7 @@ namespace teamusa {
     struct ActorEvent;
     class AudioEngine;
     class BaseActor;
-    class VideoEngine;
-
-    // Function pointer type for handling actor events.
-    typedef std::function< void( BaseActor& actor, const int32_t value ) > ActorEventHandler;
-
-    typedef std::vector<BaseActor> ActorList;
+    class VideoEngine;    
 
     ///
     /// \class Engine
@@ -61,7 +57,7 @@ namespace teamusa {
         ///
         /// \brief Handles actor event on actor who triggered it.
         /// \details Looks up function pointer in table, calls the corresponding function.
-        void handleEvent( BaseActor& actor, const ActorEvent& e );
+        void handleEvent( BaseActorPtr actor, const ActorEvent& e );
 
         ///
         /// \brief Renders all actors in the scene.
@@ -69,20 +65,25 @@ namespace teamusa {
 
         // All actor event handlers:
 
-        void onChangeScene( BaseActor& actor, const int32_t value );
-        void onLoadLevel( BaseActor& actor, const int32_t value );
-        void onPlayAudio( BaseActor& actor, const int32_t value );
-        void onNewGame( BaseActor& actor, const int32_t value );
-        void onLoadGame( BaseActor& actor, const int32_t value );
-        void onDisplayText( BaseActor& actor, const int32_t value );
-        void onExitGame( BaseActor& actor, const int32_t value );
-        void onStreamAudio( BaseActor& actor, const int32_t value );
+        void onChangeScene( BaseActorPtr actor, const int32_t value );
+        void onLoadLevel( BaseActorPtr actor, const int32_t value );
+        void onPlayAudio( BaseActorPtr actor, const int32_t value );
+        void onNewGame( BaseActorPtr actor, const int32_t value );
+        void onLoadGame( BaseActorPtr actor, const int32_t value );
+        void onDisplayText( BaseActorPtr actor, const int32_t value );
+        void onExitGame( BaseActorPtr actor, const int32_t value );
+        void onStreamAudio( BaseActorPtr actor, const int32_t value );
+
+    private:
+
+        // Function pointer type for handling actor events.
+        typedef std::function< void( BaseActorPtr actor, const int32_t value ) > ActorEventHandler;
 
     private:
 
         std::shared_ptr<AudioEngine> mAudioEngine;
         std::shared_ptr<VideoEngine> mVideoEngine;
-        //Level mCurrentLevel;
+        Level mLevel;
         Player mPlayer;
         bool mIsRunning;
 

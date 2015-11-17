@@ -38,6 +38,10 @@ int main( int argc, char** argv )
     }
     catch ( std::exception& e ) {
         logError( e.what() );
+#if defined( DEBUG ) || defined( _DEBUG )
+        std::cout << "FATAL ERROR: " << e.what() << std::endl;
+        getchar();
+#endif
         return 1;
     }
 
