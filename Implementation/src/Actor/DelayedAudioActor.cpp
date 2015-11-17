@@ -15,6 +15,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 DelayedAudioActor::DelayedAudioActor(int audioID, int delaySteps = 0 )
+: BaseActor( )
 {
     // ...
     this->audioId = audioId;

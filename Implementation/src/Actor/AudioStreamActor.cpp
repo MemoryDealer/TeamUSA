@@ -15,6 +15,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 AudioStreamActor::AudioStreamActor(std::string path )
+: BaseActor( )
 {
     // ...
     this->path = path;

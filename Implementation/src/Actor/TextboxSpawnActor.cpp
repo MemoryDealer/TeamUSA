@@ -13,7 +13,9 @@
 using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text){
+TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text)
+: BaseActor( region )
+{
 	// ...
 	text=Text;
 }
@@ -37,7 +39,7 @@ const ActorEvent TextboxSpawnActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent TextboxSpawnActor::step()
+const ActorEvent TextboxSpawnActor::step( Player& player )
 {
 	// Handle per-frame updates...
 

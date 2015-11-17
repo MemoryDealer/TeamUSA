@@ -15,7 +15,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 ResponsiveAudioActor::ResponsiveAudioActor(Region region, int hoverAudioId = -1, int durationSteps = 120, int clickAudioId = -1 )
-
+: BaseActor( region )
 {
     this->mRegion = region;
     this->hoverAudioId = hoverAudioId;

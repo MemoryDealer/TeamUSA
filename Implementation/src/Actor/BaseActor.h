@@ -38,7 +38,7 @@ namespace teamusa {
 
     public:
 
-        explicit BaseActor( void );
+        explicit BaseActor( const Region& region = Region() );
 
         virtual ~BaseActor( void ) = 0;
 

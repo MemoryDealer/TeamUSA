@@ -2,11 +2,13 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file ExampleActor.cpp
-/// \brief Implements ExampleActor class.
+/// \file InventoryItemActor.cpp
+/// \brief Implements InventoryItemActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include "ExampleActor.h"
+#include "InventoryItemActor.h"
+
+#include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
@@ -14,50 +16,45 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-ExampleActor::ExampleActor( void )
-: BaseActor()
+InventoryItemActor::InventoryItemActor(Region region, const int item_ID, const int texture_ID, const int layer_s)
+: BaseActor(region), itemID(item_ID), pickedUp( false )
 {
-    // ...
+    mVideo = new ActorVideo();
+    mVideo -> layer = layer_s;
+    mVideo -> textureID = -1;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-ExampleActor::~ExampleActor( void )
+InventoryItemActor::~InventoryItemActor(void)
 {
-    // ...
+    delete mVideo;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent ExampleActor::onClick( Player& player )
+const ActorEvent InventoryItemActor::onClick( Player& player )
 {
-    // Handle clicking logic...
+    /*
+    1. The actor will add an item to the player's
+    inventory;
+    2. set its TextureID to an invalid value;
+    3. set its pickedUp status to true.
+    */
+    if (!pickedUp){
+        player.addItem(itemID);
+        pickedUp = true;
+        mVideo->textureID = -1;
+    }
+    ActorEvent e;
+    return e;
+}
+
+const ActorEvent InventoryItemActor::step( Player& player ){
 
     ActorEvent e;
-    // Assign data...
     return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent ExampleActor::onHover( Player& player )
-{
-    // Handle hovering logic...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-
-const ActorEvent ExampleActor::step( Player& player )
-{
-    // Handle per-frame updates...
-
-    ActorEvent e;
-    // Assign data...
-    return e;
-}
-
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

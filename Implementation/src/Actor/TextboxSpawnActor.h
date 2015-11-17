@@ -26,7 +26,7 @@ namespace teamusa{
    /// \brief Will emit a DisplayText event when the onClick method is called. 
    /// The actor can then have its text accessed by the engine for display through a call to the getText method.
 
-	class TextboxSpawnActor
+	class TextboxSpawnActor : public BaseActor
 	{
 		private:
 		std::string text;
@@ -48,7 +48,7 @@ namespace teamusa{
 
 		///
 		/// \brief Override.
-		virtual const ActorEvent step();
+		virtual const ActorEvent step( Player& player );
 	
 
 		// Declare additional functions here as specified in UML diagram.

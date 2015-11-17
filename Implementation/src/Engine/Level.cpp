@@ -13,9 +13,12 @@
 #include "Actor/AudioStreamActor.h"
 #include "Actor/DelayedAudioActor.h"
 #include "Actor/DelayedVideoActor.h"
+#include "Actor/InventoryItemActor.h"
+#include "Actor/LevelLink.h"
 #include "Actor/MovingActor.h"
 #include "Actor/ResponsiveAudioActor.h"
 #include "Actor/ResponsiveVideoActor.h"
+#include "Actor/SceneLink.h"
 #include "Actor/TextboxSpawnActor.h"
 #include "Actor/VideoActor.h"
 #include "Actor/VideoEventActor.h"
@@ -192,6 +195,7 @@ BaseActorPtr Level::parseInventoryItemActor(std::fstream &fs)
     int itemID, textureID, layer;
 
     fs >> region >> itemID >> textureID >> layer;
+    return BaseActorPtr( new InventoryItemActor( region, itemID, textureID, layer ) );
 }
 
 BaseActorPtr Level::parseLevelLink(std::fstream &fs)
@@ -203,7 +207,7 @@ BaseActorPtr Level::parseLevelLink(std::fstream &fs)
 
     fs >> levelID >> region >> sceneID >> itemID;
     std::getline(fs, itemRequiredText);
-    return BaseActorPtr( new LevelLink( levelID, region, sceneID, itemID, itemRequiredText ) );
+    return BaseActorPtr( new LevelLink( region, levelID, sceneID, itemRequiredText, itemID ) );
 }
 
 BaseActorPtr Level::parseMovingActor(std::fstream &fs)
@@ -236,12 +240,13 @@ BaseActorPtr Level::parseResponsiveVideoActor(std::fstream &fs)
 
 BaseActorPtr Level::parseSceneLink(std::fstream &fs)
 {
+    Region region;
     int sceneID, requiredItemID;
     std::string itemRequiredText;
 
-    fs >> sceneID, requiredItemID;
+    fs >> sceneID >> region >> requiredItemID;
     std::getline(fs, itemRequiredText);
-    return BaseActorPtr( new SceneLink( sceneID, requiredItemID, itemRequiredText ) );
+    return BaseActorPtr( new SceneLink( region, sceneID, itemRequiredText, requiredItemID ) );
 }
 
 BaseActorPtr Level::parseTextboxSpawnActor(std::fstream &fs)

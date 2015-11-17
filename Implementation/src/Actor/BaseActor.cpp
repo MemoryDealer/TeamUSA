@@ -17,8 +17,8 @@ using namespace teamusa;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-BaseActor::BaseActor( void )
-: mRegion( )
+BaseActor::BaseActor( const Region& region )
+: mRegion( region )
 , mAudioID( -1 )
 , mVideo( nullptr )
 {

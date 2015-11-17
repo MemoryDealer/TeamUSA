@@ -15,6 +15,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 VideoActor::VideoActor( Region region, int textureId  = -1, int layer = 1 )
+: BaseActor( region )
 {
     this->mVideo = new ActorVideo;
     this->mVideo->textureID = textureId;
