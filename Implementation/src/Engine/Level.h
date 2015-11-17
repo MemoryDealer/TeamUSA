@@ -37,7 +37,10 @@ namespace teamusa
         Level( void );
         Level(int levelID, AudioEngine &audioEngine, VideoEngine &videoEngine);
         const ActorList& getActors( void ) const;
+        const int getBGImageID( void ) const;
         void loadLevel( const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine );
+
+        void changeScene( const int sceneID );
 
     private:
         

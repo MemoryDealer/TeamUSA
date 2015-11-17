@@ -16,14 +16,19 @@ using namespace teamusa;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+const int Player::FLASHLIGHT_ID = 1666;
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 Player::Player( void )
 : mRegion( )
-, mLayer( 0 )
+, mLayer( 4 )
 , mTextureID( 0 )
 , mPosition( )
 , mInventory( )
 , mCursorStyle( CursorStyle::CURSOR_NONE )
 {
+    mRegion = { 0, 0, 512, 512 };
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

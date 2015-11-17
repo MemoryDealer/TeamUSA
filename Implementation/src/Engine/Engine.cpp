@@ -52,7 +52,13 @@ Engine::Engine( void )
                                          720 ) );
     mAudioEngine.reset( new AudioEngine() );
 
+    // Load core resources.
+    mVideoEngine->loadTexture( "res/images/Cursor/Light.png", 
+                               Player::FLASHLIGHT_ID,
+                               CORE_RESOURCE );
+
     // Load main menu level...
+    //...
     mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
 }
 
@@ -163,6 +169,10 @@ const int32_t Engine::getMouseClickState( void ) const
 
 void Engine::handleEvent( BaseActorPtr actor, const ActorEvent& e )
 {
+    if ( e.type == ActorEventType::Nil ) {
+        return;
+    }
+
     // Call the actor event handler.
     Assert( static_cast<size_t>( e.type ) < mActorEventHandlers.size() );
     mActorEventHandlers[e.type] ( actor, e.value );
@@ -172,10 +182,21 @@ void Engine::handleEvent( BaseActorPtr actor, const ActorEvent& e )
 
 void Engine::render( const ActorList& actors )
 {
+    // Render background image first.
+    Region bg { 0, 0, 1280, 720 };
+    mVideoEngine->render( bg, 0, mLevel.getBGImageID() );
+
+    // Render player flashlight.
+    Point p = getMouseCoordinates();
+    Region f { p.x - 256, p.y - 256, 512, 512 };
+    mVideoEngine->render( f, 4, Player::FLASHLIGHT_ID );
+
     for ( auto& actor : actors ) {
-        mVideoEngine->render( actor->getRegion(),
-                              actor->getLayer(),
-                              actor->getTextureID() );
+        if ( actor->hasVideo() ) {
+            mVideoEngine->render( actor->getRegion(),
+                                  actor->getLayer(),
+                                  actor->getTextureID() );
+        }
     }
 
     mVideoEngine->display();
@@ -191,7 +212,7 @@ void Engine::render( const ActorList& actors )
 
 void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 {
-    
+    mLevel.changeScene( value );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -86,6 +86,10 @@ namespace teamusa {
         /// \return The integer containing the texture ID.
         virtual const int32_t getTextureID( void ) const;
 
+        ///
+        /// \brief Returns true if the actor has a video component.
+        const bool hasVideo( void ) const;
+
     protected:
 
         Region mRegion;

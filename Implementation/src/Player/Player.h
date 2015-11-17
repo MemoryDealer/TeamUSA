@@ -64,6 +64,8 @@ namespace teamusa {
         /// \return A Point struct containing the cursor position.
         const Point getPosition( void ) const;
 
+        static const int FLASHLIGHT_ID;
+
     private:
 
         Region mRegion;

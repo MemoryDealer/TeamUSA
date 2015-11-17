@@ -60,7 +60,7 @@ namespace teamusa {
        * @param resGroup
        *  The group to load the resource into.
        */
-      void loadTexture(std::string &path, TextureID id, ResourceGroup group);
+      void loadTexture(const std::string &path, TextureID id, ResourceGroup group);
 
       /**
        * Renders the texture onto the given layer in the given region.

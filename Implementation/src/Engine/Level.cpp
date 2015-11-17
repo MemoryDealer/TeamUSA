@@ -90,6 +90,11 @@ const ActorList& Level::getActors( void ) const
     return scenes.at(activeScene).actors;
 }
 
+const int Level::getBGImageID( void ) const
+{
+    return scenes.at( activeScene ).bgImageID;
+}
+
 void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine)
 {
     std::string cmd;
@@ -170,6 +175,14 @@ void Level::loadLevel(const std::string &path, AudioEngine &audioEngine, VideoEn
                 loadError(cmd + " is an unknown actor type");
         }
     }
+
+    activeScene = startScene;
+}
+
+void Level::changeScene( const int sceneID )
+{
+    Assert( scenes.find( sceneID ) != scenes.end() );
+    activeScene = sceneID;
 }
 
 BaseActorPtr Level::parseAudioStreamActor(std::fstream &fs)

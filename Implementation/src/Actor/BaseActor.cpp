@@ -90,3 +90,10 @@ const int32_t BaseActor::getTextureID( void ) const
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const bool BaseActor::hasVideo( void ) const
+{
+    return ( mVideo != nullptr );
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

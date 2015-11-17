@@ -42,7 +42,7 @@ VideoEngine::~VideoEngine(){
 }
 
 void VideoEngine::loadTexture(
- std::string &path, TextureID id, ResourceGroup group){
+ const std::string &path, TextureID id, ResourceGroup group){
   if(id < MAX_RESERVED_ID)
     throw std::runtime_error(
      "VideoEngine::loadTexture: Unable to use reserved texture id");
