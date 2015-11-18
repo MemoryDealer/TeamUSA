@@ -23,5 +23,9 @@
 
 
 # Building on Mac #
-1. Install Windows or Linux and follow the corresponding above instructions.
+1. Throw your Linux and/or Windows box out the window. (Especially Jordan)
+2. Execute $cd Implementation
+3. Then $make -f Makefile.mac 
+4. Run the executable with ./convenienced
+
 
