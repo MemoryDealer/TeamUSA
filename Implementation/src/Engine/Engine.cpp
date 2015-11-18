@@ -81,7 +81,7 @@ Engine::Engine( void )
 
     // Load main menu level...
     //...
-    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
+    mLevel.loadLevel( "res/lvl/2.lvl", *mAudioEngine, *mVideoEngine );
 
 #ifdef _DEBUG
     mDebugData.scenes.push(mLevel.getScene());
@@ -259,8 +259,7 @@ void Engine::render( const ActorList& actors )
     Point p = getMouseCoordinates();
     // Render player cursor.
     Region cursor { p.x, p.y, 16, 16 };
-    mVideoEngine->render( cursor, 6, mPlayer.getCursorTextureID() );
-    
+    mVideoEngine->render( cursor, 6, mPlayer.getCursorTextureID() );    
 
     // Render player flashlight.
     Region f { p.x - 256, p.y - 256, 512, 512 };
@@ -276,10 +275,8 @@ void Engine::render( const ActorList& actors )
         }
 
 #ifdef _DEBUG
-        if ( mDebugData.drawDebugBoxes ) {
-            //if ( typeid( *actor ) == typeid( SceneLink ) ) {
-                mVideoEngine->renderDebugBox( actor->getRegion() );
-            //}
+        if ( mDebugData.drawDebugBoxes ) {            
+            mVideoEngine->renderDebugBox( actor->getRegion() );            
         }
 #endif
     }

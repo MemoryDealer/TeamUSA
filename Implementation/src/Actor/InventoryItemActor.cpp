@@ -35,7 +35,9 @@ InventoryItemActor::~InventoryItemActor(void)
 
 const ActorEvent InventoryItemActor::onHover( Player& player )
 {
-    player.setCursor( CursorStyle::CURSOR_SELECT );
+    if ( !pickedUp ) {
+        player.setCursor( CursorStyle::CURSOR_SELECT );
+    }
 
     return BaseActor::onHover( player );
 }
