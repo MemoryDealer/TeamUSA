@@ -81,7 +81,7 @@ Engine::Engine( void )
 
     // Load main menu level...
     //...
-    mLevel.loadLevel( "res/lvl/2.lvl", *mAudioEngine, *mVideoEngine );
+    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
 
 #ifdef _DEBUG
     mDebugData.scenes.push(mLevel.getScene());
