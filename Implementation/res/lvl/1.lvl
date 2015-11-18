@@ -45,7 +45,8 @@ IMAGE 2004 res/images/AB1_Bath/Peek2.png
 # AUDIO 1002 res/sounds/robot.wav
 
 # Use 1001 as the starting scene
-START_SCENE 103
+#START_SCENE 103
+START_SCENE 1113
 
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>

@@ -24,18 +24,17 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+#include <iostream>
 ResponsiveVideoActor::ResponsiveVideoActor( Region region, int hoverTextureId, int clickTextureID, int defaulTextureID,int layer )
 : BaseActor( region )
 {
     // ...
+  defaultTextureId = defaulTextureID;
 	hoverTexture = hoverTextureId;
 	clickTexture = clickTextureID;
-	
 	mVideo = new ActorVideo;
 	mVideo->textureID = defaulTextureID;
 	mVideo->layer = layer;
-
-
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -54,7 +53,7 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
-	mVideo->textureID =clickTexture;
+	  mVideo->textureID = clickTexture;
     return e;
 }
 
@@ -65,12 +64,9 @@ const ActorEvent ResponsiveVideoActor::onHover(Player& player)
 	// Handle hovering logic...
 	ActorEvent e;
 	// Assign data...
-
 	if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = hoverTexture;
 	}
-
-
 	return e;
 }
 

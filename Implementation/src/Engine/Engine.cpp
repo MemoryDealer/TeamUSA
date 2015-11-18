@@ -52,7 +52,7 @@ Engine::Engine( void )
 
     mVideoEngine.reset( new VideoEngine( "LEGEND OF THE GREAT UNWASHED", 
                                          1280, 
-                                         720 ) );
+                                         853 ) );
     mAudioEngine.reset( new AudioEngine() );
 
     // Load core resources.
@@ -240,7 +240,7 @@ void Engine::handleEvent( BaseActorPtr actor, const ActorEvent& e )
 void Engine::render( const ActorList& actors )
 {
     // Render background image first.
-    Region bg { 0, 0, 1280, 720 };
+    Region bg { 0, 0, 1280, 853 };
 #ifdef _DEBUG
     if ( mDebugData.disableLighting ) {
         mVideoEngine->render( bg, 6, mLevel.getBGImageID() );
