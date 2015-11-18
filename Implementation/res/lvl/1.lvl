@@ -172,7 +172,7 @@ ENDSCENE
 # [!] Collect ELEVATOR_KEY from vending machine dispenser. 
 SCENE 1122 1034
 SceneLink 113 494 513 258 297 -1 -1
-InventoryItemActor 597 698 83 62 101 2002 3
+InventoryItemActor 587 708 83 62 101 2002 3
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
