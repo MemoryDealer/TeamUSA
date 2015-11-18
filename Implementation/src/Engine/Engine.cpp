@@ -179,6 +179,10 @@ void Engine::run( void )
                             }
                         }
                         break;
+
+                    case SDLK_END:
+                        mIsRunning = false;
+                        break;
                     }
                     break;
 #endif

@@ -47,8 +47,8 @@ ENDSCENE
 
 # PLAYER forks to SCENE 1112, or continues to SCENE 1113.
 SCENE 1110 1110
-SceneLink 1112 513 260 257 301 -1 -1 
-SceneLink 1111 1142 179 103 565 -1 -1 
+SceneLink 1111 513 260 257 301 -1 -1 
+SceneLink 1112 1142 179 103 565 -1 -1 
 ENDSCENE
 
 # Continue ahead. 
