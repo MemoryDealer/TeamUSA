@@ -294,7 +294,7 @@ ENDSCENE
 
 # PLAYER continues to DR. BURRIS'S OFFICE. 
 # PLAYER must use RED_PEN on DOOR. 
-# Else, PLAYER can attempt to go back, but will die and move to SCENE 59. 
+# Else, PLAYER can attempt to go back, but will die and move to (SCENE 59). 
 SCENE 199 1078
 SceneLink 1100 545 180 280 465 103 RED_PEN
 SceneLink 159 23 752 1236 87 -1 -1
