@@ -46,7 +46,7 @@ IMAGE 2004 res/images/AB1_Bath/Peek2.png
 
 # Use 1001 as the starting scene
 #START_SCENE 103
-START_SCENE 1113
+START_SCENE 103
 
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
@@ -156,6 +156,7 @@ ENDSCENE
 # [!] Use CHANGE to activate vending machine and retrieve ELEVATOR_KEY, in SCENE 1122
 # Else, PLAYER can only go to SCENE 1120, and will see a closed dispenser. 
 SCENE 1119 1031
+SceneLink 113 0 797 1275 80 -1 -1
 SceneLink 1120 764 497 106 96 -1 -1
 SceneLink 1121 773 413 91 76 106 CHANGE
 ENDSCENE
