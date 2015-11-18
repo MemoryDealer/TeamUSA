@@ -2,7 +2,7 @@ DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
 INC=-Isrc/ -Isrc/**/ -I/usr/local/include/
 
 CC=g++-5
-CXXFLAGS=-pedantic -Wall -std=c++11 $(INC)
+CXXFLAGS=-D=DEBUG -D=_DEBUG -pedantic -Wall -std=c++11 $(INC)
 LDFLAGS=-L/usr/local/lib -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -pthread -lc++
 
 SOURCES=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
