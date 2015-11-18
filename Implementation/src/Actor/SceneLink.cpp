@@ -16,7 +16,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-SceneLink::SceneLink( Region region, const int scene_ID, const std::string itemRequired_Text, const int item_ID )
+SceneLink::SceneLink( Region region, const int scene_ID, const std::string &itemRequired_Text, const int item_ID )
 : BaseActor(region), sceneID(scene_ID), itemRequiredText(itemRequired_Text), requiredItemID(item_ID)
 {
 

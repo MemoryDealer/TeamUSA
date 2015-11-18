@@ -50,4 +50,4 @@ public:
 	/// \brief increment a step counter
 	virtual const ActorEvent step( Player& player ) override;
 };
-};
+}

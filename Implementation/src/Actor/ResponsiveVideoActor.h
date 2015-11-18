@@ -49,4 +49,4 @@ namespace teamusa{
 		 // Declare additional functions here as specified in UML diagram.
 		 void setTextureId(int TextureId);
 	};
-};
+}

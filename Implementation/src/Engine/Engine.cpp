@@ -81,10 +81,10 @@ Engine::Engine( void )
 
     // Load main menu level...
     //...
-    int activeScene = mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
+    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
 
 #ifdef _DEBUG
-    mDebugData.scenes.push( activeScene );
+    mDebugData.scenes.push(mLevel.getScene());
 #endif
 }
 
@@ -306,7 +306,7 @@ void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 {
     mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
     
-    int activeScene = mLevel.loadLevel( "res/lvl/" + std::to_string( value ) + ".lvl",
+    mLevel.loadLevel( "res/lvl/" + std::to_string( value ) + ".lvl",
                       *mAudioEngine,
                       *mVideoEngine );
 
@@ -314,7 +314,7 @@ void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
     while ( !mDebugData.scenes.empty() ) {
         mDebugData.scenes.pop();
     }
-    mDebugData.scenes.push( activeScene );
+    mDebugData.scenes.push(mLevel.getScene());
 #endif
 }
 

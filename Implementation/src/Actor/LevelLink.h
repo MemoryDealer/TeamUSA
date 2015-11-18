@@ -52,8 +52,8 @@ namespace teamusa {
 
         int sceneID;
         int levelID;
-        int requiredItemID = -1;
         std::string itemRequiredText;
+        int requiredItemID = -1;
 
     };
 

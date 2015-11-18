@@ -31,7 +31,7 @@ namespace teamusa {
         // Declare constructor and destructor...
 
         // Constructor.
-        explicit SceneLink(Region region, const int scene_ID, const std::string itemRequired_Text, const int item_ID = -1);
+        explicit SceneLink(Region region, const int scene_ID, const std::string &itemRequired_Text, const int item_ID = -1);
 
         // Destructor.
         virtual ~SceneLink(void) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
@@ -46,10 +46,9 @@ namespace teamusa {
 
     private:
 
-        //int sceneID;
         int sceneID;
-        int requiredItemID = -1;
         std::string itemRequiredText;
+        int requiredItemID;
 
     };
 

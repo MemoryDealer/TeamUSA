@@ -1,5 +1,5 @@
 DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
-INC=-Isrc/ -Isrc/**/
+INC=-Isrc/ -Isrc/**/ -I/usr/local/include/
 
 CC=g++
 CXXFLAGS=-pedantic -Wall -std=c++11 $(INC)

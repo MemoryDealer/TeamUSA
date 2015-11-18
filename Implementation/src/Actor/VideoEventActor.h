@@ -55,4 +55,4 @@ namespace teamusa
 		virtual const ActorEvent step( Player& player );
 	};
 
-};
+}
