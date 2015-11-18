@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
 INC=-Isrc/ -Isrc/**/ -I/usr/local/include/
 
@@ -14,7 +15,7 @@ all: $(EXECUTABLE)
 	@echo "Created: $(EXECUTABLE)"
 $(EXECUTABLE): $(OBJECTS)
 	@echo "Linking objects..."
-	@$(CC) $(LDFLAGS) -o $@ $^
+	@$(CC) $^ $(LDFLAGS) -o $@
 build/%.o: src/%.cpp
 	@echo "Building: $^..."
 	@mkdir -p build/$(DIRS)
