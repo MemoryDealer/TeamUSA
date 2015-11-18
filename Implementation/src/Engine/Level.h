@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <unordered_map>
 #include "Headers.h"
 
 namespace teamusa
@@ -29,7 +30,7 @@ namespace teamusa
         };
 
     private:
-        std::map<int, Scene> scenes;
+        std::unordered_map<int, Scene> scenes;
         int startScene;
         int activeScene;
 
@@ -39,8 +40,8 @@ namespace teamusa
         const ActorList& getActors( void ) const;
         const int getBGImageID( void ) const;
         const int loadLevel( const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine );
-
         void changeScene( const int sceneID );
+        const int getScene();
 
     private:
         

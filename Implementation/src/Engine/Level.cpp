@@ -119,9 +119,11 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
             if (scenes.find(curScene) != scenes.cend())
                 loadError("scene with ID already exists");
             fs >> scene.bgImageID;
+            std::cout << "begin SCENE " << curScene << std::endl;
         }
         else if (cmd == "ENDSCENE")
         {
+            std::cout << "ENDSCENE " << curScene << std::endl;
             if (curScene < 0)
                 loadError("unexpected ENDSCENE");
             // move scene actors into scene map
@@ -179,7 +181,18 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
     }
 
     activeScene = startScene;
+
+    #if defined ( DEBUG ) || defined ( _DEBUG )
+      for(auto& i : scenes){
+        std::cout << "Scene " << i.first << std::endl;
+      }
+    #endif
     return activeScene;
+}
+
+const int Level::getScene()
+{
+  return activeScene;
 }
 
 void Level::changeScene( const int sceneID )
@@ -188,9 +201,11 @@ void Level::changeScene( const int sceneID )
     activeScene = sceneID;
 
 #if defined ( DEBUG ) || defined ( _DEBUG )
-    std::cout << "DEBUG INFO - Scene changed:\n\tID: " << sceneID <<
-        "\n\tNum Actors: " << scenes.at( activeScene ).actors.size() <<
-        "\n\n";
+    std::cout << "Active Scene: " << activeScene << std::endl;
+    std::cout << "DEBUG INFO - Scene changed" << std::endl
+        << "ID: " << sceneID << std::endl
+        << "Num Actors: " << scenes.at(activeScene).actors.size() << std::endl
+        << std::endl;
 #endif
 }
 

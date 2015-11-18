@@ -73,16 +73,17 @@ ENDSCENE
 # There is a fork in SCENE 105 to SCENE 106 or 108
 # [!] Collect CHANGE from beneath bench. 
 SCENE 105 1005 
-SceneLink 106 1061 254 220 418
-SceneLink 108 39 177 257 671
+SceneLink 106 1061 254 220 418 -1 -1
+SceneLink 108 39 177 257 671 -1 -1
 InventoryItemActor 942 711 31 26 106 2001 3
-
 ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
-SceneLink 107 530 375 214 267 -1 -1 # Forward to restroom alcove
-SceneLink 105 0 797 1275 80 -1 -1 	# Return to SCENE 105
+# Forward to restroom alcove
+SceneLink 107 530 375 214 267 -1 -1
+# Return to SCENE 105
+SceneLink 105 0 797 1275 80 -1 -1
 ENDSCENE
 
 SCENE 107 1009
