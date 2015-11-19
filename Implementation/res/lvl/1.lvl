@@ -41,8 +41,7 @@ IMAGE 2004 res/images/AB1_Bath/Peek2.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
-AUDIO 1001 res/audio/SoundEffects/witherDeath.wav
-AUDIO 1002 res/audio/SoundEffects/item_Key2.wav
+AUDIO 5001 res/audio/SoundEffects/item_Key2.wav
 
 # Use 103 as the starting scene
 START_SCENE 103
@@ -77,7 +76,7 @@ SCENE 105 1005
 SceneLink 108 1061 254 220 418 -1 -1
 SceneLink 106 39 177 257 671 -1 -1
 InventoryItemActor 700 670 32 32 106 2001 3
-#ResponsiveAudioActor 952 730 15 8 -1 120 1002
+ResponsiveAudioActor 952 730 15 8 -1 120 5001
 ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
@@ -203,6 +202,7 @@ ENDSCENE
 ################ Transistion to elevator alcove ###################
 
 SCENE 118 1018
+AudioStreamActor res/audio/AmbientSounds/drone.wav
 SceneLink 119 660 110 62 738 -1 -1
 ENDSCENE
 

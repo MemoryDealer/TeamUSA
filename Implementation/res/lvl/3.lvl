@@ -35,6 +35,7 @@ START_SCENE 125
 
 # Initial spawn, ELEVATOR ALCOVE, 3RD FLOOR
 SCENE 125 1025
+# AudioStreamActor res/audio/AmbientSounds/badLight.wav
 SceneLink 126 230 24 756 789 -1 -1
 ENDSCENE
 
