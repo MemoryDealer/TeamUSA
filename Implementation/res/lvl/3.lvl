@@ -126,7 +126,7 @@ ENDSCENE
 SCENE 143 1042
 SceneLink 141 444 188 396 505 -1 -1 
 InventoryItemActor 444 188 396 505 102 -1 3
-DelayedAudioActor 3001 0
+DelayedAudioActor 3001 1
 ENDSCENE
 
 SCENE 144 1043
