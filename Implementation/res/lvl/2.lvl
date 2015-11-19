@@ -58,6 +58,7 @@ IMAGE 2002 res/images/AB1_Floor2/Spider.png
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
 AUDIO 2001 res/audio/SoundEffects/ghastScream4.wav
+AUDIO 2002 res/audio/SoundEffects/projector-talk.wav
 
 # Use 150 as the starting scene
 START_SCENE 150
@@ -252,6 +253,7 @@ ENDSCENE
 SCENE 189 1072
 SceneLink 190 291 186 677 371 104 ADA_BOOK
 SceneLink 159 23 752 1236 87 -1 -1
+DelayedAudioActor 2002 0
 ENDSCENE
 
 SCENE 190 1073
