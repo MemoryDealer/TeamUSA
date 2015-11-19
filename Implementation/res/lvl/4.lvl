@@ -12,6 +12,11 @@ IMAGE 1112 res/images/Smith_Hudson/SH-8b.png
 IMAGE 1113 res/images/Smith_Hudson/SH-9.png
 IMAGE 2001 res/images/Smith_Hudson/Dregs.png
 
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+AUDIO 4001 res/audio/SoundEffects/witherDeath.wav
+AUDIO 4002 res/audio/SoundEffects/JumpScare_Door_Slam.wav
+
 # Use 1001 as the starting scene
 START_SCENE 1104
 
@@ -65,7 +70,9 @@ ENDSCENE
 
 SCENE 1112 1112
 SceneLink 1110 0 0 1280 853 -1 -1
-DelayedVideoActor 0 0 1280 853 2001 180 -1 3
+DelayedAudioActor 4001 1
+DelayedAudioActor 4002 475
+DelayedVideoActor 0 0 1280 853 2001 480 -1 3
 ENDSCENE
 
 SCENE 1113 1113
