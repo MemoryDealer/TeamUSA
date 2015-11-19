@@ -182,6 +182,9 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
         }
     }
 
+    if (curScene >= 0)
+        loadError("unexpected EOF before ENDSCENE");
+
     activeScene = startScene;
 
     #if defined ( DEBUG ) || defined ( _DEBUG )
