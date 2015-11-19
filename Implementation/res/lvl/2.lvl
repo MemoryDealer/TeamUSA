@@ -55,7 +55,11 @@ IMAGE 1099 res/images/AB1_215/215-7.png
 IMAGE 2001 res/images/AB1_Floor2/Pen.png
 IMAGE 2002 res/images/AB1_Floor2/Spider.png
 
-# Use 1001 as the starting scene
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+AUDIO 2001 res/audio/SoundEffects/ghastScream4.wav
+
+# Use 150 as the starting scene
 START_SCENE 150
 
 SCENE 150 1050
@@ -125,7 +129,7 @@ SceneLink 166 31 740 1228 96 -1 -1
 ENDSCENE
 
 SCENE 166 1065
-SceneLink 167 31 740 1228 96 -1 -1
+SceneLink 167 0 797 1275 80 -1 -1
 InventoryItemActor 636 368 120 32 103 2001 3
 ENDSCENE
 
@@ -177,6 +181,7 @@ ENDSCENE
 
 SCENE 175 1095
 SceneLink 174 23 752 1236 87 -1 -1
+DelayedAudioActor 2001 0
 ENDSCENE
 
 # PLAYER moves to whiteboard

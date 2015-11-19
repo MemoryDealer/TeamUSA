@@ -21,7 +21,11 @@ IMAGE 1042 res/images/AB1_Floor3/Floor3-13ba.png
 IMAGE 1043 res/images/AB1_Floor3/Floor3-13c.png
 IMAGE 1044 res/images/AB1_Floor3/Floor3-14.png
 
-# Use 1001 as the starting scene
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+AUDIO 3001 res/audio/SoundEffects/endermenStare.wav
+
+# Use 125 as the starting scene
 START_SCENE 125
 
 # Begin scene listing. 
@@ -46,7 +50,7 @@ ENDSCENE
 
 # This scene links to floor 2 via LEVELLINK
 SCENE 128 1029
-SceneLink 127 11 786 1251 51 -1 -1 	# Return to scene 127
+SceneLink 127 0 797 1275 80 -1 -1 	# Return to scene 127
 LevelLink 2 660 548 443 211 150 102 STAIRWELL_KEY  
 ENDSCENE
 
@@ -122,6 +126,7 @@ ENDSCENE
 SCENE 143 1042
 SceneLink 141 444 188 396 505 -1 -1 
 InventoryItemActor 444 188 396 505 102 -1 3
+DelayedAudioActor 3001 0
 ENDSCENE
 
 SCENE 144 1043
@@ -141,7 +146,7 @@ ENDSCENE
 # [*] If PLAYER failed to collect STAIRWELL_KEY, they will proceed in an infinite loop until they
 #     solve the puzzle. 
 SCENE 147 1044
-SceneLink 127 23 752 1236 87 -1 -1
+SceneLink 127 489 267 330 347 -1 -1
 ENDSCENE
 
 ################## End level file 3. Proceed to 2.lvl ######################
