@@ -76,7 +76,7 @@ ENDSCENE
 SCENE 105 1005 
 SceneLink 108 1061 254 220 418 -1 -1
 SceneLink 106 39 177 257 671 -1 -1
-InventoryItemActor 952 730 15 8 106 2001 3
+InventoryItemActor 700 670 32 32 106 2001 3
 #ResponsiveAudioActor 952 730 15 8 -1 120 1002
 ENDSCENE
 
