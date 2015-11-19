@@ -74,6 +74,9 @@ namespace teamusa {
         void onExitGame( BaseActorPtr actor, const int32_t value );
         void onStreamAudio( BaseActorPtr actor, const int32_t value );
 
+        // Clears resource data for current level and loads the specified level.
+        void freeAndLoadLevel( const int32_t id );
+
     private:
 
         // Function pointer type for handling actor events.

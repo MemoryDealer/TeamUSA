@@ -18,7 +18,7 @@ DelayedAudioActor::DelayedAudioActor(int audioID, int delaySteps = 0 )
 : BaseActor( )
 {
     // ...
-    this->audioId = audioId;
+    this->audioId = audioID;
     this->delaySteps = delaySteps;
     this->currentStep = 0;
 }
@@ -38,12 +38,12 @@ const ActorEvent DelayedAudioActor::step( Player& player )
 
     ActorEvent e;
     // Assign data...
-    this->currentStep++;
     if(this->currentStep == this->delaySteps)
     {
       e.value = this->audioId;
       e.type = PlayAudio;
     }
+    this->currentStep++;
     return e;
 }
 

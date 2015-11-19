@@ -54,7 +54,7 @@ AudioID id, const std::string& file_path){
     Mix_FreeChunk(iter->second);
   sample = Mix_LoadWAV(file_path.c_str());
   if(!sample)
-    throw std::runtime_error("Unable to load audio sample: " + file_path);
+    throw std::runtime_error("Unable to load audio sample: " + file_path + " (" + Mix_GetError() + ")");
   else
     this->audio_samples->insert(std::make_pair(id, sample));
 }

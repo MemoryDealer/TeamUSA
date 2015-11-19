@@ -8,7 +8,9 @@
 
 #include "Engine.h"
 
+#include "Actor/AudioStreamActor.h"
 #include "Actor/SceneLink.h"
+#include "Actor/TextboxSpawnActor.h"
 #include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
 #include "Engine/ResourceGroup.hpp"
@@ -94,6 +96,8 @@ Engine::~Engine( void )
 {
     mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
     mVideoEngine->deleteResourceGroup( CORE_RESOURCE );
+    mAudioEngine->deleteSoundGroup( LEVEL_RESOURCE );
+    mAudioEngine->deleteSoundGroup( CORE_RESOURCE );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -101,8 +105,6 @@ Engine::~Engine( void )
 void Engine::run( void )
 {
     mIsRunning = true;
-
-    //mVideoEngine->showTextbox( "LEGEND OF THE GREAT UNWASHED" );
 
     Timer timer;
     timer.start();    
@@ -169,6 +171,34 @@ void Engine::run( void )
 
                     case SDLK_l:
                         mDebugData.disableLighting = !mDebugData.disableLighting;
+                        break;
+
+                    case SDLK_r:
+                    {
+                        // Reload all current level assets and remain in the same scene.
+                        // Useful for editing click regions.
+                        int currentScene = mLevel.getScene();
+                        mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
+                        mAudioEngine->deleteSoundGroup( LEVEL_RESOURCE );
+                        mLevel.reloadLast( *mAudioEngine, *mVideoEngine );
+                        mLevel.changeScene( currentScene );
+                    }
+                    break;
+
+                    case SDLK_1:
+                        freeAndLoadLevel( 1 );
+                        break;
+
+                    case SDLK_2:
+                        freeAndLoadLevel( 2 );
+                        break;
+
+                    case SDLK_3:
+                        freeAndLoadLevel( 3 );
+                        break;
+
+                    case SDLK_4:
+                        freeAndLoadLevel( 4 );
                         break;
 
                     case SDLK_BACKSPACE:
@@ -305,25 +335,14 @@ void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 
 void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 {
-    mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
-    
-    mLevel.loadLevel( "res/lvl/" + std::to_string( value ) + ".lvl",
-                      *mAudioEngine,
-                      *mVideoEngine );
-
-#ifdef _DEBUG
-    while ( !mDebugData.scenes.empty() ) {
-        mDebugData.scenes.pop();
-    }
-    mDebugData.scenes.push(mLevel.getScene());
-#endif
+    freeAndLoadLevel( value );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void Engine::onPlayAudio( BaseActorPtr actor, const int32_t value )
 {
-
+    mAudioEngine->playSound( value );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -344,7 +363,10 @@ void Engine::onLoadGame( BaseActorPtr actor, const int32_t value )
 
 void Engine::onDisplayText( BaseActorPtr actor, const int32_t value )
 {
+    std::string text =
+        std::dynamic_pointer_cast<TextboxSpawnActor>( actor )->getText();
 
+    mVideoEngine->showTextbox( text );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -358,7 +380,29 @@ void Engine::onExitGame( BaseActorPtr actor, const int32_t value )
 
 void Engine::onStreamAudio( BaseActorPtr actor, const int32_t value )
 {
-    
+    // Downcast BaseActor smart pointer to AudioStreamActor smart pointer.
+    std::string path = 
+        std::dynamic_pointer_cast<AudioStreamActor>( actor )->getPath();
+
+    mAudioEngine->playStream( path );
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void Engine::freeAndLoadLevel( const int32_t id )
+{
+    mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
+    mAudioEngine->deleteSoundGroup( LEVEL_RESOURCE );
+    mLevel.loadLevel( "res/lvl/" + std::to_string( id ) + ".lvl",
+                      *mAudioEngine,
+                      *mVideoEngine );
+
+#ifdef _DEBUG
+    while ( !mDebugData.scenes.empty() ) {
+        mDebugData.scenes.pop();
+    }
+    mDebugData.scenes.push( mLevel.getScene() );
+#endif
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -33,6 +33,9 @@ namespace teamusa
         std::unordered_map<int, Scene> scenes;
         int startScene;
         int activeScene;
+#ifdef _DEBUG
+        std::string lastLevelPath;
+#endif
 
     public:
         Level( void );
@@ -42,6 +45,10 @@ namespace teamusa
         const int loadLevel( const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine );
         void changeScene( const int sceneID );
         const int getScene();
+
+#ifdef _DEBUG
+        void reloadLast( AudioEngine &audioEngine, VideoEngine &videoEngine );
+#endif
 
     private:
         
