@@ -63,7 +63,7 @@ ENDSCENE
 
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
-AudioStreamActor res/Audio/AmbientSounds/ambient1.wav
+AudioStreamActor res/audio/AmbientSounds/ambient1.wav
 ENDSCENE
 
 SCENE 104 1004
@@ -83,14 +83,14 @@ ENDSCENE
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
 # Forward to restroom alcove
-SceneLink 107 530 375 214 267 -1 -1
+SceneLink 107 280 50 700 700 -1 -1
 # Return to SCENE 105
 SceneLink 105 0 797 1275 80 -1 -1
 ENDSCENE
 
 SCENE 107 1009
 SceneLink 106 0 797 1275 80 -1 -1 
-SceneLink 1114 11 143 360 672 -1 -1 
+SceneLink 1114 11 143 360 652 -1 -1 
 ENDSCENE
 
 SCENE 1114 1025
@@ -111,7 +111,7 @@ ResponsiveVideoActor 450 477 143 186 2004 -1 2003 3
 ENDSCENE
 
 SCENE 1118 1029
-SceneLink 1119 1152 38 90 772 -1 -1
+SceneLink 1119 1152 38 120 772 -1 -1
 ENDSCENE
 
 SCENE 1119 1030
@@ -132,8 +132,8 @@ ENDSCENE
 # There is a fork in SCENE 110 to SCENE 111 or skip ahead to SCENE 113
 SCENE 110 1010
 SceneLink 109 0 797 1275 80 -1 -1
-SceneLink 111 0 0 310 853 -1 -1
-SceneLink 113 543 302 216 243 -1 -1
+SceneLink 111 0 0 310 795 -1 -1
+SceneLink 113 383 212 616 443 -1 -1
 ENDSCENE
 
 # For left to locked double doors
@@ -172,14 +172,14 @@ ENDSCENE
 
 # [!] Collect ELEVATOR_KEY from vending machine dispenser. 
 SCENE 1123 1034
-SceneLink 113 494 513 258 297 101 ELEVATOR_KEY
+SceneLink 113 0 770 1280 80 101 ELEVATOR_KEY
 InventoryItemActor 587 708 83 62 101 2002 3
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
 SCENE 114 1013
-SceneLink 115 1065 5 204 841 -1 -1
-SceneLink 116 5 2 193 849 -1 -1
+SceneLink 115 1065 5 204 790 -1 -1
+SceneLink 116 5 2 193 790 -1 -1
 SceneLink 117 285 245 116 378 -1 -1
 SceneLink 113 0 797 1275 80 -1 -1
 ENDSCENE
@@ -196,7 +196,7 @@ ENDSCENE
 
 # PLAYER approaches elevator alcove.  
 SCENE 117 1015
-SceneLink 118 506 63 406 788 101 ELEVATOR_KEY	# Requires key to elevator alcove.
+SceneLink 118 506 63 406 730 101 ELEVATOR_KEY	# Requires key to elevator alcove.
 SceneLink 114 0 797 1275 80 -1 -1
 ENDSCENE
 
