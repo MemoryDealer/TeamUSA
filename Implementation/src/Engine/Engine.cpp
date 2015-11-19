@@ -288,7 +288,7 @@ void Engine::render( const ActorList& actors )
 
     Point p = getMouseCoordinates();
     // Render player cursor.
-    Region cursor { p.x, p.y, 16, 16 };
+    Region cursor { p.x-16, p.y-16, 32, 32 };
     mVideoEngine->render( cursor, 6, mPlayer.getCursorTextureID() );    
 
     // Render player flashlight.

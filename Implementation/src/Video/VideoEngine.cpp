@@ -141,7 +141,7 @@ void VideoEngine::clearLayers(){
   for(unsigned int i=0; i<NUM_LAYERS; ++i){
     // Clear layer 4 with shadows
     if(i == SHADOW_LAYER)
-      this->videoContext->fill_texture(i, 40, 40, 40, 255);
+      this->videoContext->fill_texture(i, 20, 20, 20, 255);
     else
       this->videoContext->render_clear(i);
   }
