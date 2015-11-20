@@ -48,6 +48,7 @@ IMAGE 2004 res/images/AB1_Bath/Peek2.png
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
 AUDIO 5001 res/audio/SoundEffects/item_Key2.wav
+AUDIO 5002 res/audio/SoundEffects/Spooky_Water_Drops.wav
 
 # Use 103 as the starting scene
 START_SCENE 103
@@ -82,18 +83,20 @@ SCENE 105 1005
 SceneLink 108 1061 254 220 418 -1 -1
 SceneLink 106 39 177 257 671 -1 -1
 InventoryItemActor 700 670 32 32 106 2001 3
-TextboxSpawnActor 700 670 32 32 I found a coin.
+TextboxSpawnActor 700 670 32 32 A coin.
 ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
 # Forward to restroom alcove
+AudioStreamActor res/audio/AmbientSounds/ambient1.wav
 SceneLink 107 280 50 700 700 -1 -1
 # Return to SCENE 105
 SceneLink 105 0 797 1275 80 -1 -1
 ENDSCENE
 
 SCENE 107 1009
+AudioStreamActor res/audio/AmbientSounds/50hzHum.wav
 SceneLink 106 0 797 1275 80 -1 -1 
 SceneLink 1114 11 143 360 652 -1 -1 
 ENDSCENE
@@ -117,6 +120,9 @@ ENDSCENE
 
 SCENE 1118 1029
 SceneLink 1119 1152 38 120 772 -1 -1
+ResponsiveAudioActor 494 647 117 87 -1 120 5002 
+ResponsiveAudioActor 695 561 60 54 -1 120 5002 
+ResponsiveAudioActor 785 516 36 54 -1 120 5002
 ENDSCENE
 
 SCENE 1119 1030
@@ -125,11 +131,13 @@ ENDSCENE
 
 # Continue ahead, ignore restroom alcove. 
 SCENE 108 1006
+AudioStreamActor res/audio/AmbientSounds/ambient1.wav
 SceneLink 105 0 797 1275 80 -1 -1
 SceneLink 109 489 291 297 365 -1 -1
 ENDSCENE
 
 SCENE 109 1008
+AudioStreamActor res/audio/AmbientSounds/ambient1.wav
 SceneLink 108 0 797 1275 80 -1 -1
 SceneLink 110 399 240 468 558 -1 -1
 ENDSCENE
@@ -180,7 +188,7 @@ ENDSCENE
 SCENE 1123 1034
 SceneLink 113 0 770 1280 80 101 ELEVATOR_KEY
 InventoryItemActor 587 708 83 62 101 2002 3
-TextboxSpawnActor 597 708 83 62 I found a key. Wonder what it opens?
+TextboxSpawnActor 597 708 83 62 The vending machine dispensed a key.
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
@@ -194,7 +202,7 @@ ENDSCENE
 # PLAYER examines stairs to the right. 
 SCENE 115 1016
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
-TextboxSpawnActor 294 11 681 832 A dark energy is blocking my way ahead. I'll have to find a different route. 
+TextboxSpawnActor 294 11 681 832 Dark energy is blocking the way ahead. Maybe there's a different route. 
 ENDSCENE
 
 # PLAYER examines camera to left. 
@@ -212,7 +220,7 @@ ENDSCENE
 ################ Transistion to elevator alcove ###################
 
 SCENE 118 1018
-AudioStreamActor res/audio/AmbientSounds/badLight.wav
+AudioStreamActor res/audio/AmbientSounds/elevatorRoomHum.wav
 SceneLink 119 260 110 562 738 -1 -1
 ENDSCENE
 
@@ -231,7 +239,7 @@ ENDSCENE
 SCENE 122 1022
 SceneLink 123 444 312 236 102 -1 -1
 TextboxSpawnActor 707 413 129 85 This button isn't working. 
-TextboxSpawnActor 553 419 103 81 I'm already on this floor. 
+TextboxSpawnActor 553 419 103 81 This button doesn't do anything. 
 ENDSCENE
 
 SCENE 123 1023
