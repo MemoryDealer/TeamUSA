@@ -158,7 +158,7 @@ ENDSCENE
 SCENE 1120 1031
 SceneLink 113 0 797 1275 80 -1 -1
 SceneLink 1121 764 497 106 96 -1 -1
-SceneLink 1123 773 413 91 76 106 CHANGE
+SceneLink 1122 773 413 91 76 106 CHANGE
 ENDSCENE
 
 SCENE 1121 1032
@@ -175,7 +175,7 @@ ENDSCENE
 SCENE 1123 1034
 SceneLink 113 0 770 1280 80 101 ELEVATOR_KEY
 InventoryItemActor 587 708 83 62 101 2002 3
-TextboxSpawnActor 597 708 83 62 I put in a coin and the machine dispensed a key. Wonder what it opens?
+TextboxSpawnActor 597 708 83 62 I found a key. Wonder what it opens?
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
@@ -208,7 +208,7 @@ ENDSCENE
 
 SCENE 118 1018
 AudioStreamActor res/audio/AmbientSounds/drone.wav
-SceneLink 119 660 110 62 738 -1 -1
+SceneLink 119 260 110 562 738 -1 -1
 ENDSCENE
 
 SCENE 119 1019
