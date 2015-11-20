@@ -76,7 +76,7 @@ const ActorEvent SceneLink::onClick( Player& player )
         }
         else{
             //check if player does not have item.
-
+			e.type = DisplayText;			
         }
     }
     else{

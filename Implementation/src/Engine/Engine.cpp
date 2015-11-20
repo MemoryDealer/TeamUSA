@@ -380,8 +380,14 @@ void Engine::onLoadGame( BaseActorPtr actor, const int32_t value )
 
 void Engine::onDisplayText( BaseActorPtr actor, const int32_t value )
 {
-    std::string text =
-        std::dynamic_pointer_cast<TextboxSpawnActor>( actor )->getText();
+
+	std::string text = ".";
+	if ( typeid( *actor ) == typeid( SceneLink ) ) {
+		text = "Item required: " + std::dynamic_pointer_cast<SceneLink>(actor)->getText();
+	}
+	else if ( typeid( *actor ) == typeid( TextboxSpawnActor ) ) {
+		text = std::dynamic_pointer_cast<TextboxSpawnActor>(actor)->getText();
+	}        
 
     mVideoEngine->showTextbox( text );
 }
