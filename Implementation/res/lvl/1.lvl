@@ -213,7 +213,7 @@ ENDSCENE
 
 # PLAYER approaches elevator alcove.  
 SCENE 117 1015
-SceneLink 118 506 63 406 730 101 ELEVATOR_KEY	# Requires key to elevator alcove.
+SceneLink 118 506 63 406 730 101 ELEVATOR_KEY
 SceneLink 114 0 797 1275 80 -1 -1
 ENDSCENE
 
