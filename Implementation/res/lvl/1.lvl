@@ -159,7 +159,6 @@ SCENE 1120 1031
 SceneLink 113 0 797 1275 80 -1 -1
 SceneLink 1121 764 497 106 96 -1 -1
 SceneLink 1123 773 413 91 76 106 CHANGE
-TextboxSpawnActor 773 413 91 76 The vending machine dispensed something.
 ENDSCENE
 
 SCENE 1121 1032
