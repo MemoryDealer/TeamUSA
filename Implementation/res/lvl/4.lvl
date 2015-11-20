@@ -22,6 +22,7 @@ IMAGE 2001 res/images/Smith_Hudson/Dregs.png
 AUDIO 4001 res/audio/SoundEffects/witherDeath.wav
 AUDIO 4002 res/audio/SoundEffects/JumpScare_Door_Slam.wav
 AUDIO 4003 res/audio/The_B_quotes/dregs_of_the_earth_NR.wav
+AUDIO 4004 res/audio/AmbientSounds/bear.wav
 
 # Use 1001 as the starting scene
 START_SCENE 1104
@@ -34,6 +35,7 @@ START_SCENE 1104
 # Initial spawn, OUTER SMITH-HUDSON, 1ST FLOOR
 SCENE 1104 1104
 SceneLink 1105 386 453 633 324 -1 -1
+AudioStreamActor 4004
 ENDSCENE
 
 SCENE 1105 1105
