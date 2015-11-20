@@ -1,3 +1,8 @@
+# 3.lvl configures the third floor of AB1
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
+#
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1025 res/images/AB1_Floor3/Floor3-1.png

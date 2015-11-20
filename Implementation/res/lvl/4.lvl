@@ -1,3 +1,8 @@
+# 4.lvl configures the Smith-Hudson sequence, and is accessed only if the 
+# player "dies" during the course of normal gameplay. 
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1104 res/images/Smith_Hudson/SH-1.png

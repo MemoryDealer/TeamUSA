@@ -1,3 +1,8 @@
+# 2.lvl configures the second floor of AB1, 215, the 216 office space 
+# and the offices of Dr. Burris & Andy Bennett
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1050 res/images/AB1_Stairs/Stairs-1.png

@@ -1,6 +1,8 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
 // LEGEND OF THE GREAT UNWASHED
+//
+// Author: Vincent Sanchez
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file GameSaveSerializer.h
 /// \brief Declares save file serializer class.

@@ -1,3 +1,9 @@
+# 1.lvl configures the first floor of AB1, the bathroom alcove, and the 
+# elevator alcove leading to the third floor. 
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
+#
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1001 res/images/AB1_Outside/Outside-1.png
