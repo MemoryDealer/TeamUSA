@@ -110,7 +110,7 @@ SceneLink 141 471 255 366 405 -1 -1
 ENDSCENE
 
 SCENE 140 1039
-SceneLink 139 74 740 1128 87 -1 -1	# Dead end. Return to scene 139.
+SceneLink 139 74 797 1128 87 -1 -1	# Dead end. Return to scene 139.
 ENDSCENE
 
 # PLAYER continues ahead. 
@@ -136,11 +136,11 @@ DelayedAudioActor 3001 1
 ENDSCENE
 
 SCENE 144 1043
-SceneLink 141 42 740 1200 84 -1 -1 # return to SCENE 141. 
+SceneLink 141 42 797 1200 84 -1 -1 # return to SCENE 141. 
 ENDSCENE
 
 SCENE 145 1040
-SceneLink 146 815 173 261 652 -1 -1
+SceneLink 146 815 173 320 652 -1 -1
 ENDSCENE
 
 SCENE 146 1030
