@@ -35,7 +35,7 @@ namespace teamusa {
         // Declare constructor and destructor...
 
         // Constructor.
-        explicit ResponsiveAudioActor( Region region, int hoverAudioId, int durationSteps, int clickAudioId);
+        explicit ResponsiveAudioActor( Region region, int hoverAudioId, int clickAudioId);
 
         // Destructor.
         virtual ~ResponsiveAudioActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
@@ -59,8 +59,6 @@ namespace teamusa {
     private:
         int hoverAudioId;
         int clickAudioId;
-        int durationSteps ;
-        int stepCount;
     };
 
 }

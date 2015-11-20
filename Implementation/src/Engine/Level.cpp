@@ -280,10 +280,10 @@ BaseActorPtr Level::parseMovingActor(std::fstream &fs)
 BaseActorPtr Level::parseResponsiveAudioActor(std::fstream &fs)
 {
     Region region;
-    int hoverAudioID, durationSteps, clickAudioID;
+    int hoverAudioID, clickAudioID;
 
-    fs >> region >> hoverAudioID >> durationSteps >> clickAudioID;
-    return BaseActorPtr( new ResponsiveAudioActor( region, hoverAudioID, durationSteps, clickAudioID ) );
+    fs >> region >> hoverAudioID >> clickAudioID;
+    return BaseActorPtr( new ResponsiveAudioActor( region, hoverAudioID, clickAudioID ) );
 }
 
 BaseActorPtr Level::parseResponsiveVideoActor(std::fstream &fs)
