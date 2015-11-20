@@ -27,8 +27,8 @@ VideoEngine::VideoEngine(
   this->textboxPadding = {
    FONT_SIZE,
    FONT_SIZE, 
-   this->textboxRegion.w,
-   this->textboxRegion.h
+   this->textboxRegion.w - FONT_SIZE,
+   this->textboxRegion.h - FONT_SIZE
   };
   // Create textbox texture
   this->videoContext->create_texture(
