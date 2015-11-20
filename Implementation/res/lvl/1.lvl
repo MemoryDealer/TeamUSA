@@ -76,7 +76,7 @@ SCENE 105 1005
 SceneLink 108 1061 254 220 418 -1 -1
 SceneLink 106 39 177 257 671 -1 -1
 InventoryItemActor 700 670 32 32 106 2001 3
-ResponsiveAudioActor 952 730 15 8 -1 120 5001
+TextboxSpawnActor 700 670 32 32 I found a coin.
 ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
@@ -153,8 +153,8 @@ SceneLink 1120 903 260 279 502 -1 -1
 SceneLink 110 0 797 1275 80 -1 -1
 ENDSCENE
 
-# [!] Use CHANGE to activate vending machine and retrieve ELEVATOR_KEY, in SCENE 1122
-# Else, PLAYER can only go to SCENE 1120, and will see a closed dispenser. 
+# [!] Use CHANGE to activate vending machine and retrieve ELEVATOR_KEY, in SCENE 1123
+# Else, PLAYER can only go to SCENE 1121, and will see a closed dispenser. 
 SCENE 1120 1031
 SceneLink 113 0 797 1275 80 -1 -1
 SceneLink 1121 764 497 106 96 -1 -1
@@ -163,16 +163,19 @@ ENDSCENE
 
 SCENE 1121 1032
 SceneLink 1120 0 797 1275 80 -1 -1
+TextboxSpawnActor 512 278 223 183 Perhaps some change would help...
 ENDSCENE
 
 SCENE 1122 1033
 SceneLink 1123 691 491 99 99 -1 -1
+TextboxSpawnActor 691 491 99 99 The vending machine dispensed something.
 ENDSCENE
 
 # [!] Collect ELEVATOR_KEY from vending machine dispenser. 
 SCENE 1123 1034
 SceneLink 113 0 770 1280 80 101 ELEVATOR_KEY
 InventoryItemActor 587 708 83 62 101 2002 3
+TextboxSpawnActor 597 708 83 62 I found a key. Wonder what it opens?
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
@@ -186,11 +189,13 @@ ENDSCENE
 # PLAYER examines stairs to the right. 
 SCENE 115 1016
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
+TextboxSpawnActor 294 11 681 832 A dark energy is blocking my way ahead. I'll have to find a different route. 
 ENDSCENE
 
 # PLAYER examines camera to left. 
 SCENE 116 1017
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
+TextboxSpawnActor 791 167 208 186 I feel like something evil is watching me. 
 ENDSCENE
 
 # PLAYER approaches elevator alcove.  
@@ -220,6 +225,8 @@ ENDSCENE
 
 SCENE 122 1022
 SceneLink 123 444 312 236 102 -1 -1
+TextboxSpawnActor 707 413 129 85 This button isn't working. 
+TextboxSpawnActor 553 419 103 81 I'm already on this floor. 
 ENDSCENE
 
 SCENE 123 1023
