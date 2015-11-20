@@ -206,7 +206,7 @@ ENDSCENE
 ################ Transistion to elevator alcove ###################
 
 SCENE 118 1018
-AudioStreamActor res/audio/AmbientSounds/drone.wav
+AudioStreamActor res/audio/AmbientSounds/badLight.wav
 SceneLink 119 260 110 562 738 -1 -1
 ENDSCENE
 
