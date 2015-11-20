@@ -23,6 +23,7 @@ const int Player::CURSOR_UP_ID = 1669;
 const int Player::CURSOR_DOWN_ID = 1670;
 const int Player::CURSOR_LEFT_ID = 1671;
 const int Player::CURSOR_RIGHT_ID = 1672;
+const int Player::MOUSE_CLICK_ID = 1700;
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 

@@ -64,7 +64,7 @@ void mediawrap::AudioPlayer::play_sample(AudioID id){
   iter = this->audio_samples->find(id);
   if(iter == this->audio_samples->end() ||
    Mix_PlayChannel(-1, iter->second, 0) == -1){
-    throw std::runtime_error("Unable to play audio sample.");
+    throw std::runtime_error("Unable to play audio sample (" + std::to_string( id ) + ").");
   }
 }
 
