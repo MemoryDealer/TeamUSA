@@ -139,7 +139,7 @@ ENDSCENE
 SCENE 166 1065
 SceneLink 167 0 795 1280 80 -1 -1
 InventoryItemActor 636 368 120 32 103 2001 3
-TextboxSpawnActor 636 368 120 32 I found a red pen. 
+TextboxSpawnActor 636 368 120 32 A red pen. 
 ENDSCENE
 
 SCENE 167 1066
@@ -258,7 +258,7 @@ ENDSCENE
 
 SCENE 188 1071
 SceneLink 189 263 224 483 523 -1 -1
-TextboxSpawnActor 263 224 483 523 734a77bc398ce2ff9678656d9d2bbd142c520919 TRANSLATION: HUMAN, I DEMAND THE ANCIENT TOME OF MY MASTER. 
+TextboxSpawnActor 263 224 483 523 734a77bc398ce2ff9678656d9d2bbd142c520919 TRANSLATION: HUMAN, I DEMAND THE ANCIENT TOME OF MY MASTER. 734a77bc398ce2ff9678656d9d2bbd142c520919
 ENDSCENE
 
 # PLAYER must give ADA_BOOK to CART. 
@@ -328,7 +328,7 @@ ENDSCENE
 
 SCENE 1101 1101
 SceneLink 1102 140 90 1021 668 -1 -1
-TextboxSpawnActor 140 90 1021 668 Yes! I managed to get my lab in on time. 
+TextboxSpawnActor 140 90 1021 668 The lab has been turned in on time.  
 ENDSCENE
 
 SCENE 1102 1080
@@ -336,5 +336,6 @@ SceneLink 1103 699 123 263 380 -1 -1
 ENDSCENE
 
 SCENE 1103 1084
-# Player wins? 542 47 541 357 -1 -1
+TextboxSpawnActor 581 20 480 822 Poseidon's Trident of Power opens an interdimensional rift. 
+#LevelLink 5 581 20 480 822 -1 -1
 ENDSCENE

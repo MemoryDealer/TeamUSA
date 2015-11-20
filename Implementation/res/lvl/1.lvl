@@ -58,15 +58,6 @@ START_SCENE 103
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
 ######################
 
-# Initial spawn, OUTSIDE
-SCENE 101 1001
-SceneLink 102 476 338 529 291 -1 -1
-ENDSCENE
-
-SCENE 102 1002
-SceneLink 103 645 327 420 386 -1 -1
-ENDSCENE
-
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
 AudioStreamActor res/audio/AmbientSounds/ambient1.wav
