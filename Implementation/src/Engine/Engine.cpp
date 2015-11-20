@@ -341,7 +341,7 @@ void Engine::render( const ActorList& actors )
 
 void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 {    
-    mLevel.changeScene( value );    
+    mLevel.changeScene( value );
 
 #ifdef _DEBUG
     mDebugData.scenes.push( value );
@@ -359,7 +359,9 @@ void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 
 void Engine::onPlayAudio( BaseActorPtr actor, const int32_t value )
 {
-    mAudioEngine->playSound( value );
+	if ( value != -1 ) {
+		mAudioEngine->playSound( value );
+	}    
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
