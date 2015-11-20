@@ -17,9 +17,32 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 SceneLink::SceneLink( Region region, const int scene_ID, const std::string &itemRequired_Text, const int item_ID )
-: BaseActor(region), sceneID(scene_ID), itemRequiredText(itemRequired_Text), requiredItemID(item_ID)
+: BaseActor(region), sceneID(scene_ID), itemRequiredText(itemRequired_Text), requiredItemID(item_ID), cursorStyle( CursorStyle::CURSOR_DEFAULT )
 {
+    // Attempt to determine which direction this scene link will take us.
+    const int32_t LEFT_THRESHOLD = 550;
+    const int32_t RIGHT_THRESHOLD = 850;
+    const int32_t BACK_THRESHOLD = 750;    
 
+    // Forward?
+    if ( mRegion.y < BACK_THRESHOLD ) {
+        // Left?
+        if ( ( mRegion.x + mRegion.w ) < LEFT_THRESHOLD ) {
+            cursorStyle = CursorStyle::CURSOR_LEFT;
+        }
+        else if ( mRegion.x > RIGHT_THRESHOLD ) {
+            cursorStyle = CursorStyle::CURSOR_RIGHT;
+        }
+        else if ( mRegion.x > ( LEFT_THRESHOLD ) && mRegion.w > ( RIGHT_THRESHOLD - LEFT_THRESHOLD ) ){
+            cursorStyle = CursorStyle::CURSOR_RIGHT;
+        }
+        else {
+            cursorStyle = CursorStyle::CURSOR_UP;
+        }
+    }
+    else {
+        cursorStyle = CursorStyle::CURSOR_DOWN;
+    }
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -59,6 +82,15 @@ const ActorEvent SceneLink::onClick( Player& player )
 
 
     return e;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const ActorEvent SceneLink::onHover( Player& player )
+{
+    player.setCursor( cursorStyle );
+
+    return BaseActor::onHover( player );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

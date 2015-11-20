@@ -51,6 +51,10 @@ namespace teamusa{
 		/// \brief If move on spwan is not set then step will ove the actor
 		virtual const ActorEvent onClick( Player& player ) override;
 
+        ///
+        /// \brief If inactive, display a select cursor.
+        virtual const ActorEvent onHover( Player& player ) override;
+
 		///
 		/// \brief If moveOnSpawn is set, then the step method will advance the actor immediately.
 		virtual const ActorEvent step( Player& player );

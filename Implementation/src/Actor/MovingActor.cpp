@@ -8,6 +8,8 @@
 
 #include "MovingActor.h"
 
+#include "Player/Player.h"
+
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 using namespace teamusa; // We want to use our namespace across this whole file.
@@ -52,6 +54,17 @@ const ActorEvent MovingActor::onClick( Player& player )
     // Assign data...
 	isActive = true;
     return e;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const ActorEvent MovingActor::onHover( Player& player )
+{
+    if ( !isActive ) {
+        player.setCursor( CursorStyle::CURSOR_SELECT );
+    }
+
+    return BaseActor::onHover( player );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

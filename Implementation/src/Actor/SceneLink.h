@@ -13,6 +13,8 @@
 // We will need to know about BaseActor.
 #include "BaseActor.h"
 
+#include "Player/CursorStyle.h"
+
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 // We define our stuff inside a namespace.
@@ -40,6 +42,8 @@ namespace teamusa {
         /// \brief <Give description of what actor does on click>
         virtual const ActorEvent onClick( Player& player ) override;
 
+        virtual const ActorEvent onHover( Player& player ) override;
+
         virtual const ActorEvent step( Player& player ) override;
 
         virtual const std::string getText();
@@ -49,6 +53,7 @@ namespace teamusa {
         int sceneID;
         std::string itemRequiredText;
         int requiredItemID;
+        CursorStyle cursorStyle;
 
     };
 
