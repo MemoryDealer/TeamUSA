@@ -81,6 +81,10 @@ Engine::Engine( void )
                                CORE_RESOURCE );
     SDL_ShowCursor( false );
 
+    mAudioEngine->loadSound( "res/audio/SoundEffects/MouseClick.wav",
+                             Player::MOUSE_CLICK_ID,
+                             CORE_RESOURCE );
+
     // Load main menu level...
     //...
     mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
@@ -158,10 +162,17 @@ void Engine::run( void )
                         for ( auto& actor : actors ) {
                             if ( actor->isInBounds( mPlayer.getPosition() ) ) {
                                 ActorEvent e = actor->onClick( mPlayer );
-                                handleEvent( actor, e );
+                                
+                                // Play the mouse click sound effect if no sound is 
+                                // being triggered.
+                                if ( e.type != ActorEventType::PlayAudio ) {
+                                    mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
+                                }
+
+                                handleEvent( actor, e );                                
                             }
                         }
-                    }
+                    }                    
                     break;
 
 #ifdef _DEBUG
@@ -293,13 +304,14 @@ void Engine::render( const ActorList& actors )
 
     Point p = getMouseCoordinates();
     // Render player cursor.
-    Region cursor { p.x-16, p.y-16, 32, 32 };
+    Region cursor { p.x - 16, p.y - 16, 32, 32 };
     mVideoEngine->render( cursor, 6, mPlayer.getCursorTextureID() );    
 
     // Render player flashlight.
     Region f { p.x - 256, p.y - 256, 512, 512 };
     mVideoEngine->render( f, 4, Player::FLASHLIGHT_ID );
 
+    // Render all actors with textures in current scene.
     for ( auto& actor : actors ) {
         if ( actor->hasVideo() ) {
             if ( actor->getTextureID() != -1 ) {

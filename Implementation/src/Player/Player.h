@@ -76,6 +76,7 @@ namespace teamusa {
         static const int CURSOR_DOWN_ID;
         static const int CURSOR_LEFT_ID;
         static const int CURSOR_RIGHT_ID;
+        static const int MOUSE_CLICK_ID;
 
     private:
 
