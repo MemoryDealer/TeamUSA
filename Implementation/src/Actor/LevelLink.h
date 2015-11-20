@@ -42,6 +42,8 @@ namespace teamusa {
         /// \brief <Give description of what actor does on click>
         virtual const ActorEvent onClick( Player& player ) override;
 
+        virtual const ActorEvent onHover( Player& player ) override;
+
         virtual const ActorEvent step( Player& player ) override;
 
         const int getSceneID( void ) const;
@@ -54,7 +56,6 @@ namespace teamusa {
         int levelID;
         std::string itemRequiredText;
         int requiredItemID = -1;
-
     };
 
 }

@@ -24,22 +24,26 @@ SceneLink::SceneLink( Region region, const int scene_ID, const std::string &item
     const int32_t RIGHT_THRESHOLD = 850;
     const int32_t BACK_THRESHOLD = 750;    
 
-    // Forward?
+    // Trash algorithm to guess which arrow.
     if ( mRegion.y < BACK_THRESHOLD ) {
-        // Left?
+        // This must be a left region.
         if ( ( mRegion.x + mRegion.w ) < LEFT_THRESHOLD ) {
             cursorStyle = CursorStyle::CURSOR_LEFT;
         }
+        // Definitely right.
         else if ( mRegion.x > RIGHT_THRESHOLD ) {
             cursorStyle = CursorStyle::CURSOR_RIGHT;
         }
-        else if ( mRegion.x > ( LEFT_THRESHOLD ) && mRegion.w > ( RIGHT_THRESHOLD - LEFT_THRESHOLD ) ){
+        // Probably right.
+        else if ( ( mRegion.x > 1280/2 ) && ( mRegion.w ) > ( RIGHT_THRESHOLD + 100 ) ){
             cursorStyle = CursorStyle::CURSOR_RIGHT;
         }
+        // Most definitely forward.
         else {
             cursorStyle = CursorStyle::CURSOR_UP;
         }
     }
+    // Only other option is back.
     else {
         cursorStyle = CursorStyle::CURSOR_DOWN;
     }

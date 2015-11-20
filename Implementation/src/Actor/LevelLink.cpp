@@ -63,6 +63,15 @@ const ActorEvent LevelLink::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
+const ActorEvent LevelLink::onHover( Player& player )
+{
+    player.setCursor( CursorStyle::CURSOR_UP );
+
+    return BaseActor::onHover( player );
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
 const int LevelLink::getSceneID() const
 {
     return sceneID;
