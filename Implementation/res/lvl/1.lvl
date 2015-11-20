@@ -78,7 +78,7 @@ ENDSCENE
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
 # Forward to restroom alcove
-AudioStreamActor res/audio/AmbientSounds/ambient1.wav
+AudioStreamActor res/audio/AmbientSounds/bear.wav
 SceneLink 107 280 50 700 700 -1 -1
 # Return to SCENE 105
 SceneLink 105 0 797 1275 80 -1 -1
@@ -105,14 +105,14 @@ ENDSCENE
 SCENE 1117 1028
 SceneLink 1118 0 797 1275 80 -1 -1
 ResponsiveVideoActor 450 477 143 186 2004 -1 2003 3
-ResponsiveAudioActor 450 477 143 186 -1 120 5001
+ResponsiveAudioActor 450 477 143 186 -1 5001
 ENDSCENE
 
 SCENE 1118 1029
 SceneLink 1119 1152 38 120 772 -1 -1
-ResponsiveAudioActor 494 647 117 87 -1 120 5002 
-ResponsiveAudioActor 695 561 60 54 -1 120 5002 
-ResponsiveAudioActor 785 516 36 54 -1 120 5002
+ResponsiveAudioActor 494 647 117 87 -1 5002 
+ResponsiveAudioActor 695 561 60 54 -1 5002 
+ResponsiveAudioActor 785 516 36 54 -1 5002
 ENDSCENE
 
 SCENE 1119 1030
@@ -121,13 +121,13 @@ ENDSCENE
 
 # Continue ahead, ignore restroom alcove. 
 SCENE 108 1006
-AudioStreamActor res/audio/AmbientSounds/ambient1.wav
+AudioStreamActor res/audio/AmbientSounds/bear.wav
 SceneLink 105 0 797 1275 80 -1 -1
 SceneLink 109 489 291 297 365 -1 -1
 ENDSCENE
 
 SCENE 109 1008
-AudioStreamActor res/audio/AmbientSounds/ambient1.wav
+AudioStreamActor res/audio/AmbientSounds/bear.wav
 SceneLink 108 0 797 1275 80 -1 -1
 SceneLink 110 399 240 468 558 -1 -1
 ENDSCENE

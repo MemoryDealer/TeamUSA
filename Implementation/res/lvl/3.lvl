@@ -29,6 +29,7 @@ IMAGE 1044 res/images/AB1_Floor3/Floor3-14.png
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
 AUDIO 3001 res/audio/SoundEffects/endermenStare.wav
+AUDIO 3002 res/audio/SoundEffects/whispers.wav
 
 # Use 125 as the starting scene
 START_SCENE 125
@@ -80,7 +81,8 @@ ENDSCENE
 
 SCENE 133 1033
 SceneLink 134 911 6 361 839 -1 -1
-TextboxSpawnActor 255 119 299 643 I hear whispers of black magic from within. I should keep going. There's a hallway to the right. 
+TextboxSpawnActor 255 119 299 643 Whispers of black magic emanate from within. There's a hallway to the right.
+ResponsiveAudioActor 255 119 299 643 -1 3002
 ENDSCENE
 
 SCENE 134 1030 
@@ -95,7 +97,7 @@ ENDSCENE
 
 SCENE 136 1036
 SceneLink 135 24 753 1230 83 -1 -1	# dead end. Return to Scene 135
-TextboxSpawnActor 428 483 528 245 This door has been barred shut from the other side. Perhaps I can find another way to the 2nd floor.
+TextboxSpawnActor 428 483 528 245 This door has been barred shut from the other side. Perhaps there's another way to the 2nd floor.
 ENDSCENE
 
 # PLAYER continues ahead. 
@@ -136,7 +138,7 @@ ENDSCENE
 SCENE 143 1042
 SceneLink 141 444 188 396 505 -1 -1 
 InventoryItemActor 444 188 396 505 102 -1 3
-TextboxSpawnActor 444 188 396 505 I feel the darkness leaving this dimension, and invading the painting. Maybe now I can get downstairs. I saw a stairwell by the elevator alcove where I came in. 
+TextboxSpawnActor 444 188 396 505 The darkness has left this dimension and invade the painting. Maybe now the doors to the 2nd floor are unlocked. There was a stairwell by the elevator alcove. 
 DelayedAudioActor 3001 1
 ENDSCENE
 
