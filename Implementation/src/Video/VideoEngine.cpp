@@ -35,6 +35,7 @@ VideoEngine::VideoEngine(
    TEXT_LAYER, this->textboxRegion.w, this->textboxRegion.h);
   // Initialize layers
   this->clearLayers();
+  this->videoContext->render_clear(TEXT_LAYER);
 }
 
 VideoEngine::~VideoEngine(){
