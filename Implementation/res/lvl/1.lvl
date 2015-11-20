@@ -158,7 +158,8 @@ ENDSCENE
 SCENE 1120 1031
 SceneLink 113 0 797 1275 80 -1 -1
 SceneLink 1121 764 497 106 96 -1 -1
-SceneLink 1122 773 413 91 76 106 CHANGE
+SceneLink 1123 773 413 91 76 106 CHANGE
+TextboxSpawnActor 773 413 91 76 The vending machine dispensed something.
 ENDSCENE
 
 SCENE 1121 1032
@@ -168,7 +169,6 @@ ENDSCENE
 
 SCENE 1122 1033
 SceneLink 1123 691 491 99 99 -1 -1
-TextboxSpawnActor 691 491 99 99 The vending machine dispensed something.
 ENDSCENE
 
 # [!] Collect ELEVATOR_KEY from vending machine dispenser. 
