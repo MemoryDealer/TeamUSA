@@ -104,9 +104,7 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
     int curScene = -1;
     Scene scene;
     int resID;
-    std::string resPath;
-
-    scenes.clear();
+    std::string resPath;    
 
     fs >> std::boolalpha;
     while (fs >> cmd)
@@ -199,6 +197,7 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
 #ifdef _DEBUG
 void Level::reloadLast( AudioEngine &audioEngine, VideoEngine &videoEngine )
 {
+    scenes.clear();
     loadLevel( lastLevelPath, audioEngine, videoEngine );
 }
 #endif
