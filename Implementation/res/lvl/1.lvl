@@ -60,7 +60,7 @@ START_SCENE 103
 
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
-AudioStreamActor res/audio/AmbientSounds/ambient1.wav
+AudioStreamActor res/audio/AmbientSounds/bear.wav
 ENDSCENE
 
 SCENE 104 1004
