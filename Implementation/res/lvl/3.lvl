@@ -58,6 +58,7 @@ ENDSCENE
 # PLAYER continues ahead. 
 SCENE 129 1028
 SceneLink 130 902 9 253 839  -1 -1
+TextboxSpawnActor 341 257 205 480 This door is locked, but there's a hallway to the right.
 ENDSCENE
 
 SCENE 130 1030
@@ -74,6 +75,7 @@ ENDSCENE
 
 SCENE 133 1033
 SceneLink 134 911 6 361 839 -1 -1
+TextboxSpawnActor 255 119 299 643 I hear whispers of black magic from within. I should keep going. There's a hallway to the right. 
 ENDSCENE
 
 SCENE 134 1030 
@@ -88,11 +90,13 @@ ENDSCENE
 
 SCENE 136 1036
 SceneLink 135 24 753 1230 83 -1 -1	# dead end. Return to Scene 135
+TextboxSpawnActor 428 483 528 245 This door has been barred shut from the other side. Perhaps I can find another way to the 2nd floor.
 ENDSCENE
 
 # PLAYER continues ahead. 
 SCENE 137 1035
 SceneLink 138 758 162 285 549 -1 -1
+TextboxSpawnActor 485 257 144 319 Another locked door, another hallway to the right.
 ENDSCENE
 
 SCENE 138 1030
@@ -127,6 +131,7 @@ ENDSCENE
 SCENE 143 1042
 SceneLink 141 444 188 396 505 -1 -1 
 InventoryItemActor 444 188 396 505 102 -1 3
+TextboxSpawnActor 444 188 396 505 I feel the darkness leaving this dimension, and invading the painting. Maybe now I can get downstairs. I saw a stairwell by the elevator alcove where I came in. 
 DelayedAudioActor 3001 1
 ENDSCENE
 
