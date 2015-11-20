@@ -30,6 +30,7 @@ namespace teamusa{
 	{
 		private:
 		std::string text;
+        bool activated;
 
 		public:
 		// Declare constructor and destructor...

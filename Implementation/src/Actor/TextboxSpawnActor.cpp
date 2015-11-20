@@ -14,7 +14,7 @@ using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text)
-: BaseActor( region )
+: BaseActor( region ), activated( false )
 {
 	// ...
 	text=Text;
@@ -33,7 +33,10 @@ const ActorEvent TextboxSpawnActor::onClick( Player& player )
 	// Handle clicking logic...
 	ActorEvent e;
 	// Assign data...
-	e.type=DisplayText;
+    if ( !activated ) {
+        e.type = DisplayText;
+        activated = true;
+    }
 	return e;
 }
 

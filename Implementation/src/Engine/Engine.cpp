@@ -151,10 +151,15 @@ void Engine::run( void )
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    for ( auto& actor : actors ) {
-                        if ( actor->isInBounds( mPlayer.getPosition() ) ) {
-                            ActorEvent e = actor->onClick( mPlayer );
-                            handleEvent( actor, e );
+                    if ( mVideoEngine->isShowingTextbox() ) {
+                        mVideoEngine->hideTextbox();
+                    }
+                    else {
+                        for ( auto& actor : actors ) {
+                            if ( actor->isInBounds( mPlayer.getPosition() ) ) {
+                                ActorEvent e = actor->onClick( mPlayer );
+                                handleEvent( actor, e );
+                            }
                         }
                     }
                     break;
@@ -323,8 +328,8 @@ void Engine::render( const ActorList& actors )
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
-{
-    mLevel.changeScene( value );
+{    
+    mLevel.changeScene( value );    
 
 #ifdef _DEBUG
     mDebugData.scenes.push( value );

@@ -81,7 +81,7 @@ void VideoEngine::showTextbox(const std::string &text){
 }
 
 void VideoEngine::hideTextbox(){
-  this->videoContext->render_clear(layers[TEXT_LAYER]);
+  this->videoContext->render_clear(TEXT_LAYER);
   this->textboxActive = false;
 }
 
