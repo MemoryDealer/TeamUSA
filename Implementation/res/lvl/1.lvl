@@ -77,8 +77,8 @@ ENDSCENE
 
 # Fork to restroom alcove, SCENE 106, or skip to SCENE 108
 SCENE 106 1007
-# Forward to restroom alcove
 AudioStreamActor res/audio/AmbientSounds/bear.wav
+# Forward to restroom alcove
 SceneLink 107 280 50 700 700 -1 -1
 # Return to SCENE 105
 SceneLink 105 0 797 1275 80 -1 -1

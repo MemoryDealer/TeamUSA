@@ -1,0 +1,39 @@
+# 0.lvl configures the main menu.
+#
+# Authored by J. Sparks.
+#
+# Begin loading images
+# <type> <id> <path to resource>
+IMAGE 1100 res/images/Main_Menu/BG-temp.png
+IMAGE 1101 res/images/Main_Menu/NewGame.png
+IMAGE 1102 res/images/Main_Menu/LoadGame.png
+IMAGE 1103 res/images/Main_Menu/QuitGame.png
+IMAGE 1104 res/images/Main_Menu/Slot1.png
+IMAGE 1105 res/images/Main_Menu/Slot2.png
+IMAGE 1106 res/images/Main_Menu/Slot3.png
+IMAGE 1107 res/images/Main_Menu/Title.png
+IMAGE 1108 res/images/Main_Menu/BG.png
+IMAGE 1109 res/images/Main_Menu/NewGameHover.png
+IMAGE 1110 res/images/Main_Menu/LoadGameHover.png
+IMAGE 1111 res/images/Main_Menu/QuitGameHover.png
+
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+
+START_SCENE 101
+
+# Begin scene listing. 
+# SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
+# SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
+######################
+
+SCENE 101 1108
+VideoActor 0 0 1280 853 1100 5
+VideoActor 204 52 871 316 1107 5
+ResponsiveVideoActor 214 445 397 152 1109 1109 1101 5
+ResponsiveVideoActor 658 445 397 152 1110 1110 1102 5
+ResponsiveVideoActor 432 649 397 152 1111 1111 1103 5
+SceneLink 102 214 445 397 152 -1 -1
+SceneLink 103 658 445 397 152 -1 -1
+SceneLink 104 432 649 397 152 -1 -1
+ENDSCENE

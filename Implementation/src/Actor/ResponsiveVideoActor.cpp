@@ -24,7 +24,6 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-#include <iostream>
 ResponsiveVideoActor::ResponsiveVideoActor( Region region, int hoverTextureId, int clickTextureID, int defaulTextureID,int layer )
 : BaseActor( region )
 {
@@ -76,9 +75,9 @@ const ActorEvent ResponsiveVideoActor::step(Player& player)
 
 	ActorEvent e;
 	// Assign data...
-	if (mVideo->textureID != clickTexture) {
+	//if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = defaultTextureId;
-	}
+	//}
 	return e;
 }
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -85,9 +85,8 @@ Engine::Engine( void )
                              Player::MOUSE_CLICK_ID,
                              CORE_RESOURCE );
 
-    // Load main menu level...
-    //...
-    mLevel.loadLevel( "res/lvl/1.lvl", *mAudioEngine, *mVideoEngine );
+    // Load main menu level.
+    mLevel.loadLevel( "res/lvl/0.lvl", *mAudioEngine, *mVideoEngine );
 
 #ifdef _DEBUG
     mDebugData.scenes.push(mLevel.getScene());
