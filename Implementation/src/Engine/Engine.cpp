@@ -174,12 +174,17 @@ void Engine::run( void )
                     }                    
                     break;
 
-#ifdef _DEBUG
+
                 case SDL_KEYDOWN:
                     switch ( e.key.keysym.sym ) {
                     default:
                         break;
 
+                    case SDLK_ESCAPE:
+                        freeAndLoadLevel( 0 );
+                        break;
+
+#ifdef _DEBUG
                     case SDLK_d:
                         mDebugData.drawDebugBoxes = !mDebugData.drawDebugBoxes;
                         break;
@@ -228,9 +233,9 @@ void Engine::run( void )
                     case SDLK_END:
                         mIsRunning = false;
                         break;
+#endif
                     }
                     break;
-#endif
 
                 case SDL_QUIT:
                     mIsRunning = false;
@@ -246,7 +251,7 @@ void Engine::run( void )
         }        
         
         // Render the current scene.
-        render( actors );
+        render( mLevel.getActors() );
     }
 }
 
@@ -367,7 +372,8 @@ void Engine::onPlayAudio( BaseActorPtr actor, const int32_t value )
 
 void Engine::onNewGame( BaseActorPtr actor, const int32_t value )
 {
-
+    // ...
+    freeAndLoadLevel( 1 );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

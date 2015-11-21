@@ -4,36 +4,64 @@
 #
 # Begin loading images
 # <type> <id> <path to resource>
-IMAGE 1100 res/images/Main_Menu/BG-temp.png
-IMAGE 1101 res/images/Main_Menu/NewGame.png
-IMAGE 1102 res/images/Main_Menu/LoadGame.png
-IMAGE 1103 res/images/Main_Menu/QuitGame.png
-IMAGE 1104 res/images/Main_Menu/Slot1.png
-IMAGE 1105 res/images/Main_Menu/Slot2.png
-IMAGE 1106 res/images/Main_Menu/Slot3.png
-IMAGE 1107 res/images/Main_Menu/Title.png
-IMAGE 1108 res/images/Main_Menu/BG.png
-IMAGE 1109 res/images/Main_Menu/NewGameHover.png
-IMAGE 1110 res/images/Main_Menu/LoadGameHover.png
-IMAGE 1111 res/images/Main_Menu/QuitGameHover.png
+IMAGE 5100 res/images/Main_Menu/BG-temp.png
+IMAGE 5101 res/images/Main_Menu/NewGame.png
+IMAGE 5102 res/images/Main_Menu/LoadGame.png
+IMAGE 5103 res/images/Main_Menu/QuitGame.png
+IMAGE 5104 res/images/Main_Menu/Slot1.png
+IMAGE 5105 res/images/Main_Menu/Slot2.png
+IMAGE 5106 res/images/Main_Menu/Slot3.png
+IMAGE 5107 res/images/Main_Menu/Title.png
+IMAGE 5108 res/images/Main_Menu/BG.png
+IMAGE 5109 res/images/Main_Menu/NewGameHover.png
+IMAGE 5110 res/images/Main_Menu/LoadGameHover.png
+IMAGE 5111 res/images/Main_Menu/QuitGameHover.png
+IMAGE 5112 res/images/Main_Menu/Slot1Hover.png
+IMAGE 5113 res/images/Main_Menu/Slot2Hover.png
+IMAGE 5114 res/images/Main_Menu/Slot3Hover.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
 
-START_SCENE 101
+START_SCENE 501
 
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
 ######################
 
-SCENE 101 1108
-VideoActor 0 0 1280 853 1100 5
-VideoActor 204 52 871 316 1107 5
-ResponsiveVideoActor 214 445 397 152 1109 1109 1101 5
-ResponsiveVideoActor 658 445 397 152 1110 1110 1102 5
-ResponsiveVideoActor 432 649 397 152 1111 1111 1103 5
-SceneLink 102 214 445 397 152 -1 -1
-SceneLink 103 658 445 397 152 -1 -1
-SceneLink 104 432 649 397 152 -1 -1
+# Root menu
+SCENE 501 5108
+VideoActor 0 0 1280 853 5100 5
+VideoActor 204 56 871 316 5107 5
+ResponsiveVideoActor 214 445 397 152 5109 5109 5101 5
+ResponsiveVideoActor 658 445 397 152 5110 5110 5102 5
+ResponsiveVideoActor 432 649 397 152 5111 5111 5103 5
+SceneLink 502 214 445 397 152 -1 -1
+SceneLink 503 658 445 397 152 -1 -1
+VideoEventActor 214 445 397 152 -1 0 0 5
+VideoEventActor 658 445 397 152 -1 0 0 5
+VideoEventActor 432 649 397 152 -1 ExitGame 0 5
+ENDSCENE
+
+# New Game
+SCENE 502 5108
+VideoActor 0 0 1280 853 5100 5
+ResponsiveVideoActor 432 132 397 152 5112 5112 5104 5
+ResponsiveVideoActor 432 352 397 152 5113 5113 5105 5
+ResponsiveVideoActor 432 572 397 152 5114 5114 5106 5
+VideoEventActor 432 132 397 152 -1 NewGame 1 5
+VideoEventActor 432 352 397 152 -1 NewGame 2 5
+VideoEventActor 432 572 397 152 -1 NewGame 2 5
+ENDSCENE
+
+# Load Game
+SCENE 503 5108
+VideoActor 0 0 1280 853 5100 5
+ResponsiveVideoActor 432 132 397 152 5112 5112 5104 5
+ResponsiveVideoActor 432 352 397 152 5113 5113 5105 5
+ResponsiveVideoActor 432 572 397 152 5114 5114 5106 5
+VideoEventActor 432 132 397 152 -1 LoadGame 1 5
+VideoEventActor 432 352 397 152 -1 LoadGame 2 5
+VideoEventActor 432 572 397 152 -1 LoadGame 2 5
 ENDSCENE

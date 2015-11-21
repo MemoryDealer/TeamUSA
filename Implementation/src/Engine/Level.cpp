@@ -104,7 +104,9 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
     int curScene = -1;
     Scene scene;
     int resID;
-    std::string resPath;    
+    std::string resPath;   
+
+//    scenes.clear();
 
     fs >> std::boolalpha;
     while (fs >> cmd)
