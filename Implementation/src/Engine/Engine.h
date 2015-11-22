@@ -89,7 +89,7 @@ namespace teamusa {
         std::shared_ptr<VideoEngine> mVideoEngine;
         Level mLevel;
         Player mPlayer;
-        bool mIsRunning;
+        bool mIsRunning, mMainMenu;
         GameSaveSerializer mSerializer;
 
         // Each index is an ActorEventType, associated with a handler function.

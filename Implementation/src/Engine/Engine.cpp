@@ -11,6 +11,7 @@
 #include "Actor/AudioStreamActor.h"
 #include "Actor/SceneLink.h"
 #include "Actor/TextboxSpawnActor.h"
+#include "Actor/VideoActor.h"
 #include "Audio/AudioEngine.hpp"
 #include "Engine/Assert.h"
 #include "Engine/ResourceGroup.hpp"
@@ -47,6 +48,7 @@ Engine::Engine( void )
 , mVideoEngine( nullptr )
 , mLevel()
 , mIsRunning( false )
+, mMainMenu( true )
 , mSerializer()
 , mActorEventHandlers()
 #ifdef _DEBUG
@@ -147,6 +149,35 @@ void Engine::run( void )
         // Get all actors in current scene.
         ActorList actors = mLevel.getActors();
 
+        // Move the background video actor for only the main menu.
+        if ( mMainMenu ) {
+            // The background is always the first actor.
+            Region r = actors[0]->getRegion();
+            static bool xDir = true, yDir = false;
+            if ( xDir ) {
+                if ( --r.x <= -1000 ) {
+                    xDir = false;
+                }
+            }
+            else {
+                if ( ++r.x >= 0 ) {
+                    xDir = true;
+                }
+            }
+            if ( yDir ) {
+                if ( ++r.y >= 0 ) {
+                    yDir = false;
+                }
+            }
+            else {
+                if ( --r.y <= -1000 ) {
+                    yDir = true;
+                }
+            }
+
+            actors[0]->setRegion( r );
+        }
+
         // Update game logic. May be updated multiple times per frame if there
         // is a hitch in the system, for instance. This will produce frame rate
         // independent animations.
@@ -203,8 +234,16 @@ void Engine::run( void )
                         break;
 
                     case SDLK_ESCAPE:
-                        mLevel.clearAll();
-                        freeAndLoadLevel( 0 );
+                        if ( !mMainMenu ) {
+                            mLevel.clearAll();
+                            freeAndLoadLevel( 0 );
+                        }
+                        else {
+                            Region r = mLevel.getActors()[0]->getRegion();
+                            mLevel.clearAll();
+                            freeAndLoadLevel( 0 );
+                            mLevel.getActors()[0]->setRegion( r );
+                        }
                         break;
 
 #ifdef _DEBUG
@@ -372,6 +411,14 @@ void Engine::render( const ActorList& actors )
 
 void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 {    
+    if ( mMainMenu ) {
+        Region r = mLevel.getActors()[0]->getRegion();
+
+        mLevel.changeScene( value );
+
+        mLevel.getActors()[0]->setRegion( r );
+    }
+
     mLevel.changeScene( value );
 
 #ifdef _DEBUG
@@ -483,6 +530,10 @@ void Engine::freeAndLoadLevel( const int32_t id )
     // (Except on loading main menu).
     if ( id != 0 ) {
         mSerializer.save( id, mLevel.getScene(), mPlayer.getInventory() );
+        mMainMenu = false;
+    }
+    else {
+        mMainMenu = true;
     }
 
 #ifdef _DEBUG
