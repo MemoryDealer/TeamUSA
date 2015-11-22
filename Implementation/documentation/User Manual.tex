@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage[includeheadfoot,margin=1.0in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+%
+% Set Title/Author
+%
+\title{Legend of the Great Unwashed \\ User Manual}
+\author{Team USA \\ Software Engineering \\ Sam Houston State University}
+%
+% Set page styles
+%
+\pagestyle{fancy}
+\fancyhead[LE,RO]{SDD}
+\fancyhead[RE,LO]{\leftmark}
+\fancyfoot[RE,LO]{}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
+\begin{document}
+%
+% Generate Title
+%
+\maketitle
+\newpage
+%
+% Generate Table of Contents
+%
+\tableofcontents
+\newpage
+%
+% Begin
+%
+\section{About}
+\section{Story}
+\section{Installation}
+	\subsection{Windows}
+		\subsubsection{Minimum Requirements}
+		\subsubsection{Recommended Requirements}
+		\subsubsection{Dependencies}
+		\subsubsection{Building}
+	\subsection{OS X}
+		\subsubsection{Minimum Requirements}
+			\begin{itemize}
+				\item OS X 10.7 (Lion)
+				\item 512MB RAM
+				\item 300MB Disk Space
+				\item 512MB Video RAM (VRAM)
+			\end{itemize}
+		\subsubsection{Recommended Requirements}
+			\begin{itemize}
+				\item OS X 10.11 (El Capitan)
+				\item 2GB RAM
+				\item 600MB Disk Space
+				\item 1GB Video RAM (VRAM)
+			\end{itemize}
+		\subsubsection{Dependencies}
+			\begin{itemize}
+				\item Xcode Command Line Tools
+				\item Xcode
+				\item Homebrew OS X package manager
+				\item SDL2 
+				\item gcc 5.0.2
+			\end{itemize}
+		\subsubsection{Building}
+			\paragraph{Dependency Resolution}
+				Before LOTGU can be installed, all of the necessary dependencies must be resolved. Many of the dependencies must be built from their respective source code, and as such, require Apple's Xcode IDE and the accompanying Xcode Command Line Tools. Installing Xcode can be done from OS X's App Store, and is free. Once Xcode is installed, the command line tools should be installed using the following command:
+				\begin{center}
+					\colorbox{Gray!20}{\texttt{xcode-select --install}}
+				\end{center}
+				Next, install the Homebrew package manager, which can be done with the following command:
+				\begin{center}
+					\colorbox{Gray!20}{\texttt{ruby -e "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}}
+				\end{center}
+				 After Homebrew's installation is complete, gcc 5.0.2 should be installed. With Homebrew, it is a simple matter of executing the following command:
+				\begin{center}
+				 	\colorbox{Gray!20}{\texttt{brew install gcc}}\footnote{Installation of GCC 5.0.2 may take upwards of 60 minutes to complete. During this time, the Terminal may appear unresponsive. This is normal behavior and is expected during installation.}
+				\end{center}
+				This specific version of gcc is necessary to resolve conflicts that arise between OS X's native C/C++ compiler, and so the makefile used during installation explicitly requires this version of gcc. Finally, SDL should be installed. This is accomplished with the following command:
+				\begin{center}
+					 \colorbox{Gray!20}{\texttt{brew install sdl sdl2 sdl2\_gfx sdl2\_image sdl2\_mixer sdl2\_ttf}}
+				\end{center}
+				This single command will install the main SDL2 library and all additionally required packages for audio and video rendering. 
+			\paragraph{Installation}
+				With all of the required dependencies satisfied, LOTGU can be built with a single command:
+				\begin{center}
+					\colorbox{Gray!20}{\texttt{make -f Makefile.mac}}
+				\end{center}
+				This will build all of the modules from source and link them appropriately. The final executable will be placed in the current directory with the name \texttt{convenienced}. This executable can be run with the command
+				\begin{center}
+					\colorbox{Gray!20}{\texttt{./convenienced}}
+				\end{center}
+			
+	\subsection{Linux}
+		\subsubsection{Minimum Requirements}
+		\subsubsection{Recommended Requirements}
+		\subsubsection{Dependencies}
+		\subsubsection{Building}
+\section{Gameplay}
+	\subsection{Main Menu}
+	\subsection{Interface}
+	\subsection{Inventory \& Collectibles}
+	\subsection{Death}
+	\subsection{Victory}
+
+
+\end{document}
