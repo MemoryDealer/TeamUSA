@@ -210,14 +210,20 @@ void Engine::run( void )
                             mVideoEngine->hideTextbox();
                         }
                         else {
+                            bool clickSound = false;
                             for ( auto& actor : actors ) {
                                 if ( actor->isInBounds( mPlayer.getPosition() ) ) {
                                     ActorEvent e = actor->onClick( mPlayer );
 
                                     // Play the mouse click sound effect if no sound is 
                                     // being triggered.
-                                    if ( e.type != ActorEventType::PlayAudio ) {
-                                        mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
+                                    if ( e.type != ActorEventType::PlayAudio ) {      
+                                        // Only play click sound once per frame, in case
+                                        // there are stacked actors.
+                                        if ( !clickSound ) {
+                                            mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
+                                            clickSound = true;
+                                        }
                                     }
 
                                     handleEvent( actor, e );
