@@ -24,7 +24,7 @@ namespace teamusa {
     /// \class AudioStreamActor
     /// \brief If this actor is not activated, it will emit a StreamAudio event
     ///        and set its status to activated when the step method is called.
-    ///        The engine can then retrieve the path to the audio ﬁle by a call to
+    ///        The engine can then retrieve the path to the audio file by a call to
     ///        this actor's getPath method.
     class AudioStreamActor : public BaseActor
     {

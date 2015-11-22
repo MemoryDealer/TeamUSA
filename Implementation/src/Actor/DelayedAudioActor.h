@@ -23,7 +23,7 @@ namespace teamusa {
     ///
     /// \class DelayedAudioActor
     /// \brief :Will increment a counter every time the step method is called.
-    ///        After a speciﬁed number of steps have occurred, this actor will change its TextureID
+    ///        After a specified number of steps have occurred, this actor will change its TextureID
     ///        to a valid value and will be displayed. When the number of steps is equal
     ///        to the disappearing step, the TextureID will be set to an ignored value,
     ///        causing the actor to disappear.
