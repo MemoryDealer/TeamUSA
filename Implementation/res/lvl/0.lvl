@@ -32,6 +32,7 @@ START_SCENE 501
 
 # Root menu
 SCENE 501 5108
+AudioStreamActor res/audio/AmbientSounds/MainMenu.wav
 VideoActor 0 0 1280 853 5100 5
 VideoActor 204 56 871 316 5107 5
 ResponsiveVideoActor 214 445 397 152 5109 -1 5101 5
