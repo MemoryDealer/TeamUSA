@@ -20,7 +20,7 @@
 
 #if defined ( _WIN32 )
 #include <Windows.h>
-#elif defined ( linux ) || defined( __APPLE__ )
+#elif defined ( LINUX ) || defined( __APPLE__ )
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -107,7 +107,7 @@ Engine::Engine( void )
     // Create the saves directory.
 #if defined( _WIN32 )
     CreateDirectory( "saves", nullptr );
-#elif defined ( linux ) || defined( __APPLE__ )
+#elif defined ( LINUX ) || defined( __APPLE__ )
     mkdir( "saves", 0700 );
 #endif
 }
