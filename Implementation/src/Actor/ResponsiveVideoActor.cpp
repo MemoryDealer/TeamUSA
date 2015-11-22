@@ -75,9 +75,9 @@ const ActorEvent ResponsiveVideoActor::step(Player& player)
 
 	ActorEvent e;
 	// Assign data...
-	//if (mVideo->textureID != clickTexture) {
+	if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = defaultTextureId;
-	//}
+	}
 	return e;
 }
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

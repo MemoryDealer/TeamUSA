@@ -19,6 +19,12 @@
 
 #if defined ( _WIN32 )
 #include <Windows.h>
+#elif defined ( _LINUX )
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#elif defined ( _MAC )
+//?
 #endif
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -100,6 +106,10 @@ Engine::Engine( void )
     // Create the saves directory.
 #if defined( _WIN32 )
     CreateDirectory( "saves", nullptr );
+#elif defined ( _LINUX )
+    mkdir( "saves", 0700 );
+#elif defined ( _MAC )
+    ;
 #endif
 }
 
@@ -193,6 +203,7 @@ void Engine::run( void )
                         break;
 
                     case SDLK_ESCAPE:
+                        mLevel.clearAll();
                         freeAndLoadLevel( 0 );
                         break;
 
@@ -403,11 +414,14 @@ void Engine::onLoadGame( BaseActorPtr actor, const int32_t value )
     // Get the values from the save file.
     int32_t level = 1, scene = 103;
     Player::Inventory inventory;
-    mSerializer.load( level, scene, inventory );
-
-    // Load the specified level and set the scene.
-    freeAndLoadLevel( level );
-    mLevel.changeScene( scene );
+    if ( mSerializer.load( level, scene, inventory ) ) {
+        // Load the specified level and set the scene.
+        freeAndLoadLevel( level );
+        mLevel.changeScene( scene );
+    }
+    else {
+        freeAndLoadLevel( 1 );
+    }
 
     // Give the player their inventory.
     mPlayer.setInventory( inventory );

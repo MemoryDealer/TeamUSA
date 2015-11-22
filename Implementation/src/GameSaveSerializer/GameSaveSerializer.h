@@ -40,7 +40,8 @@ namespace teamusa {
 
 			///
 			/// \brief Loads a save file
-			void load(int &levelID, int &sceneID, Player::Inventory &inventory);
+            /// \return True if save file was loaded successfully, false if it doesn't exist.
+			bool load(int &levelID, int &sceneID, Player::Inventory &inventory);
 				
 			///
 			/// \brief Saves a file

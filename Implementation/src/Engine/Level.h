@@ -45,6 +45,7 @@ namespace teamusa
         const int loadLevel( const std::string &path, AudioEngine &audioEngine, VideoEngine &videoEngine );
         void changeScene( const int sceneID );
         const int getScene();
+        void clearAll( void );
 
 #ifdef _DEBUG
         void reloadLast( AudioEngine &audioEngine, VideoEngine &videoEngine );

@@ -34,9 +34,9 @@ START_SCENE 501
 SCENE 501 5108
 VideoActor 0 0 1280 853 5100 5
 VideoActor 204 56 871 316 5107 5
-ResponsiveVideoActor 214 445 397 152 5109 5109 5101 5
-ResponsiveVideoActor 658 445 397 152 5110 5110 5102 5
-ResponsiveVideoActor 432 649 397 152 5111 5111 5103 5
+ResponsiveVideoActor 214 445 397 152 5109 -1 5101 5
+ResponsiveVideoActor 658 445 397 152 5110 -1 5102 5
+ResponsiveVideoActor 432 649 397 152 5111 -1 5103 5
 SceneLink 502 214 445 397 152 -1 -1
 SceneLink 503 658 445 397 152 -1 -1
 VideoEventActor 214 445 397 152 -1 0 0 5
@@ -47,21 +47,21 @@ ENDSCENE
 # New Game
 SCENE 502 5108
 VideoActor 0 0 1280 853 5100 5
-ResponsiveVideoActor 432 132 397 152 5112 5112 5104 5
-ResponsiveVideoActor 432 352 397 152 5113 5113 5105 5
-ResponsiveVideoActor 432 572 397 152 5114 5114 5106 5
+ResponsiveVideoActor 432 132 397 152 5112 -1 5104 5
+ResponsiveVideoActor 432 352 397 152 5113 -1 5105 5
+ResponsiveVideoActor 432 572 397 152 5114 -1 5106 5
 VideoEventActor 432 132 397 152 -1 NewGame 1 5
 VideoEventActor 432 352 397 152 -1 NewGame 2 5
-VideoEventActor 432 572 397 152 -1 NewGame 2 5
+VideoEventActor 432 572 397 152 -1 NewGame 3 5
 ENDSCENE
 
 # Load Game
 SCENE 503 5108
 VideoActor 0 0 1280 853 5100 5
-ResponsiveVideoActor 432 132 397 152 5112 5112 5104 5
-ResponsiveVideoActor 432 352 397 152 5113 5113 5105 5
-ResponsiveVideoActor 432 572 397 152 5114 5114 5106 5
+ResponsiveVideoActor 432 132 397 152 5112 -1 5104 5
+ResponsiveVideoActor 432 352 397 152 5113 -1 5105 5
+ResponsiveVideoActor 432 572 397 152 5114 -1 5106 5
 VideoEventActor 432 132 397 152 -1 LoadGame 1 5
 VideoEventActor 432 352 397 152 -1 LoadGame 2 5
-VideoEventActor 432 572 397 152 -1 LoadGame 2 5
+VideoEventActor 432 572 397 152 -1 LoadGame 3 5
 ENDSCENE

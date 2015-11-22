@@ -34,7 +34,7 @@ namespace teamusa {
         slot = in_slot;
     }
 	
-	void GameSaveSerializer::load(int &levelID, int &sceneID, Player::Inventory &inventory)
+	bool GameSaveSerializer::load(int &levelID, int &sceneID, Player::Inventory &inventory)
 	{		
 		// Retrieve appropriate file
 		std::ifstream inputFile;
@@ -42,9 +42,7 @@ namespace teamusa {
 
         // If the file is not there, give default values.
         if ( !inputFile.is_open() ) {
-            levelID = 1;
-            sceneID = 103;
-            return;
+            return false;
         }
 		
 		// Read appropriate file contents
@@ -63,6 +61,7 @@ namespace teamusa {
 		}
 		// close file
 		inputFile.close();
+        return true;
 	}
 	
 	void GameSaveSerializer::save(const int &levelID, const int &sceneID, const Player::Inventory &inventory)

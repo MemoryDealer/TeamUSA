@@ -209,6 +209,11 @@ const int Level::getScene()
   return activeScene;
 }
 
+void Level::clearAll( void )
+{
+    scenes.clear();
+}
+
 void Level::changeScene( const int sceneID )
 {
     Assert( scenes.find( sceneID ) != scenes.end() );
