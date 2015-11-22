@@ -1,3 +1,6 @@
+# Doxygen output
+Implementation/documentation/latex/**/*
+
 # Vim backup files
 ########################
 *.swp

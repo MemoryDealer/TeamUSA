@@ -10,6 +10,11 @@
 
 namespace mediawrap {
 
+  /**
+   * @class VideoContext
+   * Provides basic 2D rendering capabilities. Acts as an abstraction layer to the SDL2 video library.
+   *
+   */
   class VideoContext {
     public:
 

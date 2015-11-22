@@ -21,7 +21,7 @@ namespace teamusa{
 	 // Create new Actor and derive from BaseActor.
 	 // Provide documentation, do so by starting with "///"
 	 ///
-	 /// \class DelayedVideoActor.h
+	 /// \class DelayedVideoActor
 	 /// \brief Will increment a counter every time the step method is called.
 	 ///After a specified number of steps have occurred,
   	 ///this actor will change its TextureID to a valid value and will be displayed.

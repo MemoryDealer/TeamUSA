@@ -8,8 +8,8 @@
 
 namespace mediawrap {
   /**
-   * Creates a window.
-   * Responsible for initializing SDL2 and SDL2_IMG.
+   * @class VideoDisplay
+   * Creates a window and initializes SDL2 and SDL2_IMG.
    * Must be destroyed after use.
    */
   class VideoDisplay{

@@ -11,6 +11,10 @@ namespace teamusa {
   using mediawrap::AudioPlayer;
   typedef mediawrap::AudioPlayer::AudioID AudioID;
 
+  /**
+   * @class AudioEngine
+   * Provides project-specific functionality for Legend of the Great Unwashed.
+   */
   class AudioEngine {
     private:
       static const AudioID MAX_RESERVED_ID = 1000;

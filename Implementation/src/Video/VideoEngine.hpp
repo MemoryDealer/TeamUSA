@@ -12,6 +12,11 @@ namespace teamusa {
   typedef mediawrap::VideoContext::TextureID TextureID;
   typedef mediawrap::VideoContext::Region Region;
 
+  /**
+   * @class VideoEngine
+   * Provides video capabilities that are specific to Legend of the Great Unwashed.
+   * Utilizes VideoContext to perform rendering.
+   */
   class VideoEngine{
     private:
       static const unsigned int NUM_LAYERS = 7;
