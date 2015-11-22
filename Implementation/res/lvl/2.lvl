@@ -71,6 +71,7 @@ AUDIO 2004 res/audio/SoundEffects/lockerCreak.wav
 START_SCENE 150
 
 SCENE 150 1050
+AudioStreamActor res/audio/AmbientSounds/BG_Ambient_in_Hall.wav
 SceneLink 151 143 26 751 811 -1 -1
 ENDSCENE
 
