@@ -47,6 +47,8 @@ namespace teamusa {
 
         std::string getPath();
 
+        void setActivated( const bool activated );
+
     private:
       std::string path;
       bool activated;
