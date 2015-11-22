@@ -3,8 +3,8 @@ DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
 INC=-Isrc/ -Isrc/**/ -I/usr/local/include/
 
 CC=g++
-#CXXFLAGS=-pedantic -Wall -std=c++11 $(INC)
-CXXFLAGS=-D=DEBUG -D=_DEBUG -pedantic -Wall -std=c++11 $(INC)
+#CXXFLAGS=-DLINUX -pedantic -Wall -std=c++11 $(INC)
+CXXFLAGS=-D=DEBUG -D=_DEBUG -DLINUX -pedantic -Wall -std=c++11 $(INC)
 LDFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -pthread
 
 SOURCES=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
