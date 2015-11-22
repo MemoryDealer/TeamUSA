@@ -402,7 +402,9 @@ void Engine::onNewGame( BaseActorPtr actor, const int32_t value )
     mSerializer.setSlot( value );
     
     freeAndLoadLevel( 1 );
-    mSerializer.save( 1, mLevel.getScene(), mPlayer.getInventory() );
+    Player::Inventory emptyInventory;
+    mSerializer.save( 1, mLevel.getScene(), emptyInventory );
+    mPlayer.setInventory( emptyInventory );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

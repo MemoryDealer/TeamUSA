@@ -161,13 +161,14 @@ ENDSCENE
 # Else, PLAYER can only go to SCENE 1121, and will see a closed dispenser. 
 SCENE 1120 1031
 SceneLink 113 0 797 1275 80 -1 -1
-SceneLink 1121 764 497 106 96 -1 -1
-SceneLink 1123 773 413 91 76 106 CHANGE
+SceneLink 1121 734 337 156 246 -1 -1
+# SceneLink 1123 773 413 91 76 106 CHANGE
 ENDSCENE
 
 SCENE 1121 1032
 SceneLink 1120 0 797 1275 80 -1 -1
-TextboxSpawnActor 512 278 223 183 Perhaps some change would help...
+SceneLink 1123 512 290 223 183 106 CHANGE
+# TextboxSpawnActor 512 278 223 183 Perhaps some change would help...
 ENDSCENE
 
 SCENE 1122 1033
