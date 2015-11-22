@@ -39,7 +39,6 @@ const ActorEvent AudioStreamActor::step( Player& player )
     ActorEvent e;
     // Assign data...
     if(!this->activated){
-        this->activated = true;
         e.type = StreamAudio;
     }
     return e;
@@ -47,6 +46,13 @@ const ActorEvent AudioStreamActor::step( Player& player )
 
 std::string AudioStreamActor ::getPath(){
     return this->path;
+}
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://
+
+void AudioStreamActor::setActivated( const bool activated_in )
+{
+    activated = activated_in;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

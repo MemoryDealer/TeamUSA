@@ -85,7 +85,6 @@ SceneLink 105 0 797 1275 80 -1 -1
 ENDSCENE
 
 SCENE 107 1009
-AudioStreamActor res/audio/AmbientSounds/50hzHum.wav
 SceneLink 106 0 797 1275 80 -1 -1 
 SceneLink 1114 11 143 360 652 -1 -1 
 ENDSCENE
@@ -95,6 +94,7 @@ SceneLink 1115 209 14 627 826 -1 -1
 ENDSCENE
 
 SCENE 1115 1026
+AudioStreamActor res/audio/AmbientSounds/50hzHum.wav
 SceneLink 1116 833 336 345 489 -1 -1
 ENDSCENE
 

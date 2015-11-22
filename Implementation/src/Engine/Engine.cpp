@@ -456,11 +456,17 @@ void Engine::onExitGame( BaseActorPtr actor, const int32_t value )
 
 void Engine::onStreamAudio( BaseActorPtr actor, const int32_t value )
 {
+    static std::string lastPath( "" );
+
     // Downcast BaseActor smart pointer to AudioStreamActor smart pointer.
     std::string path = 
         std::dynamic_pointer_cast<AudioStreamActor>( actor )->getPath();
 
-    mAudioEngine->playStream( path );
+    if ( path != lastPath ) {
+        mAudioEngine->playStream( path );
+        std::dynamic_pointer_cast<AudioStreamActor>( actor )->setActivated( true );
+        lastPath = path;
+    }
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
