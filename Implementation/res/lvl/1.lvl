@@ -37,7 +37,7 @@ IMAGE 1030 res/images/AB1_Bath/Bathroom-6.png
 IMAGE 1031 res/images/AB1_Floor1/Floor1-5a1.png
 IMAGE 1032 res/images/AB1_Floor1/Floor1-5a2.png
 IMAGE 1033 res/images/AB1_Floor1/Floor1-5a3.png
-IMAGE 1034 res/images/AB1_Floor1/Floor1-5a4.png
+IMAGE 1034 res/images/AB1_Floor1/Floor1-5a4new.png
 IMAGE 2001 res/images/AB1_Floor1/coin.png
 IMAGE 2002 res/images/AB1_Floor1/key.png
 IMAGE 2003 res/images/AB1_Bath/Peek1.png
@@ -178,8 +178,8 @@ ENDSCENE
 # [!] Collect ELEVATOR_KEY from vending machine dispenser. 
 SCENE 1123 1034
 SceneLink 113 0 770 1280 80 101 ELEVATOR_KEY
-InventoryItemActor 587 708 83 62 101 2002 3
-TextboxSpawnActor 597 708 83 62 The vending machine dispensed a key.
+InventoryItemActor 587 621 83 62 101 2002 3
+TextboxSpawnActor 587 621 83 62 The vending machine dispensed a key.
 ENDSCENE
 
 # There is a fork in SCENE 114 to SCENE 115, 116, or skip to SCENE 117. 
