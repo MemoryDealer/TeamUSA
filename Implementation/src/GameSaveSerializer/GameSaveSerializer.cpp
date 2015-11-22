@@ -30,7 +30,7 @@ namespace teamusa {
 
     void GameSaveSerializer::setSlot( const int32_t in_slot )
     {
-        Assert( ( slot >= 1 ) && ( slot <= 3 ) );
+        Assert( ( in_slot >= 1 ) && ( slot <= 3 ) );
         slot = in_slot;
     }
 	
