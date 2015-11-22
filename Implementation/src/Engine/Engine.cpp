@@ -47,6 +47,7 @@ Engine::Engine( void )
 : mAudioEngine( nullptr )
 , mVideoEngine( nullptr )
 , mLevel()
+, mCurrentLevelID( 0 )
 , mIsRunning( false )
 , mMainMenu( true )
 , mSerializer()
@@ -181,6 +182,7 @@ void Engine::run( void )
         // Update game logic. May be updated multiple times per frame if there
         // is a hitch in the system, for instance. This will produce frame rate
         // independent animations.
+        bool clickSoundPlayed = false;
         while ( lag >= FRAME_TIME ) {
             // Iterate over all actors in current scene.            
             for ( auto& actor : actors ) {
@@ -209,8 +211,7 @@ void Engine::run( void )
                         if ( mVideoEngine->isShowingTextbox() ) {
                             mVideoEngine->hideTextbox();
                         }
-                        else {
-                            bool clickSound = false;
+                        else {                            
                             for ( auto& actor : actors ) {
                                 if ( actor->isInBounds( mPlayer.getPosition() ) ) {
                                     ActorEvent e = actor->onClick( mPlayer );
@@ -220,9 +221,9 @@ void Engine::run( void )
                                     if ( e.type != ActorEventType::PlayAudio ) {      
                                         // Only play click sound once per frame, in case
                                         // there are stacked actors.
-                                        if ( !clickSound ) {
+                                        if ( !clickSoundPlayed ) {
                                             mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
-                                            clickSound = true;
+                                            clickSoundPlayed = true;
                                         }
                                     }
 
@@ -287,6 +288,10 @@ void Engine::run( void )
 
                     case SDLK_4:
                         freeAndLoadLevel( 4 );
+                        break;
+
+                    case SDLK_5:
+                        freeAndLoadLevel( 5 );
                         break;
 
                     case SDLK_BACKSPACE:
@@ -372,10 +377,10 @@ void Engine::render( const ActorList& actors )
         mVideoEngine->render( bg, 6, mLevel.getBGImageID() );
     }
     else {
-        mVideoEngine->render( bg, 0, mLevel.getBGImageID() );
+        mVideoEngine->render( bg, ( mCurrentLevelID == 5 ) ? 5 : 0, mLevel.getBGImageID() );
     }
 #else
-    mVideoEngine->render( bg, 0, mLevel.getBGImageID() );    
+    mVideoEngine->render( bg, ( mCurrentLevelID == 5 ) ? 5 : 0, mLevel.getBGImageID() );
 #endif
 
     Point p = getMouseCoordinates();
@@ -541,6 +546,8 @@ void Engine::freeAndLoadLevel( const int32_t id )
     else {
         mMainMenu = true;
     }
+
+    mCurrentLevelID = id;
 
 #ifdef _DEBUG
     while ( !mDebugData.scenes.empty() ) {

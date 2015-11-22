@@ -88,6 +88,7 @@ namespace teamusa {
         std::shared_ptr<AudioEngine> mAudioEngine;
         std::shared_ptr<VideoEngine> mVideoEngine;
         Level mLevel;
+        int32_t mCurrentLevelID;
         Player mPlayer;
         bool mIsRunning, mMainMenu;
         GameSaveSerializer mSerializer;

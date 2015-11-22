@@ -1,0 +1,31 @@
+# 5.lvl configures the secret ending.
+#
+# Authored by J. Sparks.
+#
+# Begin loading images
+# <type> <id> <path to resource>
+IMAGE 9001 res/images/Space/SpaceChoice.png
+IMAGE 9002 res/images/Space/ISS.png
+IMAGE 9003 res/images/Space/Enterprise.png
+
+START_SCENE 901
+
+# Begin scene listing. 
+# SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
+# SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
+######################
+
+SCENE 901 9001
+AudioStreamActor res/audio/AmbientSounds/Space.wav
+SceneLink 902 100 100 400 450 -1 -1
+SceneLink 903 900 175 175 150 -1 -1
+ENDSCENE
+
+SCENE 902 9002
+SceneLink 901 0 797 1280 56 -1 -1
+ENDSCENE
+
+SCENE 903 9003
+SceneLink 901 0 797 1280 56 -1 -1
+ENDSCENE
+

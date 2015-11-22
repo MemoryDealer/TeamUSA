@@ -342,5 +342,5 @@ ENDSCENE
 
 SCENE 1103 1084
 TextboxSpawnActor 581 20 480 822 Poseidon's Trident of Power opens an interdimensional rift. 
-#LevelLink 5 581 20 480 822 -1 -1
+LevelLink 5 581 20 480 822 -1 -1
 ENDSCENE
