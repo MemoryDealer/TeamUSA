@@ -12,7 +12,10 @@
 #include <vector>
 #include <fstream>
 #include <mutex>
+#include <string>
 #include <thread>
+
+#include "Player/Player.h"
 
 //--------
 
@@ -24,22 +27,27 @@ namespace teamusa {
 	class GameSaveSerializer {
 		private:
 			std::mutex fileLock;
+            int32_t slot;
 		public:
 
             GameSaveSerializer(void);
 
             ~GameSaveSerializer(void);
 
+            ///
+            /// \brief Sets the slot number to save/load in.
+            void setSlot( const int32_t slot );
+
 			///
 			/// \brief Loads a save file
-			void load(int &levelID, int &sceneID, std::vector<int> &inventory);
+			void load(int &levelID, int &sceneID, Player::Inventory &inventory);
 				
 			///
 			/// \brief Saves a file
-			void save(int &levelID, int &sceneID, std::vector<int> &inventory);
+			void save(const int &levelID, const int &sceneID, const Player::Inventory &inventory);
 				
 			///
 			/// \brief Saves a file in a separate thread. 
-			void saveInThread(int levelID, int sceneID, std::vector<int> inventory);
+			void saveInThread(const int levelID, const int sceneID, const Player::Inventory inventory);
 	};
 }

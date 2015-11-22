@@ -119,3 +119,18 @@ const Point Player::getPosition( void ) const
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+const Player::Inventory& Player::getInventory() const
+{
+    return mInventory;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
+
+void Player::setInventory( const Inventory& inventory )
+{
+    mInventory.clear();
+    mInventory = inventory;
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

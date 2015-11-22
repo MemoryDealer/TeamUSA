@@ -17,6 +17,10 @@
 #include "Engine/Timer.h"
 #include "Video/VideoEngine.hpp"
 
+#if defined ( _WIN32 )
+#include <Windows.h>
+#endif
+
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 // Creates function pointer with two parameters.
@@ -37,7 +41,8 @@ Engine::Engine( void )
 , mVideoEngine( nullptr )
 , mLevel()
 , mIsRunning( false )
-, mActorEventHandlers( )
+, mSerializer()
+, mActorEventHandlers()
 #ifdef _DEBUG
 , mDebugData()
 #endif
@@ -90,6 +95,11 @@ Engine::Engine( void )
 
 #ifdef _DEBUG
     mDebugData.scenes.push(mLevel.getScene());
+#endif
+
+    // Create the saves directory.
+#if defined( _WIN32 )
+    CreateDirectory( "saves", nullptr );
 #endif
 }
 
@@ -154,24 +164,26 @@ void Engine::run( void )
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    if ( mVideoEngine->isShowingTextbox() ) {
-                        mVideoEngine->hideTextbox();
-                    }
-                    else {
-                        for ( auto& actor : actors ) {
-                            if ( actor->isInBounds( mPlayer.getPosition() ) ) {
-                                ActorEvent e = actor->onClick( mPlayer );
-                                
-                                // Play the mouse click sound effect if no sound is 
-                                // being triggered.
-                                if ( e.type != ActorEventType::PlayAudio ) {
-                                    mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
-                                }
+                    if ( e.button.button == SDL_BUTTON_LEFT ) {
+                        if ( mVideoEngine->isShowingTextbox() ) {
+                            mVideoEngine->hideTextbox();
+                        }
+                        else {
+                            for ( auto& actor : actors ) {
+                                if ( actor->isInBounds( mPlayer.getPosition() ) ) {
+                                    ActorEvent e = actor->onClick( mPlayer );
 
-                                handleEvent( actor, e );                                
+                                    // Play the mouse click sound effect if no sound is 
+                                    // being triggered.
+                                    if ( e.type != ActorEventType::PlayAudio ) {
+                                        mAudioEngine->playSound( Player::MOUSE_CLICK_ID );
+                                    }
+
+                                    handleEvent( actor, e );
+                                }
                             }
                         }
-                    }                    
+                    }
                     break;
 
 
@@ -232,6 +244,10 @@ void Engine::run( void )
 
                     case SDLK_END:
                         mIsRunning = false;
+                        break;
+
+                    case SDLK_F5:
+                        mSerializer.save( 1, mLevel.getScene(), mPlayer.getInventory() );
                         break;
 #endif
                     }
@@ -356,7 +372,7 @@ void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 
 void Engine::onLoadLevel( BaseActorPtr actor, const int32_t value )
 {
-    freeAndLoadLevel( value );
+    freeAndLoadLevel( value );    
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -372,15 +388,29 @@ void Engine::onPlayAudio( BaseActorPtr actor, const int32_t value )
 
 void Engine::onNewGame( BaseActorPtr actor, const int32_t value )
 {
-    // ...
+    mSerializer.setSlot( value );
+    
     freeAndLoadLevel( 1 );
+    mSerializer.save( 1, mLevel.getScene(), mPlayer.getInventory() );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void Engine::onLoadGame( BaseActorPtr actor, const int32_t value )
 {
+    mSerializer.setSlot( value );
 
+    // Get the values from the save file.
+    int32_t level = 1, scene = 103;
+    Player::Inventory inventory;
+    mSerializer.load( level, scene, inventory );
+
+    // Load the specified level and set the scene.
+    freeAndLoadLevel( level );
+    mLevel.changeScene( scene );
+
+    // Give the player their inventory.
+    mPlayer.setInventory( inventory );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -426,6 +456,12 @@ void Engine::freeAndLoadLevel( const int32_t id )
     mLevel.loadLevel( "res/lvl/" + std::to_string( id ) + ".lvl",
                       *mAudioEngine,
                       *mVideoEngine );
+
+    // On level load events, save the player's progress.
+    // (Except on loading main menu).
+    if ( id != 0 ) {
+        mSerializer.save( id, mLevel.getScene(), mPlayer.getInventory() );
+    }
 
 #ifdef _DEBUG
     while ( !mDebugData.scenes.empty() ) {

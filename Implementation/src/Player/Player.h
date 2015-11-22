@@ -28,6 +28,10 @@ namespace teamusa {
 
     public:
 
+        typedef std::vector<int32_t> Inventory;
+
+    public:
+
         explicit Player( void );
 
         ~Player( void );
@@ -69,6 +73,15 @@ namespace teamusa {
         /// \return A Point struct containing the cursor position.
         const Point getPosition( void ) const;
 
+        ///
+        /// \brief Returns the player's inventory.
+        const Inventory& getInventory() const;
+
+        ///
+        /// \brief Clears the player's current inventory and assigns the new one.
+        /// \param inventory The inventory to assign to the player.
+        void setInventory( const Inventory& inventory );
+
         static const int FLASHLIGHT_ID;
         static const int CURSOR_DEFAULT_ID;
         static const int CURSOR_SELECT_ID;
@@ -84,7 +97,7 @@ namespace teamusa {
         int32_t mLayer;
         int32_t mTextureID;
         Point mPosition;
-        std::vector<int32_t> mInventory;
+        Inventory mInventory;
         CursorStyle mCursorStyle;
 
     };

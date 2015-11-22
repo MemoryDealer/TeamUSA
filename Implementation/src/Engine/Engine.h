@@ -13,6 +13,7 @@
 #include "Headers.h"
 
 #include "Engine/Level.h"
+#include "GameSaveSerializer/GameSaveSerializer.h"
 #include "Player/Player.h"
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -89,6 +90,7 @@ namespace teamusa {
         Level mLevel;
         Player mPlayer;
         bool mIsRunning;
+        GameSaveSerializer mSerializer;
 
         // Each index is an ActorEventType, associated with a handler function.
         std::vector<ActorEventHandler> mActorEventHandlers;
