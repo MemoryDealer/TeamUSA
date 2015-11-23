@@ -121,11 +121,15 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
             if (scenes.find(curScene) != scenes.cend())
                 loadError("scene with ID already exists");
             fs >> scene.bgImageID;
+            #if defined ( DEBUG ) || defined ( _DEBUG )
             std::cout << "begin SCENE " << curScene << std::endl;
+            #endif
         }
         else if (cmd == "ENDSCENE")
         {
+            #if defined ( DEBUG ) || defined ( _DEBUG )
             std::cout << "ENDSCENE " << curScene << std::endl;
+            #endif
             if (curScene < 0)
                 loadError("unexpected ENDSCENE");
             // move scene actors into scene map
