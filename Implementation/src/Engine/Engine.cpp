@@ -258,7 +258,7 @@ void Engine::run( void )
 					case SDLK_RETURN:
 					{
 						static const Uint8* keys = SDL_GetKeyboardState( nullptr );
-						if ( keys[SDL_SCANCODE_LALT] ) {
+						if ( keys[SDL_SCANCODE_LALT] || keys[SDL_SCANCODE_RALT] ) {
 							mVideoEngine->swapFullscreen();
 						}
 					}

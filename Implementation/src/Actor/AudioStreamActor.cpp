@@ -48,11 +48,4 @@ std::string AudioStreamActor ::getPath(){
     return this->path;
 }
 
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://
-
-void AudioStreamActor::setActivated( const bool activated_in )
-{
-    activated = activated_in;
-}
-
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
