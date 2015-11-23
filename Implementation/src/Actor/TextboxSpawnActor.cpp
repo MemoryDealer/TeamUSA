@@ -3,7 +3,7 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file TextboxSpawnActor.cpp
-/// \brief Declares TextboxSpawnActor class.
+/// \brief Implements TextboxSpawnActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "TextboxSpawnActor.h"

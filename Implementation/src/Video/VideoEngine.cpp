@@ -1,3 +1,8 @@
+/**
+ * @file VideoEngine.cpp
+ * @brief Implements the VideoEngine class
+ */
+
 #include "VideoEngine.hpp"
 
 using namespace teamusa;

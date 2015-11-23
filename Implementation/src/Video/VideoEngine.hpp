@@ -1,5 +1,6 @@
 /**
- * Provides video capabilities that are specific to Legend of the Great Unwashed.
+ * @file VideoEngine.hpp
+ * @brief Declares the VideoEngine class
  */
 
 #include <stdexcept>

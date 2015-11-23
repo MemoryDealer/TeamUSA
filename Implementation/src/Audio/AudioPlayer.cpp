@@ -1,3 +1,8 @@
+/**
+ * @file AudioPlayer.cpp
+ * @brief Implements the AudioPlayer class
+ */
+
 #include "AudioPlayer.hpp"
 
 mediawrap::AudioPlayer::AudioPlayer(){

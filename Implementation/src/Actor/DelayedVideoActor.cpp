@@ -3,7 +3,7 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file DelayedVideoActor.cpp
-/// \brief Declares DelayedVideoActor class.
+/// \brief Implements the DelayedVideoActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 #include "DelayedVideoActor.h"
 

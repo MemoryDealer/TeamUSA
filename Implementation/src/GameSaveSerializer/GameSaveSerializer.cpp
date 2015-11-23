@@ -4,8 +4,8 @@
 //
 // Author: Vincent Sanchez
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file GameSaveSerializer.h
-/// \brief Declares save file serializer class.
+/// \file GameSaveSerializer.cpp
+/// \brief Implements save file serializer class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "GameSaveSerializer.h"

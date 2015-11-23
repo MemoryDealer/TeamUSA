@@ -1,3 +1,8 @@
+/**
+ * @file VideoDisplay.cpp
+ * @brief Implements the VideoDisplay class
+ */
+
 #include "VideoDisplay.hpp"
 
 mediawrap::VideoDisplay::VideoDisplay(

@@ -3,7 +3,7 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file MovingActor.cpp
-/// \brief Declares MovingActor class.
+/// \brief Implements the MovingActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "MovingActor.h"

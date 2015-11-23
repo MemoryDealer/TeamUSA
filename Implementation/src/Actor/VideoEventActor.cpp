@@ -3,7 +3,7 @@
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file VideoEventActor.cpp
-/// \brief declares VideoEventActor class
+/// \brief Implements the VideoEventActor class
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "VideoEventActor.h"

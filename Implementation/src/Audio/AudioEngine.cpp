@@ -1,3 +1,8 @@
+/**
+ * @file AudioEngine.cpp
+ * @brief Declares the AudioEngine class
+ */
+
 #include "AudioEngine.hpp"
 
 void teamusa::AudioEngine::loadSound(

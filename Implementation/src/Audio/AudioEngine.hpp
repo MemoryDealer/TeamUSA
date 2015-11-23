@@ -1,5 +1,6 @@
 /**
- * Provides project-specific audio functionality for Legend of the Great Unwashed.
+ * @file AudioEngine.hpp
+ * @brief Declares the AudioEngine class
  */
 
 #include <string>

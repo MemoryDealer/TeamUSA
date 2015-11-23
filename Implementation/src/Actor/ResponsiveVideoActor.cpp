@@ -1,16 +1,10 @@
-/*
- * ResponsiveVideoActor.cpp
- *
- *  Created on: Nov 7, 2015
- *      Author: Juan Carmona
- */
-
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file ResponsiveVideoActor.cpp
-/// \brief  Will display the default TextureID.
+/// \brief Implements the ResponsiveVideoActor class
+//  Will display the default TextureID.
 //  When onHover is called, it will display the hover TextureID.
 //  When onClick is called, the onClick texture will be set permanently.
 //  Can disappear or appear by utilizing an invalid TextureID.

@@ -1,5 +1,6 @@
 /**
- * Provides basic audio playing capabilities with WAV files.
+ * @file AudioPlayer.hpp
+ * @brief Declares the AudioPlayer class
  */
 
 #include <stdexcept>

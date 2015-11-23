@@ -1,5 +1,6 @@
 /**
- * Provides basic 2D rendering capabilities.
+ * @file VideoContext.hpp
+ * @brief Declares the VideoContext class
  */
 
 #include <unordered_map>

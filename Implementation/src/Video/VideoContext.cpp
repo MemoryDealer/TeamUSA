@@ -1,3 +1,8 @@
+/**
+ * @file VideoContext.cpp
+ * @brief Implements the VideoContext class
+ */
+
 #include "VideoContext.hpp"
 
 using namespace mediawrap;

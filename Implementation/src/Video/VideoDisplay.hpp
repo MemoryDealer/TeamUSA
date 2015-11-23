@@ -1,5 +1,6 @@
 /**
- * Creates a window and initializes SDL2 and SDL2_IMG.
+ * @file VideoDisplay.hpp
+ * @brief Declares the VideoDisplay class
  */
 
 #include <stdexcept>
