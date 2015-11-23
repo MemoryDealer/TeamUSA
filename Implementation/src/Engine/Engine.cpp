@@ -148,29 +148,35 @@ void Engine::run( void )
 
         // Move the background video actor for only the main menu.
         if ( mMainMenu ) {
+			// Only move background every 3 frames to slow it down.
+			static int inc = 0;
             // The background is always the first actor.
             Region r = actors[0]->getRegion();
             static bool xDir = true, yDir = false;
-            if ( xDir ) {
-                if ( --r.x <= -1000 ) {
-                    xDir = false;
-                }
-            }
-            else {
-                if ( ++r.x >= 0 ) {
-                    xDir = true;
-                }
-            }
-            if ( yDir ) {
-                if ( ++r.y >= 0 ) {
-                    yDir = false;
-                }
-            }
-            else {
-                if ( --r.y <= -1000 ) {
-                    yDir = true;
-                }
-            }
+			if ( ++inc >= 3 ) {
+				if ( xDir ) {
+					if ( --r.x <= -1000 ) {
+						xDir = false;
+					}
+				}
+				else {
+					if ( ++r.x >= 0 ) {
+						xDir = true;
+					}
+				}
+				if ( yDir ) {
+					if ( ++r.y >= 0 ) {
+						yDir = false;
+					}
+				}
+				else {
+					if ( --r.y <= -1000 ) {
+						yDir = true;
+					}
+				}
+
+				inc = 0;
+			}
 
             actors[0]->setRegion( r );
         }
