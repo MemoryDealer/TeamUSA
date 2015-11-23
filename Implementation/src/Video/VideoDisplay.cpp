@@ -55,7 +55,7 @@ void mediawrap::VideoDisplay::swapFullscreen( void ){
 	static bool fullscreen = false; // We always start non-fullscreen.
 
 	if ( fullscreen ) {
-		SDL_SetWindowFullscreen( this->window, SDL_WINDOW_FULLSCREEN_DESKTOP );
+		SDL_SetWindowFullscreen( this->window, SDL_WINDOW_FULLSCREEN );
 	}
 	else {
 		SDL_SetWindowFullscreen( this->window, 0 );
