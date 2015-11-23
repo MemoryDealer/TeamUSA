@@ -22,6 +22,20 @@ IMAGE 9015 res/images/Space/Jupiter-3a.png
 IMAGE 9016 res/images/Space/Jupiter-3b.png
 IMAGE 9017 res/images/Space/Jupiter-3c.png
 IMAGE 9018 res/images/Space/Jupiter-3d.png
+IMAGE 9021 res/images/Space/Neptune-1a.png
+IMAGE 9022 res/images/Space/Neptune-2a.png
+IMAGE 9023 res/images/Space/Neptune-2b.png
+IMAGE 9024 res/images/Space/Neptune-3a.png
+IMAGE 9025 res/images/Space/Neptune-3b.png
+IMAGE 9026 res/images/Space/Neptune-3c.png
+IMAGE 9027 res/images/Space/Neptune-3d.png
+IMAGE 9030 res/images/Space/Saturn-1a.png
+IMAGE 9031 res/images/Space/Saturn-1b.png
+IMAGE 9032 res/images/Space/Saturn-2a.png
+IMAGE 9033 res/images/Space/Saturn-3a.png
+IMAGE 9034 res/images/Space/Saturn-3b.png
+IMAGE 9035 res/images/Space/Saturn-4a.png
+IMAGE 9036 res/images/Space/Saturn-4b.png
 
 
 START_SCENE 901
@@ -83,8 +97,8 @@ ENDSCENE
 # Moscow
 SCENE 5008 9011
 SceneLink 5009 0 0 100 100 -1 -1
-SceneLink 5010 1180 0 100 100 -1 -1
-SceneLink 5011 600 400 200 150 -1 -1
+SceneLink 5040 1180 0 100 100 -1 -1
+SceneLink 5020 600 400 200 150 -1 -1
 ENDSCENE
 
 # Jupiter
@@ -115,4 +129,64 @@ ENDSCENE
 SCENE 5015 9018
 LevelLink 0 0 0 1280 853 -1 -1
 ENDSCENE
+
+# Neptune
+SCENE 5020 9021
+SceneLink 5021 480 320 290 220 -1 -1
+ENDSCENE
+
+SCENE 5021 9022
+SceneLink 5022 200 0 900 853 -1 -1
+ENDSCENE
+
+SCENE 5022 9023
+SceneLink 5023 300 320 450 250 -1 -1
+ENDSCENE
+
+SCENE 5023 9024
+SceneLink 5024 200 400 800 250 -1 -1
+ENDSCENE
+
+SCENE 5024 9025
+SceneLink 5025 0 200 1280 600 -1 -1
+ENDSCENE
+
+SCENE 5025 9026
+SceneLink 5026 0 100 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5026 9027
+LevelLink 0 0 0 1280 853 -1 -1
+ENDSCENE
+
+# Saturn
+SCENE 5040 9030
+SceneLink 5041 510 310 270 200 -1 -1
+ENDSCENE
+
+SCENE 5041 9031
+SceneLink 5042 300 200 650 450 -1 -1
+ENDSCENE
+
+SCENE 5042 9032
+SceneLink 5043 170 400 300 250 -1 -1
+SceneLink 5045 370 100 200 150 -1 -1
+ENDSCENE
+
+SCENE 5043 9033
+SceneLink 5044 500 470 300 200 -1 -1
+ENDSCENE
+
+SCENE 5044 9034
+LevelLink 0 300 300 200 150 -1 -1
+ENDSCENE
+
+SCENE 5045 9035
+SceneLink 5046 520 310 100 90 -1 -1
+ENDSCENE
+
+SCENE 5046 9036
+LevelLink 0 400 250 350 350 -1 -1
+ENDSCENE
+
 
