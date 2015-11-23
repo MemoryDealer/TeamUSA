@@ -22,7 +22,7 @@ namespace teamusa {
     // Provide documentation, do so by starting with "///"
     ///
     /// \class ResponsiveAudioActor
-    /// \ Brief: Will increment the value of stepCount until it is equal to durationSteps
+    /// \brief Will increment the value of stepCount until it is equal to durationSteps
     ///         for each call to the step method. A call to onClick or onHover will set the
     ///         value of stepCount to zero and emit an AudioID and value if stepCount is equal
     ///         to durationSteps. The hoverAudioID or clickAudioID can be set to an invalid AudioID

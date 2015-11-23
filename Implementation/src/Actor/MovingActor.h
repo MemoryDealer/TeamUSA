@@ -2,8 +2,8 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file movingActor.h
-/// \brief Declares movingActor class.
+/// \file MovingActor.h
+/// \brief Declares MovingActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #pragma once // Includes this file only once in compilation; speeds up building.

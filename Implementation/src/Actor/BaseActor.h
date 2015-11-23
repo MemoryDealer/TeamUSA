@@ -17,7 +17,10 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
-
+	
+	///
+	/// \class ActorVideo
+	/// \brief Contains data for rendering actor.
     struct ActorVideo {
         int32_t layer;
         int32_t textureID;

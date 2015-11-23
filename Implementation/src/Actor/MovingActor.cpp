@@ -2,8 +2,8 @@
 // Team USA - Software Engineering Project (Fall 2015).
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
-/// \file movingActor.cpp
-/// \brief Declares movingActor class.
+/// \file MovingActor.cpp
+/// \brief Declares MovingActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "MovingActor.h"

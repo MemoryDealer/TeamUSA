@@ -17,6 +17,9 @@
 
 // We define our stuff inside a namespace.
 namespace teamusa{
+	///
+	/// \class ResponsiveVideoActor
+	/// \brief Changes its texture ID based on hovering and clicks.
 	class  ResponsiveVideoActor : public BaseActor{
 	private:
 		int hoverTexture;

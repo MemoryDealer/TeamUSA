@@ -21,8 +21,8 @@ namespace teamusa {
     // Create new Actor and derive from BaseActor.
     // Provide documentation, do so by starting with "///"
     ///
-    /// \class TextboxSpawnActor
-    /// \brief Spawns a textbox that gives the player written information. 
+    /// \class LevelLink
+    /// \brief Allows the player to transition between levels.
     class LevelLink : public BaseActor
     {
 
