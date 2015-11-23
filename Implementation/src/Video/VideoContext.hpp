@@ -1,3 +1,7 @@
+/**
+ * Provides basic 2D rendering capabilities.
+ */
+
 #include <unordered_map>
 #include <string>
 #include "SDL2/SDL.h"

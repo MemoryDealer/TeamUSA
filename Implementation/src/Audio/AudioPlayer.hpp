@@ -1,3 +1,7 @@
+/**
+ * Provides basic audio playing capabilities with WAV files.
+ */
+
 #include <stdexcept>
 #include <string>
 #include <unordered_map>

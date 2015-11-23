@@ -1,3 +1,7 @@
+/**
+ * Provides project-specific audio functionality for Legend of the Great Unwashed.
+ */
+
 #include <string>
 #include <vector>
 #include "AudioPlayer.hpp"
@@ -13,7 +17,7 @@ namespace teamusa {
 
   /**
    * @class AudioEngine
-   * Provides project-specific functionality for Legend of the Great Unwashed.
+   * Provides project-specific audio functionality for Legend of the Great Unwashed.
    */
   class AudioEngine {
     private:

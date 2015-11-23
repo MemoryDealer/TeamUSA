@@ -1,3 +1,7 @@
+/**
+ * Provides video capabilities that are specific to Legend of the Great Unwashed.
+ */
+
 #include <stdexcept>
 #include <string>
 #include <vector>

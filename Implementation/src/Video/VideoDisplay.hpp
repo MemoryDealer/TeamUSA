@@ -1,3 +1,7 @@
+/**
+ * Creates a window and initializes SDL2 and SDL2_IMG.
+ */
+
 #include <stdexcept>
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
