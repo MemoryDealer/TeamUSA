@@ -31,22 +31,28 @@ namespace teamusa{
 		 explicit ResponsiveVideoActor( Region region, int hoverTextureId, int clickTextureID, int defaulTextureID,int layer );
 
 		 // Destructor.
-		 virtual ~ResponsiveVideoActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
+		 virtual ~ResponsiveVideoActor( void ) override; 
 
-		 // Override onClick and onHover, provide documentation.
-
-		 ///
-		 /// \brief When onClick is called, the onClick texture will be set permanently. Can disappear or appear by utilizing an invalid TextureID.
+		///
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		 virtual const ActorEvent onClick( Player& player ) override;
-
-		 ///
-		 /// \brief When onHover is called, it will display the hover TextureID.
+        ///
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action
 		 virtual const ActorEvent onHover( Player& player ) override;
 
-		 /// \brief does nothing.
+		///
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
 		 virtual const ActorEvent step(Player& player) override;
 
-		 // Declare additional functions here as specified in UML diagram.
+		 ///
+		 /// \brief Sets the reqeusted texture ID
+		 /// \param TextureID The integer ID of the requested texture. 
 		 void setTextureId(int TextureId);
 	};
 }

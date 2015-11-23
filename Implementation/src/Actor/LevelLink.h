@@ -22,7 +22,7 @@ namespace teamusa {
     // Provide documentation, do so by starting with "///"
     ///
     /// \class TextboxSpawnActor
-    /// \brief <Give brief description here>
+    /// \brief Spawns a textbox that gives the player written information. 
     class LevelLink : public BaseActor
     {
 
@@ -34,20 +34,33 @@ namespace teamusa {
         explicit LevelLink(Region region, const int Level_ID, const int sceneID, const std::string itemRequired_Text, const int item_ID = -1);
 
         // Destructor.
-        virtual ~LevelLink(void) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
-
-        // Override onClick, onHover, and step, provide documentation.
+        virtual ~LevelLink(void) override; 
 
         ///
-        /// \brief <Give description of what actor does on click>
+        /// \brief Returns an actor event when the actor's region is clicked on. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
         virtual const ActorEvent onClick( Player& player ) override;
-
+		
+		///
+		/// \brief Returns an actor event when the actor's region is hovered over. 
+		/// \param Player The player. 
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent onHover( Player& player ) override;
 
+		///
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent step( Player& player ) override;
 
+		///
+		/// \brief Gets the appropriate SceneID
+		/// \return Returns an integer representing the scene ID. 
         const int getSceneID( void ) const;
 
+		///
+		/// \brief Generates text when the player attempts to traverse a scene without a required item
         virtual const std::string getText();
 
     private:

@@ -38,20 +38,24 @@ namespace teamusa {
         explicit ResponsiveAudioActor( Region region, int hoverAudioId, int clickAudioId);
 
         // Destructor.
-        virtual ~ResponsiveAudioActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
+        virtual ~ResponsiveAudioActor( void ) override; 
 
-        // Override onClick, onHover, and step, provide documentation.
-
-        ///
-        /// \brief <Give description of what actor does on click>
+		///
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
         virtual const ActorEvent onClick( Player& player ) override;
 
         ///
-        /// \brief <Give description of what actor does on hover>
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent onHover( Player& player ) override;
 
-        ///
-        /// \brief <Give description of what happens each frame to this actor>
+		///
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent step( Player& player ) override;
 
         // Declare additional functions here as specified in UML diagram.

@@ -41,20 +41,20 @@ namespace teamusa{
 		// Destructor.
 		virtual ~TextboxSpawnActor( void );
 
-		// Override onClick, onHover, and step, provide documentation.
-
 		///
-		/// \brief return a display text actor event
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		virtual const ActorEvent onClick( Player& player );
 
-		///
-		/// \brief Override.
+        ///
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
 		virtual const ActorEvent step( Player& player );
-	
-
-		// Declare additional functions here as specified in UML diagram.
+		
 		///
-		/// \brief Retrurn the text when called.
+		/// \brief Retrieves the text for the textbox from the level file. 
 		std::string getText(void);
 
 	};	

@@ -30,24 +30,24 @@ namespace teamusa {
     {
 
     public:
-
         // Declare constructor and destructor...
-
         // Constructor.
         explicit AudioStreamActor( std::string path);
 
         // Destructor.
-        virtual ~AudioStreamActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).        
+        virtual ~AudioStreamActor( void ) override;        
 
         ///
-        /// \brief <Give description of what happens each frame to this actor>
+        /// \brief This method updates the player on every frame.
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an action from one or more actors. 
         virtual const ActorEvent step( Player& player ) override;
 
         // Declare additional functions here as specified in UML diagram.
-
+		///
+		/// \brief This method gets the path to the requested audio file. 
+		/// \return Returns a file path formatted as a string. 
         std::string getPath();
-
-        void setActivated( const bool activated );
 
     private:
       std::string path;

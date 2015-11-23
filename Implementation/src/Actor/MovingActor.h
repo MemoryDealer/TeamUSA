@@ -22,7 +22,7 @@ namespace teamusa{
    ///
    /// \class MovingActor
    /// \brief Will transition from one region to the next by calculating the distance to move each frame for a set number of frames.
-   ///This allows for movement across the X and Y axis as well as scaling of the size of textures.
+   /// This allows for movement across the X and Y axis as well as scaling of the size of textures.
 
 	class MovingActor : public  BaseActor {
 		private:
@@ -48,15 +48,21 @@ namespace teamusa{
 		// Override onClick and step, provide documentation.
 
 		///
-		/// \brief If move on spwan is not set then step will ove the actor
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		virtual const ActorEvent onClick( Player& player ) override;
 
         ///
-        /// \brief If inactive, display a select cursor.
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent onHover( Player& player ) override;
 
 		///
-		/// \brief If moveOnSpawn is set, then the step method will advance the actor immediately.
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		virtual const ActorEvent step( Player& player );
 	};
 }

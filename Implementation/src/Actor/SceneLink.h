@@ -23,8 +23,8 @@ namespace teamusa {
     // Create new Actor and derive from BaseActor.
     // Provide documentation, do so by starting with "///"
     ///
-    /// \class TextboxSpawnActor
-    /// \brief <Give brief description here>
+    /// \class SceneLink
+    /// \brief Allows the player to transition between scenes.
     class SceneLink : public BaseActor
     {
 
@@ -38,14 +38,26 @@ namespace teamusa {
         // Destructor.
         virtual ~SceneLink(void) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
-        ///
-        /// \brief <Give description of what actor does on click>
+		///
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent onClick( Player& player ) override;
 
+		///
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent onHover( Player& player ) override;
 
+		///
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent step( Player& player ) override;
 
+		///
+		/// \brief Displays the appropriate text when a player attempts to traverse a scene without the required item. 
         virtual const std::string getText();
 
     private:

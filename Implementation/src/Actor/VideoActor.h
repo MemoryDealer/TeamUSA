@@ -24,6 +24,10 @@ namespace teamusa{
         // Destructor.
         virtual ~VideoActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
 
+		///
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
         virtual const ActorEvent step( Player& player ) override;
     };
 }

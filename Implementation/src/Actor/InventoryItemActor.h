@@ -22,7 +22,7 @@ namespace teamusa {
     // Provide documentation, do so by starting with "///"
     ///
     /// \class InventoryItemActor
-    /// \brief <Give brief description here>
+    /// \brief IventoryItemActor creates a collectible item in the game environment. 
     class InventoryItemActor : public BaseActor
     {
 
@@ -34,17 +34,25 @@ namespace teamusa {
         explicit InventoryItemActor(Region region, const int itemID = -1, const int textureID = -1, const int layer = -1);
 
         // Destructor.
-        virtual ~InventoryItemActor(void) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
+        virtual ~InventoryItemActor(void) override; 
 
+		///
+		/// \brief Generates an ActorEvent if the player hovers over the actors' region. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
         virtual const ActorEvent onHover( Player& player ) override;
 
         ///
-        /// \brief <Give description of what actor does on click>
+        /// \brief Generates an ActorEvent if the player clicks in the actor's region. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
         virtual const ActorEvent onClick( Player& player ) override;
-
+		
+		///
+		/// \brief Advances the actor one frame and sends the appropriate ActorEvent
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
         virtual const ActorEvent step( Player& player ) override;
-
-        // Declare additional functions here as specified in UML diagram.
 
     private:
 

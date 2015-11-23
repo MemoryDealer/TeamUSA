@@ -22,7 +22,7 @@ namespace teamusa {
     // Provide documentation, do so by starting with "///"
     ///
     /// \class DelayedAudioActor
-    /// \brief :Will increment a counter every time the step method is called.
+    /// \brief Will increment a counter every time the step method is called.
     ///        After a specified number of steps have occurred, this actor will change its TextureID
     ///        to a valid value and will be displayed. When the number of steps is equal
     ///        to the disappearing step, the TextureID will be set to an ignored value,
@@ -38,16 +38,13 @@ namespace teamusa {
         explicit DelayedAudioActor( int audioID, int delaySteps);
 
         // Destructor.
-        virtual ~DelayedAudioActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
-
-        // Override onClick, onHover, and step, provide documentation.
-
+        virtual ~DelayedAudioActor( void ) override; 
 
         ///
-        /// \brief <Give description of what happens each frame to this actor>
+        /// \brief Advances the actor one frame.  
+		/// \param Player The Player. 
+		/// \return Returns an ActorEvent that triggers one or more actors to perform an action
         virtual const ActorEvent step( Player& player ) override;
-
-        // Declare additional functions here as specified in UML diagram.
 
     private:
 
