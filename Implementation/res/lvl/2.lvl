@@ -166,7 +166,7 @@ ENDSCENE
 SCENE 170 1069
 SceneLink 171 83 164 147 661 -1 -1
 SceneLink 186 449 299 342 363 -1 -1
-TextboxSpawnActor 449 299 342 363 The dark figure lets me pass, becuase he passes everyone. 
+TextboxSpawnActor 449 299 342 363 The mysterious figure posed no threat. He passes everyone.
 ENDSCENE
 
 # PLAYER enters ROOM 215
