@@ -38,9 +38,9 @@ const ActorEvent AudioStreamActor::step( Player& player )
 
     ActorEvent e;
     // Assign data...
-    if(!this->activated){
+    //if(!this->activated){
         e.type = StreamAudio;
-    }
+    //}
     return e;
 }
 

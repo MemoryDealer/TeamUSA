@@ -527,6 +527,10 @@ void Engine::onStreamAudio( BaseActorPtr actor, const int32_t value )
 
 void Engine::freeAndLoadLevel( const int32_t id )
 {
+    if ( id == 0 ) {
+        mLevel.clearAll();
+    }
+
     mVideoEngine->deleteResourceGroup( LEVEL_RESOURCE );
     mAudioEngine->deleteSoundGroup( LEVEL_RESOURCE );
     mLevel.loadLevel( "res/lvl/" + std::to_string( id ) + ".lvl",
