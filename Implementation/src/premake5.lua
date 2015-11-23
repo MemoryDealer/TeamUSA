@@ -9,6 +9,8 @@ debugdir "../bin/%{cfg.buildcfg}/Run"
 
 -- Configurations
 
+defines { "DEBUG_TOOLS" }
+
 filter "configurations:Debug"
     defines { "DEBUG" }
     flags { "Symbols" }

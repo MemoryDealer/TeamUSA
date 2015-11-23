@@ -96,7 +96,7 @@ namespace teamusa {
         // Each index is an ActorEventType, associated with a handler function.
         std::vector<ActorEventHandler> mActorEventHandlers;
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
         struct {
             bool drawDebugBoxes = false;
             bool disableLighting = false;

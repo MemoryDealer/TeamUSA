@@ -33,7 +33,7 @@ namespace teamusa
         std::unordered_map<int, Scene> scenes;
         int startScene;
         int activeScene;
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
         std::string lastLevelPath;
 #endif
 
@@ -47,7 +47,7 @@ namespace teamusa
         const int getScene();
         void clearAll( void );
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
         void reloadLast( AudioEngine &audioEngine, VideoEngine &videoEngine );
 #endif
 

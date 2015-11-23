@@ -200,7 +200,7 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
     return activeScene;
 }
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
 void Level::reloadLast( AudioEngine &audioEngine, VideoEngine &videoEngine )
 {
     scenes.clear();

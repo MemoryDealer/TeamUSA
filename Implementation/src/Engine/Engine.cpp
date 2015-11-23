@@ -50,7 +50,7 @@ Engine::Engine( void )
 , mMainMenu( true )
 , mSerializer()
 , mActorEventHandlers()
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
 , mDebugData()
 #endif
 {
@@ -100,7 +100,7 @@ Engine::Engine( void )
     // Load main menu level.
     mLevel.loadLevel( "res/lvl/0.lvl", *mAudioEngine, *mVideoEngine );
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
     mDebugData.scenes.push(mLevel.getScene());
 #endif
 
@@ -258,7 +258,7 @@ void Engine::run( void )
 					}
 						break;
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
                     case SDLK_d:
                         mDebugData.drawDebugBoxes = !mDebugData.drawDebugBoxes;
                         break;
@@ -377,7 +377,7 @@ void Engine::render( const ActorList& actors )
 {
     // Render background image first.
     Region bg { 0, 0, 1280, 853 };
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
     if ( mDebugData.disableLighting ) {
         mVideoEngine->render( bg, 6, mLevel.getBGImageID() );
     }
@@ -407,7 +407,7 @@ void Engine::render( const ActorList& actors )
             }
         }
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
         if ( mDebugData.drawDebugBoxes ) {            
             mVideoEngine->renderDebugBox( actor->getRegion() );            
         }
@@ -437,7 +437,7 @@ void Engine::onChangeScene( BaseActorPtr actor, const int32_t value )
 
     mLevel.changeScene( value );
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
     mDebugData.scenes.push( value );
 #endif
 }
@@ -558,7 +558,7 @@ void Engine::freeAndLoadLevel( const int32_t id )
 
     mCurrentLevelID = id;
 
-#ifdef _DEBUG
+#ifdef DEBUG_TOOLS
     while ( !mDebugData.scenes.empty() ) {
         mDebugData.scenes.pop();
     }
