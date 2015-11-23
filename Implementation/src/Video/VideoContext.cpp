@@ -206,3 +206,6 @@ const std::string& text, Uint8 r, Uint8 g, Uint8 b, Uint8 a){
   SDL_SetRenderTarget(this->renderer, NULL);
 }
 
+void VideoContext::swapFullscreen( void ){
+	video_display->swapFullscreen();
+}

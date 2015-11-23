@@ -59,8 +59,7 @@ void VideoEngine::render(const Region &region, const unsigned int layer, const T
 }
 
 void VideoEngine::renderDebugBox( const Region& region, 
-                                  const VideoContext::DebugColor color )
-{
+                                  const VideoContext::DebugColor color ){
     this->videoContext->renderDebugBox( region, color, 6 );
 }
 
@@ -68,6 +67,10 @@ void VideoEngine::renderRotate(
  Region &region, unsigned int layer, TextureID id, float angle){
   this->videoContext->render_rotate(
    this->layers[layer], id, &region, NULL, angle);
+}
+
+void VideoEngine::swapFullscreen( void ){
+	videoContext->swapFullscreen();
 }
 
 bool VideoEngine::isShowingTextbox(){

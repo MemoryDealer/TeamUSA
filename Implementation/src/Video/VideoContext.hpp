@@ -241,6 +241,11 @@ namespace mediawrap {
       void render_text(TextureID dest_id, Region* dest_region,
        const std::string& text, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
+	  /**
+	   * Checks the state of the window and swaps to fullscreen or windowed mode.
+	   */
+	  void swapFullscreen( void );
+
     private:
       std::unordered_map<TextureID, SDL_Texture*> *textures;
       VideoDisplay* video_display;

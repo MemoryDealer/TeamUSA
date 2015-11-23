@@ -40,6 +40,12 @@ namespace mediawrap {
         *   An SDL2 renderer for this window.
         */
       SDL_Renderer* get_renderer(void);
+
+	  /*
+	   * Switches the window from windowed to fullscreen if windowed, and from fullscreen
+	   * to windowed if in fullscreen mode.
+	   */
+	  void swapFullscreen( void );
   };
 }
 #endif /*MWRAP_VIDEODISPLAY_H*/

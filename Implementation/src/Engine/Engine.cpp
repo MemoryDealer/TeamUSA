@@ -249,6 +249,15 @@ void Engine::run( void )
                         }
                         break;
 
+					case SDLK_RETURN:
+					{
+						static const Uint8* keys = SDL_GetKeyboardState( nullptr );
+						if ( keys[SDL_SCANCODE_LALT] ) {
+							mVideoEngine->swapFullscreen();
+						}
+					}
+						break;
+
 #ifdef _DEBUG
                     case SDLK_d:
                         mDebugData.drawDebugBoxes = !mDebugData.drawDebugBoxes;

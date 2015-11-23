@@ -97,6 +97,11 @@ namespace teamusa {
       void renderRotate(
        Region &region, unsigned int layer, TextureID id, float angle = 0.0);
 
+	  /**
+	   * Calls swapFullscreen() on VideoDisplay.
+	   */
+	  void swapFullscreen( void );
+
       /**
        * States whether a textbox is currently being displayed or not.
        * @return
