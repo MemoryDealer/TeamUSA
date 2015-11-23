@@ -14,6 +14,9 @@
 
 namespace MainNS {
 
+	///
+	/// \brief Writes an error message to the log file.
+	/// \param desc The string containing the error message.
     static void logError( const std::string& desc )
     {
         std::ofstream log( "error.log" );

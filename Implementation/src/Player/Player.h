@@ -28,6 +28,8 @@ namespace teamusa {
 
     public:
 
+		///
+		/// Player inventory - an array of integer IDs.
         typedef std::vector<int32_t> Inventory;
 
     public:

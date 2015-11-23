@@ -16,6 +16,8 @@
 
 namespace teamusa {
 
+	///
+	/// Events that actors can trigger.
     enum ActorEventType {
         Nil = -1,
         ChangeScene,
