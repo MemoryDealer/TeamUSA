@@ -19,7 +19,7 @@ IMAGE 1012 res/images/AB1_Floor1/Floor1-5b.png
 IMAGE 1013 res/images/AB1_Floor1/Floor1-6a.png
 IMAGE 1014 res/images/AB1_Floor1/Floor1-6b.png
 IMAGE 1015 res/images/AB1_Floor1/Floor1-7a.png
-IMAGE 1016 res/images/AB1_Floor1/Floor1-7b.png
+IMAGE 1016 res/images/AB1_Floor1/Floor1-7bPS.png
 IMAGE 1017 res/images/AB1_Floor1/Floor1-7c.png
 IMAGE 1018 res/images/AB1_Elevator1/Elevator-1.png
 IMAGE 1019 res/images/AB1_Elevator1/Elevator-2.png
@@ -188,18 +188,19 @@ SceneLink 115 1065 5 204 790 -1 -1
 SceneLink 116 5 2 193 790 -1 -1
 SceneLink 117 285 245 116 378 -1 -1
 SceneLink 113 0 797 1275 80 -1 -1
+TextboxSpawnActor 464 230 358 324 There doesn't seem to be anything there, but something is holding these doors shut from the outside. 
 ENDSCENE
 
 # PLAYER examines stairs to the right. 
 SCENE 115 1016
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
-TextboxSpawnActor 294 11 681 832 Dark energy is blocking the way ahead. Maybe there's a different route. 
+TextboxSpawnActor 294 11 681 782 Dark energy is blocking the way ahead. Maybe there's a different route. 
 ENDSCENE
 
 # PLAYER examines camera to left. 
 SCENE 116 1017
 SceneLink 114 0 797 1275 80 -1 -1	# Return to SCENE 114
-TextboxSpawnActor 791 167 208 186 I feel like something evil is watching me. 
+TextboxSpawnActor 791 167 208 186 Something evil is watching.  
 ENDSCENE
 
 # PLAYER approaches elevator alcove.  

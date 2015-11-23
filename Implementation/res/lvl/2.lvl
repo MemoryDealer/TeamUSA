@@ -8,7 +8,7 @@
 IMAGE 1050 res/images/AB1_Stairs/Stairs-1.png
 IMAGE 1051 res/images/AB1_Stairs/Stairs-2.png
 IMAGE 1052 res/images/AB1_Stairs/Stairs-3.png
-IMAGE 1053 res/images/AB1_Stairs/Stairs-4.png
+IMAGE 1053 res/images/AB1_Stairs/Stairs-4PS.png
 IMAGE 1054 res/images/AB1_Stairs/Stairs-5.png
 IMAGE 1055 res/images/AB1_Floor2/Floor2-1.png
 IMAGE 1056 res/images/AB1_Floor2/Floor2-2a.png
@@ -48,6 +48,7 @@ IMAGE 1087 res/images/AB1_215/215-2b.png
 IMAGE 1088 res/images/AB1_215/215-3a.png
 IMAGE 1089 res/images/AB1_215/215-3b.png
 IMAGE 1090 res/images/AB1_215/215-3d.png
+IMAGE 2003 res/images/AB1_215/215-3dOverlay.png
 IMAGE 1091 res/images/AB1_215/215-4a.png
 IMAGE 1092 res/images/AB1_215/215-4b.png
 IMAGE 1093 res/images/AB1_215/215-4c.png
@@ -66,6 +67,7 @@ AUDIO 2001 res/audio/SoundEffects/ghastScream4.wav
 AUDIO 2002 res/audio/SoundEffects/projector-talk.wav
 AUDIO 2003 res/audio/SoundEffects/JumpScare_Door_Slam.wav
 AUDIO 2004 res/audio/SoundEffects/lockerCreak.wav
+AUDIO 2005 res/audio/SoundEffects/whispers.wav
 
 # Use 150 as the starting scene
 START_SCENE 150
@@ -85,6 +87,7 @@ ENDSCENE
 
 SCENE 153 1053
 SceneLink 154 272 29 763 807 -1 -1
+DelayedAudioActor 2005 1
 ENDSCENE
 
 SCENE 154 1054
@@ -218,6 +221,7 @@ ENDSCENE
 # PLAYER looks left at dark shape. 
 SCENE 179 1090
 SceneLink 172 0 795 1280 80 -1 -1
+ResponsiveVideoActor 0 0 1280 853 -1 2003 -1 3
 ENDSCENE
 
 # PLAYER looks right. 
