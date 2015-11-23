@@ -527,7 +527,6 @@ void Engine::onStreamAudio( BaseActorPtr actor, const int32_t value )
 
     if ( path != lastPath ) {
         mAudioEngine->playStream( path );
-        std::dynamic_pointer_cast<AudioStreamActor>( actor )->setActivated( true );
         lastPath = path;
     }
 }

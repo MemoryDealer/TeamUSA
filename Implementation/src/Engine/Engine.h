@@ -66,16 +66,56 @@ namespace teamusa {
 
         // All actor event handlers:
 
+		///
+		/// \brief Handles scene change events triggered by SceneLink actors.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onChangeScene( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles level change events triggered by LevelLink actors.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onLoadLevel( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles audio events triggered by actors. Calls into the AudioEngine.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onPlayAudio( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles new game events triggered by main menu actors.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onNewGame( BaseActorPtr actor, const int32_t value );
+
+		/// 
+		/// \brief Handles load game events triggered by main menu actors.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onLoadGame( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles text display events triggered by actors.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onDisplayText( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles exit game events triggered by quit game button at main menu.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onExitGame( BaseActorPtr actor, const int32_t value );
+
+		///
+		/// \brief Handles stream audio events triggered by actors, calls into AudioEngine.
+		/// \param actor The actor who triggered the event.
+		/// \param value A value corresponding to the event, if needed.
         void onStreamAudio( BaseActorPtr actor, const int32_t value );
 
-        // Clears resource data for current level and loads the specified level.
+		///
+        /// \brief Clears resource data for current level and loads the specified level.
         void freeAndLoadLevel( const int32_t id );
 
     private:
