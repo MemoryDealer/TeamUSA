@@ -6,7 +6,6 @@
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1001 res/images/AB1_Outside/Outside-1.png
-IMAGE 1002 res/images/AB1_Outside/Outside-2.png
 IMAGE 1104 res/images/Smith_Hudson/SH-1.png
 IMAGE 1105 res/images/Smith_Hudson/SH-2.png
 IMAGE 1106 res/images/Smith_Hudson/SH-3.png
@@ -90,12 +89,6 @@ SceneLink 101 107 159 1108 584 -1 -1
 SceneLink 1111 0 803 1280 50 -1 -1
 ENDSCENE
 
-# Initial spawn, OUTSIDE
 SCENE 101 1001
-SceneLink 102 476 338 529 291 -1 -1
-ENDSCENE
-
-SCENE 102 1002
-SceneLink 103 645 327 420 386 -1 -1
 LevelLink 1 107 159 1108 584 -1 -1
 ENDSCENE

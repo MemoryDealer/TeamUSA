@@ -6,6 +6,7 @@
 #
 # Begin loading images
 # <type> <id> <path to resource>
+IMAGE 1002 res/images/AB1_Outside/Outside-2.png
 IMAGE 1003 res/images/AB1_Outside/Outside-3.png
 IMAGE 1004 res/images/AB1_Outside/Outside-4.png
 IMAGE 1005 res/images/AB1_Floor1/Floor1-1.png
@@ -48,13 +49,18 @@ IMAGE 2004 res/images/AB1_Bath/Peek2.png
 AUDIO 5001 res/audio/AmbientSounds/moans.wav
 AUDIO 5002 res/audio/SoundEffects/Spooky_Water_Drops.wav
 
-# Use 103 as the starting scene
-START_SCENE 103
+# Use 102 as the starting scene
+START_SCENE 102
 
 # Begin scene listing. 
 # SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
 # SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
 ######################
+
+# Initial spawn, OUTSIDE
+SCENE 102 1002
+SceneLink 103 645 327 420 386 -1 -1
+ENDSCENE
 
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
