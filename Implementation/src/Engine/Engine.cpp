@@ -388,10 +388,10 @@ void Engine::render( const ActorList& actors )
         mVideoEngine->render( bg, 6, mLevel.getBGImageID() );
     }
     else {
-        mVideoEngine->render( bg, ( mCurrentLevelID == 5 ) ? 5 : 0, mLevel.getBGImageID() );
+        mVideoEngine->render( bg, ( mCurrentLevelID >= 5 ) ? 5 : 0, mLevel.getBGImageID() );
     }
 #else
-    mVideoEngine->render( bg, ( mCurrentLevelID == 5 ) ? 5 : 0, mLevel.getBGImageID() );
+    mVideoEngine->render( bg, ( mCurrentLevelID >= 5 ) ? 5 : 0, mLevel.getBGImageID() );
 #endif
 
     Point p = getMouseCoordinates();

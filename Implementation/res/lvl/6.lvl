@@ -1,0 +1,128 @@
+# 6.lvl configures the secret ending of further matters.
+#
+# Authored by J. Sparks.
+#
+# Begin loading images
+# <type> <id> <path to resource>
+IMAGE 9056 res/images/Space/Enterprise-5b.png
+IMAGE 9057 res/images/Space/Horsehead-1a.png
+IMAGE 9058 res/images/Space/Horsehead-2a.png
+IMAGE 9059 res/images/Space/Horsehead-2b.png
+IMAGE 9060 res/images/Space/Horsehead-2c.png
+IMAGE 9061 res/images/Space/Horsehead-3a.png
+IMAGE 9062 res/images/Space/Horsehead-3b.png
+IMAGE 9063 res/images/Space/Horsehead-3c.png
+IMAGE 9064 res/images/Space/Cold.png
+IMAGE 9065 res/images/Space/Eagle-1a.png
+IMAGE 9066 res/images/Space/Eagle-1b.png
+IMAGE 9067 res/images/Space/Eagle-1c.png
+IMAGE 9068 res/images/Space/Eagle-1d.png
+IMAGE 9069 res/images/Space/Eagle-1e.png
+IMAGE 9070 res/images/Space/Eagle-2a.png
+IMAGE 9071 res/images/Space/Eagle-3a.png
+IMAGE 9072 res/images/Space/Eagle-3b.png
+IMAGE 9073 res/images/Space/Eagle-3c.png
+IMAGE 9074 res/images/Space/Eagle-3d.png
+IMAGE 9075 res/images/Space/Eagle-3e.png
+IMAGE 9076 res/images/Space/Eagle-3f.png
+IMAGE 9077 res/images/Space/CosmicWeb-1a.png
+IMAGE 9078 res/images/Space/Neuron.png
+
+START_SCENE 10000
+
+SCENE 10000 9056
+SceneLink 10001 231 152 855 440 -1 -1
+ENDSCENE
+
+# Horsehead Nebula
+SCENE 10001 9057
+AudioStreamActor res/audio/AmbientSounds/OuterSpace.wav
+SceneLink 10002 600 373 150 130 -1 -1
+SceneLink 10050 0 0 100 853 -1 -1
+ENDSCENE
+
+SCENE 10002 9058
+SceneLink 10003 575 75 200 150 -1 -1
+SceneLink 10007 250 650 75 75 -1 -1
+ENDSCENE
+
+SCENE 10003 9061
+SceneLink 10004 300 30 400 225 -1 -1
+ENDSCENE
+
+SCENE 10004 9062
+SceneLink 10005 492 114 200 150 -1 -1
+ENDSCENE
+
+SCENE 10005 9063
+LevelLink 0 312 460 150 125 -1 -1
+ENDSCENE
+
+SCENE 10007 9060
+SceneLink 10666 494 483 100 40 -1 -1
+TextboxSpawnActor 494 483 100 40 The coldest place in the known universe.
+ENDSCENE
+
+SCENE 10666 9064
+# Player has to quit the game.
+ENDSCENE
+
+# Eagle Nebula
+SCENE 10050 9065
+SceneLink 10051 463 287 500 400 -1 -1
+SceneLink 10100 88 74 200 150 -1 -1
+ENDSCENE
+
+SCENE 10051 9066
+SceneLink 10052 272 203 500 400 -1 -1
+SceneLink 10060 780 331 400 300 -1 -1
+ENDSCENE
+
+SCENE 10052 9067
+SceneLink 10053 139 159 300 200 -1 -1
+ENDSCENE
+
+SCENE 10053 9068
+SceneLink 10054 157 117 250 225 -1 -1
+ENDSCENE
+
+SCENE 10054 9069
+LevelLink 0 407 160 500 250 -1 -1
+ENDSCENE
+
+SCENE 10060 9070
+LevelLink 0 780 394 200 200 -1 -1
+ENDSCENE
+
+# Space Cavern
+SCENE 10100 9071
+SceneLink 10101 466 298 450 300 -1 -1
+ENDSCENE
+
+SCENE 10101 9072
+SceneLink 10102 297 198 450 300 -1 -1
+ENDSCENE
+
+SCENE 10102 9073
+SceneLink 10103 297 198 450 300 -1 -1
+ENDSCENE
+
+SCENE 10103 9074
+SceneLink 10104 297 198 450 300 -1 -1
+ENDSCENE
+
+SCENE 10104 9075
+SceneLink 10105 297 198 450 300 -1 -1
+ENDSCENE
+
+
+SCENE 10105 9076
+SceneLink 10106 297 198 450 300 -1 -1
+ENDSCENE
+
+SCENE 10106 9077
+SceneLink 10107 932 339 2 2 -1 -1
+ENDSCENE
+
+SCENE 10107 9078
+ENDSCENE
