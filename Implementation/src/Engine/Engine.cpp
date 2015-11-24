@@ -474,6 +474,9 @@ void Engine::onNewGame( BaseActorPtr actor, const int32_t value )
     Player::Inventory emptyInventory;
     mSerializer.save( 1, mLevel.getScene(), emptyInventory );
     mPlayer.setInventory( emptyInventory );
+
+    mVideoEngine->showTextbox( 
+        "Dr. Burris expects all labs in his office by midnight. The clock is ticking..." );
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

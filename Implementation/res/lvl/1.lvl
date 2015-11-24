@@ -59,12 +59,12 @@ START_SCENE 102
 
 # Initial spawn, OUTSIDE
 SCENE 102 1002
+AudioStreamActor res/audio/AmbientSounds/bear.wav
 SceneLink 103 645 327 420 386 -1 -1
 ENDSCENE
 
 SCENE 103 1003
 SceneLink 104 435 354 483 434 -1 -1
-AudioStreamActor res/audio/AmbientSounds/bear.wav
 ENDSCENE
 
 SCENE 104 1004
