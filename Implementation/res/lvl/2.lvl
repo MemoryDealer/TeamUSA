@@ -1,9 +1,14 @@
+# 2.lvl configures the second floor of AB1, 215, the 216 office space 
+# and the offices of Dr. Burris & Andy Bennett
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
 # Begin loading images
 # <type> <id> <path to resource>
 IMAGE 1050 res/images/AB1_Stairs/Stairs-1.png
 IMAGE 1051 res/images/AB1_Stairs/Stairs-2.png
 IMAGE 1052 res/images/AB1_Stairs/Stairs-3.png
-IMAGE 1053 res/images/AB1_Stairs/Stairs-4.png
+IMAGE 1053 res/images/AB1_Stairs/Stairs-4PS.png
 IMAGE 1054 res/images/AB1_Stairs/Stairs-5.png
 IMAGE 1055 res/images/AB1_Floor2/Floor2-1.png
 IMAGE 1056 res/images/AB1_Floor2/Floor2-2a.png
@@ -43,6 +48,7 @@ IMAGE 1087 res/images/AB1_215/215-2b.png
 IMAGE 1088 res/images/AB1_215/215-3a.png
 IMAGE 1089 res/images/AB1_215/215-3b.png
 IMAGE 1090 res/images/AB1_215/215-3d.png
+IMAGE 2003 res/images/AB1_215/215-3dOverlay.png
 IMAGE 1091 res/images/AB1_215/215-4a.png
 IMAGE 1092 res/images/AB1_215/215-4b.png
 IMAGE 1093 res/images/AB1_215/215-4c.png
@@ -55,34 +61,45 @@ IMAGE 1099 res/images/AB1_215/215-7.png
 IMAGE 2001 res/images/AB1_Floor2/Pen.png
 IMAGE 2002 res/images/AB1_Floor2/Spider.png
 
-# Use 1001 as the starting scene
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+AUDIO 2001 res/audio/SoundEffects/ghastScream4.wav
+AUDIO 2002 res/audio/SoundEffects/projector-talk.wav
+AUDIO 2003 res/audio/SoundEffects/JumpScare_Door_Slam.wav
+AUDIO 2004 res/audio/SoundEffects/lockerCreak.wav
+AUDIO 2005 res/audio/SoundEffects/whispers.wav
+
+# Use 150 as the starting scene
 START_SCENE 150
 
 SCENE 150 1050
+AudioStreamActor res/audio/AmbientSounds/BG_Ambient_in_Hall.wav
 SceneLink 151 143 26 751 811 -1 -1
 ENDSCENE
 
 SCENE 151 1051
-SceneLink 152 300 727 716 426 -1 -1
+SceneLink 152 375 14 576 637 -1 -1
 ENDSCENE
 
 SCENE 152 1052
-SceneLink 153 26 45 340 785 -1 -1
+SceneLink 153 20 21 519 812 -1 -1
 ENDSCENE
 
 SCENE 153 1053
-SceneLink 154 296 139 708 561 -1 -1
+SceneLink 154 272 29 763 807 -1 -1
+DelayedAudioActor 2005 1
 ENDSCENE
 
 SCENE 154 1054
-SceneLink 155 315 444 837 404 -1 -1
+SceneLink 155 149 14 987 828 -1 -1
 ENDSCENE
 
 #PLAYER is now on FLOOR 2. 
 #PLAYER can fork to SCENE 156 (right turn), or skip to SCENE 160 (to offices)
 SCENE 155 1055
-SceneLink 156 984 189 113 614 -1 -1
+SceneLink 156 965 17 145 822 -1 -1
 SceneLink 160 654 210 222 515 -1 -1
+ENDSCENE
 
 SCENE 156 1057
 SceneLink 157 350 232 514 450 -1 -1
@@ -107,7 +124,11 @@ SceneLink 161 98 128 1089 597 -1 -1
 ENDSCENE
 
 SCENE 161 1058
-SceneLink 162 534 84 390 716 -1 -1
+SceneLink 1666 534 84 390 716 -1 -1
+ENDSCENE
+
+SCENE 1666 1060
+SceneLink 166 450 100 400 750 -1 -1
 ENDSCENE
 
 SCENE 162 1060
@@ -121,86 +142,91 @@ ENDSCENE
 # [!] PLAYER should collect RED_PEN
 SCENE 165 1064
 SceneLink 166 31 740 1228 96 -1 -1
-InventoryItemActor 636 368 156 51 103 2001 3
 ENDSCENE
 
 SCENE 166 1065
-SceneLink 167 31 740 1228 96 -1 -1
+SceneLink 167 0 795 1280 80 -1 -1
+InventoryItemActor 636 368 120 32 103 2001 3
+TextboxSpawnActor 636 368 120 32 A red pen. 
 ENDSCENE
 
 SCENE 167 1066
-SceneLink 168 378 239 409 415 -1 -1
+SceneLink 168 364 138 591 564 -1 -1
 ENDSCENE
 
 SCENE 168 1067
-SceneLink 169 284 264 661 432 -1 -1
+SceneLink 169 273 90 623 681 -1 -1
 ENDSCENE
 
 SCENE 169 1068
-SceneLink 170 41 204 291 552 -1 -1
+SceneLink 170 20 35 361 793 -1 -1
 ENDSCENE
 
 # PLAYER may enter ROOM 215 and fork to SCENE 171 or continue ahead to SCENE 186. 
 SCENE 170 1069
 SceneLink 171 83 164 147 661 -1 -1
 SceneLink 186 449 299 342 363 -1 -1
+TextboxSpawnActor 449 299 342 363 The mysterious figure posed no threat. He passes everyone.
 ENDSCENE
 
 # PLAYER enters ROOM 215
 # PLAYER can fork to SCENE 172 or SCENE 180
 SCENE 171 1085
 SceneLink 172 399 146 431 577 -1 -1
-SceneLink 180 1080 161 159 594 -1 -1
+SceneLink 180 1049 38 196 795 -1 -1
 ENDSCENE
 
 # PLAYER can fork to SCENE 173, toward the cabinet, 
 # SCENE 179 toward black shape on wall, or SCENE 181 to lockers. 
 SCENE 172 1086
-SceneLink 173 1115 56 126 745 -1 -1
-SceneLink 179 26 45 87 767 -1 -1
-SceneLink 181 425 249 393 390 -1 -1
+SceneLink 173 1135 20 125 815 -1 -1
+SceneLink 179 15 20 125 815 -1 -1
+SceneLink 181 425 250 390 390 -1 -1
 ENDSCENE
 
 # PLAYER can return to SCENE 172, move to SCENE 176 to examine the whiteboard,
 # or SCENE 174 to examine the cabinet. 
 SCENE 173 1089
-SceneLink 172 23 752 1236 87 -1 -1
-SceneLink 174 624 468 288 246 -1 -1
-SceneLink 176 8 195 202 395 -1 -1
+SceneLink 172 0 795 1280 80 -1 -1
+SceneLink 174 625 470 290 245 -1 -1
+SceneLink 176 10 195 200 395 -1 -1
 ENDSCENE
 
 SCENE 174 1092
-SceneLink 173 23 752 1236 87 -1 -1
-SceneLink 175 677 431 195 148 -1 -1
+SceneLink 173 0 795 1280 80 -1 -1
+SceneLink 175 675 430 195 150 -1 -1
 ENDSCENE
 
 SCENE 175 1095
-SceneLink 174 23 752 1236 87 -1 -1
+SceneLink 174 0 795 1280 80 -1 -1
+DelayedAudioActor 2001 1
 ENDSCENE
 
 # PLAYER moves to whiteboard
 SCENE 176 1093
-SceneLink 173 23 752 1236 87 -1 -1
+SceneLink 173 0 795 1280 80 -1 -1
 SceneLink 177 824 320 231 184 -1 -1
 ENDSCENE
 
 SCENE 177 1096
-SceneLink 176 23 752 1236 87 -1 -1 
+SceneLink 176 0 795 1280 80 -1 -1 
 SceneLink 178 374 285 384 237 -1 -1
 ENDSCENE
 
 SCENE 178 1098
-SceneLink 177 23 752 1236 87 -1 -1
+SceneLink 176 0 795 1280 80 -1 -1
+DelayedAudioActor 2003 1
 ENDSCENE
 
 # PLAYER looks left at dark shape. 
 SCENE 179 1090
-SceneLink 172 23 752 1236 87 -1 -1
+SceneLink 172 0 795 1280 80 -1 -1
+ResponsiveVideoActor 0 0 1280 853 -1 2003 -1 3
 ENDSCENE
 
 # PLAYER looks right. 
 SCENE 180 1087
-SceneLink 171 23 752 1236 87 -1 -1
+SceneLink 171 0 795 1280 80 -1 -1
 ENDSCENE
 
 # PLAYER moves to lockers. 
@@ -221,7 +247,9 @@ ENDSCENE
 # [!] PLAYER collects ADA_BOOK
 SCENE 184 1097
 SceneLink 185 278 407 550 213 -1 -1
-InventoryItemActor 278 407 550 213 104 2002 3
+InventoryItemActor 278 407 550 213 104 -1 3
+TextboxSpawnActor 278 407 550 213 An old programming book? What ancient language is this? Surely it is not as useful as Python. 
+DelayedAudioActor 2004 1
 ENDSCENE
 
 # PLAYER will loop back to SCENE 167, and can now safely proceed to through to SCENE 186. 
@@ -230,7 +258,7 @@ SceneLink 167 264 18 368 812 -1 -1
 ENDSCENE
 
 SCENE 186 1070 
-SceneLink 187 422 333 424 357 -1 -1
+SceneLink 187 335 255 590 435 -1 -1
 ENDSCENE
 
 SCENE 187 1100
@@ -239,17 +267,20 @@ ENDSCENE
 
 SCENE 188 1071
 SceneLink 189 263 224 483 523 -1 -1
+TextboxSpawnActor 263 224 483 523 734a77bc398ce2ff9678656d9d2bbd142c520919 TRANSLATION: HUMAN, I DEMAND THE ANCIENT TOME OF MY MASTER. 734a77bc398ce2ff9678656d9d2bbd142c520919
 ENDSCENE
 
 # PLAYER must give ADA_BOOK to CART. 
 # Else, PLAYER can attempt to go back, but will die and move to SCENE 59. 
 SCENE 189 1072
 SceneLink 190 291 186 677 371 104 ADA_BOOK
-SceneLink 159 23 752 1236 87 -1 -1
+SceneLink 159 0 795 1280 80 -1 -1
+DelayedAudioActor 2002 0
 ENDSCENE
 
 SCENE 190 1073
-SceneLink 191 23 752 1236 87 -1 -1
+SceneLink 191 0 795 1280 80 -1 -1
+TextboxSpawnActor 0 795 1280 80 The cart disappeared. 
 ENDSCENE
 
 SCENE 191 1074
@@ -272,39 +303,41 @@ SceneLink 199 848 129 193 713 -1 -1
 ENDSCENE
 
 SCENE 195 1079
-SceneLink 194 23 752 1236 87 -1 -1
-SceneLink 196 554 254 498 451 -1 -1
-MovingActor 584 401 144 166 150 5 144 168 2002 3 90 FALSE
+SceneLink 194 0 795 1280 80 -1 -1
+SceneLink 196 754 254 498 451 -1 -1
+MovingActor 584 401 144 166 150 5 144 168 2002 3 90 false
 ENDSCENE
 
 SCENE 196 1081
-SceneLink 195 23 752 1236 87 -1 -1
+SceneLink 195 0 795 1280 80 -1 -1
 SceneLink 197 51 42 252 621 -1 -1
 ENDSCENE
 
 SCENE 197 1082
-SceneLink 196 23 752 1236 87 -1 -1
+SceneLink 196 0 795 1280 80 -1 -1
 SceneLink 198 1143 155 114 538 -1 -1
 ENDSCENE
 
 SCENE 198 1083
-SceneLink 197 23 752 1236 87 -1 -1
+SceneLink 197 0 795 1280 80 -1 -1
+TextboxSpawnActor 428 120 798 659 Really Andy? Disgusting.  
 ENDSCENE
 
 # PLAYER continues to DR. BURRIS'S OFFICE. 
 # PLAYER must use RED_PEN on DOOR. 
-# Else, PLAYER can attempt to go back, but will die and move to SCENE 59. 
+# Else, PLAYER can attempt to go back, but will die and move to (SCENE 59). 
 SCENE 199 1078
 SceneLink 1100 545 180 280 465 103 RED_PEN
-SceneLink 159 23 752 1236 87 -1 -1
+SceneLink 159 0 795 1280 80 -1 -1
 ENDSCENE
 
 SCENE 1100 1080
-SceneLink 1101 125 682 1054 121 -1 -1
+SceneLink 1101 125 182 1054 621 -1 -1
 ENDSCENE
 
 SCENE 1101 1101
 SceneLink 1102 140 90 1021 668 -1 -1
+TextboxSpawnActor 140 90 1021 668 The lab has been turned in on time.  
 ENDSCENE
 
 SCENE 1102 1080
@@ -312,5 +345,6 @@ SceneLink 1103 699 123 263 380 -1 -1
 ENDSCENE
 
 SCENE 1103 1084
-# Player wins? 542 47 541 357 -1 -1
+TextboxSpawnActor 581 20 480 822 Poseidon's Trident of Power opens an interdimensional rift. 
+LevelLink 5 581 20 480 822 -1 -1
 ENDSCENE

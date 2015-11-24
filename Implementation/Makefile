@@ -1,8 +1,10 @@
+SHELL=/bin/bash
 DIRS={Actor,Audio,Engine,GameSaveSerializer,Player,Video}
-INC=-Isrc/ -Isrc/**/
+INC=-Isrc/ -Isrc/**/ -I/usr/local/include/
 
 CC=g++
-CXXFLAGS=-pedantic -Wall -std=c++11 $(INC)
+#CXXFLAGS=-DLINUX -pedantic -Wall -std=c++11 $(INC)
+CXXFLAGS=-D=DEBUG -D=_DEBUG -DDEBUG_TOOLS -DLINUX -pedantic -Wall -std=c++11 $(INC)
 LDFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -pthread
 
 SOURCES=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
@@ -13,7 +15,7 @@ all: $(EXECUTABLE)
 	@echo "Created: $(EXECUTABLE)"
 $(EXECUTABLE): $(OBJECTS)
 	@echo "Linking objects..."
-	@$(CC) $(LDFLAGS) -o $@ $^
+	@$(CC) $^ $(LDFLAGS) -o $@
 build/%.o: src/%.cpp
 	@echo "Building: $^..."
 	@mkdir -p build/$(DIRS)

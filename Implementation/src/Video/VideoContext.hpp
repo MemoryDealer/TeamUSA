@@ -1,3 +1,8 @@
+/**
+ * @file VideoContext.hpp
+ * @brief Declares the VideoContext class
+ */
+
 #include <unordered_map>
 #include <string>
 #include "SDL2/SDL.h"
@@ -10,6 +15,11 @@
 
 namespace mediawrap {
 
+  /**
+   * @class VideoContext
+   * Provides basic 2D rendering capabilities. Acts as an abstraction layer to the SDL2 video library.
+   *
+   */
   class VideoContext {
     public:
 
@@ -49,6 +59,12 @@ namespace mediawrap {
         BLENDMODE_BLEND = SDL_BLENDMODE_BLEND,
         BLENDMODE_ADD = SDL_BLENDMODE_ADD,
         BLENDMODE_MOD = SDL_BLENDMODE_MOD
+      };
+
+      enum DebugColor {
+          RED = 0,
+          GREEN,
+          BLUE
       };
 
       /**
@@ -132,6 +148,10 @@ namespace mediawrap {
        */
       void render(TextureID id, Region* dest, Region* src);
 
+      void renderDebugBox( const Region& region, 
+                           const DebugColor color,
+                           const TextureID layer );
+
       /**
        * Draws the given source texture onto the destination texture.
        * @param dest_id
@@ -144,7 +164,7 @@ namespace mediawrap {
        *   The region to copy the source texture from.
        */
       void render_onto(TextureID dest_id, TextureID src_id,
-       Region* dest_region, Region* src_region);
+       const Region* dest_region, Region* src_region);
 
       /**
        * Draws the given source texture onto the destination texture after
@@ -225,6 +245,11 @@ namespace mediawrap {
        */
       void render_text(TextureID dest_id, Region* dest_region,
        const std::string& text, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+
+	  /**
+	   * Checks the state of the window and swaps to fullscreen or windowed mode.
+	   */
+	  void swapFullscreen( void );
 
     private:
       std::unordered_map<TextureID, SDL_Texture*> *textures;

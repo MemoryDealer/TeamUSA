@@ -1,3 +1,8 @@
+/**
+ * @file AudioEngine.hpp
+ * @brief Declares the AudioEngine class
+ */
+
 #include <string>
 #include <vector>
 #include "AudioPlayer.hpp"
@@ -11,6 +16,10 @@ namespace teamusa {
   using mediawrap::AudioPlayer;
   typedef mediawrap::AudioPlayer::AudioID AudioID;
 
+  /**
+   * @class AudioEngine
+   * Provides project-specific audio functionality for Legend of the Great Unwashed.
+   */
   class AudioEngine {
     private:
       static const AudioID MAX_RESERVED_ID = 1000;

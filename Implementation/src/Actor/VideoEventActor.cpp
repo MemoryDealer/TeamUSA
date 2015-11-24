@@ -3,7 +3,7 @@
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file VideoEventActor.cpp
-/// \brief declares VideoEventActor class
+/// \brief Implements the VideoEventActor class
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "VideoEventActor.h"
@@ -16,6 +16,7 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 VideoEventActor::VideoEventActor( Region region, int textureID,ActorEventType eventType, int eventValue, int layer )
+: BaseActor( region )
 {
 	mVideo = new ActorVideo;
 	mVideo->textureID = textureID;
@@ -45,7 +46,7 @@ const ActorEvent VideoEventActor::onClick( Player& player )
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent VideoEventActor::step()
+const ActorEvent VideoEventActor::step( Player& player )
 {
 	// Handle per-frame updates...
 

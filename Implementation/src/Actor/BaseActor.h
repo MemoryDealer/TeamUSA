@@ -17,7 +17,10 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 namespace teamusa {
-
+	
+	///
+	/// \class ActorVideo
+	/// \brief Contains data for rendering actor.
     struct ActorVideo {
         int32_t layer;
         int32_t textureID;
@@ -38,7 +41,7 @@ namespace teamusa {
 
     public:
 
-        explicit BaseActor( void );
+        explicit BaseActor( const Region& region = Region() );
 
         virtual ~BaseActor( void ) = 0;
 
@@ -70,6 +73,25 @@ namespace teamusa {
         /// \brief Sets the actor's region (can be used by Level when loading).
         /// \param region The Region to set.
         virtual void setRegion( const Region& region );
+
+        ///
+        /// \brief Gets the actor's Region.
+        /// \return The actor's Region struct.
+        virtual const Region getRegion( void ) const;
+
+        ///
+        /// \brief Gets the layer the actor should be rendered on.
+        /// \return An integer containing the layer.
+        virtual const int32_t getLayer( void ) const;
+
+        ///
+        /// \brief Gets the texture ID of the actor.
+        /// \return The integer containing the texture ID.
+        virtual const int32_t getTextureID( void ) const;
+
+        ///
+        /// \brief Returns true if the actor has a video component.
+        const bool hasVideo( void ) const;
 
     protected:
 

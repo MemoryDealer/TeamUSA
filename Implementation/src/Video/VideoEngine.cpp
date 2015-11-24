@@ -1,3 +1,8 @@
+/**
+ * @file VideoEngine.cpp
+ * @brief Implements the VideoEngine class
+ */
+
 #include "VideoEngine.hpp"
 
 using namespace teamusa;
@@ -27,14 +32,15 @@ VideoEngine::VideoEngine(
   this->textboxPadding = {
    FONT_SIZE,
    FONT_SIZE, 
-   this->textboxRegion.w,
-   this->textboxRegion.h
+   this->textboxRegion.w - FONT_SIZE,
+   this->textboxRegion.h - FONT_SIZE
   };
   // Create textbox texture
   this->videoContext->create_texture(
    TEXT_LAYER, this->textboxRegion.w, this->textboxRegion.h);
   // Initialize layers
   this->clearLayers();
+  this->videoContext->render_clear(TEXT_LAYER);
 }
 
 VideoEngine::~VideoEngine(){
@@ -42,7 +48,7 @@ VideoEngine::~VideoEngine(){
 }
 
 void VideoEngine::loadTexture(
- std::string &path, TextureID id, ResourceGroup group){
+ const std::string &path, TextureID id, ResourceGroup group){
   if(id < MAX_RESERVED_ID)
     throw std::runtime_error(
      "VideoEngine::loadTexture: Unable to use reserved texture id");
@@ -53,14 +59,23 @@ void VideoEngine::loadTexture(
     this->levelResources.push_back(id);
 }
 
-void VideoEngine::render(Region &region, unsigned int layer, TextureID id){
+void VideoEngine::render(const Region &region, const unsigned int layer, const TextureID id){
   this->videoContext->render_onto(this->layers[layer], id, &region, NULL);
+}
+
+void VideoEngine::renderDebugBox( const Region& region, 
+                                  const VideoContext::DebugColor color ){
+    this->videoContext->renderDebugBox( region, color, 6 );
 }
 
 void VideoEngine::renderRotate(
  Region &region, unsigned int layer, TextureID id, float angle){
   this->videoContext->render_rotate(
    this->layers[layer], id, &region, NULL, angle);
+}
+
+void VideoEngine::swapFullscreen( void ){
+	videoContext->swapFullscreen();
 }
 
 bool VideoEngine::isShowingTextbox(){
@@ -75,7 +90,7 @@ void VideoEngine::showTextbox(const std::string &text){
 }
 
 void VideoEngine::hideTextbox(){
-  this->videoContext->render_clear(layers[TEXT_LAYER]);
+  this->videoContext->render_clear(TEXT_LAYER);
   this->textboxActive = false;
 }
 
@@ -135,7 +150,7 @@ void VideoEngine::clearLayers(){
   for(unsigned int i=0; i<NUM_LAYERS; ++i){
     // Clear layer 4 with shadows
     if(i == SHADOW_LAYER)
-      this->videoContext->fill_texture(i, 40, 40, 40, 255);
+      this->videoContext->fill_texture(i, 20, 20, 20, 255);
     else
       this->videoContext->render_clear(i);
   }

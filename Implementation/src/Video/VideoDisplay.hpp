@@ -1,3 +1,8 @@
+/**
+ * @file VideoDisplay.hpp
+ * @brief Declares the VideoDisplay class
+ */
+
 #include <stdexcept>
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
@@ -8,8 +13,8 @@
 
 namespace mediawrap {
   /**
-   * Creates a window.
-   * Responsible for initializing SDL2 and SDL2_IMG.
+   * @class VideoDisplay
+   * Creates a window and initializes SDL2 and SDL2_IMG.
    * Must be destroyed after use.
    */
   class VideoDisplay{
@@ -40,6 +45,12 @@ namespace mediawrap {
         *   An SDL2 renderer for this window.
         */
       SDL_Renderer* get_renderer(void);
+
+	  /*
+	   * Switches the window from windowed to fullscreen if windowed, and from fullscreen
+	   * to windowed if in fullscreen mode.
+	   */
+	  void swapFullscreen( void );
   };
 }
 #endif /*MWRAP_VIDEODISPLAY_H*/

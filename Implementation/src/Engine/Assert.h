@@ -12,14 +12,13 @@
 
 namespace teamusa {
 
-#if defined ( _DEBUG )
+#if defined ( _DEBUG ) && defined ( WIN32 )
   namespace AssertNS {
 
     static const bool CustomAssert( const bool exp,
                                 const int line,
                                 const char* file )
     {
-#if defined ( WIN32 )
         if ( !exp ) {
             bool ret = false;
             std::string msg = "\r\nFILE: " + std::string( file ) +
@@ -33,9 +32,6 @@ namespace teamusa {
 
             return ret;
         }
-#elif defined ( LINUX )
-        // Handle linux...
-#endif
         return false;
 
     }  
@@ -45,7 +41,7 @@ using namespace AssertNS;
 // Trigger debugger break if debug build, insert nop if release.
 #define Assert( exp )\
 if( CustomAssert( static_cast<const bool>( exp ), __LINE__, __FILE__ ) )\
-{ _asm { int 3 } }
+{_asm{ int 3 }}
 #else
 #define Assert( exp ) ;
 #endif

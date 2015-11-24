@@ -1,3 +1,8 @@
+/**
+ * @file VideoContext.cpp
+ * @brief Implements the VideoContext class
+ */
+
 #include "VideoContext.hpp"
 
 using namespace mediawrap;
@@ -88,14 +93,43 @@ void VideoContext::render(TextureID id, Region* dest, Region* src){
   SDL_RenderCopy(this->renderer, iter->second, src, dest);
 }
 
+void VideoContext::renderDebugBox( const Region& region,
+                                   const DebugColor color,
+                                   const TextureID layer )
+{
+    Uint8 colors[3][3] = 
+    { { 255, 0, 0 }, 
+    { 0, 255, 0 }, 
+    { 0, 0, 255} };
+
+    SDL_SetRenderTarget( this->renderer, this->textures->at( layer ) );
+    SDL_SetRenderDrawBlendMode( this->renderer, SDL_BLENDMODE_BLEND );
+    SDL_SetRenderDrawColor( this->renderer,
+                            colors[color][0],
+                            colors[color][1],
+                            colors[color][2],
+                            50 );
+    SDL_RenderFillRect( this->renderer, &region );
+
+    SDL_SetRenderDrawColor( this->renderer,
+                            colors[color][0],
+                            colors[color][1],
+                            colors[color][2], 
+                            255 );
+    SDL_RenderDrawRect( this->renderer, &region );
+}
+
 void VideoContext::render_onto(TextureID dest_id, TextureID src_id,
-Region* dest_region, Region* src_region){
+const Region* dest_region, Region* src_region){
   VideoContext::texture_iter dest_iter = this->textures->find(dest_id);
   VideoContext::texture_iter src_iter = this->textures->find(src_id);
   if(dest_iter == this->textures->end())
     throw std::runtime_error("Unable to render_onto. Invalid dest id.");
-  if(src_iter == this->textures->end())
-    throw std::runtime_error("Unable to render_onto. Invalid src id.");
+  if ( src_iter == this->textures->end() ) {
+      std::string err = std::string( "Unable to render_onto. Invalid src id (" );
+      err += std::to_string( src_id ) + ")" + "(dst_id = " + std::to_string( dest_id) + ")";
+      throw std::runtime_error( err );
+  }
   SDL_SetRenderTarget(this->renderer, dest_iter->second);
   SDL_RenderCopy(this->renderer, src_iter->second, src_region, dest_region);
   SDL_SetRenderTarget(this->renderer, NULL);
@@ -177,3 +211,6 @@ const std::string& text, Uint8 r, Uint8 g, Uint8 b, Uint8 a){
   SDL_SetRenderTarget(this->renderer, NULL);
 }
 
+void VideoContext::swapFullscreen( void ){
+	video_display->swapFullscreen();
+}

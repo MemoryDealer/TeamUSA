@@ -3,27 +3,31 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file DelayedVideoActor.cpp
-/// \brief Declares DelayedVideoActor class.
+/// \brief Implements the DelayedVideoActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 #include "DelayedVideoActor.h"
 
+#include <iostream>
 using namespace teamusa;
 
-	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep, int layer ){
+	DelayedVideoActor::DelayedVideoActor( Region region, int textureID, int delaysteps, int disappearStep, int layer )
+    : BaseActor() 
+  {
 		//....
 		mVideo = new ActorVideo;
-		mVideo->textureID = textureID;
+		mVideo->textureID = -1;
 		mVideo->layer = layer;
 
-		delaySteps=disappearStep - delaysteps;
-		textureId=textureID;
-		currentStep =0;
-		disappear = disappearStep;
+    this->mRegion = region;
+		this->delaySteps = delaysteps;
+		this->disappear = disappearStep;
+		this->textureId=textureID;
+		this->currentStep = 0;
+    
 	}
 
 	DelayedVideoActor::~DelayedVideoActor( void ){
-		//....
-		delete mVideo;
+    delete mVideo;
 	}
 
 
@@ -33,14 +37,13 @@ using namespace teamusa;
 
 		ActorEvent e;
 		// Assign data...
-		currentStep++;
-
-		if (currentStep == delaySteps) {
+    if(currentStep==delaySteps){
 			mVideo->textureID = textureId;
+    }
+		else if (currentStep == disappear){
+			mVideo->textureID = -1;
 		}
-        else if ( currentStep == disappear ) {
-            mVideo->textureID = -1;
-        }
+		currentStep++;
 
 		return e;
 	}

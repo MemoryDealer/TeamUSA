@@ -1,27 +1,37 @@
+# 3.lvl configures the third floor of AB1
+#
+# Authored by V. Sanchez, D. Menteer, J. Sparks, A. McGowen, & Z. Zhang
+#
+#
 # Begin loading images
 # <type> <id> <path to resource>
-IMAGE 1025 res/images/Floor3-1.png
-IMAGE 1026 res/images/Floor3-2.png
-IMAGE 1027 res/images/Floor3-3.png
-IMAGE 1028 res/images/Floor3-4a.png
-IMAGE 1029 res/images/Floor3-4b.png
-IMAGE 1030 res/images/Floor3-5.png
-IMAGE 1031 res/images/Floor3-6.png
-IMAGE 1032 res/images/Floor3-7.png
-IMAGE 1033 res/images/Floor3-8.png
-IMAGE 1034 res/images/Floor3-9.png
-IMAGE 1035 res/images/Floor3-10a.png
-IMAGE 1036 res/images/Floor3-10b.png
-IMAGE 1037 res/images/Floor3-11.png
-IMAGE 1038 res/images/Floor3-12a.png
-IMAGE 1039 res/images/Floor3-12b.png
-IMAGE 1040 res/images/Floor3-13a.png
-IMAGE 1041 res/images/Floor3-13b.png
-IMAGE 1042 res/images/Floor3-13ba.png
-IMAGE 1043 res/images/Floor3-13c.png
-IMAGE 1044 res/images/Floor3-14.png
+IMAGE 1025 res/images/AB1_Floor3/Floor3-1.png
+IMAGE 1026 res/images/AB1_Floor3/Floor3-2.png
+IMAGE 1027 res/images/AB1_Floor3/Floor3-3.png
+IMAGE 1028 res/images/AB1_Floor3/Floor3-4a.png
+IMAGE 1029 res/images/AB1_Floor3/Floor3-4b.png
+IMAGE 1030 res/images/AB1_Floor3/Floor3-5.png
+IMAGE 1031 res/images/AB1_Floor3/Floor3-6.png
+IMAGE 1032 res/images/AB1_Floor3/Floor3-7.png
+IMAGE 1033 res/images/AB1_Floor3/Floor3-8.png
+IMAGE 1034 res/images/AB1_Floor3/Floor3-9.png
+IMAGE 1035 res/images/AB1_Floor3/Floor3-10a.png
+IMAGE 1036 res/images/AB1_Floor3/Floor3-10b.png
+IMAGE 1037 res/images/AB1_Floor3/Floor3-11.png
+IMAGE 1038 res/images/AB1_Floor3/Floor3-12a.png
+IMAGE 1039 res/images/AB1_Floor3/Floor3-12b.png
+IMAGE 1040 res/images/AB1_Floor3/Floor3-13a.png
+IMAGE 1041 res/images/AB1_Floor3/Floor3-13b.png
+IMAGE 1042 res/images/AB1_Floor3/Floor3-13ba.png
+IMAGE 1043 res/images/AB1_Floor3/Floor3-13c.png
+IMAGE 1044 res/images/AB1_Floor3/Floor3-14.png
 
-# Use 1001 as the starting scene
+# Begin loading audio samples. 
+# <TYPE>=<ID>,<PATH_TO_RESOURCE>
+AUDIO 3001 res/audio/SoundEffects/endermenStare.wav
+AUDIO 3002 res/audio/SoundEffects/demonWhisper.wav
+
+# Use 125 as the starting scene
 START_SCENE 125
 
 # Begin scene listing. 
@@ -31,6 +41,7 @@ START_SCENE 125
 
 # Initial spawn, ELEVATOR ALCOVE, 3RD FLOOR
 SCENE 125 1025
+AudioStreamActor res/audio/AmbientSounds/floor3.wav
 SceneLink 126 230 24 756 789 -1 -1
 ENDSCENE
 
@@ -46,17 +57,18 @@ ENDSCENE
 
 # This scene links to floor 2 via LEVELLINK
 SCENE 128 1029
-SceneLink 127 11 786 1251 51 -1 -1 	# Return to scene 127
+SceneLink 127 0 797 1275 80 -1 -1 	# Return to scene 127
 LevelLink 2 660 548 443 211 150 102 STAIRWELL_KEY  
 ENDSCENE
 
 # PLAYER continues ahead. 
 SCENE 129 1028
-SceneLink 130 821 251 331 535 -1 -1
+SceneLink 130 902 9 253 839  -1 -1
+TextboxSpawnActor 341 257 205 480 This door is locked, but there's a hallway to the right.
 ENDSCENE
 
 SCENE 130 1030
-SceneLink 131 663 239 419 541 -1 -1
+SceneLink 131 685 4 528 848 -1 -1
 ENDSCENE
 
 SCENE 131 1031
@@ -68,11 +80,13 @@ SceneLink 133 485 273 340 371 -1 -1
 ENDSCENE
 
 SCENE 133 1033
-SceneLink 134 1020 138 236 635 -1 -1
+SceneLink 134 911 6 361 839 -1 -1
+TextboxSpawnActor 255 119 299 643 Whispers of black magic emanate from within. There's a hallway to the right.
+ResponsiveAudioActor 255 119 299 643 -1 3002
 ENDSCENE
 
 SCENE 134 1030 
-SceneLink 135 663 239 419 541 -1 -1
+SceneLink 135 685 4 528 848 -1 -1
 ENDSCENE
 
 # Fork to SCENE 136 or skip to SCENE 137
@@ -83,15 +97,17 @@ ENDSCENE
 
 SCENE 136 1036
 SceneLink 135 24 753 1230 83 -1 -1	# dead end. Return to Scene 135
+TextboxSpawnActor 428 483 528 245 This door has been barred shut from the other side. Perhaps there's another way to the 2nd floor.
 ENDSCENE
 
 # PLAYER continues ahead. 
 SCENE 137 1035
 SceneLink 138 758 162 285 549 -1 -1
+TextboxSpawnActor 485 257 144 319 Another locked door, another hallway to the right.
 ENDSCENE
 
 SCENE 138 1030
-SceneLink 139 663 239 419 541 -1 -1
+SceneLink 139 685 4 528 848 -1 -1
 ENDSCENE
 
 # Fork to SCENE 140 or skip to SCENE 141
@@ -101,7 +117,7 @@ SceneLink 141 471 255 366 405 -1 -1
 ENDSCENE
 
 SCENE 140 1039
-SceneLink 139 74 740 1128 87 -1 -1	# Dead end. Return to scene 139.
+SceneLink 139 74 797 1128 87 -1 -1	# Dead end. Return to scene 139.
 ENDSCENE
 
 # PLAYER continues ahead. 
@@ -122,18 +138,20 @@ ENDSCENE
 SCENE 143 1042
 SceneLink 141 444 188 396 505 -1 -1 
 InventoryItemActor 444 188 396 505 102 -1 3
+TextboxSpawnActor 444 188 396 505 The darkness has left this dimension and invaded the painting. Maybe now the doors to the 2nd floor are unlocked. There was a stairwell by the elevator alcove. 
+DelayedAudioActor 3001 1
 ENDSCENE
 
 SCENE 144 1043
-SceneLink 141 42 740 1200 84 -1 -1 # return to SCENE 141. 
+SceneLink 141 42 797 1200 84 -1 -1 # return to SCENE 141. 
 ENDSCENE
 
 SCENE 145 1040
-SceneLink 146 815 173 261 652 -1 -1
+SceneLink 146 815 173 320 652 -1 -1
 ENDSCENE
 
 SCENE 146 1030
-SceneLink 147 663 239 419 541 -1 -1
+SceneLink 147 685 4 528 848 -1 -1
 ENDSCENE
 
 # [*] PLAYER loops back to SCENE 127, from SCENE 147. 
@@ -141,7 +159,7 @@ ENDSCENE
 # [*] If PLAYER failed to collect STAIRWELL_KEY, they will proceed in an infinite loop until they
 #     solve the puzzle. 
 SCENE 147 1044
-SceneLink 127 23 752 1236 87 -1 -1
+SceneLink 127 489 267 330 347 -1 -1
 ENDSCENE
 
 ################## End level file 3. Proceed to 2.lvl ######################

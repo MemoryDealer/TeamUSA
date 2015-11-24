@@ -1,3 +1,8 @@
+/**
+ * @file AudioPlayer.hpp
+ * @brief Declares the AudioPlayer class
+ */
+
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -8,6 +13,11 @@
 #define MWRAP_AUDIOPLAYER_H
 namespace mediawrap {
 
+  /**
+   * @class AudioPlayer
+   * Provides basic audio playing capabilities with WAV files.
+   * Acts as an abstraction layer for SDL2.
+   */
   class AudioPlayer {
     public:
 

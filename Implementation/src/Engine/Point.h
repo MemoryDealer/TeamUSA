@@ -16,6 +16,9 @@
 
 namespace teamusa {
 
+	///
+	/// \class Point
+	/// \brief An (x,y) coordinate within the rendering window.
     struct Point {
         int32_t x, y;
 

@@ -1,3 +1,8 @@
+/**
+ * @file VideoDisplay.cpp
+ * @brief Implements the VideoDisplay class
+ */
+
 #include "VideoDisplay.hpp"
 
 mediawrap::VideoDisplay::VideoDisplay(
@@ -49,5 +54,17 @@ SDL_Renderer* mediawrap::VideoDisplay::get_renderer(void){
      "Unable to create renderer: " + std::string(SDL_GetError()));
   }
   return renderer;
+}
+
+void mediawrap::VideoDisplay::swapFullscreen( void ){
+	static bool fullscreen = false; // We always start non-fullscreen.
+	fullscreen = !fullscreen;
+
+	if ( fullscreen ) {
+		SDL_SetWindowFullscreen( this->window, SDL_WINDOW_FULLSCREEN );
+	}
+	else {
+		SDL_SetWindowFullscreen( this->window, 0 );
+	}	
 }
 

@@ -37,22 +37,25 @@ namespace teamusa
 		explicit VideoEventActor( Region region, int textureID, ActorEventType eventType, int eventValue, int layer );
 
 		// Destructor.
-		virtual ~VideoEventActor( void ) override; // Use "override" keyword to remind yourself/others that this is overriding a parent class method (not necessary).
-
-		// Override onClick, onHover, and step, provide documentation.
+		virtual ~VideoEventActor( void ) override; 
 
 		///
-		/// \brief The onClick method will return the ActorEventType and value given to this actor during construction time.
-		///  Can be used to cause LoadGame and SaveGame events.
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		virtual const ActorEvent onClick( Player& player ) override;
 
-		///
-		/// \brief The onHover method will set the player's cursor style to CURSOR_SELECT.
+        ///
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
 		virtual const ActorEvent onHover( Player& player ) override;
 
 		///
-		/// \brief Override.
-		virtual const ActorEvent step();
+		/// \brief Advances the actor one frame. 
+		/// \param Player The player
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
+		virtual const ActorEvent step( Player& player );
 	};
 
-};
+}

@@ -3,7 +3,7 @@
 // LEGEND OF THE GREAT UNWASHED
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file TextboxSpawnActor.cpp
-/// \brief Declares TextboxSpawnActor class.
+/// \brief Implements TextboxSpawnActor class.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 #include "TextboxSpawnActor.h"
@@ -13,7 +13,9 @@
 using namespace teamusa;
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text){
+TextboxSpawnActor::TextboxSpawnActor(Region region, std::string Text)
+: BaseActor( region ), activated( false )
+{
 	// ...
 	text=Text;
 }
@@ -31,13 +33,16 @@ const ActorEvent TextboxSpawnActor::onClick( Player& player )
 	// Handle clicking logic...
 	ActorEvent e;
 	// Assign data...
-	e.type=DisplayText;
+    if ( !activated ) {
+        e.type = DisplayText;
+        activated = true;
+    }
 	return e;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
-const ActorEvent TextboxSpawnActor::step()
+const ActorEvent TextboxSpawnActor::step( Player& player )
 {
 	// Handle per-frame updates...
 

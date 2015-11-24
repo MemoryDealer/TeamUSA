@@ -22,6 +22,10 @@
 4. Now create a project with all the TeamUSA source files in your custom IDE and build.
 
 
-# Building on Mac #
-1. Install Windows or Linux and follow the corresponding above instructions.
+# Building on OS X #
+1. Throw your Linux and/or Windows box out the window. (Especially Jordan)
+2. Execute $cd /path/to/TeamUSA/Implementation
+3. Then $make -f Makefile.mac 
+4. Run the executable with $./convenienced
+
 

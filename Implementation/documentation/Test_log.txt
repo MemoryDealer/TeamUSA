@@ -1,0 +1,38 @@
+1. Bugs and improvements
+
+BUG: scene 1121 after retrive the key then back to the vendor mechine keypad actor will show the textbox: 
+"some change would help".
+
+BUG: scene 1123 if key is not retrived the back actor shows textbox "Item required: ELEVEATOR_KEY" 
+
+scene 128, while no item, need textbox to remind player
+
+scene 175 need jump scare picture
+
+scene 1103 teleport to space?
+
+scene 110 can add a textbox "You feel like someone is watching you"
+
+Gap from scene 185(out shacs room) tp to scene 167
+
+scene 114 could add a textbox "Door(to the art building) is locked"
+
+scene 115 actor in the middle can be smaller, or it block the back button and trigger the textbox at scene 114
+
+scene 116 (the camera) can ps and textbox "someone is watching you through the camera"
+
+2. Sounds/PS needed:
+
+scene 151 foot step sounds effect
+
+scene 154, 128, 136 need sounds for door
+
+scene 187, 188, 189, 190 can ps
+
+scene 1120 can add coin insert sounds
+
+scene 153(stair from 2nd floor to first floor) can be ps dark energy
+
+scene 195 spider sounds (already on repo)
+
+scene 197 gta sounds 

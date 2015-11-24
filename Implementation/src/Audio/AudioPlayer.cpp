@@ -1,3 +1,8 @@
+/**
+ * @file AudioPlayer.cpp
+ * @brief Implements the AudioPlayer class
+ */
+
 #include "AudioPlayer.hpp"
 
 mediawrap::AudioPlayer::AudioPlayer(){
@@ -54,7 +59,7 @@ AudioID id, const std::string& file_path){
     Mix_FreeChunk(iter->second);
   sample = Mix_LoadWAV(file_path.c_str());
   if(!sample)
-    throw std::runtime_error("Unable to load audio sample: " + file_path);
+    throw std::runtime_error("Unable to load audio sample: " + file_path + " (" + Mix_GetError() + ")");
   else
     this->audio_samples->insert(std::make_pair(id, sample));
 }
@@ -64,7 +69,7 @@ void mediawrap::AudioPlayer::play_sample(AudioID id){
   iter = this->audio_samples->find(id);
   if(iter == this->audio_samples->end() ||
    Mix_PlayChannel(-1, iter->second, 0) == -1){
-    throw std::runtime_error("Unable to play audio sample.");
+    throw std::runtime_error("Unable to play audio sample (" + std::to_string( id ) + ").");
   }
 }
 

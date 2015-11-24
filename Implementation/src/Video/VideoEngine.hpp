@@ -1,3 +1,8 @@
+/**
+ * @file VideoEngine.hpp
+ * @brief Declares the VideoEngine class
+ */
+
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -12,6 +17,11 @@ namespace teamusa {
   typedef mediawrap::VideoContext::TextureID TextureID;
   typedef mediawrap::VideoContext::Region Region;
 
+  /**
+   * @class VideoEngine
+   * Provides video capabilities that are specific to Legend of the Great Unwashed.
+   * Utilizes VideoContext to perform rendering.
+   */
   class VideoEngine{
     private:
       static const unsigned int NUM_LAYERS = 7;
@@ -60,7 +70,7 @@ namespace teamusa {
        * @param resGroup
        *  The group to load the resource into.
        */
-      void loadTexture(std::string &path, TextureID id, ResourceGroup group);
+      void loadTexture(const std::string &path, TextureID id, ResourceGroup group);
 
       /**
        * Renders the texture onto the given layer in the given region.
@@ -71,7 +81,11 @@ namespace teamusa {
        * @param id
        *  The id of the texture to draw.
        */
-      void render(Region &region, unsigned int layer, TextureID id);
+      void render(const Region &region, const unsigned int layer, const TextureID id);
+
+      
+      void renderDebugBox( const Region& region, 
+                           const VideoContext::DebugColor = VideoContext::DebugColor::BLUE );
 
       /**
        * Renders the texture onto the given layer in the given region with the
@@ -87,6 +101,11 @@ namespace teamusa {
        */
       void renderRotate(
        Region &region, unsigned int layer, TextureID id, float angle = 0.0);
+
+	  /**
+	   * Calls swapFullscreen() on VideoDisplay.
+	   */
+	  void swapFullscreen( void );
 
       /**
        * States whether a textbox is currently being displayed or not.

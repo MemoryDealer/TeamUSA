@@ -1,16 +1,10 @@
-/*
- * ResponsiveVideoActor.cpp
- *
- *  Created on: Nov 7, 2015
- *      Author: Juan Carmona
- */
-
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 // Team USA - Software Engineering Project (Fall 2015).
 // Legend of the Great Unwashed (Working Title).
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 /// \file ResponsiveVideoActor.cpp
-/// \brief  Will display the default TextureID.
+/// \brief Implements the ResponsiveVideoActor class
+//  Will display the default TextureID.
 //  When onHover is called, it will display the hover TextureID.
 //  When onClick is called, the onClick texture will be set permanently.
 //  Can disappear or appear by utilizing an invalid TextureID.
@@ -25,16 +19,15 @@ using namespace teamusa; // We want to use our namespace across this whole file.
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 ResponsiveVideoActor::ResponsiveVideoActor( Region region, int hoverTextureId, int clickTextureID, int defaulTextureID,int layer )
+: BaseActor( region )
 {
     // ...
+  defaultTextureId = defaulTextureID;
 	hoverTexture = hoverTextureId;
 	clickTexture = clickTextureID;
-	
 	mVideo = new ActorVideo;
 	mVideo->textureID = defaulTextureID;
 	mVideo->layer = layer;
-
-
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
@@ -53,8 +46,7 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 
     ActorEvent e;
     // Assign data...
-	mVideo->textureID = clickTexture;
-
+	  mVideo->textureID = clickTexture;
     return e;
 }
 
@@ -63,18 +55,13 @@ const ActorEvent ResponsiveVideoActor::onClick( Player& player )
 const ActorEvent ResponsiveVideoActor::onHover(Player& player)
 {
 	// Handle hovering logic...
-
 	ActorEvent e;
 	// Assign data...
-
 	if (mVideo->textureID != clickTexture) {
 		mVideo->textureID = hoverTexture;
 	}
-
-
 	return e;
 }
-
 
 const ActorEvent ResponsiveVideoActor::step(Player& player)
 {
@@ -90,7 +77,7 @@ const ActorEvent ResponsiveVideoActor::step(Player& player)
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
 
 void ResponsiveVideoActor::setTextureId(int TextureId){
-	mVideo->textureID = TextureId;
+	mVideo->textureID=TextureId;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //

@@ -1,0 +1,228 @@
+# 5.lvl configures the secret ending.
+#
+# Authored by J. Sparks.
+#
+# Begin loading images
+# <type> <id> <path to resource>
+IMAGE 9001 res/images/Space/SpaceChoice.png
+IMAGE 9002 res/images/Space/ISS.png
+IMAGE 9003 res/images/Space/Enterprise.png
+IMAGE 9004 res/images/Space/ISS-1a.png
+IMAGE 9005 res/images/Space/ISS-1b.png
+IMAGE 9006 res/images/Space/ISS-2a.png
+IMAGE 9007 res/images/Space/ISS-2b.png
+IMAGE 9008 res/images/Space/ISS-3a.png
+IMAGE 9009 res/images/Space/ISS-3b.png
+IMAGE 9010 res/images/Space/ISS-3c.png
+IMAGE 9011 res/images/Space/ISS-4a.png
+IMAGE 9012 res/images/Space/Jupiter-1a.png
+IMAGE 9013 res/images/Space/Jupiter-2a.png
+IMAGE 9014 res/images/Space/Jupiter-2b.png
+IMAGE 9015 res/images/Space/Jupiter-3a.png
+IMAGE 9016 res/images/Space/Jupiter-3b.png
+IMAGE 9017 res/images/Space/Jupiter-3c.png
+IMAGE 9018 res/images/Space/Jupiter-3d.png
+IMAGE 9021 res/images/Space/Neptune-1a.png
+IMAGE 9022 res/images/Space/Neptune-2a.png
+IMAGE 9023 res/images/Space/Neptune-2b.png
+IMAGE 9024 res/images/Space/Neptune-3a.png
+IMAGE 9025 res/images/Space/Neptune-3b.png
+IMAGE 9026 res/images/Space/Neptune-3c.png
+IMAGE 9027 res/images/Space/Neptune-3d.png
+IMAGE 9030 res/images/Space/Saturn-1a.png
+IMAGE 9031 res/images/Space/Saturn-1b.png
+IMAGE 9032 res/images/Space/Saturn-2a.png
+IMAGE 9033 res/images/Space/Saturn-3a.png
+IMAGE 9034 res/images/Space/Saturn-3b.png
+IMAGE 9035 res/images/Space/Saturn-4a.png
+IMAGE 9036 res/images/Space/Saturn-4b.png
+IMAGE 9050 res/images/Space/Enterprise-1a.png
+IMAGE 9051 res/images/Space/Enterprise-2a.png
+IMAGE 9052 res/images/Space/Enterprise-3a.png
+IMAGE 9053 res/images/Space/Enterprise-4a.png
+IMAGE 9054 res/images/Space/Enterprise-5a.png
+
+
+START_SCENE 901
+
+# Begin scene listing. 
+# SCENE <SCENE_ID> <BACKGROUND_IMAGE_ID>
+# SceneLink <sceneID> <region (x,y)> <width> <height> <itemID> <item required> 
+######################
+
+SCENE 901 9001
+AudioStreamActor res/audio/AmbientSounds/Space.wav
+SceneLink 902 100 100 400 450 -1 -1
+SceneLink 903 900 175 175 150 -1 -1
+ENDSCENE
+
+# ISS
+SCENE 902 9002
+SceneLink 5001 100 75 600 700 -1 -1
+SceneLink 901 0 797 1280 56 -1 -1
+ENDSCENE
+
+# Enterprise
+SCENE 903 9003
+SceneLink 6001 440 300 310 200 -1 -1
+SceneLink 901 0 797 1280 56 -1 -1
+ENDSCENE
+
+# Entering the ISS
+SCENE 5001 9004
+SceneLink 5002 0 0 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5002 9005
+SceneLink 5003 0 0 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5003 9006
+SceneLink 5004 0 0 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5004 9007
+SceneLink 5005 0 0 1280 853 -1 -1
+ENDSCENE
+
+# ISS cabin
+SCENE 5005 9008
+SceneLink 5007 0 0 400 1280 -1 -1
+SceneLink 5006 900 0 380 853 -1 -1
+ENDSCENE
+
+SCENE 5006 9009
+SceneLink 5008 650 200 400 400 -1 -1
+SceneLink 5005 0 0 400 1280 -1 -1
+ENDSCENE
+
+SCENE 5007 9010
+SceneLink 5005 0 797 1280 200 -1 -1
+ENDSCENE
+
+# Moscow
+SCENE 5008 9011
+SceneLink 5009 0 0 100 100 -1 -1
+SceneLink 5020 1180 0 100 100 -1 -1
+SceneLink 5040 600 400 200 150 -1 -1
+ENDSCENE
+
+# Jupiter
+SCENE 5009 9012
+AudioStreamActor res/audio/AmbientSounds/OuterSpace.wav
+SceneLink 5010 0 0 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5010 9013
+SceneLink 5011 710 530 150 100 -1 -1
+ENDSCENE
+
+SCENE 5011 9014
+SceneLink 5012 600 540 290 140 -1 -1
+ENDSCENE
+
+SCENE 5012 9015
+SceneLink 5013 690 0 800 350 -1 -1
+ENDSCENE
+
+SCENE 5013 9016
+SceneLink 5014 200 250 800 450 -1 -1
+ENDSCENE
+
+SCENE 5014 9017
+SceneLink 5015 0 0 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5015 9018
+LevelLink 0 0 0 1280 853 -1 -1
+ENDSCENE
+
+# Neptune
+SCENE 5020 9021
+AudioStreamActor res/audio/AmbientSounds/OuterSpace.wav
+SceneLink 5021 480 320 290 220 -1 -1
+ENDSCENE
+
+SCENE 5021 9022
+SceneLink 5022 200 0 900 853 -1 -1
+ENDSCENE
+
+SCENE 5022 9023
+SceneLink 5023 300 320 450 250 -1 -1
+ENDSCENE
+
+SCENE 5023 9024
+SceneLink 5024 200 400 800 250 -1 -1
+ENDSCENE
+
+SCENE 5024 9025
+SceneLink 5025 0 200 1280 600 -1 -1
+ENDSCENE
+
+SCENE 5025 9026
+SceneLink 5026 0 100 1280 853 -1 -1
+ENDSCENE
+
+SCENE 5026 9027
+LevelLink 0 0 0 1280 853 -1 -1
+ENDSCENE
+
+# Saturn
+SCENE 5040 9030
+AudioStreamActor res/audio/AmbientSounds/OuterSpace.wav
+SceneLink 5041 510 310 270 200 -1 -1
+ENDSCENE
+
+SCENE 5041 9031
+SceneLink 5042 300 200 650 450 -1 -1
+ENDSCENE
+
+SCENE 5042 9032
+SceneLink 5043 170 400 300 250 -1 -1
+SceneLink 5045 370 100 200 150 -1 -1
+ENDSCENE
+
+SCENE 5043 9033
+SceneLink 5044 500 470 300 200 -1 -1
+ENDSCENE
+
+SCENE 5044 9034
+LevelLink 0 300 300 200 150 -1 -1
+ENDSCENE
+
+SCENE 5045 9035
+SceneLink 5046 520 310 100 90 -1 -1
+ENDSCENE
+
+SCENE 5046 9036
+LevelLink 0 400 250 350 350 -1 -1
+ENDSCENE
+
+# Enterprise-track
+SCENE 6001 9050
+SceneLink 6002 0 0 500 400 -1 -1
+SceneLink 6003 950 0 950 400 -1 -1
+SceneLink 6004 500 0 450 400 -1 -1
+SceneLink 6005 810 460 450 350 -1 -1
+ENDSCENE
+
+SCENE 6002 9051
+SceneLink 6001 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 6003 9052
+SceneLink 6001 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 6004 9053
+LevelLink 4 455 180 320 600 -1 -1
+TextboxSpawnActor 455 180 320 600 A beam transport was activated.
+SceneLink 6001 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 6005 9054
+LevelLink 6 231 152 855 440 -1 -1
+ENDSCENE
+
+
+

@@ -26,10 +26,11 @@ namespace teamusa{
    /// \brief Will emit a DisplayText event when the onClick method is called. 
    /// The actor can then have its text accessed by the engine for display through a call to the getText method.
 
-	class TextboxSpawnActor
+	class TextboxSpawnActor : public BaseActor
 	{
 		private:
 		std::string text;
+        bool activated;
 
 		public:
 		// Declare constructor and destructor...
@@ -40,22 +41,22 @@ namespace teamusa{
 		// Destructor.
 		virtual ~TextboxSpawnActor( void );
 
-		// Override onClick, onHover, and step, provide documentation.
-
 		///
-		/// \brief return a display text actor event
+		/// \brief Generates an ActorEvent when the actor's region is clicked. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action. 
 		virtual const ActorEvent onClick( Player& player );
 
+        ///
+        /// \brief Generates an ActorEvent when the actor's region is hovered over. 
+		/// \param Player The player.
+		/// \return Returns an ActorEvent that triggers an actor to perform an action.
+		virtual const ActorEvent step( Player& player );
+		
 		///
-		/// \brief Override.
-		virtual const ActorEvent step();
-	
-
-		// Declare additional functions here as specified in UML diagram.
-		///
-		/// \brief Retrurn the text when called.
+		/// \brief Retrieves the text for the textbox from the level file. 
 		std::string getText(void);
 
 	};	
-};
+}
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: //
