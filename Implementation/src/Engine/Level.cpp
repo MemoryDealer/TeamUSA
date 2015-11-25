@@ -12,6 +12,7 @@
 #include "Actor/ActorEvent.h"
 #include "Actor/AudioStreamActor.h"
 #include "Actor/DelayedAudioActor.h"
+#include "Actor/DelayedSceneLink.h"
 #include "Actor/DelayedVideoActor.h"
 #include "Actor/InventoryItemActor.h"
 #include "Actor/LevelLink.h"
@@ -161,6 +162,8 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
                 scene.actors.push_back(parseAudioStreamActor(fs));
             else if (cmd == "DelayedAudioActor")
                 scene.actors.push_back(parseDelayedAudioActor(fs));
+            else if ( cmd == "DelayedSceneLink" )
+                scene.actors.push_back( parseDelayedSceneLink( fs ) );
             else if (cmd == "DelayedVideoActor")
                 scene.actors.push_back(parseDelayedVideoActor(fs));
             else if (cmd == "InventoryItemActor")
@@ -246,6 +249,18 @@ BaseActorPtr Level::parseDelayedAudioActor(std::fstream &fs)
 
     fs >> audioID >> delaySteps;
     return BaseActorPtr( new DelayedAudioActor( audioID, delaySteps ) );
+}
+
+BaseActorPtr Level::parseDelayedSceneLink( std::fstream& fs )
+{
+    Region region;
+    int sceneID, requiredItemID;
+    int delay;
+    std::string itemRequiredText;
+
+    fs >> sceneID >> region >> delay >> requiredItemID;
+    std::getline( fs, itemRequiredText );
+    return BaseActorPtr( new DelayedSceneLink( region, sceneID, itemRequiredText, requiredItemID, delay ) );
 }
 
 BaseActorPtr Level::parseDelayedVideoActor(std::fstream &fs)

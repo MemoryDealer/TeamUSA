@@ -89,6 +89,7 @@ namespace teamusa
         
         BaseActorPtr parseAudioStreamActor(std::fstream &fs);
         BaseActorPtr parseDelayedAudioActor(std::fstream &fs);
+        BaseActorPtr parseDelayedSceneLink( std::fstream& fs );
         BaseActorPtr parseDelayedVideoActor(std::fstream &fs);
         BaseActorPtr parseInventoryItemActor(std::fstream &fs);
         BaseActorPtr parseLevelLink(std::fstream &fs);
