@@ -130,7 +130,6 @@ SCENE 10104 9075
 SceneLink 10105 297 198 450 300 -1 -1
 ENDSCENE
 
-
 SCENE 10105 9076
 SceneLink 10150 297 198 450 300 -1 -1
 ENDSCENE
@@ -149,7 +148,7 @@ ENDSCENE
 
 SCENE 10106 9077
 SceneLink 10107 432 439 200 200 -1 -1
-TextboxSpawnActor 432 439 200 200 Congratulations! You have transcended the known universe and entered the multi-verse.
+TextboxSpawnActor 432 439 200 200 Congratulations! You have transcended the known universe and entered Dr. Burris's secret base: the multi-verse.
 ENDSCENE
 
 SCENE 10107 9082
