@@ -4,6 +4,7 @@
 #
 # Begin loading images
 # <type> <id> <path to resource>
+IMAGE 9054 res/images/Space/Enterprise-5a.png
 IMAGE 9056 res/images/Space/Enterprise-5b.png
 IMAGE 9057 res/images/Space/Horsehead-1a.png
 IMAGE 9058 res/images/Space/Horsehead-2a.png
@@ -26,9 +27,23 @@ IMAGE 9074 res/images/Space/Eagle-3d.png
 IMAGE 9075 res/images/Space/Eagle-3e.png
 IMAGE 9076 res/images/Space/Eagle-3f.png
 IMAGE 9077 res/images/Space/CosmicWeb-1a.png
-IMAGE 9078 res/images/Space/Neuron.png
+IMAGE 9079 res/images/Space/Ghost-1a.png
+IMAGE 9080 res/images/Space/Ghost-1b.png
+IMAGE 9081 res/images/Space/Ghost-1c.png
+IMAGE 9082 res/images/Space/Multiverse.png
+IMAGE 9083 res/images/Space/Multiverse-2.png
+IMAGE 9084 res/images/Space/Multiverse-3.png
+IMAGE 9085 res/images/Space/Multiverse-4.png
+IMAGE 9086 res/images/Space/Multiverse-5.png
 
-START_SCENE 10000
+AUDIO 11000 res/audio/SoundEffects/Warp.wav
+
+START_SCENE 6005
+
+SCENE 6005 9054
+ResponsiveAudioActor 231 152 855 440 -1 11000
+DelayedSceneLink 10000 231 152 855 440 420 -1 -1
+ENDSCENE
 
 SCENE 10000 9056
 SceneLink 10001 231 152 855 440 -1 -1
@@ -38,7 +53,7 @@ ENDSCENE
 SCENE 10001 9057
 AudioStreamActor res/audio/AmbientSounds/OuterSpace.wav
 SceneLink 10002 600 373 150 130 -1 -1
-SceneLink 10050 0 0 100 853 -1 -1
+SceneLink 10050 40 290 100 75 -1 -1
 ENDSCENE
 
 SCENE 10002 9058
@@ -115,14 +130,46 @@ SCENE 10104 9075
 SceneLink 10105 297 198 450 300 -1 -1
 ENDSCENE
 
-
 SCENE 10105 9076
-SceneLink 10106 297 198 450 300 -1 -1
+SceneLink 10150 297 198 450 300 -1 -1
+ENDSCENE
+
+SCENE 10150 9079
+SceneLink 10151 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 10151 9080
+SceneLink 10152 400 300 400 300 -1 -1
+ENDSCENE
+
+SCENE 10152 9081
+SceneLink 10106 400 300 250 200 -1 -1
 ENDSCENE
 
 SCENE 10106 9077
-SceneLink 10107 932 339 2 2 -1 -1
+SceneLink 10107 432 439 200 200 -1 -1
+TextboxSpawnActor 432 439 200 200 Congratulations! You have transcended the known universe and entered Dr. Burris's secret base: the multi-verse.
 ENDSCENE
 
-SCENE 10107 9078
+SCENE 10107 9082
+SceneLink 10108 200 720 200 150 -1 -1
+SceneLink 10109 275 100 200 150 -1 -1
+SceneLink 10110 975 25 200 150 -1 -1
+SceneLink 10111 620 385 200 150 -1 -1
+ENDSCENE
+
+SCENE 10108 9083
+SceneLink 10107 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 10109 9086
+SceneLink 10107 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 10110 9084
+SceneLink 10107 0 797 1280 300 -1 -1
+ENDSCENE
+
+SCENE 10111 9085
+SceneLink 10107 0 797 1280 300 -1 -1
 ENDSCENE
