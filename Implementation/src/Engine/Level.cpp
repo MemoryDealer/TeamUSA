@@ -119,8 +119,8 @@ const int Level::loadLevel(const std::string &path, AudioEngine &audioEngine, Vi
             if (curScene >= 0)
                 loadError("unexpected SCENE (scenes cannot be nested)");
             fs >> curScene;
-            if (scenes.find(curScene) != scenes.cend())
-                loadError("scene with ID already exists");
+            /*if (scenes.find(curScene) != scenes.cend())
+                loadError("scene with ID already exists");*/
             fs >> scene.bgImageID;
             #if defined ( DEBUG ) || defined ( _DEBUG )
             std::cout << "begin SCENE " << curScene << std::endl;
