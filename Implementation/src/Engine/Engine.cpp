@@ -9,6 +9,7 @@
 #include "Engine.h"
 
 #include "Actor/AudioStreamActor.h"
+#include "Actor/LevelLink.h"
 #include "Actor/SceneLink.h"
 #include "Actor/TextboxSpawnActor.h"
 #include "Actor/VideoActor.h"
@@ -321,6 +322,11 @@ void Engine::run( void )
                     case SDLK_F5:
                         mSerializer.save( 1, mLevel.getScene(), mPlayer.getInventory() );
                         break;
+
+                    case SDLK_w:
+                        // Dilithium.
+                        mPlayer.addItem( 166 );
+                        break;
 #endif
                     }
                     break;
@@ -510,6 +516,9 @@ void Engine::onDisplayText( BaseActorPtr actor, const int32_t value )
 	if ( typeid( *actor ) == typeid( SceneLink ) ) {
 		text = "Item required: " + std::dynamic_pointer_cast<SceneLink>(actor)->getText();
 	}
+    else if ( typeid( *actor ) == typeid( LevelLink ) ) {
+        text = "Item required: " + std::dynamic_pointer_cast<LevelLink>( actor )->getText();
+    }
 	else if ( typeid( *actor ) == typeid( TextboxSpawnActor ) ) {
 		text = std::dynamic_pointer_cast<TextboxSpawnActor>(actor)->getText();
 	}        
