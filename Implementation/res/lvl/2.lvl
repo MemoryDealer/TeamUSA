@@ -319,9 +319,11 @@ SceneLink 196 0 795 1280 80 -1 -1
 SceneLink 198 1143 155 114 538 -1 -1
 ENDSCENE
 
+# [!] Player collects crystal for Enterprise warp drive. 
 SCENE 198 1083
 SceneLink 197 0 795 1280 80 -1 -1
 InventoryItemActor 50 160 230 180 166 2003 3
+TextboxSpawnActor 50 160 230 180 A crystal, radiating a strange energy. 
 TextboxSpawnActor 428 120 798 659 Really Andy? Disgusting.  
 ENDSCENE
 
