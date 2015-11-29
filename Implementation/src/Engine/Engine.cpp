@@ -134,10 +134,7 @@ void Engine::run( void )
     double prev = timer.getTicks();
     double lag = 0.0;
 
-    while ( mIsRunning ) {
-
-        mPlayer.setCursor( CursorStyle::CURSOR_DEFAULT );
-       
+    while ( mIsRunning ) {               
         // Calculate elapsed time since last frame.
         double current = timer.getTicks();
         double elapsed = current - prev;
@@ -187,6 +184,9 @@ void Engine::run( void )
         // independent animations.
         bool clickSoundPlayed = false;
         while ( lag >= FRAME_TIME ) {
+
+			mPlayer.setCursor( CursorStyle::CURSOR_DEFAULT );
+
             // Iterate over all actors in current scene.            
             for ( auto& actor : actors ) {
                 ActorEvent e;
