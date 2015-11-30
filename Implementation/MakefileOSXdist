@@ -8,7 +8,7 @@ LDFLAGS=-L/usr/local/lib -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -pthread -l
 
 SOURCES=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
 OBJECTS=$(patsubst src/%.cpp, build/%.o, $(SOURCES))
-EXECUTABLE=convenienced
+EXECUTABLE=convenienced.app
 
 all: $(EXECUTABLE)
 	@echo "Created: $(EXECUTABLE)"
