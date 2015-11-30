@@ -60,7 +60,7 @@ IMAGE 1098 res/images/AB1_215/215-6c.png
 IMAGE 1099 res/images/AB1_215/215-7.png
 IMAGE 2001 res/images/AB1_Floor2/Pen.png
 IMAGE 2002 res/images/AB1_Floor2/Spider.png
-IMAGE 2003 res/images/AB1_Floor2/Dilithium.png
+IMAGE 2004 res/images/AB1_Floor2/Dilithium.png
 
 # Begin loading audio samples. 
 # <TYPE>=<ID>,<PATH_TO_RESOURCE>
@@ -322,7 +322,7 @@ ENDSCENE
 # [!] Player collects crystal for Enterprise warp drive. 
 SCENE 198 1083
 SceneLink 197 0 795 1280 80 -1 -1
-InventoryItemActor 50 160 230 180 166 2003 3
+InventoryItemActor 50 160 230 180 166 2004 3
 TextboxSpawnActor 50 160 230 180 A crystal, radiating a strange energy. 
 TextboxSpawnActor 428 120 798 659 Really Andy? Disgusting.  
 ENDSCENE
